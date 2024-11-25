@@ -20,7 +20,10 @@ function renderStars(value: number) {
     stars.push(<StarHalf fill={starColor} color={starColor} size={40} />)
   }
 
-  return stars.map((element, index) => element.key === `${index}`)
+  return stars.map((element, index) => ({
+    ...element,
+    key: `${index}`,
+  }))
 }
 
 export default function MovieCard({ source }: MovieCardProps) {

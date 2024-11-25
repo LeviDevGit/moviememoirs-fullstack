@@ -1,5 +1,7 @@
 import MovieCard from '@/components/MovieCard'
+import NavigationButton from '@/components/NavigationButton'
 import SearchInput from '@/components/SearchInput'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -11,9 +13,28 @@ export default function Home() {
           <button>Gerenciar</button>
         </div>
       </header>
-      <main className="w-full border border-red-500">
-        <div className="flex w-full items-center justify-center">
+      <main className="w-full border border-red-500 py-4">
+        <div className="relative flex w-full items-center justify-center gap-x-16 overflow-x-hidden">
+          <NavigationButton>
+            <ChevronLeft
+              size={64}
+              absoluteStrokeWidth
+              className="group-transition-transform text-[#ffffff80] group-hover:scale-110 group-hover:text-[#ffffffCC]"
+            />
+          </NavigationButton>
           <MovieCard source={{ value: 5 }} />
+          <MovieCard source={{ value: 5 }} />
+          <MovieCard source={{ value: 5 }} />
+          <MovieCard source={{ value: 5 }} />
+          <MovieCard source={{ value: 5 }} />
+          <MovieCard source={{ value: 5 }} />
+          <NavigationButton left={false}>
+            <ChevronRight
+              size={64}
+              absoluteStrokeWidth
+              className="group-transition-transform text-[#ffffff80] group-hover:scale-110 group-hover:text-[#ffffffCC]"
+            />
+          </NavigationButton>
         </div>
       </main>
     </div>
