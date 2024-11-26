@@ -1,11 +1,6 @@
+import { MovieCardProps } from '@/services/interfaces'
 import { Star, StarHalf } from 'lucide-react'
 import Image from 'next/image'
-
-interface MovieCardProps {
-  source: {
-    value: number
-  }
-}
 
 function renderStars(value: number) {
   const starColor = '#841B2D'
@@ -26,33 +21,38 @@ function renderStars(value: number) {
   }))
 }
 
-export default function MovieCard({ source }: MovieCardProps) {
+export default function MovieCard({ source, ...rest }: MovieCardProps) {
   return (
-    <div className="flex h-[696px] w-fit flex-col items-center rounded-md text-white">
+    <div
+      className="flex h-[696px] w-fit flex-col items-center rounded-md text-white"
+      {...rest}
+    >
       <div className="group relative w-fit">
         <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 opacity-0 blur duration-[1000ms] group-hover:opacity-100 group-hover:blur-none">
-          {renderStars(source.value)}
+          {renderStars(source.movie.value)}
         </div>
-        <div className="shadow-cardShadow w-[345px] object-cover object-center duration-[2500ms] hover:blur hover:grayscale">
+        <div className="shadow-cardShadow relative h-[518px] w-[345px] duration-[2500ms] hover:blur hover:grayscale">
           <Image
             alt="Poster"
-            src="https://image.tmdb.org/t/p/original/bazlgJAKWCBF7OllC3JtyJ2DV1n.jpg"
-            width={345}
-            height={518}
+            src={source.movie.img}
+            fill
+            className="shadow-imageShadow rounded-md object-cover object-center"
           />
         </div>
       </div>
       <div className="w-[345px] pt-4">
         <div className="h-[80px] overflow-hidden">
           <h2 className="text-ghost-white text-center text-2xl font-semibold">
-            O Enigma de Outro Mundo
+            {source.movie.name}
           </h2>
         </div>
         <hr className="w-full border border-[#ffffff4d]" />
         <div className="text-silver mt-3 flex flex-col gap-1 font-['Inter'] text-sm">
-          <span>John Carpenter</span>
+          <span>{source.movie.direction}</span>
           <br />
-          <span className="self-end">1hr 49min | 1982</span>
+          <span className="self-end">
+            {source.movie.time} | {source.movie.date}
+          </span>
         </div>
       </div>
     </div>
