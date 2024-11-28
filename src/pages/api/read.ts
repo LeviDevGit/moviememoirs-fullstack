@@ -10,7 +10,18 @@ export default async function handle(
     return res.status(405).json({ error: 'Método não permitido' })
   }
 
+  const { searchString } = req.query
+
   const result = await prisma.view.findMany({
+    where: {
+      movie: {
+        name: {
+          contains: Array.isArray(searchString)
+            ? searchString[0]
+            : searchString,
+        },
+      },
+    },
     include: {
       movie: true,
     },

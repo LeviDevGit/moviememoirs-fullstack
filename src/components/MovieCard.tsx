@@ -32,8 +32,10 @@ export default function MovieCard({ source }: MovieCardProps) {
           <Image
             alt="Poster"
             src={source.movie.img}
-            fill
-            className="rounded-md object-cover object-center shadow-imageShadow"
+            width={345}
+            height={518}
+            priority
+            className="h-[518px] w-[345px] rounded-md object-cover object-center shadow-imageShadow"
           />
         </div>
       </div>
