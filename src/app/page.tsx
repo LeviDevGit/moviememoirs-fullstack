@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [dataFetch, setDataFetch] = useState<dataFetchProps>([])
+  const [direction, setDirection] = useState({ start: 0, end: 6 })
 
   useEffect(() => {
     const submitData = async () => {
@@ -20,25 +21,28 @@ export default function Home() {
 
         const data = await response.json()
 
-        const final = []
+        const finalArray = []
 
-        for (let index = 0; index < 6; index++) {
-          const item = data[index]
-
-          final.push({
-            ...item,
-            item,
-          })
+        for (let index = direction.start; index < direction.end; index++) {
+          const adjustedIndex =
+            ((index % data.length) + data.length) % data.length
+          finalArray.push(data[adjustedIndex])
         }
 
-        console.log(final)
-        setDataFetch(final)
+        setDataFetch(finalArray)
       } catch (error) {
         console.error(error)
       }
     }
     submitData()
-  }, [])
+  }, [direction])
+
+  const handleDirectionChange = (operation: number) => {
+    setDirection({
+      start: direction.start + operation,
+      end: direction.end + operation,
+    })
+  }
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-between p-10">
@@ -51,7 +55,7 @@ export default function Home() {
       </header>
       <main className="w-full border border-red-500 py-4">
         <div className="relative flex w-full items-center justify-center gap-x-16 overflow-x-hidden py-4">
-          <NavigationButton>
+          <NavigationButton onClick={() => handleDirectionChange(-1)}>
             <ChevronLeft
               size={64}
               absoluteStrokeWidth
@@ -63,7 +67,10 @@ export default function Home() {
             dataFetch.map((element, index) => (
               <MovieCard source={element} key={`${index}`} />
             ))}
-          <NavigationButton left={false}>
+          <NavigationButton
+            left={false}
+            onClick={() => handleDirectionChange(1)}
+          >
             <ChevronRight
               size={64}
               absoluteStrokeWidth
