@@ -1,16 +1,16 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 
-interface NavigationButtonProps
+interface DirectionalButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   left?: boolean
 }
 
-export default function NavigationButton({
+export default function DirectionalButton({
   children,
   left = true,
   ...rest
-}: NavigationButtonProps) {
+}: DirectionalButtonProps) {
   return (
     <button
       {...rest}

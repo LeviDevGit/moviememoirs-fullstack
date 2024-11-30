@@ -9,6 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        'antique-ruby': '#841B2D',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
       },

@@ -22,7 +22,7 @@ export default function SearchInput({ request }: SearchInputProps) {
         ref={inputRef}
       />
       <button
-        className="h-full rounded-r-lg bg-zinc-600 px-2 hover:bg-zinc-500"
+        className="h-full rounded-r-lg bg-zinc-600 px-3 hover:bg-zinc-500"
         onClick={handleButtonClick}
       >
         <Search />
