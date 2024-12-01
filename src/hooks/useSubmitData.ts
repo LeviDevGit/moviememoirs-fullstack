@@ -6,14 +6,12 @@ interface useSubmitDataProps {
     start: number
     end: number
   }
-  isInitializedRef: React.MutableRefObject<boolean>
   reqBody: string
   setDataFetch: (value: React.SetStateAction<dataFetchProps>) => void
 }
 
 export default function useSubmitData({
   direction,
-  isInitializedRef,
   reqBody,
   setDataFetch,
 }: useSubmitDataProps) {
@@ -32,11 +30,9 @@ export default function useSubmitData({
 
         let modifiedData = data
 
-        if (!isInitializedRef.current) {
-          const lastItem = data[data.length - 1]
-          modifiedData = [lastItem, ...data.slice(0, data.length - 1)]
-          isInitializedRef.current = true
-        }
+        const lastItem = modifiedData.pop()
+
+        modifiedData = [lastItem, ...modifiedData]
 
         const finalArray = []
 
@@ -53,5 +49,5 @@ export default function useSubmitData({
       }
     }
     submitData()
-  }, [direction, isInitializedRef, reqBody, setDataFetch])
+  }, [direction, reqBody, setDataFetch])
 }

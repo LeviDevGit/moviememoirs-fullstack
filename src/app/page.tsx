@@ -5,21 +5,22 @@ import {
   MovieCard,
   OptionsButton,
   SearchInput,
+  SwitchButton,
 } from '@/components'
 import { Modal } from '@/components/Modal'
 import useSubmitData from '@/hooks/useSubmitData'
 import { dataFetchProps } from '@/types/interfaces'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 export default function Home() {
   const [dataFetch, setDataFetch] = useState<dataFetchProps>([])
   const [direction, setDirection] = useState({ start: -6, end: 12 })
-  const isInitializedRef = useRef(false)
+  const [toggleModal, setToggleModal] = useState(false)
 
   const [reqBody, setReqBody] = useState('')
 
-  useSubmitData({ direction, isInitializedRef, reqBody, setDataFetch })
+  useSubmitData({ direction, reqBody, setDataFetch })
 
   const handleDirectionChange = (operation: number) => {
     setDirection({
@@ -29,13 +30,24 @@ export default function Home() {
   }
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-between p-10">
-      <Modal.Root>
-        <h1>Teste</h1>
-      </Modal.Root>
+    <div className="relative flex h-full w-full flex-col items-center justify-between p-10">
+      {toggleModal && (
+        <Modal.Root closeIt={setToggleModal}>
+          <h1>Teste</h1>
+        </Modal.Root>
+      )}
       <header className="flex w-full justify-between">
-        <OptionsButton />
-        <SearchInput request={setReqBody} />
+        <OptionsButton openIt={setToggleModal} />
+        <SwitchButton />
+        <div className="flex">
+          <select name="" id="" className="flex">
+            <option value="">Dropdown</option>
+          </select>
+          <div className="text-center text-white">
+            <SearchInput request={setReqBody} />
+            <h2>Filter/Search List Input</h2>
+          </div>
+        </div>
       </header>
       <main className="w-full py-4">
         <div className="relative flex w-full items-center justify-center gap-x-12 overflow-x-hidden py-4">
