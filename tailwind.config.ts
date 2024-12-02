@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundColor: {
+        'solid-pink': '#832F3E',
+      },
       colors: {
         'antique-ruby': '#841B2D',
         background: 'var(--background)',

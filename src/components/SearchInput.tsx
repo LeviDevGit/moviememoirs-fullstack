@@ -15,18 +15,19 @@ export default function SearchInput({ request }: SearchInputProps) {
   }
 
   return (
-    <div className="flex rounded-lg border border-zinc-800 bg-zinc-700 text-white has-[:focus]:border-blue-600">
+    <div className="relative flex h-[40px] items-center rounded-lg border border-zinc-800 bg-zinc-700 px-2 text-white has-[:focus]:border-blue-600">
+      <div className="flex h-[20px] items-center">
+        <Search size={20} />
+      </div>
       <input
         type="text"
-        className="h-[45px] bg-transparent pl-2 outline-none"
+        className="bg-transparent pl-2 outline-none"
+        placeholder="Procurar por filmes"
         ref={inputRef}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') handleButtonClick()
+        }}
       />
-      <button
-        className="h-full rounded-r-lg bg-zinc-600 px-3 hover:bg-zinc-500"
-        onClick={handleButtonClick}
-      >
-        <Search />
-      </button>
     </div>
   )
 }

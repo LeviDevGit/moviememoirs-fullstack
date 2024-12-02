@@ -2,10 +2,10 @@
 
 import {
   DirectionalButton,
+  DropdownFilter,
   MovieCard,
   OptionsButton,
   SearchInput,
-  SwitchButton,
 } from '@/components'
 import { Modal } from '@/components/Modal'
 import useSubmitData from '@/hooks/useSubmitData'
@@ -16,7 +16,9 @@ import { useState } from 'react'
 export default function Home() {
   const [dataFetch, setDataFetch] = useState<dataFetchProps>([])
   const [direction, setDirection] = useState({ start: -6, end: 12 })
-  const [toggleModal, setToggleModal] = useState(false)
+  const [toggleModalAdd, setToggleModalAdd] = useState(false)
+  const [toggleModalManagement, setToggleModalManagement] = useState(false)
+  const [toggleDropdown, setToggleDropdown] = useState(false)
 
   const [reqBody, setReqBody] = useState('')
 
@@ -30,24 +32,31 @@ export default function Home() {
   }
 
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-between p-10">
-      {toggleModal && (
-        <Modal.Root closeIt={setToggleModal}>
-          <h1>Teste</h1>
+    <div className="relative flex h-full w-full flex-col items-center justify-around p-10">
+      {toggleModalAdd && (
+        <Modal.Root>
+          <h1>Adicionar</h1>
+          <Modal.Footer closeIt={setToggleModalAdd} />
         </Modal.Root>
       )}
-      <header className="flex w-full justify-between">
-        <OptionsButton openIt={setToggleModal} />
-        <SwitchButton />
-        <div className="flex">
-          <select name="" id="" className="flex">
-            <option value="">Dropdown</option>
-          </select>
-          <div className="text-center text-white">
-            <SearchInput request={setReqBody} />
-            <h2>Filter/Search List Input</h2>
-          </div>
+      {toggleModalManagement && (
+        <Modal.Root>
+          <h1>Gerenciamento de filmes</h1>
+          <Modal.Footer closeIt={setToggleModalManagement} />
+        </Modal.Root>
+      )}
+      <header className="flex w-full items-center justify-between">
+        <div className="flex h-[45px] items-center gap-1">
+          <SearchInput request={setReqBody} />
+          <DropdownFilter
+            toggleDropdown={setToggleDropdown}
+            isOpen={toggleDropdown}
+          />
         </div>
+        <OptionsButton
+          openItAdd={setToggleModalAdd}
+          openItManagemenet={setToggleModalManagement}
+        />
       </header>
       <main className="w-full py-4">
         <div className="relative flex w-full items-center justify-center gap-x-12 overflow-x-hidden py-4">
