@@ -49,5 +49,6 @@ export default function useSubmitData({
       }
     }
     submitData()
-  }, [direction, reqBody, setDataFetch])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [direction, reqBody])
 }
