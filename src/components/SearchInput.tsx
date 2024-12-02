@@ -2,7 +2,14 @@ import { Search } from 'lucide-react'
 import { useRef } from 'react'
 
 interface SearchInputProps {
-  request: React.Dispatch<React.SetStateAction<string>>
+  request: React.Dispatch<
+    React.SetStateAction<{
+      searchString: string
+      directorString: string | undefined
+      yearString: string | undefined
+      valueString: number | undefined
+    }>
+  >
 }
 
 export default function SearchInput({ request }: SearchInputProps) {
@@ -10,7 +17,10 @@ export default function SearchInput({ request }: SearchInputProps) {
 
   const handleButtonClick = () => {
     if (inputRef.current) {
-      request(inputRef.current.value) // Atualiza o estado externo com o valor do input
+      request((prevState) => ({
+        ...prevState,
+        searchString: inputRef.current!.value,
+      })) // Atualiza o estado externo com o valor do input
     }
   }
 

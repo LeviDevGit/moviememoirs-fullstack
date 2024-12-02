@@ -13,16 +13,27 @@ import { dataFetchProps } from '@/types/interfaces'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 
+interface FilterContent {
+  searchString: string
+  directorString: string | undefined
+  yearString: string | undefined
+  valueString: number | undefined
+}
+
 export default function Home() {
   const [dataFetch, setDataFetch] = useState<dataFetchProps>([])
   const [direction, setDirection] = useState({ start: -6, end: 12 })
   const [toggleModalAdd, setToggleModalAdd] = useState(false)
   const [toggleModalManagement, setToggleModalManagement] = useState(false)
   const [toggleDropdown, setToggleDropdown] = useState(false)
+  const [filterContent, setFilterContent] = useState<FilterContent>({
+    searchString: '',
+    directorString: undefined,
+    yearString: undefined,
+    valueString: undefined,
+  })
 
-  const [reqBody, setReqBody] = useState('')
-
-  useSubmitData({ direction, reqBody, setDataFetch })
+  useSubmitData({ direction, filterContent, setDataFetch })
 
   const handleDirectionChange = (operation: number) => {
     setDirection({
@@ -47,7 +58,7 @@ export default function Home() {
       )}
       <header className="flex w-full items-center justify-between">
         <div className="flex h-[45px] items-center gap-1">
-          <SearchInput request={setReqBody} />
+          <SearchInput request={setFilterContent} />
           <DropdownFilter
             toggleDropdown={setToggleDropdown}
             isOpen={toggleDropdown}

@@ -6,20 +6,26 @@ interface useSubmitDataProps {
     start: number
     end: number
   }
-  reqBody: string
+  filterContent: {
+    searchString: string
+    directorString: string | undefined
+    yearString: string | undefined
+    valueString: number | undefined
+  }
   setDataFetch: (value: React.SetStateAction<dataFetchProps>) => void
 }
 
 export default function useSubmitData({
   direction,
-  reqBody,
+  filterContent,
   setDataFetch,
 }: useSubmitDataProps) {
   useEffect(() => {
     const submitData = async () => {
       try {
+        console.log(filterContent)
         const response = await fetch(
-          `/api/read${reqBody && `?searchString=${reqBody}`}`,
+          `/api/read${filterContent.searchString && `?searchString=${filterContent.searchString}`}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -29,6 +35,7 @@ export default function useSubmitData({
         const data = await response.json()
 
         let modifiedData = data
+        console.log(data)
 
         const lastItem = modifiedData.pop()
 
@@ -50,5 +57,5 @@ export default function useSubmitData({
     }
     submitData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [direction, reqBody])
+  }, [direction, filterContent])
 }

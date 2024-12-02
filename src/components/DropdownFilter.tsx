@@ -76,7 +76,7 @@ export default function DropdownFilter({
           </div>
           <hr className="border-[#5D5D5F]" />
           <div className="flex items-center justify-between p-5 pt-0">
-            <button className="flex items-center gap-2">
+            <button className="flex items-center gap-2" onClick={() => {}}>
               <Plus size={20} /> Adicionar filtro
             </button>
             <button>Excluir todos os filtros</button>

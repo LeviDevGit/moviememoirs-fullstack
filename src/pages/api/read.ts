@@ -10,16 +10,31 @@ export default async function handle(
     return res.status(405).json({ error: 'Método não permitido' })
   }
 
-  const { searchString } = req.query
+  const { searchString, directorString, yearString, valueString } = req.query
+
+  function getFirstOrValue(value: string | string[] | undefined) {
+    return Array.isArray(value) ? value[0] : value
+  }
 
   const result = await prisma.view.findMany({
     where: {
       movie: {
         name: {
-          contains: Array.isArray(searchString)
-            ? searchString[0]
-            : searchString,
+          contains: getFirstOrValue(searchString),
         },
+
+        direction: {
+          contains: getFirstOrValue(directorString),
+        },
+
+        date: getFirstOrValue(yearString),
+
+        value:
+          valueString && !isNaN(Number(valueString))
+            ? {
+                equals: Number(valueString),
+              }
+            : undefined,
       },
     },
     include: {
