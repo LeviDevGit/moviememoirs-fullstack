@@ -10,7 +10,7 @@ interface useSubmitDataProps {
     searchString: string
     directorString: string | undefined
     yearString: string | undefined
-    valueString: number | undefined
+    valueString: string | undefined
   }
   setDataFetch: (value: React.SetStateAction<dataFetchProps>) => void
 }
@@ -24,13 +24,28 @@ export default function useSubmitData({
     const submitData = async () => {
       try {
         console.log(filterContent)
-        const response = await fetch(
-          `/api/read${filterContent.searchString && `?searchString=${filterContent.searchString}`}`,
-          {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-          },
-        )
+
+        const queryParams = new URLSearchParams()
+
+        if (filterContent.searchString) {
+          queryParams.append('searchString', filterContent.searchString)
+        }
+
+        if (filterContent.directorString) {
+          queryParams.append('directorString', filterContent.directorString)
+        }
+        if (filterContent.yearString) {
+          queryParams.append('yearString', filterContent.yearString)
+        }
+
+        if (filterContent.valueString) {
+          queryParams.append('valueString', filterContent.valueString)
+        }
+
+        const response = await fetch(`/api/read?${queryParams.toString()}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        })
 
         const data = await response.json()
 

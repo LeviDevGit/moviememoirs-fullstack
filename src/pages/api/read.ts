@@ -22,13 +22,10 @@ export default async function handle(
         name: {
           contains: getFirstOrValue(searchString),
         },
-
         direction: {
           contains: getFirstOrValue(directorString),
         },
-
         date: getFirstOrValue(yearString),
-
         value:
           valueString && !isNaN(Number(valueString))
             ? {

@@ -1,14 +1,23 @@
 import { Ellipsis, Filter, Plus } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface Dropdownprops {
   toggleDropdown: React.Dispatch<React.SetStateAction<boolean>>
   isOpen: boolean
+  request: React.Dispatch<
+    React.SetStateAction<{
+      searchString: string
+      directorString: string | undefined
+      yearString: string | undefined
+      valueString: string | undefined
+    }>
+  >
 }
 
 export default function DropdownFilter({
   toggleDropdown,
   isOpen,
+  request,
 }: Dropdownprops) {
   const dropdown = useRef<HTMLDivElement | null>(null)
 
@@ -33,6 +42,36 @@ export default function DropdownFilter({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen])
 
+  const [disabledOption, setDisabledOption] = useState({
+    director: false,
+    year: false,
+    value: false,
+  })
+  const [selectOption, setSelectOption] =
+    useState<keyof typeof disabledOption>('director')
+
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const [activeFilters, setActiveFilters] = useState<
+    ('director' | 'year' | 'value')[]
+  >([])
+
+  const handleButtonClick = () => {
+    if (inputRef.current && inputRef.current.value !== '') {
+      setActiveFilters((prev) => [...prev, selectOption])
+
+      setDisabledOption((prev) => ({
+        ...prev,
+        [selectOption]: true,
+      }))
+
+      request((prevState) => ({
+        ...prevState,
+        [`${selectOption}String`]: inputRef.current!.value,
+      }))
+    }
+  }
+
   return (
     <div className="relative h-full">
       <button
@@ -52,31 +91,52 @@ export default function DropdownFilter({
         >
           <p className="p-5 pb-0">Nesta visualização mostre filmes</p>
           <hr className="border-[#747476]" />
-          <div className="flex items-center gap-4 px-5">
-            <label>Onde</label>
-            <select className="rounded-lg border border-[#747476] bg-transparent p-2">
-              <option value="">Diretor</option>
-              <option value="">Ano de lançamento</option>
-              <option value="">Nota</option>
-            </select>
-            <select className="rounded-lg border border-[#747476] bg-transparent p-2">
-              <option value="">contenha</option>
-              <option value="">é igual a</option>
-            </select>
-            <input
-              type="text"
-              name=""
-              id=""
-              placeholder="Digite o valor..."
-              className="rounded-lg border border-[#747476] bg-transparent p-2 outline-none"
-            />
-            <button>
-              <Ellipsis />
-            </button>
-          </div>
+          {activeFilters.map((e, index) => (
+            <div key={`${index}`}>
+              <h1>{e}</h1>
+            </div>
+          ))}
+          {activeFilters.length <= 2 && (
+            <div className="flex items-center gap-4 px-5">
+              <label>Onde</label>
+              <select
+                className="rounded-lg border border-[#747476] bg-transparent p-2"
+                onChange={(e) => {
+                  setSelectOption(e.target.value as keyof typeof disabledOption)
+                }}
+              >
+                <option value="director" disabled={disabledOption.director}>
+                  Diretor
+                </option>
+                <option value="year" disabled={disabledOption.year}>
+                  Ano de lançamento
+                </option>
+                <option value="value" disabled={disabledOption.value}>
+                  Nota
+                </option>
+              </select>
+              <label className="w-[70px] text-center">
+                {selectOption === 'director' ? 'contenha' : 'igual a'}
+              </label>
+              <input
+                type="text"
+                placeholder="Digite o valor..."
+                className="rounded-lg border border-[#747476] bg-transparent p-2 outline-none"
+                ref={inputRef}
+              />
+              <button>
+                <Ellipsis />
+              </button>
+            </div>
+          )}
           <hr className="border-[#5D5D5F]" />
           <div className="flex items-center justify-between p-5 pt-0">
-            <button className="flex items-center gap-2" onClick={() => {}}>
+            <button
+              className={`flex items-center gap-2 ${disabledOption[selectOption] && 'hidden'}`}
+              onClick={() => {
+                handleButtonClick()
+              }}
+            >
               <Plus size={20} /> Adicionar filtro
             </button>
             <button>Excluir todos os filtros</button>

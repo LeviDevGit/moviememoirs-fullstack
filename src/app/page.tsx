@@ -17,7 +17,7 @@ interface FilterContent {
   searchString: string
   directorString: string | undefined
   yearString: string | undefined
-  valueString: number | undefined
+  valueString: string | undefined
 }
 
 export default function Home() {
@@ -62,6 +62,7 @@ export default function Home() {
           <DropdownFilter
             toggleDropdown={setToggleDropdown}
             isOpen={toggleDropdown}
+            request={setFilterContent}
           />
         </div>
         <OptionsButton

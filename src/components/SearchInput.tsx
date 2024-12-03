@@ -7,7 +7,7 @@ interface SearchInputProps {
       searchString: string
       directorString: string | undefined
       yearString: string | undefined
-      valueString: number | undefined
+      valueString: string | undefined
     }>
   >
 }
@@ -16,6 +16,7 @@ export default function SearchInput({ request }: SearchInputProps) {
   const inputRef = useRef<HTMLInputElement>(null) // useRef para acessar o valor do input
 
   const handleButtonClick = () => {
+    console.log(request)
     if (inputRef.current) {
       request((prevState) => ({
         ...prevState,
