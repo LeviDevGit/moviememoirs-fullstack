@@ -51,7 +51,7 @@ export default function ModalForm() {
         <input type="text" name="movieValue" placeholder="Nota" required />
         <input
           type="text"
-          name="comentary"
+          name="commentary"
           placeholder="Comentário (opcional)"
         />
         <button type="submit">Adicionar</button>

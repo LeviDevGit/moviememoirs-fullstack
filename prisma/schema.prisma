@@ -13,7 +13,7 @@ datasource db {
 model Movie {
   id         Int       @id @default(autoincrement()) // Chave primária auto-incrementada
   name       String    // Nome do filme
-  date       String       // Data do lançamento
+  date       String    // Data do lançamento
   time       String    // Duração do filme no formato "HH:MM:SS"
   direction  String    // Diretor do filme
   value      Float     // Avaliação (ex.: 8.5)
@@ -24,7 +24,7 @@ model Movie {
 
 model View {
   id          Int       @id @default(autoincrement()) // Chave primária auto-incrementada
-  date        DateTime    // Data da visualização
+  date        DateTime  // Data da visualização
   commentary  String?   // Comentário opcional
   movieId     Int       // Chave estrangeira para Movie
   movie       Movie     @relation(fields: [movieId], references: [id]) // Relacionamento

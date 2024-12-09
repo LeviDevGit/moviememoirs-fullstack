@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { Fields, Files, IncomingForm } from 'formidable'
+import { Files, IncomingForm } from 'formidable'
+import prisma from '@/lib/prisma'
 import path from 'path'
-// import prisma from '@/lib/prisma'
+import { Prisma } from '@prisma/client'
 
 export const config = {
   api: {
@@ -9,7 +10,18 @@ export const config = {
   },
 }
 
-// POST /api/read
+interface FormFields {
+  movieDate: string[]
+  direction: string[]
+  name: string[]
+  time: string[]
+  type: string[]
+  movieValue: string[]
+  viewDate: string[]
+  commentary?: string[]
+}
+
+// CREATE /api/post
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
@@ -17,8 +29,8 @@ export default async function handler(
   try {
     const publicDir = path.join(process.cwd(), 'public')
 
-    const { files }: { fields: Fields; files: Files } = await new Promise(
-      (resolve, reject) => {
+    const { fields, files }: { fields: FormFields; files: Files } =
+      await new Promise((resolve, reject) => {
         const form = new IncomingForm({
           uploadDir: publicDir,
           keepExtensions: true,
@@ -28,38 +40,58 @@ export default async function handler(
           if (err) {
             return reject(err)
           }
-          resolve({ fields, files })
+          resolve({ fields: fields as unknown as FormFields, files })
         })
-      },
-    )
+      })
 
     const file = files.file
 
     const publicUrl = `/uploads/${path.basename(file![0].filepath)}`
 
-    res.status(200).json(publicUrl)
+    function convertToDate(dateString: string): string {
+      const [day, month, year] = dateString.split('/')
+      return `${year}-${month}-${day}`
+    }
+
+    const viewDate = convertToDate(fields.viewDate![0])
+    const commentaryValidated =
+      fields.commentary && fields.commentary[0] !== ''
+        ? fields.commentary[0]
+        : null
+
+    const result = await prisma.movie.create({
+      data: {
+        date: fields.movieDate![0],
+        direction: fields.direction![0],
+        img: publicUrl,
+        name: fields.name![0],
+        time: fields.time![0],
+        type: fields.type![0],
+        value: Number(fields.movieValue![0]),
+        views: {
+          create: {
+            date: new Date(viewDate),
+            commentary: commentaryValidated,
+          },
+        },
+      },
+    })
+
+    res.status(200).json(result)
   } catch (error) {
-    console.error(error)
-    res.status(405).json({ error: 'Method Not Allowed' })
+    console.error('Error:', error) // Log para depuração
+
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      if (error.code === 'P2002') {
+        console.log(
+          'There is a unique constraint violation, a new user cannot be created with this email',
+        )
+      }
+      res.status(500).json({
+        error: 'Prisma error',
+        message: error.message,
+        code: error.code,
+      })
+    }
   }
-
-  // const result = await prisma.movie.create({
-  //   data: {
-  //     date: '',
-  //     direction: '',
-  //     img: '',
-  //     name: '',
-  //     time: '',
-  //     type: '',
-  //     value: 2,
-  //     views: {
-  //       create: {
-  //         date: '21',
-  //         commentary: '',
-  //       },
-  //     },
-  //   },
-  // })
-
-  // return res.json(result)
 }
