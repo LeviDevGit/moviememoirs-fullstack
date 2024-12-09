@@ -46,13 +46,13 @@ export default function Home() {
     <div className="relative flex h-full w-full flex-col items-center justify-around p-10">
       {toggleModalAdd && (
         <Modal.Root>
-          <h1>Adicionar</h1>
+          <Modal.Form />
           <Modal.Footer closeIt={setToggleModalAdd} />
         </Modal.Root>
       )}
       {toggleModalManagement && (
         <Modal.Root>
-          <h1>Gerenciamento de filmes</h1>
+          <Modal.Dashboard />
           <Modal.Footer closeIt={setToggleModalManagement} />
         </Modal.Root>
       )}
