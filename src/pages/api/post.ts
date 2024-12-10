@@ -27,7 +27,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   try {
-    const publicDir = path.join(process.cwd(), 'public')
+    const publicDir = path.join(process.cwd(), 'public', 'uploads')
 
     const { fields, files }: { fields: FormFields; files: Files } =
       await new Promise((resolve, reject) => {
@@ -46,7 +46,7 @@ export default async function handler(
 
     const file = files.file
 
-    const publicUrl = `/uploads/${path.basename(file![0].filepath)}`
+    const publicUrl = `/public/uploads/${path.basename(file![0].filepath)}`
 
     function convertToDate(dateString: string): string {
       const [day, month, year] = dateString.split('/')

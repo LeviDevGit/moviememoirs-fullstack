@@ -27,5 +27,5 @@ model View {
   date        DateTime  // Data da visualização
   commentary  String?   // Comentário opcional
   movieId     Int       // Chave estrangeira para Movie
-  movie       Movie     @relation(fields: [movieId], references: [id]) // Relacionamento
+  movie       Movie     @relation(fields: [movieId], references: [id], onDelete: Cascade) // Relacionamento
 }
