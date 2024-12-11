@@ -1,0 +1,3438 @@
+{ "movies": [
+  {
+    "id": 1,
+    "name": "O Poderoso Chefão",
+    "date": "1972",
+    "time": "2hr 55min",
+    "direction": "Francis Ford Coppola",
+    "view": [
+      "09/02/2022"
+    ],
+    "value": 5,
+    "img": "/posters/1.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 2,
+    "name": "Onde os Fracos Não Têm Vez",
+    "date": "2007",
+    "time": "2hr 2min",
+    "direction": "Ethan Coen, Joel Coen",
+    "view": [
+      "10/02/2022"
+    ],
+    "value": 4,
+    "img": "/posters/2.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 3,
+    "name": "Bastardos Inglórios",
+    "date": "2009",
+    "time": "2hr 33min",
+    "direction": "Quentin Tarantino",
+    "view": [
+      "11/02/2022"
+    ],
+    "value": 4,
+    "img": "/posters/3.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 4,
+    "name": "Encanto",
+    "date": "2021",
+    "time": "1hr 49min",
+    "direction": "Byron Howard, Jared Bush",
+    "view": [
+      "23/02/2022"
+    ],
+    "value": 2.5,
+    "img": "/posters/4.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 5,
+    "name": "Soul",
+    "date": "2020",
+    "time": "1hr 40min",
+    "direction": "Pete Docter",
+    "view": [
+      "24/02/2022"
+    ],
+    "value": 2,
+    "img": "/posters/5.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 6,
+    "name": "The Batman",
+    "date": "2022",
+    "time": "2hr 56min",
+    "direction": "Matt Reeves",
+    "view": [
+      "20/03/2022",
+      "25/02/2023"
+    ],
+    "value": 5,
+    "img": "/posters/6.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 7,
+    "name": "Se7en - Os Sete Crimes Capitais",
+    "date": "1995",
+    "time": "2hr 7min",
+    "direction": "David Fincher",
+    "view": [
+      "22/03/2022"
+    ],
+    "value": 5,
+    "img": "/posters/7.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 8,
+    "name": "Fragmentado",
+    "date": "2016",
+    "time": "1hr 57min",
+    "direction": "M. Night Shyamalan",
+    "view": [
+      "27/03/2022"
+    ],
+    "value": 3.5,
+    "img": "/posters/8.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 9,
+    "name": "Califórnia",
+    "date": "2015",
+    "time": "1hr 30min",
+    "direction": "Marina Person",
+    "view": [
+      "18/04/2022"
+    ],
+    "value": 4,
+    "img": "/posters/9.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 10,
+    "name": "Mindhunter 2ª Temporada",
+    "date": "2019",
+    "time": "9 Episódios",
+    "direction": "Joe Penhall",
+    "view": [
+      "25/04/2022"
+    ],
+    "value": 3,
+    "img": "/posters/10.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 11,
+    "name": "Fresh",
+    "date": "2022",
+    "time": "1hr 57min",
+    "direction": "Mimi Cave",
+    "view": [
+      "26/04/2022"
+    ],
+    "value": 2,
+    "img": "/posters/11.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 12,
+    "name": "Gladiador",
+    "date": "2000",
+    "time": "2hr 35min",
+    "direction": "Ridley Scott",
+    "view": [
+      "03/05/2022"
+    ],
+    "value": 3,
+    "img": "/posters/12.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 13,
+    "name": "Capitão América 2 - O Soldado Invernal",
+    "date": "2014",
+    "time": "2hr 16min",
+    "direction": "Anthony, Joe Russo",
+    "view": [
+      "06/05/2022"
+    ],
+    "value": 4,
+    "img": "/posters/13.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 14,
+    "name": "Doutor Estranho no Multiverso da Loucura",
+    "date": "2022",
+    "time": "2hr 6min",
+    "direction": "Sam Raimi",
+    "view": [
+      "09/05/2022"
+    ],
+    "value": 2,
+    "img": "/posters/14.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 15,
+    "name": "O Homem do Norte",
+    "date": "2022",
+    "time": "2hr 17min",
+    "direction": "Robert Eggers",
+    "view": [
+      "18/05/2022"
+    ],
+    "value": 4,
+    "img": "/posters/15.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 16,
+    "name": "O Jardim das Palavras",
+    "date": "2013",
+    "time": "46min",
+    "direction": "Makoto Shinkai",
+    "view": [
+      "18/05/2022"
+    ],
+    "value": 4,
+    "img": "/posters/16.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 17,
+    "name": "Euphoria 1ª Temporada",
+    "date": "2019",
+    "time": "8 Episódios",
+    "direction": "Sam Levinson",
+    "view": [
+      "28/05/2022"
+    ],
+    "value": 4,
+    "img": "/posters/17.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 18,
+    "name": "Euphoria 2ª Temporada",
+    "date": "2022",
+    "time": "8 Episódios",
+    "direction": "Sam Levinson",
+    "view": [
+      "29/05/2022"
+    ],
+    "value": 4,
+    "img": "/posters/18.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 19,
+    "name": "Guerra nas Estrelas",
+    "date": "1977",
+    "time": "2hr 1min",
+    "direction": "George Lucas",
+    "view": [
+      "29/05/2022"
+    ],
+    "value": 3.5,
+    "img": "/posters/19.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 20,
+    "name": "Top Gun: Maverick",
+    "date": "2022",
+    "time": "2hr 11min",
+    "direction": "Joseph Kosinski",
+    "view": [
+      "31/05/2022"
+    ],
+    "value": 4.5,
+    "img": "/posters/20.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 21,
+    "name": "One Piece Gold: O Filme",
+    "date": "2016",
+    "time": "2hr",
+    "direction": "Hiroaki Miyamoto",
+    "view": [
+      "05/06/2022"
+    ],
+    "value": 1.5,
+    "img": "/posters/21.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 22,
+    "name": "Psicopata Americano",
+    "date": "2000",
+    "time": "1hr 42min",
+    "direction": "Mary Harron",
+    "view": [
+      "06/06/2022"
+    ],
+    "value": 5,
+    "img": "/posters/22.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 23,
+    "name": "Stranger Things 4ª Temporada",
+    "date": "2022",
+    "time": "9 Episódios",
+    "direction": "The Duffer Brothers",
+    "view": [
+      "20/06/2022"
+    ],
+    "value": 2.5,
+    "img": "/posters/23.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 24,
+    "name": "Amor, Morte & Robôs 1ª Temporada",
+    "date": "2019",
+    "time": "18 Episódios",
+    "direction": "Tim Miller",
+    "view": [
+      "21/06/2022"
+    ],
+    "value": 4,
+    "img": "/posters/24.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 25,
+    "name": "Amor, Morte & Robôs 2ª Temporada",
+    "date": "2021",
+    "time": "8 Episódios",
+    "direction": "Tim Miller",
+    "view": [
+      "27/06/2022"
+    ],
+    "value": 4,
+    "img": "/posters/25.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 26,
+    "name": "Amor, Morte & Robôs 3ª Temporada",
+    "date": "2022",
+    "time": "9 Episódios",
+    "direction": "Tim Miller",
+    "view": [
+      "27/06/2022"
+    ],
+    "value": 4,
+    "img": "/posters/26.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 27,
+    "name": "Anos 90",
+    "date": "2018",
+    "time": "1hr 25min",
+    "direction": "Jonah Hill",
+    "view": [
+      "01/07/2022"
+    ],
+    "value": 4.5,
+    "img": "/posters/27.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 28,
+    "name": "Taxi Driver – Motorista de Táxi",
+    "date": "1976",
+    "time": "1hr 54min",
+    "direction": "Martin Scorsese",
+    "view": [
+      "16/07/2022"
+    ],
+    "value": 4,
+    "img": "/posters/28.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 29,
+    "name": "O Primeiro Amor",
+    "date": "2010",
+    "time": "1hr 30min",
+    "direction": "Rob Reiner",
+    "view": [
+      "20/07/2022"
+    ],
+    "value": 2,
+    "img": "/posters/29.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 30,
+    "name": "Questão de Tempo",
+    "date": "2013",
+    "time": "2hr 3min",
+    "direction": "Richard Curtis",
+    "view": [
+      "21/07/2022",
+      "15/04/2024"
+    ],
+    "value": 5,
+    "img": "/posters/30.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 31,
+    "name": "One Piece: Stampede",
+    "date": "2019",
+    "time": "1hr 41min",
+    "direction": "Takashi Otsuka",
+    "view": [
+      "28/07/2022"
+    ],
+    "value": 3,
+    "img": "/posters/31.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 32,
+    "name": "A Viagem de Chihiro",
+    "date": "2001",
+    "time": "2hr 5min",
+    "direction": "Hayao Miyazaki",
+    "view": [
+      "18/08/2022",
+      "13/11/2024"
+    ],
+    "value": 5,
+    "img": "/posters/32.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 33,
+    "name": "Dragon Ball Super: Super Hero",
+    "date": "2022",
+    "time": "1hr 40min",
+    "direction": "Tetsuro Kodama",
+    "view": [
+      "20/08/2022"
+    ],
+    "value": 2.5,
+    "img": "/posters/33.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 34,
+    "name": "1917",
+    "date": "2019",
+    "time": "1hr 59min",
+    "direction": "Sam Mendes",
+    "view": [
+      "20/08/2022"
+    ],
+    "value": 3.5,
+    "img": "/posters/34.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 35,
+    "name": "Um Lugar Silencioso",
+    "date": "2018",
+    "time": "1hr 30min",
+    "direction": "John Krasinski",
+    "view": [
+      "20/08/2022"
+    ],
+    "value": 4,
+    "img": "/posters/35.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 36,
+    "name": "Não! Não Olhe!",
+    "date": "2022",
+    "time": "2hr 10min",
+    "direction": "Jordan Peele",
+    "view": [
+      "28/08/2022"
+    ],
+    "value": 4.5,
+    "img": "/posters/36.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 37,
+    "name": "Antes do amanhecer",
+    "date": "1995",
+    "time": "1hr 45min",
+    "direction": "Richard Linklater",
+    "view": [
+      "22/09/2022",
+      "23/11/2024"
+    ],
+    "value": 5,
+    "img": "/posters/37.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 38,
+    "name": "The Strange Thing About the Johnsons",
+    "date": "2011",
+    "time": "29min",
+    "direction": "Ari Aster",
+    "view": [
+      "05/10/2022"
+    ],
+    "value": 4.5,
+    "img": "/posters/38.jpg",
+    "type": "Short Film"
+  },
+  {
+    "id": 39,
+    "name": "Cães de Aluguel",
+    "date": "1992",
+    "time": "1hr 39min",
+    "direction": "Quentin Tarantino",
+    "view": [
+      "21/10/2022"
+    ],
+    "value": 5,
+    "img": "/posters/39.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 40,
+    "name": "Hereditário",
+    "date": "2018",
+    "time": "2hr 7min",
+    "direction": "Ari Aster",
+    "view": [
+      "22/10/2022"
+    ],
+    "value": 4,
+    "img": "/posters/40.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 41,
+    "name": "A Casa do Dragão 1ª Temporada",
+    "date": "2022",
+    "time": "10 Episódios",
+    "direction": "Ryan J. Condal, George R. R. Martin",
+    "view": [
+      "24/10/2022"
+    ],
+    "value": 4.5,
+    "img": "/posters/41.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 42,
+    "name": "Sobre Meninos e Lobos",
+    "date": "2003",
+    "time": "2hr 17min",
+    "direction": "Clint Eastwood",
+    "view": [
+      "04/11/2022"
+    ],
+    "value": 4,
+    "img": "/posters/42.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 43,
+    "name": "O Poderoso Chefão 2",
+    "date": "1974",
+    "time": "3hr 22min",
+    "direction": "Francis Ford Coppola",
+    "view": [
+      "06/11/2022"
+    ],
+    "value": 4.5,
+    "img": "/posters/43.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 44,
+    "name": "Dr. House 1ª Temporada",
+    "date": "2004",
+    "time": "22 Episódios",
+    "direction": "David Shore",
+    "view": [
+      "16/11/2022"
+    ],
+    "value": 4,
+    "img": "/posters/44.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 45,
+    "name": "True Detective 1ª Temporada",
+    "date": "2014",
+    "time": "8 Episódios",
+    "direction": "Nic Pizzolatto",
+    "view": [
+      "20/11/2022"
+    ],
+    "value": 5,
+    "img": "/posters/45.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 46,
+    "name": "Moonrise Kingdom",
+    "date": "2012",
+    "time": "1hr 34min",
+    "direction": "Wes Anderson",
+    "view": [
+      "21/11/2022"
+    ],
+    "value": 4,
+    "img": "/posters/46.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 47,
+    "name": "Hora de Aventura 8ª Temporada",
+    "date": "2016",
+    "time": "27 Episódios",
+    "direction": "Pendleton Ward",
+    "view": [
+      "22/11/2022"
+    ],
+    "value": 4.5,
+    "img": "/posters/47.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 48,
+    "name": "Hora de Aventura 9ª Temporada",
+    "date": "2017",
+    "time": "14 Episódios",
+    "direction": "Pendleton Ward",
+    "view": [
+      "24/11/2022"
+    ],
+    "value": 3,
+    "img": "/posters/48.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 49,
+    "name": "Hora de Aventura 10ª Temporada",
+    "date": "2017",
+    "time": "16 Episódios",
+    "direction": "Pendleton Ward",
+    "view": [
+      "28/11/2022"
+    ],
+    "value": 4,
+    "img": "/posters/49.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 50,
+    "name": "Pacificador 1ª Temporada",
+    "date": "2022",
+    "time": "8 Episódios",
+    "direction": "James Gunn",
+    "view": [
+      "05/12/2022"
+    ],
+    "value": 4,
+    "img": "/posters/50.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 51,
+    "name": "Até os Ossos",
+    "date": "2022",
+    "time": "2hr 10min",
+    "direction": "Luca Guadagnino",
+    "view": [
+      "12/12/2022"
+    ],
+    "value": 2.5,
+    "img": "/posters/51.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 52,
+    "name": "Rick and Morty 6ª Temporada",
+    "date": "2022",
+    "time": "10 Episódios",
+    "direction": "Justin Roiland, Dan Harmon",
+    "view": [
+      "17/12/2022"
+    ],
+    "value": 3,
+    "img": "/posters/52.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 53,
+    "name": "Avatar: O Caminho da Água",
+    "date": "2022",
+    "time": "3hr 12min",
+    "direction": "James Cameron",
+    "view": [
+      "19/12/2022"
+    ],
+    "value": 4,
+    "img": "/posters/53.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 54,
+    "name": "Portrait of God",
+    "date": "2022",
+    "time": "7min",
+    "direction": "Dylan Clark",
+    "view": [
+      "22/12/2022"
+    ],
+    "value": 3,
+    "img": "/posters/54.jpg",
+    "type": "Short Film"
+  },
+  {
+    "id": 55,
+    "name": "Blade Runner - O Caçador de Androides",
+    "date": "1982",
+    "time": "1hr 57min",
+    "direction": "Ridley Scott",
+    "view": [
+      "26/12/2022"
+    ],
+    "value": 5,
+    "img": "/posters/55.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 56,
+    "name": "O Grande Truque",
+    "date": "2006",
+    "time": "2hr 10min",
+    "direction": "Christopher Nolan",
+    "view": [
+      "09/01/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/56.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 57,
+    "name": "Os Jovens Titãs 1ª Temporada",
+    "date": "2003",
+    "time": "13 Episódios",
+    "direction": "Glen Murakami, Sam Register",
+    "view": [
+      "28/01/2023"
+    ],
+    "value": 4,
+    "img": "/posters/57.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 58,
+    "name": "Titanic",
+    "date": "1997",
+    "time": "3hr 14min",
+    "direction": "James Cameron",
+    "view": [
+      "11/02/2023"
+    ],
+    "value": 4,
+    "img": "/posters/58.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 59,
+    "name": "Pearl",
+    "date": "2022",
+    "time": "1hr 42min",
+    "direction": "Ti West",
+    "view": [
+      "12/02/2023"
+    ],
+    "value": 5,
+    "img": "/posters/59.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 60,
+    "name": "O Código Da Vinci",
+    "date": "2006",
+    "time": "2hr 29min",
+    "direction": "Ron Howard",
+    "view": [
+      "21/02/2023"
+    ],
+    "value": 2,
+    "img": "/posters/60.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 61,
+    "name": "A Origem",
+    "date": "2010",
+    "time": "2hr 28min",
+    "direction": "Christopher Nolan",
+    "view": [
+      "23/02/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/61.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 62,
+    "name": "Eu Sei O Que Vocês Fizeram no Verão Passado",
+    "date": "1997",
+    "time": "1hr 41min",
+    "direction": "Jim Gillespie",
+    "view": [
+      "26/02/2023"
+    ],
+    "value": 3,
+    "img": "/posters/62.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 63,
+    "name": "Onde Vivem os Monstros",
+    "date": "2009",
+    "time": "1hr 41min",
+    "direction": "Spike Jonze",
+    "view": [
+      "27/02/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/63.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 64,
+    "name": "The White Lotus 1ª Temporada",
+    "date": "2021",
+    "time": "6 Episódios",
+    "direction": "Mike White",
+    "view": [
+      "01/03/2023"
+    ],
+    "value": 4,
+    "img": "/posters/64.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 65,
+    "name": "Guardiões da Galáxia",
+    "date": "2014",
+    "time": "2hr 2min",
+    "direction": "James Gunn",
+    "view": [
+      "01/03/2023"
+    ],
+    "value": 4,
+    "img": "/posters/65.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 66,
+    "name": "Guardiões da Galáxia Vol. 2",
+    "date": "2017",
+    "time": "2hr 17min",
+    "direction": "James Gunn",
+    "view": [
+      "03/03/2023"
+    ],
+    "value": 3,
+    "img": "/posters/66.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 67,
+    "name": "Trem-Bala",
+    "date": "2022",
+    "time": "2hr 6min",
+    "direction": "David Leitch",
+    "view": [
+      "03/03/2023"
+    ],
+    "value": 3,
+    "img": "/posters/67.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 68,
+    "name": "Vingadores: Guerra Infinita",
+    "date": "2018",
+    "time": "2hr 29min",
+    "direction": "Anthony Russo, Joe Russo",
+    "view": [
+      "04/03/2023"
+    ],
+    "value": 3,
+    "img": "/posters/68.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 69,
+    "name": "Creed III",
+    "date": "2023",
+    "time": "1hr 56min",
+    "direction": "Michael B. Jordan",
+    "view": [
+      "04/03/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/69.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 70,
+    "name": "Submarine",
+    "date": "2010",
+    "time": "1hr 37min",
+    "direction": "Richard Ayoade",
+    "view": [
+      "05/03/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/70.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 71,
+    "name": "O Esquadrão Suicida",
+    "date": "2021",
+    "time": "2hr 12min",
+    "direction": "James Gunn",
+    "view": [
+      "06/03/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/71.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 72,
+    "name": "Clube da Luta",
+    "date": "1999",
+    "time": "2hr 19min",
+    "direction": "David Fincher",
+    "view": [
+      "07/03/2023"
+    ],
+    "value": 5,
+    "img": "/posters/72.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 73,
+    "name": "Fuga do Passado",
+    "date": "1947",
+    "time": "1hr 37min",
+    "direction": "Jacques Tourneur",
+    "view": [
+      "10/03/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/73.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 74,
+    "name": "The Last of Us 1ª Temporada",
+    "date": "2023",
+    "time": "9 Episódios",
+    "direction": "Craig Mazin, Neil Druckmann",
+    "view": [
+      "15/03/2023"
+    ],
+    "value": 4,
+    "img": "/posters/74.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 75,
+    "name": "Moonlight: Sob a Luz do Luar",
+    "date": "2016",
+    "time": "1hr 51min",
+    "direction": "Barry Jenkins",
+    "view": [
+      "16/03/2023"
+    ],
+    "value": 4,
+    "img": "/posters/75.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 76,
+    "name": "O Iluminado",
+    "date": "1980",
+    "time": "2hr 26min",
+    "direction": "Stanley Kubrick",
+    "view": [
+      "17/03/2023"
+    ],
+    "value": 5,
+    "img": "/posters/76.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 77,
+    "name": "Os Bons Companheiros",
+    "date": "1990",
+    "time": "2hr 26min",
+    "direction": "Martin Scorsese",
+    "view": [
+      "18/03/2023"
+    ],
+    "value": 4,
+    "img": "/posters/77.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 78,
+    "name": "O Segredo Além do Jardim 1ª Temporada",
+    "date": "2014",
+    "time": "10 Episódios",
+    "direction": "Patrick McHale",
+    "view": [
+      "18/03/2023"
+    ],
+    "value": 5,
+    "img": "/posters/78.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 79,
+    "name": "Superbad - É Hoje",
+    "date": "2007",
+    "time": "1hr 59min",
+    "direction": "Greg Mottola",
+    "view": [
+      "18/03/2023"
+    ],
+    "value": 3,
+    "img": "/posters/79.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 80,
+    "name": "Elvis",
+    "date": "2022",
+    "time": "2hr 39min",
+    "direction": "Baz Luhrmann",
+    "view": [
+      "19/03/2023"
+    ],
+    "value": 4,
+    "img": "/posters/80.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 81,
+    "name": "As Vantagens de Ser Invisível",
+    "date": "2012",
+    "time": "1hr 45min",
+    "direction": "Stephen Chbosky",
+    "view": [
+      "21/03/2023"
+    ],
+    "value": 4,
+    "img": "/posters/81.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 82,
+    "name": "A Morte do Demônio",
+    "date": "2013",
+    "time": "1hr 31min",
+    "direction": "Fede Álvarez",
+    "view": [
+      "21/03/2023"
+    ],
+    "value": 2,
+    "img": "/posters/82.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 83,
+    "name": "Tá Dando Onda",
+    "date": "2007",
+    "time": "1hr 25min",
+    "direction": "Ash Brannon, Chris Buck",
+    "view": [
+      "21/03/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/83.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 84,
+    "name": "Laranja Mecânica",
+    "date": "1971",
+    "time": "2hr 16min",
+    "direction": "Stanley Kubrick",
+    "view": [
+      "23/03/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/84.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 85,
+    "name": "O Gigante de Ferro",
+    "date": "1999",
+    "time": "1hr 26min",
+    "direction": "Brad Bird",
+    "view": [
+      "24/03/2023"
+    ],
+    "value": 3,
+    "img": "/posters/85.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 86,
+    "name": "O Senhor dos Anéis: O Retorno do Rei",
+    "date": "2003",
+    "time": "3hr 21min",
+    "direction": "Peter Jackson",
+    "view": [
+      "25/03/2023"
+    ],
+    "value": 5,
+    "img": "/posters/86.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 87,
+    "name": "O Lobo de Wall Street",
+    "date": "2013",
+    "time": "3hr",
+    "direction": "Martin Scorsese",
+    "view": [
+      "26/03/2023"
+    ],
+    "value": 5,
+    "img": "/posters/87.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 88,
+    "name": "Onze Homens e um Segredo",
+    "date": "2001",
+    "time": "1hr 56min",
+    "direction": "Steven Soderbergh",
+    "view": [
+      "26/03/2023"
+    ],
+    "value": 3,
+    "img": "/posters/88.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 89,
+    "name": "O Fantástico Sr. Raposo",
+    "date": "2009",
+    "time": "1hr 27min",
+    "direction": "Wes Anderson",
+    "view": [
+      "26/03/2023"
+    ],
+    "value": 4,
+    "img": "/posters/89.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 90,
+    "name": "Os Oito Odiados",
+    "date": "2015",
+    "time": "3hr 7min",
+    "direction": "Quentin Tarantino",
+    "view": [
+      "29/03/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/90.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 91,
+    "name": "A Bruxa",
+    "date": "2015",
+    "time": "1hr 32min",
+    "direction": "Robert Eggers",
+    "view": [
+      "02/04/2023"
+    ],
+    "value": 5,
+    "img": "/posters/91.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 92,
+    "name": "Indie Game: The Movie",
+    "date": "2012",
+    "time": "1h 34min",
+    "direction": "James Swirsky, Lisanne Pajot",
+    "view": [
+      "04/04/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/92.jpg",
+    "type": "Documentary"
+  },
+  {
+    "id": 93,
+    "name": "Akame ga KILL! 1ª Temporada",
+    "date": "2014",
+    "time": "24 Episódios",
+    "direction": "Tomoki Kobayashi",
+    "view": [
+      "14/04/2023"
+    ],
+    "value": 3,
+    "img": "/posters/93.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 94,
+    "name": "Peaky Blinders 1ª Temporada",
+    "date": "2013",
+    "time": "6 Episódios",
+    "direction": "Steven Knight",
+    "view": [
+      "18/04/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/94.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 95,
+    "name": "Os Cavaleiros do Zodíaco: A Lenda do Santuário",
+    "date": "2014",
+    "time": "1hr 33min",
+    "direction": "Kei'ichi Sato",
+    "view": [
+      "19/04/2023"
+    ],
+    "value": 3,
+    "img": "/posters/95.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 96,
+    "name": "Peaky Blinders 2ª Temporada",
+    "date": "2014",
+    "time": "6 Episódios",
+    "direction": "Steven Knight",
+    "view": [
+      "20/04/2023"
+    ],
+    "value": 4,
+    "img": "/posters/96.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 97,
+    "name": "Beau Tem Medo",
+    "date": "2023",
+    "time": "2hr 59min",
+    "direction": "Ari Aster",
+    "view": [
+      "22/04/2023"
+    ],
+    "value": 2,
+    "img": "/posters/97.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 98,
+    "name": "O Menu",
+    "date": "2022",
+    "time": "1hr 46min",
+    "direction": "Mark Mylod",
+    "view": [
+      "25/04/2023"
+    ],
+    "value": 4,
+    "img": "/posters/98.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 99,
+    "name": "Os Banshees de Inisherin",
+    "date": "2022",
+    "time": "1hr 54min",
+    "direction": "Martin McDonagh",
+    "view": [
+      "25/04/2023"
+    ],
+    "value": 5,
+    "img": "/posters/99.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 100,
+    "name": "Oldboy",
+    "date": "2003",
+    "time": "2hr",
+    "direction": "Park Chan-wook",
+    "view": [
+      "02/05/2023"
+    ],
+    "value": 4,
+    "img": "/posters/100.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 101,
+    "name": "Guardiões da Galáxia Vol. 3",
+    "date": "2023",
+    "time": "2hr 29min",
+    "direction": "James Gunn",
+    "view": [
+      "11/05/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/101.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 102,
+    "name": "Ponyo: Uma Amizade que Veio do Mar",
+    "date": "2008",
+    "time": "1hr 51min",
+    "direction": "Hayao Miyazaki",
+    "view": [
+      "23/05/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/102.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 103,
+    "name": "A Catedral",
+    "date": "2002",
+    "time": "7min",
+    "direction": "Tomasz Baginski",
+    "view": [
+      "24/05/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/103.jpg",
+    "type": "Short Film"
+  },
+  {
+    "id": 104,
+    "name": "Mr. Robot 2ª Temporada",
+    "date": "2016",
+    "time": "12 Episódios",
+    "direction": "Sam Esmail",
+    "view": [
+      "05/06/2023"
+    ],
+    "value": 2.5,
+    "img": "/posters/104.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 105,
+    "name": "Mr. Robot 3ª Temporada",
+    "date": "2017",
+    "time": "10 Episódios",
+    "direction": "Sam Esmail",
+    "view": [
+      "08/06/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/105.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 106,
+    "name": "Mr. Robot 4ª Temporada",
+    "date": "2019",
+    "time": "13 Episódios",
+    "direction": "Sam Esmail",
+    "view": [
+      "10/06/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/106.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 107,
+    "name": "Aftersun",
+    "date": "2022",
+    "time": "1hr 36min",
+    "direction": "Charlotte Wells",
+    "view": [
+      "11/06/2023"
+    ],
+    "value": 5,
+    "img": "/posters/107.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 108,
+    "name": "Gato de Botas 2: O Último Pedido",
+    "date": "2022",
+    "time": "1hr 40min",
+    "direction": "Joel Crawford",
+    "view": [
+      "22/06/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/108.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 109,
+    "name": "A Menina do Outro Lado",
+    "date": "2022",
+    "time": "1hr 10min",
+    "direction": "Yutaro Kubo",
+    "view": [
+      "23/06/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/109.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 110,
+    "name": "Os Fabelmans",
+    "date": "2022",
+    "time": "2hr 31min",
+    "direction": "Steven Spielberg",
+    "view": [
+      "24/06/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/110.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 111,
+    "name": "Missão Impossível",
+    "date": "1996",
+    "time": "1hr 50min",
+    "direction": "Brian De Palma",
+    "view": [
+      "25/06/2023"
+    ],
+    "value": 3,
+    "img": "/posters/111.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 112,
+    "name": "La La Land: Cantando Estações",
+    "date": "2016",
+    "time": "2hr 8min",
+    "direction": "Damien Chazelle",
+    "view": [
+      "26/06/2023"
+    ],
+    "value": 4,
+    "img": "/posters/112.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 113,
+    "name": "Missão Impossível 2",
+    "date": "2000",
+    "time": "2hr 3min",
+    "direction": "John Woo",
+    "view": [
+      "26/06/2023"
+    ],
+    "value": 2,
+    "img": "/posters/113.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 114,
+    "name": "Missão Impossível 3",
+    "date": "2006",
+    "time": "2hr 6min",
+    "direction": "J.J. Abrams",
+    "view": [
+      "27/06/2023"
+    ],
+    "value": 4,
+    "img": "/posters/114.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 115,
+    "name": "Guerra Fria",
+    "date": "2018",
+    "time": "1hr 30min",
+    "direction": "Paweł Pawlikowski",
+    "view": [
+      "27/06/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/115.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 116,
+    "name": "Missão Impossível - Protocolo Fantasma",
+    "date": "2011",
+    "time": "2hr 13min",
+    "direction": "Brad Bird",
+    "view": [
+      "04/07/2023"
+    ],
+    "value": 2.5,
+    "img": "/posters/116.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 117,
+    "name": "Meu Ódio Será Sua Herança",
+    "date": "1969",
+    "time": "2hr 25min",
+    "direction": "Sam Peckinpah",
+    "view": [
+      "05/07/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/117.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 118,
+    "name": "Eu Posso Ouvir o Oceano",
+    "date": "1993",
+    "time": "1hr 12min",
+    "direction": "Tomomi Mochizuki",
+    "view": [
+      "07/07/2023"
+    ],
+    "value": 4,
+    "img": "/posters/118.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 119,
+    "name": "Missão: Impossível – Nação Secreta",
+    "date": "2015",
+    "time": "2hr 11min",
+    "direction": "Christopher McQuarrie",
+    "view": [
+      "09/07/2023"
+    ],
+    "value": 3,
+    "img": "/posters/119.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 120,
+    "name": "Whiplash: Em Busca da Perfeição",
+    "date": "2014",
+    "time": "1hr 47min",
+    "direction": "Damien Chazelle",
+    "view": [
+      "12/07/2023"
+    ],
+    "value": 5,
+    "img": "/posters/120.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 121,
+    "name": "Missão: Impossível - Efeito Fallout",
+    "date": "2018",
+    "time": "2hr 28min",
+    "direction": "Christopher McQuarrie",
+    "view": [
+      "14/07/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/121.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 122,
+    "name": "Missão: Impossível - Acerto de Contas Parte 1",
+    "date": "12 Jul, 2023",
+    "time": "2hr 43min",
+    "direction": "Christopher McQuarrie",
+    "view": [
+      "15/07/2023"
+    ],
+    "value": 2.5,
+    "img": "/posters/122.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 123,
+    "name": "Zodíaco",
+    "date": "2007",
+    "time": "2hr 37min",
+    "direction": "David Fincher",
+    "view": [
+      "23/07/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/123.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 124,
+    "name": "Oppenheimer",
+    "date": "2023",
+    "time": "3hr",
+    "direction": "Christopher Nolan",
+    "view": [
+      "30/07/2023"
+    ],
+    "value": 4,
+    "img": "/posters/124.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 125,
+    "name": "Barbie",
+    "date": "2023",
+    "time": "1hr 54min",
+    "direction": "Greta Gerwig",
+    "view": [
+      "30/07/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/125.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 126,
+    "name": "A Morte do Demônio: A Ascensão",
+    "date": "2023",
+    "time": "2hr",
+    "direction": "Lee Cronin",
+    "view": [
+      "30/07/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/126.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 127,
+    "name": "Noites Brutais",
+    "date": "2022",
+    "time": "1hr 42min",
+    "direction": "Zach Cregger",
+    "view": [
+      "30/07/2023"
+    ],
+    "value": 4,
+    "img": "/posters/127.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 128,
+    "name": "O Maravilhoso Agora",
+    "date": "2013",
+    "time": "1hr 40min",
+    "direction": "James Ponsoldt",
+    "view": [
+      "31/07/2023"
+    ],
+    "value": 2,
+    "img": "/posters/128.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 129,
+    "name": "Lembranças",
+    "date": "2010",
+    "time": "1hr 53min",
+    "direction": "Allen Coulter",
+    "view": [
+      "31/07/2023"
+    ],
+    "value": 2.5,
+    "img": "/posters/129.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 130,
+    "name": "Interestelar",
+    "date": "2014",
+    "time": "2hr 49min",
+    "direction": "Christopher Nolan",
+    "view": [
+      "03/08/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/130.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 131,
+    "name": "Manchester à Beira-Mar",
+    "date": "2016",
+    "time": "2hr 17min",
+    "direction": "Kenneth Lonergan",
+    "view": [
+      "04/08/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/131.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 132,
+    "name": "Homem-Aranha: Através do Aranhaverso",
+    "date": "2023",
+    "time": "2hr 20min",
+    "direction": "Joaquim Dos Santos, Kemp Powers, Justin K. Thompson",
+    "view": [
+      "18/08/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/132.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 133,
+    "name": "Homem-Aranha no Aranhaverso",
+    "date": "2018",
+    "time": "1hr 56min",
+    "direction": "Bob Persichetti, Peter Ramsey, Rodney Rothman",
+    "view": [
+      "19/08/2023"
+    ],
+    "value": 4,
+    "img": "/posters/133.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 134,
+    "name": "Diário de uma Paixão",
+    "date": "2004",
+    "time": "2hr 1min",
+    "direction": "Nick Cassavetes",
+    "view": [
+      "02/09/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/134.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 135,
+    "name": "Sr. & Sra. Smith",
+    "date": "2005",
+    "time": "2hr 6min",
+    "direction": "Doug Liman",
+    "view": [
+      "03/09/2023"
+    ],
+    "value": 3,
+    "img": "/posters/135.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 136,
+    "name": "Drive My Car",
+    "date": "2021",
+    "time": "2hr 59min",
+    "direction": "Ryûsuke Hamaguchi",
+    "view": [
+      "11/09/2023"
+    ],
+    "value": 4,
+    "img": "/posters/136.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 137,
+    "name": "Sonny Boy",
+    "date": "2021",
+    "time": "12 Episódios",
+    "direction": "Shingo Natsume",
+    "view": [
+      "13/09/2023"
+    ],
+    "value": 5,
+    "img": "/posters/137.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 138,
+    "name": "Boyhood: Da Infância à Juventude",
+    "date": "2014",
+    "time": "2hr 43min",
+    "direction": "Richard Linklater",
+    "view": [
+      "14/09/2023"
+    ],
+    "value": 2.5,
+    "img": "/posters/138.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 139,
+    "name": "A Pior Pessoa do Mundo",
+    "date": "2021",
+    "time": "2hr 1min",
+    "direction": "Joachim Trier",
+    "view": [
+      "15/09/2023"
+    ],
+    "value": 2,
+    "img": "/posters/139.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 140,
+    "name": "Digam o que Quiserem",
+    "date": "1989",
+    "time": "1hr 40min",
+    "direction": "Cameron Crowe",
+    "view": [
+      "15/09/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/140.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 141,
+    "name": "O Raio Verde",
+    "date": "1986",
+    "time": "1hr 38min",
+    "direction": "Éric Rohmer",
+    "view": [
+      "15/09/2023"
+    ],
+    "value": 3,
+    "img": "/posters/141.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 142,
+    "name": "Memórias de Verão",
+    "date": "2021",
+    "time": "1hr 41min",
+    "direction": "Ozan Açiktan",
+    "view": [
+      "16/09/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/142.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 143,
+    "name": "Shiki-Jitsu",
+    "date": "2000",
+    "time": "2hr 8min",
+    "direction": "Hideaki Anno",
+    "view": [
+      "16/09/2023"
+    ],
+    "value": 5,
+    "img": "/posters/143.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 144,
+    "name": "O Segredo dos Seus Olhos",
+    "date": "2009",
+    "time": "2hr 7min",
+    "direction": "Juan José Campanella",
+    "view": [
+      "18/09/2023"
+    ],
+    "value": 5,
+    "img": "/posters/144.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 145,
+    "name": "Da Colina Kokuriko",
+    "date": "2011",
+    "time": "1hr 31min",
+    "direction": "Gorô Miyazaki",
+    "view": [
+      "18/09/2023"
+    ],
+    "value": 5,
+    "img": "/posters/145.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 146,
+    "name": "Ela",
+    "date": "2013",
+    "time": "2hr 6min",
+    "direction": "Spike Jonze",
+    "view": [
+      "21/09/2023"
+    ],
+    "value": 2,
+    "img": "/posters/146.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 147,
+    "name": "O Silo 1ª Temporada",
+    "date": "2023",
+    "time": "10 Episódios",
+    "direction": "Graham Yost",
+    "view": [
+      "02/10/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/147.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 148,
+    "name": "Dahmer: Um Canibal Americano",
+    "date": "2022",
+    "time": "10 Episódios",
+    "direction": "Ryan Murphy, Ian Brennan",
+    "view": [
+      "02/10/2023"
+    ],
+    "value": 4,
+    "img": "/posters/148.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 149,
+    "name": "Louco Não, Doido",
+    "date": "2020",
+    "time": "1hr 57min",
+    "direction": "Alex Gibney",
+    "view": [
+      "03/10/2023"
+    ],
+    "value": 4,
+    "img": "/posters/149.jpg",
+    "type": "Documentary"
+  },
+  {
+    "id": 150,
+    "name": "Black Bird",
+    "date": "2022",
+    "time": "6 Episódios",
+    "direction": "Dennis Lehane",
+    "view": [
+      "10/10/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/150.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 151,
+    "name": "O Massacre da Serra Elétrica",
+    "date": "1974",
+    "time": "1hr 23min",
+    "direction": "Tobe Hooper",
+    "view": [
+      "16/10/2023"
+    ],
+    "value": 3,
+    "img": "/posters/151.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 152,
+    "name": "Copycat - A Vida Imita a Morte",
+    "date": "1995",
+    "time": "2hr 4min",
+    "direction": "Jon Amiel",
+    "view": [
+      "18/10/2023"
+    ],
+    "value": 4.5,
+    "img": "/posters/152.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 153,
+    "name": "O Abutre",
+    "date": "2014",
+    "time": "1hr 57min",
+    "direction": "Dan Gilroy",
+    "view": [
+      "20/10/2023"
+    ],
+    "value": 3,
+    "img": "/posters/153.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 154,
+    "name": "Des",
+    "date": "2020",
+    "time": "3 Episódios",
+    "direction": "Lewis Arnold, Luke Neal",
+    "view": [
+      "24/10/2023"
+    ],
+    "value": 3.5,
+    "img": "/posters/154.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 155,
+    "name": "Os Crimes de Snowtown",
+    "date": "2011",
+    "time": "2hr",
+    "direction": "Justin Kurzel",
+    "view": [
+      "28/10/2023"
+    ],
+    "value": 3,
+    "img": "/posters/155.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 156,
+    "name": "Como Perder um Homem em 10 Dias",
+    "date": "2003",
+    "time": "1hr 56min",
+    "direction": "Donald Petrie",
+    "view": [
+      "25/12/2023"
+    ],
+    "value": 4,
+    "img": "/posters/156.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 157,
+    "name": "Fale Comigo",
+    "date": "2022",
+    "time": "1hr 35min",
+    "direction": "Danny Philippou, Michael Philippou",
+    "view": [
+      "23/01/2024"
+    ],
+    "value": 4,
+    "img": "/posters/157.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 158,
+    "name": "Godzilla Minus One",
+    "date": "2023",
+    "time": "2hr 5min",
+    "direction": "Takashi Yamazaki",
+    "view": [
+      "30/01/2024"
+    ],
+    "value": 3,
+    "img": "/posters/158.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 159,
+    "name": "Godzilla Resurgence",
+    "date": "2016",
+    "time": "2hr",
+    "direction": "Hideaki Anno, Shinji Higuchi",
+    "view": [
+      "01/02/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/159.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 160,
+    "name": "Saltburn",
+    "date": "2023",
+    "time": "2hr 7min",
+    "direction": "Emerald Fennell",
+    "view": [
+      "05/02/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/160.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 161,
+    "name": "Missa da Meia-Noite",
+    "date": "2021",
+    "time": "7 Episódios",
+    "direction": "Mike Flanagan",
+    "view": [
+      "10/02/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/161.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 162,
+    "name": "Por um Sentido na Vida",
+    "date": "2002",
+    "time": "1hr 34min",
+    "direction": "Miguel Arteta",
+    "view": [
+      "14/02/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/162.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 163,
+    "name": "Suzume",
+    "date": "2022",
+    "time": "2hr 2min",
+    "direction": "Makoto Shinkai",
+    "view": [
+      "16/02/2024"
+    ],
+    "value": 2.5,
+    "img": "/posters/163.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 164,
+    "name": "Vidas Passadas",
+    "date": "2023",
+    "time": "1hr 46min",
+    "direction": "Celine Song",
+    "view": [
+      "18/02/2024"
+    ],
+    "value": 4,
+    "img": "/posters/164.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 165,
+    "name": "Monster",
+    "date": "2023",
+    "time": "2hr 6min",
+    "direction": "Kore-eda Hirokazu",
+    "view": [
+      "21/02/2024"
+    ],
+    "value": 5,
+    "img": "/posters/165.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 166,
+    "name": "The Last 10 Years",
+    "date": "2022",
+    "time": "2hr 4min",
+    "direction": "Michihito Fujii",
+    "view": [
+      "25/02/2024"
+    ],
+    "value": 3,
+    "img": "/posters/166.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 167,
+    "name": "O Menino e a Garça",
+    "date": "2023",
+    "time": "2hr 4min",
+    "direction": "Hayao Miyazaki",
+    "view": [
+      "26/02/2024"
+    ],
+    "value": 4,
+    "img": "/posters/167.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 168,
+    "name": "Amor à Flor da Pele",
+    "date": "2000",
+    "time": "1hr 38min",
+    "direction": "Kar-Wai Wong",
+    "view": [
+      "28/02/2024"
+    ],
+    "value": 4,
+    "img": "/posters/168.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 169,
+    "name": "Duna 2",
+    "date": "2024",
+    "time": "2hr 46min",
+    "direction": "Denis Villeneuve",
+    "view": [
+      "04/03/2024"
+    ],
+    "value": 5,
+    "img": "/posters/169.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 170,
+    "name": "Duna",
+    "date": "2021",
+    "time": "2hr 35min",
+    "direction": "Denis Villeneuve",
+    "view": [
+      "04/03/2024"
+    ],
+    "value": 4,
+    "img": "/posters/170.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 171,
+    "name": "Anatomia de uma Queda",
+    "date": "2023",
+    "time": "2hr 32min",
+    "direction": "Justine Triet",
+    "view": [
+      "04/03/2024"
+    ],
+    "value": 5,
+    "img": "/posters/171.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 172,
+    "name": "Antes do Pôr do Sol",
+    "date": "2004",
+    "time": "1hr 20min",
+    "direction": "Richard Linklater",
+    "view": [
+      "04/03/2024"
+    ],
+    "value": 5,
+    "img": "/posters/172.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 173,
+    "name": "Antes da Meia-Noite",
+    "date": "2013",
+    "time": "1hr 49min",
+    "direction": "Richard Linklater",
+    "view": [
+      "04/03/2024"
+    ],
+    "value": 4,
+    "img": "/posters/173.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 174,
+    "name": "Alien, o Oitavo Passageiro",
+    "date": "1979",
+    "time": "1hr 57min",
+    "direction": "Ridley Scott",
+    "view": [
+      "06/04/2024"
+    ],
+    "value": 5,
+    "img": "/posters/174.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 175,
+    "name": "Porco Rosso: O Último Herói Romântico",
+    "date": "1992",
+    "time": "1hr 42min",
+    "direction": "Hayao Miyazaki",
+    "view": [
+      "08/04/2024"
+    ],
+    "value": 5,
+    "img": "/posters/175.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 176,
+    "name": "Brilho Eterno de uma Mente sem Lembranças",
+    "date": "2004",
+    "time": "1hr 48min",
+    "direction": "Michel Gondry",
+    "view": [
+      "09/04/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/176.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 177,
+    "name": "X - A Marca da Morte",
+    "date": "2022",
+    "time": "1hr 45min",
+    "direction": "Ti West",
+    "view": [
+      "10/04/2024"
+    ],
+    "value": 4,
+    "img": "/posters/177.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 178,
+    "name": "O Mundo Depois de Nós",
+    "date": "2023",
+    "time": "2hr 20min",
+    "direction": "Sam Esmail",
+    "view": [
+      "12/04/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/178.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 179,
+    "name": "There's a Man in the Woods",
+    "date": "2014",
+    "time": "4min",
+    "direction": "Jacob Streilein",
+    "view": [
+      "14/04/2024"
+    ],
+    "value": 3,
+    "img": "/posters/179.jpg",
+    "type": "Short Film"
+  },
+  {
+    "id": 180,
+    "name": "A Sociedade da Neve",
+    "date": "2023",
+    "time": "2hr 24min",
+    "direction": "J.A. Bayona",
+    "view": [
+      "14/04/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/180.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 181,
+    "name": "Corra!",
+    "date": "2017",
+    "time": "1hr 44min",
+    "direction": "Jordan Peele",
+    "view": [
+      "19/04/2024"
+    ],
+    "value": 5,
+    "img": "/posters/181.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 182,
+    "name": "Late Night with the Devil",
+    "date": "2023",
+    "time": "1hr 26min",
+    "direction": "Cameron Cairnes, Colin Cairnes",
+    "view": [
+      "09/05/2024"
+    ],
+    "value": 3,
+    "img": "/posters/182.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 183,
+    "name": "The First Slam Dunk",
+    "date": "2022",
+    "time": "2hr 4min",
+    "direction": "Takehiko Inoue",
+    "view": [
+      "13/05/2024"
+    ],
+    "value": 4,
+    "img": "/posters/183.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 184,
+    "name": "O Mal que nos Habita",
+    "date": "2023",
+    "time": "1hr 40min",
+    "direction": "Demián Rugna",
+    "view": [
+      "19/05/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/184.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 185,
+    "name": "O Assassino",
+    "date": "2023",
+    "time": "1hr 58min",
+    "direction": "David Fincher",
+    "view": [
+      "20/05/2024"
+    ],
+    "value": 4,
+    "img": "/posters/185.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 186,
+    "name": "Imaculada",
+    "date": "2024",
+    "time": "1hr 29min",
+    "direction": "Michael Mohan",
+    "view": [
+      "21/05/2024"
+    ],
+    "value": 4,
+    "img": "/posters/186.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 187,
+    "name": "Piscina Infinita",
+    "date": "2023",
+    "time": "1hr 58min",
+    "direction": "Brandon Cronenberg",
+    "view": [
+      "21/05/2024"
+    ],
+    "value": 3,
+    "img": "/posters/187.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 188,
+    "name": "Planeta dos Macacos: A Guerra",
+    "date": "2017",
+    "time": "2hr 20min",
+    "direction": "Matt Reeves",
+    "view": [
+      "23/05/2024"
+    ],
+    "value": 4,
+    "img": "/posters/188.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 189,
+    "name": "Amores Expressos",
+    "date": "1994",
+    "time": "1hr 42min",
+    "direction": "Kar-Wai Wong",
+    "view": [
+      "25/05/2024"
+    ],
+    "value": 5,
+    "img": "/posters/189.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 190,
+    "name": "A Cor Que Caiu do Espaço",
+    "date": "2019",
+    "time": "1hr 51min",
+    "direction": "Richard Stanley",
+    "view": [
+      "25/05/2024"
+    ],
+    "value": 3,
+    "img": "/posters/190.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 191,
+    "name": "Um Dia",
+    "date": "2011",
+    "time": "1hr 47min",
+    "direction": "Lone Scherfig",
+    "view": [
+      "27/05/2024"
+    ],
+    "value": 1,
+    "img": "/posters/191.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 192,
+    "name": "Guerra nas Estrelas: O Império Contra-Ataca",
+    "date": "1980",
+    "time": "2hr 4min",
+    "direction": "Irvin Kershner",
+    "view": [
+      "29/05/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/192.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 193,
+    "name": "Guerra nas Estrelas: O Retorno de Jedi",
+    "date": "1983",
+    "time": "2hr 11min",
+    "direction": "Richard Marquand",
+    "view": [
+      "31/05/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/193.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 194,
+    "name": "Star Wars: Episódio I – A Ameaça Fantasma",
+    "date": "1999",
+    "time": "2hr 16min",
+    "direction": "George Lucas",
+    "view": [
+      "05/06/2024"
+    ],
+    "value": 4,
+    "img": "/posters/194.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 195,
+    "name": "Star Wars: Episódio II – Ataque dos Clones",
+    "date": "2002",
+    "time": "2hr 22min",
+    "direction": "George Lucas",
+    "view": [
+      "05/06/2024"
+    ],
+    "value": 3,
+    "img": "/posters/195.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 196,
+    "name": "Star Wars: Episódio III – A Vingança dos Sith",
+    "date": "2005",
+    "time": "2hr 20min",
+    "direction": "George Lucas",
+    "view": [
+      "07/06/2024"
+    ],
+    "value": 4,
+    "img": "/posters/196.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 197,
+    "name": "Guerra Civil",
+    "date": "2024",
+    "time": "1hr 49min",
+    "direction": "Alex Garland",
+    "view": [
+      "13/06/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/197.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 198,
+    "name": "Extermínio",
+    "date": "2002",
+    "time": "1hr 53min",
+    "direction": "Danny Boyle",
+    "view": [
+      "18/06/2024"
+    ],
+    "value": 5,
+    "img": "/posters/198.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 199,
+    "name": "Breaking Bad 2ª Temporada",
+    "date": "2009",
+    "time": "13 Episódios",
+    "direction": "Vince Gilligan",
+    "view": [
+      "18/06/2024"
+    ],
+    "value": 5,
+    "img": "/posters/199.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 200,
+    "name": "Breaking Bad 3ª Temporada",
+    "date": "2010",
+    "time": "13 Episódios",
+    "direction": "Vince Gilligan",
+    "view": [
+      "26/06/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/200.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 201,
+    "name": "Breaking Bad 4ª Temporada",
+    "date": "2011",
+    "time": "13 Episódios",
+    "direction": "Vince Gilligan",
+    "view": [
+      "29/06/2024"
+    ],
+    "value": 5,
+    "img": "/posters/201.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 202,
+    "name": "Breaking Bad 5ª Temporada",
+    "date": "2012",
+    "time": "16 Episódios",
+    "direction": "Vince Gilligan",
+    "view": [
+      "05/07/2024"
+    ],
+    "value": 5,
+    "img": "/posters/202.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 203,
+    "name": "Better Call Saul 1ª Temporada",
+    "date": "2015",
+    "time": "10 Episódios",
+    "direction": "Vince Gilligan, Peter Gould",
+    "view": [
+      "09/07/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/203.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 204,
+    "name": "Better Call Saul 2ª Temporada",
+    "date": "2016",
+    "time": "10 Episódios",
+    "direction": "Vince Gilligan, Peter Gould",
+    "view": [
+      "17/07/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/204.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 205,
+    "name": "Better Call Saul 3ª Temporada",
+    "date": "2017",
+    "time": "10 Episódios",
+    "direction": "Vince Gilligan, Peter Gould",
+    "view": [
+      "21/07/2024"
+    ],
+    "value": 4,
+    "img": "/posters/205.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 206,
+    "name": "Entre Facas e Segredos",
+    "date": "2019",
+    "time": "2hr 10min",
+    "direction": "Rian Johnson",
+    "view": [
+      "21/07/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/206.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 207,
+    "name": "Réquiem para um Sonho",
+    "date": "2000",
+    "time": "1hr 42min",
+    "direction": "Darren Aronofsky",
+    "view": [
+      "22/07/2024"
+    ],
+    "value": 4,
+    "img": "/posters/207.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 208,
+    "name": "Os Infiltrados",
+    "date": "2006",
+    "time": "2hr 31min",
+    "direction": "Martin Scorsese",
+    "view": [
+      "28/07/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/208.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 209,
+    "name": "Mommy",
+    "date": "2014",
+    "time": "2hr 19min",
+    "direction": "Xavier Dolan",
+    "view": [
+      "28/07/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/209.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 210,
+    "name": "Noivo Neurótico, Noiva Nervosa",
+    "date": "1977",
+    "time": "1hr 33min",
+    "direction": "Woody Allen",
+    "view": [
+      "30/07/2024"
+    ],
+    "value": 5,
+    "img": "/posters/210.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 211,
+    "name": "Instinto Selvagem",
+    "date": "1992",
+    "time": "2hr 7min",
+    "direction": "Paul Verhoeven",
+    "view": [
+      "31/07/2024"
+    ],
+    "value": 5,
+    "img": "/posters/211.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 212,
+    "name": "Conto de Verão",
+    "date": "1996",
+    "time": "1hr 53min",
+    "direction": "Éric Rohmer",
+    "view": [
+      "01/08/2024"
+    ],
+    "value": 5,
+    "img": "/posters/212.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 213,
+    "name": "E Sua Mãe Também",
+    "date": "2001",
+    "time": "1hr 46min",
+    "direction": "Alfonso Cuarón",
+    "view": [
+      "01/08/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/213.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 214,
+    "name": "Antoine e Colette",
+    "date": "1962",
+    "time": "32min",
+    "direction": "François Truffaut",
+    "view": [
+      "01/08/2024"
+    ],
+    "value": 4,
+    "img": "/posters/214.jpg",
+    "type": "Short Film"
+  },
+  {
+    "id": 215,
+    "name": "Click",
+    "date": "2006",
+    "time": "1hr 48min",
+    "direction": "Frank Coraci",
+    "view": [
+      "02/08/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/215.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 216,
+    "name": "A Médium",
+    "date": "2021",
+    "time": "2hr 11min",
+    "direction": "Banjong Pisanthanakun",
+    "view": [
+      "04/08/2024"
+    ],
+    "value": 3,
+    "img": "/posters/216.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 217,
+    "name": "Sicario: Terra de Ninguém",
+    "date": "2015",
+    "time": "2hr 1min",
+    "direction": "Denis Villeneuve",
+    "view": [
+      "06/08/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/217.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 218,
+    "name": "Clube de Compras Dallas",
+    "date": "2013",
+    "time": "1hr 57min",
+    "direction": "Jean-Marc Vallée",
+    "view": [
+      "06/08/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/218.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 219,
+    "name": "Men - Faces do Medo",
+    "date": "2022",
+    "time": "1hr 40min",
+    "direction": "Alex Garland",
+    "view": [
+      "07/08/2024"
+    ],
+    "value": 4,
+    "img": "/posters/219.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 220,
+    "name": "Batman: Cruzado Encapuzado 1ª Temporada",
+    "date": "2024",
+    "time": "10 Episódios",
+    "direction": "Bob Kane, Bruce Timm",
+    "view": [
+      "08/08/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/220.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 221,
+    "name": "A Caça",
+    "date": "2012",
+    "time": "1hr 55min",
+    "direction": "Thomas Vinterberg",
+    "view": [
+      "09/08/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/221.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 222,
+    "name": "Sr. & Sra. Smith 1ª Temporada",
+    "date": "2024",
+    "time": "8 Episódios",
+    "direction": "Donald Glover, Francesca Sloane",
+    "view": [
+      "12/08/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/222.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 223,
+    "name": "O Exterminador do Futuro",
+    "date": "1984",
+    "time": "1hr 47min",
+    "direction": "James Cameron",
+    "view": [
+      "13/08/2024"
+    ],
+    "value": 4,
+    "img": "/posters/223.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 224,
+    "name": "Encontros e Desencontros",
+    "date": "2003",
+    "time": "1hr 41min",
+    "direction": "Sofia Coppola",
+    "view": [
+      "13/08/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/224.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 225,
+    "name": "O Silêncio dos Inocentes",
+    "date": "1991",
+    "time": "1hr 58min",
+    "direction": "Jonathan Demme",
+    "view": [
+      "13/08/2024"
+    ],
+    "value": 5,
+    "img": "/posters/225.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 226,
+    "name": "Hannibal",
+    "date": "2013",
+    "time": "13 Episódios",
+    "direction": "Bryan Fuller",
+    "view": [
+      "15/08/2024"
+    ],
+    "value": 3,
+    "img": "/posters/226.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 227,
+    "name": "O Farol",
+    "date": "2019",
+    "time": "1hr 49min",
+    "direction": "Robert Eggers",
+    "view": [
+      "15/08/2024"
+    ],
+    "value": 4,
+    "img": "/posters/227.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 228,
+    "name": "Animais Noturnos",
+    "date": "2016",
+    "time": "1hr 56min",
+    "direction": "Tom Ford",
+    "view": [
+      "16/08/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/228.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 229,
+    "name": "Rain Man",
+    "date": "1988",
+    "time": "2hr 13min",
+    "direction": "Barry Levinson",
+    "view": [
+      "16/08/2024"
+    ],
+    "value": 5,
+    "img": "/posters/229.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 230,
+    "name": "E.T. O Extraterrestre",
+    "date": "1982",
+    "time": "2hr",
+    "direction": "Steven Spielberg",
+    "view": [
+      "17/08/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/230.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 231,
+    "name": "Better Call Saul 4ª Temporada",
+    "date": "2018",
+    "time": "10 Episódios",
+    "direction": "Vince Gilligan, Peter Gould",
+    "view": [
+      "19/08/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/231.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 232,
+    "name": "Argo",
+    "date": "2012",
+    "time": "2hr",
+    "direction": "Ben Affleck",
+    "view": [
+      "22/08/2024"
+    ],
+    "value": 4,
+    "img": "/posters/232.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 233,
+    "name": "Jackie Brown",
+    "date": "1997",
+    "time": "2hr 34min",
+    "direction": "Quentin Tarantino",
+    "view": [
+      "26/08/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/233.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 234,
+    "name": "Ladrões de Bicicleta",
+    "date": "1948",
+    "time": "1hr 33min",
+    "direction": "Vittorio De Sica",
+    "view": [
+      "02/09/2024"
+    ],
+    "value": 5,
+    "img": "/posters/234.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 235,
+    "name": "Jurassic Park - O Parque dos Dinossauros",
+    "date": "1993",
+    "time": "2hr 7min",
+    "direction": "Steven Spielberg",
+    "view": [
+      "03/09/2024"
+    ],
+    "value": 4,
+    "img": "/posters/235.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 236,
+    "name": "O Exterminador do Futuro 2 - O Julgamento Final",
+    "date": "1991",
+    "time": "2hr 17min",
+    "direction": "James Cameron",
+    "view": [
+      "06/09/2024"
+    ],
+    "value": 4,
+    "img": "/posters/236.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 237,
+    "name": "Zona de Interesse",
+    "date": "2023",
+    "time": "1hr 45min",
+    "direction": "Jonathan Glazer",
+    "view": [
+      "08/09/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/237.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 238,
+    "name": "Louca Obsessão",
+    "date": "1990",
+    "time": "1hr 47min",
+    "direction": "Rob Reiner",
+    "view": [
+      "09/09/2024"
+    ],
+    "value": 5,
+    "img": "/posters/238.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 239,
+    "name": "Touro Indomável",
+    "date": "1980",
+    "time": "2hr 9min",
+    "direction": "Martin Scorsese",
+    "view": [
+      "13/09/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/239.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 240,
+    "name": "Suspiria",
+    "date": "1977",
+    "time": "1hr 38min",
+    "direction": "Dario Argento",
+    "view": [
+      "15/09/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/240.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 241,
+    "name": "Kill Bill: Volume 1",
+    "date": "2003",
+    "time": "1hr 51min",
+    "direction": "Quentin Tarantino",
+    "view": [
+      "16/09/2024"
+    ],
+    "value": 5,
+    "img": "/posters/241.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 242,
+    "name": "Kill Bill: Volume 2",
+    "date": "2004",
+    "time": "2hr 17min",
+    "direction": "Quentin Tarantino",
+    "view": [
+      "17/09/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/242.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 243,
+    "name": "Os Amantes do Círculo Polar",
+    "date": "1998",
+    "time": "1hr 44min",
+    "direction": "Julio Medem",
+    "view": [
+      "19/09/2024"
+    ],
+    "value": 4,
+    "img": "/posters/243.jpg",
+    "type": "Movie"
+  }, 
+  {
+    "id": 244,
+    "name": "Fúria Primitiva",
+    "date": "2024",
+    "time": "2hr 1min",
+    "direction": "Dev Patel",
+    "view": [
+      "22/09/2024"
+    ],
+    "value": 5,
+    "img": "/posters/244.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 245,
+    "name": "Companheiros, quase uma história de amor",
+    "date": "1996",
+    "time": "1hr 58min",
+    "direction": "Peter Ho-Sun Chan",
+    "view": [
+      "23/09/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/245.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 246,
+    "name": "Furiosa: Uma Saga Mad Max",
+    "date": "2024",
+    "time": "2hr 28min",
+    "direction": "George Miller",
+    "view": [
+      "23/09/2024"
+    ],
+    "value": 5,
+    "img": "/posters/246.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 247,
+    "name": "Mad Max: Estrada da Fúria",
+    "date": "2015",
+    "time": "2hr",
+    "direction": "George Miller",
+    "view": [
+      "25/09/2024"
+    ],
+    "value": 4,
+    "img": "/posters/247.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 248,
+    "name": "Longlegs - Vínculo Mortal",
+    "date": "2024",
+    "time": "1hr 41min",
+    "direction": "Osgood Perkins",
+    "view": [
+      "28/09/2024"
+    ],
+    "value": 4,
+    "img": "/posters/248.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 249,
+    "name": "Better Call Saul 5ª Temporada",
+    "date": "2020",
+    "time": "10 Episódios",
+    "direction": "Vince Gilligan, Peter Gould",
+    "view": [
+      "08/10/2024"
+    ],
+    "value": 4,
+    "img": "/posters/249.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 250,
+    "name": "Better Call Saul 6ª Temporada",
+    "date": "2022",
+    "time": "13 Episódios",
+    "direction": "Vince Gilligan, Peter Gould",
+    "view": [
+      "20/10/2024"
+    ],
+    "value": 5,
+    "img": "/posters/250.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 251,
+    "name": "Alien: Romulus",
+    "date": "2024",
+    "time": "1hr 59min",
+    "direction": "Fede Alvarez",
+    "view": [
+      "21/10/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/251.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 252,
+    "name": "A Mulher do Aviador",
+    "date": "1981",
+    "time": "1hr 44min",
+    "direction": "Éric Rohmer",
+    "view": [
+      "23/10/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/252.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 253,
+    "name": "Dias Perfeitos",
+    "date": "2023",
+    "time": "2hr 5min",
+    "direction": "Wim Wenders",
+    "view": [
+      "28/10/2024"
+    ],
+    "value": 4,
+    "img": "/posters/253.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 254,
+    "name": "Vidas ao Vento",
+    "date": "2013",
+    "time": "2hr 6min",
+    "direction": "Hayao Miyazaki",
+    "view": [
+      "31/10/2024"
+    ],
+    "value": 5,
+    "img": "/posters/254.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 255,
+    "name": "A Filha do Palhaço",
+    "date": "2022",
+    "time": "1hr 44min",
+    "direction": "Pedro Diogenes",
+    "view": [
+      "02/11/2024"
+    ],
+    "value": 4,
+    "img": "/posters/255.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 256,
+    "name": "Millennium Mambo",
+    "date": "2001",
+    "time": "1hr 59min",
+    "direction": "Hsiao-Hsien Hou",
+    "view": [
+      "04/11/2024"
+    ],
+    "value": 3,
+    "img": "/posters/256.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 257,
+    "name": "Afire",
+    "date": "2023",
+    "time": "1hr 42min",
+    "direction": "Christian Petzold",
+    "view": [
+      "07/11/2024"
+    ],
+    "value": 2.5,
+    "img": "/posters/257.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 258,
+    "name": "A Substância",
+    "date": "2024",
+    "time": "2hr 20min",
+    "direction": "Coralie Fargeat",
+    "view": [
+      "09/11/2024"
+    ],
+    "value": 3.5,
+    "img": "/posters/258.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 259,
+    "name": "O Auto da Compadecida",
+    "date": "1999",
+    "time": "4 Episódios",
+    "direction": "Guel Arraes, Adriana Falcão, João Falcão",
+    "view": [
+      "10/11/2024"
+    ],
+    "value": 5,
+    "img": "/posters/259.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 260,
+    "name": "O Enigma de Outro Mundo",
+    "date": "1982",
+    "time": "1hr 49min",
+    "direction": "John Carpenter",
+    "view": [
+      "11/11/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/260.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 261,
+    "name": "MadS",
+    "date": "2024",
+    "time": "1hr 26min",
+    "direction": "David Moreau",
+    "view": [
+      "22/11/2024"
+    ],
+    "value": 4,
+    "img": "/posters/261.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 262,
+    "name": "Um Corpo que Cai",
+    "date": "1958",
+    "time": "2hr 8min",
+    "direction": "Alfred Hitchcock",
+    "view": [
+      "27/11/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/262.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 263,
+    "name": "Frieren e a Jornada para o Além",
+    "date": "2023",
+    "time": "28 Episódios",
+    "direction": "Keiichirō Saitō",
+    "view": [
+      "08/12/2024"
+    ],
+    "value": 4,
+    "img": "/posters/263.jpg",
+    "type": "Series"
+  },
+  {
+    "id": 264,
+    "name": "Os Outros",
+    "date": "2001",
+    "time": "1hr 44,om",
+    "direction": "Alejandro Amenábar",
+    "view": [
+      "10/12/2024"
+    ],
+    "value": 5,
+    "img": "/posters/264.jpg",
+    "type": "Movie"
+  }
+]}

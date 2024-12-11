@@ -46,7 +46,7 @@ export default async function handler(
 
     const file = files.file
 
-    const publicUrl = `/public/uploads/${path.basename(file![0].filepath)}`
+    const publicUrl = `/uploads/${path.basename(file![0].filepath)}`
 
     function convertToDate(dateString: string): string {
       const [day, month, year] = dateString.split('/')

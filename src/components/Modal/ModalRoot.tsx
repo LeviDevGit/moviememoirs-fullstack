@@ -7,7 +7,7 @@ interface ModalRootProps {
 export default function ModalRoot({ children }: ModalRootProps) {
   return (
     <div className="absolute left-0 top-0 z-30 flex h-full w-full items-center justify-center bg-black/70">
-      <div className="bg-white">{children}</div>
+      <div className="relative bg-white">{children}</div>
     </div>
   )
 }
