@@ -36,6 +36,7 @@ export default function Home() {
   useSubmitData({ direction, filterContent, setDataFetch })
 
   const handleDirectionChange = (operation: number) => {
+    console.log(dataFetch)
     setDirection({
       start: direction.start + operation,
       end: direction.end + operation,
@@ -73,7 +74,10 @@ export default function Home() {
       </header>
       <main className="w-full py-4">
         <div className="relative flex w-full items-center justify-center gap-x-12 overflow-x-hidden py-4">
-          <DirectionalButton onClick={() => handleDirectionChange(-1)}>
+          <DirectionalButton
+            onClick={() => handleDirectionChange(-1)}
+            dataLength={dataFetch.length}
+          >
             <ChevronLeft
               size={64}
               absoluteStrokeWidth
@@ -87,6 +91,7 @@ export default function Home() {
           <DirectionalButton
             left={false}
             onClick={() => handleDirectionChange(1)}
+            dataLength={dataFetch.length}
           >
             <ChevronRight
               size={64}

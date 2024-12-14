@@ -34,6 +34,7 @@ export default function useSubmitData({
         if (filterContent.directorString) {
           queryParams.append('directorString', filterContent.directorString)
         }
+
         if (filterContent.yearString) {
           queryParams.append('yearString', filterContent.yearString)
         }
@@ -56,13 +57,16 @@ export default function useSubmitData({
 
         modifiedData = [lastItem, ...modifiedData]
 
-        const finalArray = []
+        const finalArray: dataFetchProps = []
 
         for (let index = direction.start; index < direction.end; index++) {
           const adjustedIndex =
             ((index % modifiedData.length) + modifiedData.length) %
             modifiedData.length
-          finalArray.push(modifiedData[adjustedIndex])
+
+          if (!finalArray.includes(modifiedData[adjustedIndex])) {
+            finalArray.push(modifiedData[adjustedIndex])
+          }
         }
 
         setDataFetch(finalArray)
