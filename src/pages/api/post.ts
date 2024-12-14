@@ -34,6 +34,9 @@ export default async function handler(
         const form = new IncomingForm({
           uploadDir: publicDir,
           keepExtensions: true,
+          filename: (name, ext, part) => {
+            return part.originalFilename || `unknown-file${ext}`
+          },
         })
 
         form.parse(req, (err, fields, files) => {

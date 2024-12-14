@@ -17,7 +17,7 @@ export default async function handler(
       },
     })
 
-    const absolutePath = path.join(process.cwd(), movieImagePath)
+    const absolutePath = path.join(process.cwd(), 'public', movieImagePath)
 
     try {
       await fs.unlink(absolutePath)
