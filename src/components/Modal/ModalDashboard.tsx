@@ -1,29 +1,46 @@
-import { dataFetchProps } from '@/types/interfaces'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
-export default function ModalDashboard() {
-  const [data, setData] = useState<dataFetchProps>([])
+interface dataMovieProps {
+  id: number
+  date: string
+  name: string
+  time: string
+  direction: string
+  value: number
+  img: string
+  type: string
+}
+
+interface ModalDashboardProps {
+  children: React.ReactNode
+}
+
+export default function ModalDashboard({ children }: ModalDashboardProps) {
+  const [data, setData] = useState<dataMovieProps[]>([])
   const [safetyButton, setSafetyButton] = useState<
     [number, string] | undefined
   >(undefined)
+  const [page, setPage] = useState(1)
+
+  const submitData = async (pageProp: number) => {
+    try {
+      const response = await fetch(`/api/pagination?page=${pageProp}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
+
+      const data = await response.json()
+
+      setData(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   useEffect(() => {
-    const submitData = async () => {
-      try {
-        const response = await fetch('/api/read', {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' },
-        })
-
-        const data = await response.json()
-
-        setData(data)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    submitData()
-  }, [])
+    submitData(page)
+  }, [page])
 
   const deleteData = async (movieId: number, movieImagePath: string) => {
     try {
@@ -37,29 +54,47 @@ export default function ModalDashboard() {
     }
   }
 
+  const handlePrevPage = () => {
+    if (page > 1) setPage(page - 1)
+  }
+
+  const handleNextPage = () => {
+    setPage(page + 1)
+  }
+
   return (
-    <div className="h-[800px] w-[700px] overflow-y-scroll p-5">
-      {/* ESSA MERDA ESTA FAZENDO O REQUEST PARA UM READ QUE ESTÁ ORDENADO PELA DATA DO VIEW
-          ENTÃO SE VOCÊ COLOCAR UMA DATA ANTERIOR AS OUTRAS QUE JÁ ESTÃO NO BANCO DE DADOS VOCÊ
-          DEVE PROCURAR O ID E NOME CERTO PARA APAGAR A PRIMEIRA POR COSTUME!!!
-        */}
-      {data.map((element, index) => (
-        <div key={`${index}`} className="flex flex-col gap-4">
-          <div className="flex h-fit w-full items-center justify-between">
-            <h1>O id é {element.movieId}</h1>
-            <p>{element.movie.name}</p>
-            <button
-              className="text-red-500"
-              onClick={() => {
-                setSafetyButton([element.movie.id, element.movie.img])
-              }}
-            >
-              Deletar
-            </button>
-          </div>
-          <hr />
+    <div className="flex h-[620px] w-[1200px] flex-col justify-between p-5">
+      <div className="flex flex-col gap-2">
+        <div className="grid w-full auto-cols-auto grid-flow-col justify-between py-3">
+          <h2 className="w-[300px]">Nome</h2>
+          <h2 className="w-[200px]">Diretor</h2>
+          <h2 className="w-[40px]">Ano</h2>
+          <h2 className="w-[60px]">Tipo</h2>
+          <h2 className="w-[80px] text-start"></h2>
         </div>
-      ))}
+        <hr />
+        {data.map((element, index) => (
+          <div
+            key={`${index}`}
+            className="flex flex-col py-3 hover:bg-black/10"
+          >
+            <div className="grid h-fit w-full auto-cols-auto grid-flow-col justify-between">
+              <p className="w-[300px]">{element.name}</p>
+              <h1 className="w-[200px] truncate">{element.direction}</h1>
+              <h1 className="w-[40px]">{element.date}</h1>
+              <h1 className="w-[60px]">{element.type}</h1>
+              <button
+                className="w-[80px] text-start text-red-500"
+                onClick={() => {
+                  setSafetyButton([element.id, element.img])
+                }}
+              >
+                Deletar
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
       {safetyButton && (
         <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/70">
           <div className="flex w-[300px] flex-col gap-4 bg-white p-5">
@@ -86,6 +121,27 @@ export default function ModalDashboard() {
           </div>
         </div>
       )}
+      <div className="flex w-full items-center justify-between">
+        <div className="flex gap-4">
+          <button
+            onClick={() => {
+              handlePrevPage()
+            }}
+            disabled={page === 1}
+          >
+            <ChevronLeft />
+          </button>
+          <h2>{page}</h2>
+          <button
+            onClick={() => {
+              handleNextPage()
+            }}
+          >
+            <ChevronRight />
+          </button>
+        </div>
+        {children}
+      </div>
     </div>
   )
 }

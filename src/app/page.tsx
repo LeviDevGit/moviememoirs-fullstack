@@ -52,8 +52,9 @@ export default function Home() {
       )}
       {toggleModalManagement && (
         <Modal.Root>
-          <Modal.Dashboard />
-          <Modal.Footer closeIt={setToggleModalManagement} />
+          <Modal.Dashboard>
+            <Modal.Footer closeIt={setToggleModalManagement} />
+          </Modal.Dashboard>
         </Modal.Root>
       )}
       <header className="flex w-full items-center justify-between">

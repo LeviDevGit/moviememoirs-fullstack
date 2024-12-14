@@ -4,14 +4,12 @@ interface ModalFooterProps {
 
 export default function ModalFooter({ closeIt }: ModalFooterProps) {
   return (
-    <div className="flex items-center justify-end">
-      <button
-        onClick={() => {
-          closeIt(false)
-        }}
-      >
-        Cancelar
-      </button>
-    </div>
+    <button
+      onClick={() => {
+        closeIt(false)
+      }}
+    >
+      Cancelar
+    </button>
   )
 }
