@@ -15,7 +15,7 @@ interface SearchInputProps {
 export default function SearchInput({ request }: SearchInputProps) {
   const inputRef = useRef<HTMLInputElement>(null) // useRef para acessar o valor do input
 
-  const handleButtonClick = () => {
+  function handleButtonClick() {
     console.log(request)
     if (inputRef.current) {
       request((prevState) => ({

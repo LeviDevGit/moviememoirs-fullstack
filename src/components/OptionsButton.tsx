@@ -1,20 +1,17 @@
 import { ChevronDown, Plus } from 'lucide-react'
+import { toggleModalFunction } from './Modal/ModalFooter'
 
 interface OptionsButtonProps {
-  openItAdd: React.Dispatch<React.SetStateAction<boolean>>
-  openItManagemenet: React.Dispatch<React.SetStateAction<boolean>>
+  openIt: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
-export default function OptionsButton({
-  openItAdd,
-  openItManagemenet,
-}: OptionsButtonProps) {
+export default function OptionsButton({ openIt }: OptionsButtonProps) {
   return (
     <div className="flex h-[40px] items-center font-bold text-white">
       <button
         className="flex h-full w-full items-center gap-2 rounded-l-lg bg-north-texas-green/90 px-3 pr-7 hover:bg-north-texas-green"
         onClick={() => {
-          openItAdd(true)
+          toggleModalFunction(0, openIt, true)
         }}
       >
         <Plus />
@@ -23,7 +20,7 @@ export default function OptionsButton({
       <button
         className="h-full rounded-r-lg bg-north-texas-green/60 px-3 hover:bg-north-texas-green/70"
         onClick={() => {
-          openItManagemenet(true)
+          toggleModalFunction(1, openIt, true)
         }}
       >
         <ChevronDown />

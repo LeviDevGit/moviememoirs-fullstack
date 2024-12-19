@@ -1,8 +1,16 @@
-interface ModalFormProps {
-  children: React.ReactNode
+import { InputHTMLAttributes } from 'react'
+
+interface updaterStateProps {
+  updater: boolean
+  setUpdater: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function ModalForm({ children }: ModalFormProps) {
+interface ModalFormProps {
+  children: React.ReactNode
+  updaterState: updaterStateProps
+}
+
+export default function ModalForm({ children, updaterState }: ModalFormProps) {
   const submitContact = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -17,10 +25,12 @@ export default function ModalForm({ children }: ModalFormProps) {
 
       const data = await response.json()
 
-      console.log(data)
+      if (data) updaterState.setUpdater(!updaterState.updater)
     } catch (error) {
       console.log('Erro dentro da requisição')
       console.error(error)
+
+      return error
     }
   }
 
@@ -86,20 +96,17 @@ export default function ModalForm({ children }: ModalFormProps) {
   )
 }
 
-interface InputFormProps {
+interface InputFormProps extends InputHTMLAttributes<HTMLInputElement> {
   text: string
-  name: string
-  placeholder: string
 }
 
-function InputForm({ text, name, placeholder }: InputFormProps) {
+function InputForm({ text, ...rest }: InputFormProps) {
   return (
     <div className="flex flex-col gap-1">
       <label>{text}</label>
       <input
         type="text"
-        name={name}
-        placeholder={placeholder}
+        {...rest}
         required
         className="rounded-xl border border-gray-500 p-2"
       />

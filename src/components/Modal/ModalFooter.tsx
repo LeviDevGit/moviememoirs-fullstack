@@ -1,12 +1,29 @@
 interface ModalFooterProps {
-  closeIt: React.Dispatch<React.SetStateAction<boolean>>
+  closeIndex: number
+  closeSet: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
-export default function ModalFooter({ closeIt }: ModalFooterProps) {
+export const toggleModalFunction = (
+  value: number,
+  close: React.Dispatch<React.SetStateAction<boolean[]>>,
+  toggler: boolean,
+) => {
+  close((prev) => {
+    const newModals = [...prev]
+    newModals[value] = toggler
+    return newModals
+  })
+}
+
+export default function ModalFooter({
+  closeIndex,
+  closeSet,
+}: ModalFooterProps) {
   return (
     <button
       onClick={() => {
-        closeIt(false)
+        toggleModalFunction(closeIndex, closeSet, false)
+        // closeIt(false)
       }}
       className="text-red-500"
     >

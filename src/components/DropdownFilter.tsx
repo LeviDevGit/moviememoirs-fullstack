@@ -1,9 +1,10 @@
 import { Ellipsis, Filter, Plus } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { toggleModalFunction } from './Modal/ModalFooter'
 
 interface Dropdownprops {
-  toggleDropdown: React.Dispatch<React.SetStateAction<boolean>>
-  isOpen: boolean
+  toggleDropdown: React.Dispatch<React.SetStateAction<boolean[]>>
+  isOpen: boolean[]
   request: React.Dispatch<
     React.SetStateAction<{
       searchString: string
@@ -22,7 +23,7 @@ export default function DropdownFilter({
   const dropdown = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    if (!isOpen) return
+    if (!isOpen[2]) return
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -30,7 +31,8 @@ export default function DropdownFilter({
         event.target instanceof Node &&
         !dropdown.current.contains(event.target)
       ) {
-        toggleDropdown(false)
+        toggleModalFunction(2, toggleDropdown, false)
+        // toggleDropdown(false)
       }
     }
 
@@ -40,7 +42,7 @@ export default function DropdownFilter({
       window.removeEventListener('click', handleClickOutside)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen])
+  }, [isOpen[2]])
 
   const [disabledOption, setDisabledOption] = useState({
     director: false,
@@ -77,14 +79,14 @@ export default function DropdownFilter({
       <button
         onClick={(event) => {
           event.stopPropagation()
-          toggleDropdown(!isOpen)
+          toggleModalFunction(2, toggleDropdown, !isOpen[2])
         }}
         className="h-full rounded-lg px-4 text-white/50 hover:text-white/70"
       >
         <Filter />
       </button>
 
-      {isOpen && (
+      {isOpen[2] && (
         <div
           className="absolute left-0 top-12 z-20 flex flex-col justify-between gap-4 rounded-lg bg-[#2D2D2F] text-[#D1D1D1]"
           ref={dropdown}

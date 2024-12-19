@@ -12,11 +12,20 @@ interface dataMovieProps {
   type: string
 }
 
-interface ModalDashboardProps {
-  children: React.ReactNode
+interface updaterStateProps {
+  updater: boolean
+  setUpdater: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function ModalDashboard({ children }: ModalDashboardProps) {
+interface ModalDashboardProps {
+  children: React.ReactNode
+  updaterState: updaterStateProps
+}
+
+export default function ModalDashboard({
+  children,
+  updaterState,
+}: ModalDashboardProps) {
   const [data, setData] = useState<dataMovieProps[]>([])
   const [safetyButton, setSafetyButton] = useState<
     [number, string] | undefined
@@ -40,7 +49,7 @@ export default function ModalDashboard({ children }: ModalDashboardProps) {
 
   useEffect(() => {
     submitData(page)
-  }, [page])
+  }, [page, data])
 
   const deleteData = async (movieId: number, movieImagePath: string) => {
     try {
@@ -51,15 +60,17 @@ export default function ModalDashboard({ children }: ModalDashboardProps) {
       })
     } catch (error) {
       console.error(error)
+    } finally {
+      updaterState.setUpdater(!updaterState.updater)
     }
   }
 
-  const handlePrevPage = () => {
-    if (page > 1) setPage(page - 1)
-  }
-
-  const handleNextPage = () => {
-    setPage(page + 1)
+  function handlePage(next: boolean = false) {
+    if (next) {
+      setPage(page + 1)
+    } else {
+      if (page > 1) setPage(page - 1)
+    }
   }
 
   return (
@@ -125,7 +136,7 @@ export default function ModalDashboard({ children }: ModalDashboardProps) {
         <div className="flex gap-4">
           <button
             onClick={() => {
-              handlePrevPage()
+              handlePage()
             }}
             disabled={page === 1}
           >
@@ -134,7 +145,7 @@ export default function ModalDashboard({ children }: ModalDashboardProps) {
           <h2>{page}</h2>
           <button
             onClick={() => {
-              handleNextPage()
+              handlePage(true)
             }}
           >
             <ChevronRight />

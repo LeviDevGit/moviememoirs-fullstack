@@ -13,12 +13,14 @@ interface useSubmitDataProps {
     valueString: string | undefined
   }
   setDataFetch: (value: React.SetStateAction<dataFetchProps>) => void
+  updater: boolean
 }
 
 export default function useSubmitData({
   direction,
   filterContent,
   setDataFetch,
+  updater,
 }: useSubmitDataProps) {
   useEffect(() => {
     const submitData = async () => {
@@ -74,7 +76,7 @@ export default function useSubmitData({
         console.error(error)
       }
     }
+
     submitData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [direction, filterContent])
+  }, [direction, filterContent, setDataFetch, updater])
 }
