@@ -12,7 +12,7 @@ export default function OptionsButton({
   return (
     <div className="flex h-[40px] items-center font-bold text-white">
       <button
-        className="bg-north-texas-green/90 hover:bg-north-texas-green flex h-full w-full items-center gap-2 rounded-l-lg px-3 pr-7"
+        className="flex h-full w-full items-center gap-2 rounded-l-lg bg-north-texas-green/90 px-3 pr-7 hover:bg-north-texas-green"
         onClick={() => {
           openItAdd(true)
         }}
@@ -21,7 +21,7 @@ export default function OptionsButton({
         <span>Log</span>
       </button>
       <button
-        className="bg-north-texas-green/60 hover:bg-north-texas-green/70 h-full rounded-r-lg px-3"
+        className="h-full rounded-r-lg bg-north-texas-green/60 px-3 hover:bg-north-texas-green/70"
         onClick={() => {
           openItManagemenet(true)
         }}

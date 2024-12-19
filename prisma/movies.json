@@ -3426,13 +3426,26 @@
     "id": 264,
     "name": "Os Outros",
     "date": "2001",
-    "time": "1hr 44,om",
+    "time": "1hr 44min",
     "direction": "Alejandro Amenábar",
     "view": [
       "10/12/2024"
     ],
     "value": 5,
     "img": "/posters/264.jpg",
+    "type": "Movie"
+  },
+  {
+    "id": 265,
+    "name": "Namorados para Sempre",
+    "date": "2010",
+    "time": "2hr",
+    "direction": "Derek Cianfrance",
+    "view": [
+      "15/12/2024"
+    ],
+    "value": 4.5,
+    "img": "/posters/265.jpg",
     "type": "Movie"
   }
 ]}

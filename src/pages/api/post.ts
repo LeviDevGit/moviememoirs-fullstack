@@ -21,6 +21,17 @@ interface FormFields {
   commentary?: string[]
 }
 
+interface jsonArrayProps {
+  id: number
+  name: string
+  date: string
+  time: string
+  direction: string
+  value: number
+  img: string
+  type: string
+}
+
 // CREATE /api/post
 export default async function handler(
   req: NextApiRequest,
@@ -29,13 +40,36 @@ export default async function handler(
   try {
     const publicDir = path.join(process.cwd(), 'public', 'uploads')
 
+    const latestQuery = await prisma.movie.findFirst({
+      orderBy: {
+        id: 'desc',
+      },
+    })
+
+    function obterProximoNumero(jsonArray: jsonArrayProps) {
+      const ultimoElemento = jsonArray
+      const regex = /(\d+)\.jpg$/
+
+      const match = ultimoElemento.img.match(regex)
+      if (match) {
+        const numeroAtual = parseInt(match[1], 10)
+        return numeroAtual + 1
+      }
+      throw new Error('Caminho inválido no último elemento do JSON')
+    }
+
     const { fields, files }: { fields: FormFields; files: Files } =
       await new Promise((resolve, reject) => {
         const form = new IncomingForm({
           uploadDir: publicDir,
           keepExtensions: true,
           filename: (name, ext, part) => {
-            return part.originalFilename || `unknown-file${ext}`
+            if (latestQuery) {
+              const novoNumero = obterProximoNumero(latestQuery)
+              return `${novoNumero}${ext}`
+            } else {
+              return part.originalFilename || `unknown-file${ext}`
+            }
           },
         })
 

@@ -8,6 +8,7 @@ export default function ModalFooter({ closeIt }: ModalFooterProps) {
       onClick={() => {
         closeIt(false)
       }}
+      className="text-red-500"
     >
       Cancelar
     </button>

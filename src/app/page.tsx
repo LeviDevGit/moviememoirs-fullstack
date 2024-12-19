@@ -47,8 +47,9 @@ export default function Home() {
     <div className="relative flex h-full w-full flex-col items-center justify-around p-10">
       {toggleModalAdd && (
         <Modal.Root>
-          <Modal.Form />
-          <Modal.Footer closeIt={setToggleModalAdd} />
+          <Modal.Form>
+            <Modal.Footer closeIt={setToggleModalAdd} />
+          </Modal.Form>
         </Modal.Root>
       )}
       {toggleModalManagement && (

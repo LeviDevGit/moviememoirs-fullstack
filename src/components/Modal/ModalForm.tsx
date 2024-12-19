@@ -1,4 +1,8 @@
-export default function ModalForm() {
+interface ModalFormProps {
+  children: React.ReactNode
+}
+
+export default function ModalForm({ children }: ModalFormProps) {
   const submitContact = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -21,41 +25,84 @@ export default function ModalForm() {
   }
 
   return (
-    <div className="p-5">
-      <form
-        action=""
-        className="flex flex-col gap-3 border border-black p-2"
-        onSubmit={submitContact}
-      >
-        <input type="text" name="name" id="" placeholder="Nome" required />
-        <label htmlFor="">Tipo</label>
-        <select name="type" required>
-          <option value="MOVIE">Filme</option>
-          <option value="SERIES">Série</option>
-          <option value="DOCUMENTARY">Documentário</option>
-          <option value="SHORT FILM">Curta</option>
-        </select>
-        <input type="text" name="movieDate" placeholder="Lançado em" required />
-        <input type="text" name="time" placeholder="Duração" required />
-        <input
-          type="text"
-          name="direction"
-          placeholder="Dirigido por"
-          required
+    <div className="w-[600px] p-5">
+      <div className="mb-5 flex flex-col gap-2">
+        <h1 className="text-3xl font-medium">Registrar nova mídia</h1>
+        <p className="text-black/80">
+          Ajude a construir um registro detalhado do que você assiste.
+        </p>
+      </div>
+      <form className="flex flex-col gap-3" onSubmit={submitContact}>
+        <InputForm
+          name="name"
+          text="Nome*"
+          placeholder="Digite o nome do filme ou série"
         />
-        <input type="text" name="viewDate" placeholder="Visto em" required />
         <div className="flex flex-col">
-          <label htmlFor="">Poster</label>
+          <label>Tipo*</label>
+          <select name="type" required>
+            <option value="MOVIE">Filme</option>
+            <option value="SERIES">Série</option>
+            <option value="DOCUMENTARY">Documentário</option>
+            <option value="SHORT FILM">Curta</option>
+          </select>
+        </div>
+        <InputForm name="movieDate" text="Lançamento*" placeholder="Ex: 2004" />
+        <InputForm name="time" text="Duração*" placeholder="Ex: 2hr 2min" />
+        <InputForm
+          name="direction"
+          text="Diretor(a)*"
+          placeholder="Digite o nome do(a) diretor(a)"
+        />
+        <InputForm
+          name="viewDate"
+          text="Data de visualização*"
+          placeholder="Ex: 25/12/23"
+        />
+        <div className="flex flex-col">
+          <label>Poster*</label>
           <input type="file" name="file" accept=".jpg" required />
         </div>
-        <input type="text" name="movieValue" placeholder="Nota" required />
-        <input
-          type="text"
-          name="commentary"
-          placeholder="Comentário (opcional)"
-        />
-        <button type="submit">Adicionar</button>
+        <InputForm name="movieValue" text="Nota*" placeholder="De 0 a 5" />
+        <div className="flex flex-col">
+          <label>Comentário</label>
+          <textarea
+            name="commentary"
+            placeholder="Escreva um comentário (opcional)"
+            className="resize-none"
+          />
+        </div>
+        <div className="flex w-full items-center justify-between">
+          <button
+            type="submit"
+            className="rounded-xl bg-north-texas-green/90 p-2 px-4 font-bold text-white hover:bg-north-texas-green"
+          >
+            Registrar
+          </button>
+          {children}
+        </div>
       </form>
+    </div>
+  )
+}
+
+interface InputFormProps {
+  text: string
+  name: string
+  placeholder: string
+}
+
+function InputForm({ text, name, placeholder }: InputFormProps) {
+  return (
+    <div className="flex flex-col gap-1">
+      <label>{text}</label>
+      <input
+        type="text"
+        name={name}
+        placeholder={placeholder}
+        required
+        className="rounded-xl border border-gray-500 p-2"
+      />
     </div>
   )
 }
