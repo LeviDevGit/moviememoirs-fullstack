@@ -1,6 +1,7 @@
 import { Ellipsis, Filter, Plus } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { toggleModalFunction } from './Modal/ModalFooter'
+import useDropdown from '@/hooks/useDropdown'
 
 interface Dropdownprops {
   toggleDropdown: React.Dispatch<React.SetStateAction<boolean[]>>
@@ -22,49 +23,24 @@ export default function DropdownFilter({
 }: Dropdownprops) {
   const dropdown = useRef<HTMLDivElement | null>(null)
 
-  useEffect(() => {
-    if (!isOpen[2]) return
+  useDropdown({ isOpen, dropdown, toggleDropdown })
 
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdown.current &&
-        event.target instanceof Node &&
-        !dropdown.current.contains(event.target)
-      ) {
-        toggleModalFunction(2, toggleDropdown, false)
-        // toggleDropdown(false)
-      }
-    }
-
-    window.addEventListener('click', handleClickOutside)
-
-    return () => {
-      window.removeEventListener('click', handleClickOutside)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen[2]])
-
-  const [disabledOption, setDisabledOption] = useState({
-    director: false,
-    year: false,
-    value: false,
+  const [option, setOption] = useState({
+    director: '',
+    year: '',
+    value: '',
   })
+
   const [selectOption, setSelectOption] =
-    useState<keyof typeof disabledOption>('director')
+    useState<keyof typeof option>('director')
 
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const [activeFilters, setActiveFilters] = useState<
-    ('director' | 'year' | 'value')[]
-  >([])
-
-  const handleButtonClick = () => {
+  function handleButtonClick() {
     if (inputRef.current && inputRef.current.value !== '') {
-      setActiveFilters((prev) => [...prev, selectOption])
-
-      setDisabledOption((prev) => ({
+      setOption((prev) => ({
         ...prev,
-        [selectOption]: true,
+        [selectOption]: inputRef.current!.value,
       }))
 
       request((prevState) => ({
@@ -72,6 +48,24 @@ export default function DropdownFilter({
         [`${selectOption}String`]: inputRef.current!.value,
       }))
     }
+  }
+
+  function handleButtonClear() {
+    setOption((prev) => {
+      const optionState = { ...prev }
+      Object.keys(optionState).forEach((key) => {
+        optionState[key as keyof typeof optionState] = ''
+      })
+      return optionState
+    })
+
+    request((prevState) => {
+      const requestState = { ...prevState }
+      Object.keys(requestState).forEach((key) => {
+        requestState[key as keyof typeof requestState] = ''
+      })
+      return requestState
+    })
   }
 
   return (
@@ -85,7 +79,6 @@ export default function DropdownFilter({
       >
         <Filter />
       </button>
-
       {isOpen[2] && (
         <div
           className="absolute left-0 top-12 z-20 flex flex-col justify-between gap-4 rounded-lg bg-[#2D2D2F] text-[#D1D1D1]"
@@ -93,58 +86,124 @@ export default function DropdownFilter({
         >
           <p className="p-5 pb-0">Nesta visualização mostre filmes</p>
           <hr className="border-[#747476]" />
-          {activeFilters.map((e, index) => (
-            <div key={`${index}`}>
-              <h1>{e}</h1>
-            </div>
-          ))}
-          {activeFilters.length <= 2 && (
-            <div className="flex items-center gap-4 px-5">
-              <label>Onde</label>
-              <select
-                className="rounded-lg border border-[#747476] bg-transparent p-2"
-                onChange={(e) => {
-                  setSelectOption(e.target.value as keyof typeof disabledOption)
-                }}
-              >
-                <option value="director" disabled={disabledOption.director}>
-                  Diretor
-                </option>
-                <option value="year" disabled={disabledOption.year}>
-                  Ano de lançamento
-                </option>
-                <option value="value" disabled={disabledOption.value}>
-                  Nota
-                </option>
-              </select>
-              <label className="w-[70px] text-center">
-                {selectOption === 'director' ? 'contenha' : 'igual a'}
-              </label>
-              <input
-                type="text"
-                placeholder="Digite o valor..."
-                className="rounded-lg border border-[#747476] bg-transparent p-2 outline-none"
-                ref={inputRef}
+          {Object.entries(option)
+            .filter(([, value]) => value !== '')
+            .map(([key, value], index) => (
+              <FilteredRequest
+                key={`${index}`}
+                propKey={key}
+                propValue={value}
               />
-              <button>
-                <Ellipsis />
-              </button>
-            </div>
+            ))}
+          {option && (
+            <FilterRequest
+              option={option}
+              inputRef={inputRef}
+              selectOption={selectOption}
+              setSelectOption={setSelectOption}
+            />
           )}
           <hr className="border-[#5D5D5F]" />
           <div className="flex items-center justify-between p-5 pt-0">
             <button
-              className={`flex items-center gap-2 ${disabledOption[selectOption] && 'hidden'}`}
+              className={`flex items-center gap-2 ${option[selectOption] && 'hidden'}`}
               onClick={() => {
                 handleButtonClick()
               }}
             >
               <Plus size={20} /> Adicionar filtro
             </button>
-            <button>Excluir todos os filtros</button>
+            <button
+              onClick={() => {
+                handleButtonClear()
+              }}
+            >
+              Excluir todos os filtros
+            </button>
           </div>
         </div>
       )}
+    </div>
+  )
+}
+
+interface FilterRequestProps {
+  inputRef: React.RefObject<HTMLInputElement>
+  setSelectOption: React.Dispatch<
+    React.SetStateAction<'director' | 'year' | 'value'>
+  >
+  option: {
+    director: string
+    year: string
+    value: string
+  }
+  selectOption: 'director' | 'year' | 'value'
+}
+
+function FilterRequest({
+  inputRef,
+  setSelectOption,
+  option,
+  selectOption,
+}: FilterRequestProps) {
+  return (
+    <div className="flex items-center gap-4 px-5">
+      <label>Onde</label>
+      <select
+        className="rounded-lg border border-[#747476] bg-transparent p-2"
+        onChange={(e) => {
+          setSelectOption(e.target.value as keyof typeof option)
+        }}
+      >
+        <option value="director" disabled={option.director !== ''}>
+          Diretor
+        </option>
+        <option value="year" disabled={option.year !== ''}>
+          Ano de lançamento
+        </option>
+        <option value="value" disabled={option.value !== ''}>
+          Nota
+        </option>
+      </select>
+      <label className="w-[70px] text-center">
+        {selectOption === 'director' ? 'contenha' : 'igual a'}
+      </label>
+      <input
+        type="text"
+        placeholder="Digite o valor..."
+        className="rounded-lg border border-[#747476] bg-transparent p-2 outline-none"
+        ref={inputRef}
+      />
+      <button>
+        <Ellipsis />
+      </button>
+    </div>
+  )
+}
+
+interface FilteredRequestProps {
+  propKey: string
+  propValue: string
+}
+
+function FilteredRequest({ propKey, propValue }: FilteredRequestProps) {
+  return (
+    <div className="flex items-center gap-4 px-5">
+      <label>Onde</label>
+      <p className="w-[183px] p-2">
+        {propKey === 'director'
+          ? 'Diretor'
+          : propKey === 'year'
+            ? 'Ano de lançamento'
+            : propKey === 'value' && 'Nota'}
+      </p>
+      <label className="w-[70px] text-center">
+        {propKey === 'director' ? 'contenha' : 'igual a'}
+      </label>
+      <p className="w-[246px] p-2">{propValue}</p>
+      <button>
+        <Ellipsis />
+      </button>
     </div>
   )
 }

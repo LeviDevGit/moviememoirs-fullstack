@@ -23,7 +23,6 @@ export default function ModalFooter({
     <button
       onClick={() => {
         toggleModalFunction(closeIndex, closeSet, false)
-        // closeIt(false)
       }}
       className="text-red-500"
     >
