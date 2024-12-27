@@ -81,7 +81,7 @@ export default function DropdownFilter({
       </button>
       {isOpen[2] && (
         <div
-          className="absolute left-0 top-12 z-20 flex flex-col justify-between gap-4 rounded-lg bg-[#2D2D2F] text-[#D1D1D1]"
+          className="absolute left-0 top-12 z-20 flex flex-col justify-between gap-4 rounded-lg bg-[#27272a] text-white"
           ref={dropdown}
         >
           <p className="p-5 pb-0">Nesta visualização mostre filmes</p>

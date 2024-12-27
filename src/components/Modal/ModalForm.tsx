@@ -1,3 +1,4 @@
+import { ImageUp } from 'lucide-react'
 import { InputHTMLAttributes } from 'react'
 
 interface updaterStateProps {
@@ -35,10 +36,10 @@ export default function ModalForm({ children, updaterState }: ModalFormProps) {
   }
 
   return (
-    <div className="w-[600px] p-5">
+    <div className="page-specific max-h-[400px] w-[600px] overflow-y-scroll bg-[#27272a] p-5 text-white">
       <div className="mb-5 flex flex-col gap-2">
         <h1 className="text-3xl font-medium">Registrar nova mídia</h1>
-        <p className="text-black/80">
+        <p className="text-[#e0e0e0]">
           Ajude a construir um registro detalhado do que você assiste.
         </p>
       </div>
@@ -50,7 +51,11 @@ export default function ModalForm({ children, updaterState }: ModalFormProps) {
         />
         <div className="flex flex-col">
           <label>Tipo*</label>
-          <select name="type" required>
+          <select
+            name="type"
+            required
+            className="rounded-xl border border-gray-500 bg-transparent p-2"
+          >
             <option value="MOVIE">Filme</option>
             <option value="SERIES">Série</option>
             <option value="DOCUMENTARY">Documentário</option>
@@ -64,33 +69,27 @@ export default function ModalForm({ children, updaterState }: ModalFormProps) {
           text="Diretor(a)*"
           placeholder="Digite o nome do(a) diretor(a)"
         />
-        <InputForm
-          name="viewDate"
-          text="Data de visualização*"
-          placeholder="Ex: 25/12/23"
-        />
-        <div className="flex flex-col">
-          <label>Poster*</label>
-          <input type="file" name="file" accept=".jpg" required />
+        <div className="flex flex-col gap-1">
+          <label>Data de visualização*</label>
+          <input
+            type="date"
+            name="viewDate"
+            className="rounded-xl border border-gray-500 bg-transparent p-2"
+            defaultValue={new Date().toISOString().slice(0, 10)}
+            max={new Date().toISOString().slice(0, 10)}
+          />
         </div>
+        <Dropzone />
         <InputForm name="movieValue" text="Nota*" placeholder="De 0 a 5" />
         <div className="flex flex-col">
           <label>Comentário</label>
           <textarea
             name="commentary"
             placeholder="Escreva um comentário (opcional)"
-            className="resize-none"
+            className="resize-none rounded-xl border border-gray-500 bg-transparent p-2"
           />
         </div>
-        <div className="flex w-full items-center justify-between">
-          <button
-            type="submit"
-            className="rounded-xl bg-north-texas-green/90 p-2 px-4 font-bold text-white hover:bg-north-texas-green"
-          >
-            Registrar
-          </button>
-          {children}
-        </div>
+        <div className="flex w-full items-center justify-end">{children}</div>
       </form>
     </div>
   )
@@ -108,8 +107,22 @@ function InputForm({ text, ...rest }: InputFormProps) {
         type="text"
         {...rest}
         required
-        className="rounded-xl border border-gray-500 p-2"
+        className="rounded-xl border border-gray-500 bg-transparent p-2"
       />
+    </div>
+  )
+}
+
+function Dropzone() {
+  return (
+    <div className="flex w-full items-center justify-center rounded-xl border border-gray-500 p-2">
+      <label>
+        <div className="flex flex-col items-center justify-center">
+          <ImageUp />
+          <p>Apenas posters .JPG</p>
+        </div>
+        <input type="file" name="file" accept=".jpg" className="hidden" />
+      </label>
     </div>
   )
 }

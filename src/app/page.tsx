@@ -54,14 +54,22 @@ export default function Home() {
       {toggleModal[0] && (
         <Modal.Root>
           <Modal.Form updaterState={updaterState}>
-            <Modal.Footer closeIndex={0} closeSet={setToggleModal} />
+            <Modal.Footer closeIndex={0} closeSet={setToggleModal}>
+              <button type="submit" className="text-white">
+                Registrar
+              </button>
+            </Modal.Footer>
           </Modal.Form>
         </Modal.Root>
       )}
       {toggleModal[1] && (
         <Modal.Root>
           <Modal.Dashboard updaterState={updaterState}>
-            <Modal.Footer closeIndex={1} closeSet={setToggleModal} />
+            <Modal.Footer closeIndex={1} closeSet={setToggleModal}>
+              <button className="rounded-xl border border-gray-500 p-3 text-white">
+                Salvar
+              </button>
+            </Modal.Footer>
           </Modal.Dashboard>
         </Modal.Root>
       )}
@@ -76,7 +84,7 @@ export default function Home() {
         </div>
         <OptionsButton openIt={setToggleModal} />
       </header>
-      <main className="w-full py-4">
+      <main className="w-full border border-red-500 py-4">
         <div className="relative flex w-full items-center justify-center gap-x-12 overflow-x-hidden py-4">
           <DirectionalButton
             onClick={() => handleDirectionChange(-1)}

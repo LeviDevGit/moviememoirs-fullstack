@@ -1,6 +1,7 @@
 interface ModalFooterProps {
   closeIndex: number
   closeSet: React.Dispatch<React.SetStateAction<boolean[]>>
+  children: React.ReactNode
 }
 
 export const toggleModalFunction = (
@@ -18,15 +19,19 @@ export const toggleModalFunction = (
 export default function ModalFooter({
   closeIndex,
   closeSet,
+  children,
 }: ModalFooterProps) {
   return (
-    <button
-      onClick={() => {
-        toggleModalFunction(closeIndex, closeSet, false)
-      }}
-      className="text-red-500"
-    >
-      Cancelar
-    </button>
+    <div className="flex gap-5">
+      {children}
+      <button
+        onClick={() => {
+          toggleModalFunction(closeIndex, closeSet, false)
+        }}
+        className="rounded-xl bg-[#8f001a] p-3 text-white hover:bg-[#8f001a]/80"
+      >
+        Cancelar
+      </button>
+    </div>
   )
 }

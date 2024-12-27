@@ -74,7 +74,7 @@ export default function ModalDashboard({
   }
 
   return (
-    <div className="flex h-[620px] w-[1200px] flex-col justify-between p-5">
+    <div className="flex h-[620px] w-[1200px] flex-col justify-between bg-[#27272a] p-5 text-white">
       <div className="flex flex-col gap-2">
         <div className="grid w-full auto-cols-auto grid-flow-col justify-between py-3">
           <h2 className="w-[300px]">Nome</h2>
