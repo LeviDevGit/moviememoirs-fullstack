@@ -16,8 +16,8 @@ export default async function handle(
 
   try {
     const result = await prisma.movie.findMany({
-      skip: (pageNumber - 1) * 8,
-      take: 8,
+      skip: (pageNumber - 1) * 6,
+      take: 6,
       orderBy: {
         id: 'desc',
       },

@@ -1,7 +1,9 @@
-import { Ellipsis, Filter, Plus } from 'lucide-react'
+import { Filter, Plus } from 'lucide-react'
 import { useRef, useState } from 'react'
-import { toggleModalFunction } from './Modal/ModalFooter'
 import useDropdown from '@/hooks/useDropdown'
+import { toggleModal } from '../Dismiss'
+import Request from './Request'
+import Selection from './Selection'
 
 interface Dropdownprops {
   toggleDropdown: React.Dispatch<React.SetStateAction<boolean[]>>
@@ -73,7 +75,7 @@ export default function DropdownFilter({
       <button
         onClick={(event) => {
           event.stopPropagation()
-          toggleModalFunction(2, toggleDropdown, !isOpen[2])
+          toggleModal({ index: 2, set: toggleDropdown, toggler: !isOpen[2] })
         }}
         className="h-full rounded-lg px-4 text-white/50 hover:text-white/70"
       >
@@ -89,14 +91,10 @@ export default function DropdownFilter({
           {Object.entries(option)
             .filter(([, value]) => value !== '')
             .map(([key, value], index) => (
-              <FilteredRequest
-                key={`${index}`}
-                propKey={key}
-                propValue={value}
-              />
+              <Selection key={`${index}`} propKey={key} propValue={value} />
             ))}
           {option && (
-            <FilterRequest
+            <Request
               option={option}
               inputRef={inputRef}
               selectOption={selectOption}
@@ -123,87 +121,6 @@ export default function DropdownFilter({
           </div>
         </div>
       )}
-    </div>
-  )
-}
-
-interface FilterRequestProps {
-  inputRef: React.RefObject<HTMLInputElement>
-  setSelectOption: React.Dispatch<
-    React.SetStateAction<'director' | 'year' | 'value'>
-  >
-  option: {
-    director: string
-    year: string
-    value: string
-  }
-  selectOption: 'director' | 'year' | 'value'
-}
-
-function FilterRequest({
-  inputRef,
-  setSelectOption,
-  option,
-  selectOption,
-}: FilterRequestProps) {
-  return (
-    <div className="flex items-center gap-4 px-5">
-      <label>Onde</label>
-      <select
-        className="rounded-lg border border-[#747476] bg-transparent p-2"
-        onChange={(e) => {
-          setSelectOption(e.target.value as keyof typeof option)
-        }}
-      >
-        <option value="director" disabled={option.director !== ''}>
-          Diretor
-        </option>
-        <option value="year" disabled={option.year !== ''}>
-          Ano de lançamento
-        </option>
-        <option value="value" disabled={option.value !== ''}>
-          Nota
-        </option>
-      </select>
-      <label className="w-[70px] text-center">
-        {selectOption === 'director' ? 'contenha' : 'igual a'}
-      </label>
-      <input
-        type="text"
-        placeholder="Digite o valor..."
-        className="rounded-lg border border-[#747476] bg-transparent p-2 outline-none"
-        ref={inputRef}
-      />
-      <button>
-        <Ellipsis />
-      </button>
-    </div>
-  )
-}
-
-interface FilteredRequestProps {
-  propKey: string
-  propValue: string
-}
-
-function FilteredRequest({ propKey, propValue }: FilteredRequestProps) {
-  return (
-    <div className="flex items-center gap-4 px-5">
-      <label>Onde</label>
-      <p className="w-[183px] p-2">
-        {propKey === 'director'
-          ? 'Diretor'
-          : propKey === 'year'
-            ? 'Ano de lançamento'
-            : propKey === 'value' && 'Nota'}
-      </p>
-      <label className="w-[70px] text-center">
-        {propKey === 'director' ? 'contenha' : 'igual a'}
-      </label>
-      <p className="w-[246px] p-2">{propValue}</p>
-      <button>
-        <Ellipsis />
-      </button>
     </div>
   )
 }

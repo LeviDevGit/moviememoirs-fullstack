@@ -16,7 +16,7 @@ interface useSubmitDataProps {
   updater: boolean
 }
 
-export default function useSubmitData({
+function useSubmitData({
   direction,
   filterContent,
   setDataFetch,
@@ -71,6 +71,8 @@ export default function useSubmitData({
           }
         }
 
+        console.log(finalArray)
+
         setDataFetch(finalArray)
       } catch (error) {
         console.error(error)
@@ -80,3 +82,4 @@ export default function useSubmitData({
     submitData()
   }, [direction, filterContent, setDataFetch, updater])
 }
+export default useSubmitData

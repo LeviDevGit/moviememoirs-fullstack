@@ -1,4 +1,4 @@
-import { MovieCardProps } from '@/types/interfaces'
+import { CardProps } from '@/types/interfaces'
 import { Star, StarHalf } from 'lucide-react'
 import Image from 'next/image'
 
@@ -29,7 +29,7 @@ function renderStars(value: number) {
   }))
 }
 
-export default function MovieCard({ source }: MovieCardProps) {
+function Card({ source }: CardProps) {
   return (
     <div className="flex max-h-[696px] w-fit flex-col items-center rounded-md text-white">
       <div className="group relative w-fit">
@@ -47,8 +47,8 @@ export default function MovieCard({ source }: MovieCardProps) {
           />
         </div>
       </div>
-      <div className="h-[150px] w-[200px] pt-4 2xl:w-[345px]">
-        <div className="overflow-hidden 2xl:h-[80px]">
+      <div className="h-[150px] w-[220px] pt-4 2xl:w-[345px]">
+        <div className="h-[50px] 2xl:h-[80px]">
           <h2 className="text-center text-sm font-semibold 2xl:text-2xl">
             {source.movie.name}
           </h2>
@@ -65,3 +65,5 @@ export default function MovieCard({ source }: MovieCardProps) {
     </div>
   )
 }
+
+export default Card

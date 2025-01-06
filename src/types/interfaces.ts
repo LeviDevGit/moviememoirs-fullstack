@@ -1,4 +1,4 @@
-export interface MovieCardProps {
+export interface CardProps {
   source: {
     movie: {
       id: number

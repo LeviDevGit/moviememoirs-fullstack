@@ -1,4 +1,4 @@
-import { toggleModalFunction } from '@/components/Modal/ModalFooter'
+import { toggleModal } from '@/components/Dismiss'
 import { useEffect } from 'react'
 
 interface useDropdownProps {
@@ -7,11 +7,7 @@ interface useDropdownProps {
   toggleDropdown: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
-export default function useDropdown({
-  isOpen,
-  dropdown,
-  toggleDropdown,
-}: useDropdownProps) {
+function useDropdown({ isOpen, dropdown, toggleDropdown }: useDropdownProps) {
   useEffect(() => {
     if (!isOpen[2]) return
 
@@ -21,7 +17,7 @@ export default function useDropdown({
         event.target instanceof Node &&
         !dropdown.current.contains(event.target)
       ) {
-        toggleModalFunction(2, toggleDropdown, false)
+        toggleModal({ index: 2, set: toggleDropdown, toggler: false })
       }
     }
 
@@ -32,3 +28,5 @@ export default function useDropdown({
     }
   }, [dropdown, isOpen, toggleDropdown])
 }
+
+export default useDropdown

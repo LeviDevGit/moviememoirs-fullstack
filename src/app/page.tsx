@@ -1,15 +1,11 @@
 'use client'
 
-import {
-  DirectionalButton,
-  DropdownFilter,
-  MovieCard,
-  OptionsButton,
-  SearchInput,
-} from '@/components'
-import { Modal } from '@/components/Modal'
-import useSubmitData from '@/hooks/useSubmitData'
+import { Card, Directional, Modal, Options, Search } from '@/components'
+import ModalDashboard from '@/components/dashboard/ModalDashboard'
+import DropdownFilter from '@/components/filter/DropdownFilter'
 import { dataFetchProps } from '@/types/interfaces'
+import useSubmitData from '@/hooks/useSubmitData'
+import AddForm from '@/components/form/AddForm'
 import { useState } from 'react'
 
 interface FilterContent {
@@ -50,51 +46,43 @@ export default function Home() {
   }
 
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-around p-10">
+    <div className="relative flex h-full w-full flex-col items-center gap-8 p-10">
       {toggleModal[0] && (
-        <Modal.Root>
-          <Modal.Form updaterState={updaterState}>
-            <Modal.Footer closeIndex={0} closeSet={setToggleModal}>
-              <button type="submit" className="text-white">
-                Registrar
-              </button>
-            </Modal.Footer>
-          </Modal.Form>
-        </Modal.Root>
+        <Modal set={setToggleModal} index={0}>
+          <AddForm updaterState={updaterState}>
+            <div></div>
+          </AddForm>
+        </Modal>
       )}
       {toggleModal[1] && (
-        <Modal.Root>
-          <Modal.Dashboard updaterState={updaterState}>
-            <Modal.Footer closeIndex={1} closeSet={setToggleModal}>
-              <button className="rounded-xl border border-gray-500 p-3 text-white">
-                Salvar
-              </button>
-            </Modal.Footer>
-          </Modal.Dashboard>
-        </Modal.Root>
+        <Modal set={setToggleModal} index={1}>
+          <ModalDashboard updaterState={updaterState}>
+            <div></div>
+          </ModalDashboard>
+        </Modal>
       )}
       <header className="flex w-full items-center justify-between">
         <div className="flex h-[45px] items-center gap-1">
-          <SearchInput request={setFilterContent} />
+          <Search request={setFilterContent} />
           <DropdownFilter
             toggleDropdown={setToggleModal}
             isOpen={toggleModal}
             request={setFilterContent}
           />
         </div>
-        <OptionsButton openIt={setToggleModal} />
+        <Options openIt={setToggleModal} />
       </header>
-      <main className="w-full border border-red-500 py-4">
+      <main className="w-full py-4">
         <div className="relative flex w-full items-center justify-center gap-x-12 overflow-x-hidden py-4">
-          <DirectionalButton
+          <Directional
             onClick={() => handleDirectionChange(-1)}
             dataLength={dataFetch.length}
           />
           {dataFetch[0] !== undefined &&
             dataFetch.map((element, index) => (
-              <MovieCard source={element} key={`${index}`} />
+              <Card source={element} key={`${index}`} />
             ))}
-          <DirectionalButton
+          <Directional
             left={false}
             onClick={() => handleDirectionChange(1)}
             dataLength={dataFetch.length}

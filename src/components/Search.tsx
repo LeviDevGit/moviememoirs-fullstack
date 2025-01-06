@@ -1,7 +1,7 @@
-import { Search } from 'lucide-react'
+import { SearchIcon } from 'lucide-react'
 import { useRef } from 'react'
 
-interface SearchInputProps {
+interface SearchProps {
   request: React.Dispatch<
     React.SetStateAction<{
       searchString: string
@@ -12,7 +12,7 @@ interface SearchInputProps {
   >
 }
 
-export default function SearchInput({ request }: SearchInputProps) {
+function Search({ request }: SearchProps) {
   const inputRef = useRef<HTMLInputElement>(null) // useRef para acessar o valor do input
 
   function handleButtonClick() {
@@ -26,9 +26,9 @@ export default function SearchInput({ request }: SearchInputProps) {
   }
 
   return (
-    <div className="relative flex h-[40px] items-center rounded-lg border border-zinc-800 bg-zinc-700 px-2 text-white has-[:focus]:border-blue-600">
+    <div className="relative flex h-[35px] items-center rounded-lg border border-zinc-800 bg-zinc-700 px-2 text-white has-[:focus]:border-blue-600 2xl:h-[40px]">
       <div className="flex h-[20px] items-center">
-        <Search size={20} />
+        <SearchIcon size={20} />
       </div>
       <input
         type="text"
@@ -42,3 +42,5 @@ export default function SearchInput({ request }: SearchInputProps) {
     </div>
   )
 }
+
+export default Search

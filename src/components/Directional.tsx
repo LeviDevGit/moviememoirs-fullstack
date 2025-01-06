@@ -1,8 +1,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { ButtonHTMLAttributes } from 'react'
 
-interface DirectionalButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface DirectionalProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   left?: boolean
   dataLength: number
 }
@@ -14,11 +13,7 @@ const commonProps = {
     'group-transition-transform text-[#ffffff80] group-hover:scale-110 group-hover:text-[#ffffffCC]',
 }
 
-export default function DirectionalButton({
-  left = true,
-  dataLength,
-  ...rest
-}: DirectionalButtonProps) {
+function Directional({ left = true, dataLength, ...rest }: DirectionalProps) {
   const ChevronIcon = left ? ChevronLeft : ChevronRight
 
   const positionClass = left
@@ -36,3 +31,5 @@ export default function DirectionalButton({
     </button>
   )
 }
+
+export default Directional

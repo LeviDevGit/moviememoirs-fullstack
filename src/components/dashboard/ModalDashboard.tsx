@@ -49,7 +49,7 @@ export default function ModalDashboard({
 
   useEffect(() => {
     submitData(page)
-  }, [page, data])
+  }, [page])
 
   const deleteData = async (movieId: number, movieImagePath: string) => {
     try {
@@ -87,20 +87,20 @@ export default function ModalDashboard({
         {data.map((element, index) => (
           <div
             key={`${index}`}
-            className="flex flex-col py-3 hover:bg-black/10"
+            className="flex h-[70px] flex-col rounded-xl px-2 py-3 hover:bg-black/10"
           >
-            <div className="grid h-fit w-full auto-cols-auto grid-flow-col justify-between">
+            <div className="grid h-fit w-full auto-cols-auto grid-flow-col items-start justify-between">
               <p className="w-[300px]">{element.name}</p>
               <h1 className="w-[200px] truncate">{element.direction}</h1>
               <h1 className="w-[40px]">{element.date}</h1>
               <h1 className="w-[60px]">{element.type}</h1>
               <button
-                className="w-[80px] text-start text-red-500"
+                className="w-[80px] rounded-xl border border-gray-500 p-1 text-center text-white hover:bg-black/10"
                 onClick={() => {
                   setSafetyButton([element.id, element.img])
                 }}
               >
-                Deletar
+                Editar
               </button>
             </div>
           </div>

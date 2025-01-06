@@ -1,13 +1,7 @@
-import DirectionalButton from './DirectionalButton'
-import MovieCard from './MovieCard'
-import OptionsButton from './OptionsButton'
-import SearchInput from './SearchInput'
-import DropdownFilter from './DropdownFilter'
+import Card from './Card'
+import Directional from './Directional'
+import Modal from './Modal'
+import Options from './Options'
+import Search from './Search'
 
-export {
-  DirectionalButton,
-  MovieCard,
-  OptionsButton,
-  SearchInput,
-  DropdownFilter,
-}
+export { Card, Directional, Modal, Options, Search }
