@@ -5,7 +5,7 @@ import ModalDashboard from '@/components/dashboard/ModalDashboard'
 import DropdownFilter from '@/components/filter/DropdownFilter'
 import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
-import AddForm from '@/components/form/AddForm'
+import AddForm from '@/components/form'
 import { useState } from 'react'
 
 interface FilterContent {
@@ -47,19 +47,18 @@ export default function Home() {
 
   return (
     <div className="relative flex h-full w-full flex-col items-center gap-8 p-10">
-      {toggleModal[0] && (
+      {toggleModal[0] ? (
         <Modal set={setToggleModal} index={0}>
-          <AddForm updaterState={updaterState}>
-            <div></div>
-          </AddForm>
+          <AddForm updaterState={updaterState} />
         </Modal>
-      )}
-      {toggleModal[1] && (
-        <Modal set={setToggleModal} index={1}>
-          <ModalDashboard updaterState={updaterState}>
-            <div></div>
-          </ModalDashboard>
-        </Modal>
+      ) : (
+        toggleModal[1] && (
+          <Modal set={setToggleModal} index={1}>
+            <ModalDashboard updaterState={updaterState}>
+              <div></div>
+            </ModalDashboard>
+          </Modal>
+        )
       )}
       <header className="flex w-full items-center justify-between">
         <div className="flex h-[45px] items-center gap-1">

@@ -4,6 +4,7 @@ import useDropdown from '@/hooks/useDropdown'
 import { toggleModal } from '../Dismiss'
 import Request from './Request'
 import Selection from './Selection'
+import { queryFilterAdd, queryFilterClear } from '@/utils/queryFilter'
 
 interface Dropdownprops {
   toggleDropdown: React.Dispatch<React.SetStateAction<boolean[]>>
@@ -37,38 +38,6 @@ export default function DropdownFilter({
     useState<keyof typeof option>('director')
 
   const inputRef = useRef<HTMLInputElement>(null)
-
-  function handleButtonClick() {
-    if (inputRef.current && inputRef.current.value !== '') {
-      setOption((prev) => ({
-        ...prev,
-        [selectOption]: inputRef.current!.value,
-      }))
-
-      request((prevState) => ({
-        ...prevState,
-        [`${selectOption}String`]: inputRef.current!.value,
-      }))
-    }
-  }
-
-  function handleButtonClear() {
-    setOption((prev) => {
-      const optionState = { ...prev }
-      Object.keys(optionState).forEach((key) => {
-        optionState[key as keyof typeof optionState] = ''
-      })
-      return optionState
-    })
-
-    request((prevState) => {
-      const requestState = { ...prevState }
-      Object.keys(requestState).forEach((key) => {
-        requestState[key as keyof typeof requestState] = ''
-      })
-      return requestState
-    })
-  }
 
   return (
     <div className="relative h-full">
@@ -106,14 +75,14 @@ export default function DropdownFilter({
             <button
               className={`flex items-center gap-2 ${option[selectOption] && 'hidden'}`}
               onClick={() => {
-                handleButtonClick()
+                queryFilterAdd({ inputRef, request, selectOption, setOption })
               }}
             >
               <Plus size={20} /> Adicionar filtro
             </button>
             <button
               onClick={() => {
-                handleButtonClear()
+                queryFilterClear({ request, setOption })
               }}
             >
               Excluir todos os filtros
