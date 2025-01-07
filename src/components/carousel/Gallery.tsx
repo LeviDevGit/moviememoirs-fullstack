@@ -1,6 +1,5 @@
 import { dataFetchProps } from '@/types/interfaces'
-import Card from '../Card'
-import Directional from '../Directional'
+import { Card, Directional } from '@/components/carousel'
 
 interface GalleryProps {
   handleDirectionChange: (operation: number) => void

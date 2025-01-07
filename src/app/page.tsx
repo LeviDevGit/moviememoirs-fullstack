@@ -7,7 +7,7 @@ import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
 import AddForm from '@/components/form'
 import { useState } from 'react'
-import Gallery from '@/components/carousel/Gallery'
+import Gallery from '@/components/carousel'
 
 interface FilterContent {
   searchString: string
