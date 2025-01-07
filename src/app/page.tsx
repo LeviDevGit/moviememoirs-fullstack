@@ -1,12 +1,13 @@
 'use client'
 
-import { Card, Directional, Modal, Options, Search } from '@/components'
+import { Modal, Options, Search } from '@/components'
 import ModalDashboard from '@/components/dashboard/ModalDashboard'
 import DropdownFilter from '@/components/filter/DropdownFilter'
 import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
 import AddForm from '@/components/form'
 import { useState } from 'react'
+import Gallery from '@/components/carousel/Gallery'
 
 interface FilterContent {
   searchString: string
@@ -54,9 +55,7 @@ export default function Home() {
       ) : (
         toggleModal[1] && (
           <Modal set={setToggleModal} index={1}>
-            <ModalDashboard updaterState={updaterState}>
-              <div></div>
-            </ModalDashboard>
+            <ModalDashboard updaterState={updaterState} />
           </Modal>
         )
       )}
@@ -71,22 +70,11 @@ export default function Home() {
         </div>
         <Options openIt={setToggleModal} />
       </header>
-      <main className="w-full py-4">
-        <div className="relative flex w-full items-center justify-center gap-x-12 overflow-x-hidden py-4">
-          <Directional
-            onClick={() => handleDirectionChange(-1)}
-            dataLength={dataFetch.length}
-          />
-          {dataFetch[0] !== undefined &&
-            dataFetch.map((element, index) => (
-              <Card source={element} key={`${index}`} />
-            ))}
-          <Directional
-            left={false}
-            onClick={() => handleDirectionChange(1)}
-            dataLength={dataFetch.length}
-          />
-        </div>
+      <main className="w-full pt-4">
+        <Gallery
+          handleDirectionChange={handleDirectionChange}
+          dataFetch={dataFetch}
+        />
       </main>
     </div>
   )

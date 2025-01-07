@@ -71,7 +71,7 @@ function useSubmitData({
           }
         }
 
-        console.log(finalArray)
+        console.log(finalArray.slice(6, 12))
 
         setDataFetch(finalArray)
       } catch (error) {

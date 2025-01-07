@@ -55,7 +55,9 @@ function AddForm({ updaterState }: AddFormProps) {
         <Dropzone />
         <Textarea />
         <div className="flex w-full items-center justify-end">
-          <button type="submit">Registrar</button>
+          <button type="submit" className="rounded-xl bg-[#8f001a] p-2">
+            Registrar
+          </button>
         </div>
       </form>
     </div>

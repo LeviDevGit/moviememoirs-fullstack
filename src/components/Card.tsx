@@ -43,6 +43,8 @@ function Card({ source }: CardProps) {
             width={345}
             height={518}
             priority
+            placeholder="blur"
+            blurDataURL={source.movie.img}
             className="aspect-[345/518] rounded-md object-cover object-center shadow-imageShadow"
           />
         </div>

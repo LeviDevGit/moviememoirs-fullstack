@@ -15,11 +15,14 @@ export default async function handle(
   const pageNumber = Array.isArray(page) ? Number(page[0]) : Number(page)
 
   try {
-    const result = await prisma.movie.findMany({
+    const result = await prisma.view.findMany({
       skip: (pageNumber - 1) * 6,
       take: 6,
       orderBy: {
-        id: 'desc',
+        date: 'desc',
+      },
+      include: {
+        movie: true,
       },
     })
 
