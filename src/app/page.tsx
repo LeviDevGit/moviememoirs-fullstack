@@ -1,13 +1,13 @@
 'use client'
 
 import { Modal, Options, Search } from '@/components'
-import ModalDashboard from '@/components/dashboard/ModalDashboard'
 import DropdownFilter from '@/components/filter/DropdownFilter'
 import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
 import AddForm from '@/components/form'
 import { useState } from 'react'
 import Gallery from '@/components/carousel'
+import Hub from '@/components/dashboard'
 
 interface FilterContent {
   searchString: string
@@ -55,7 +55,7 @@ export default function Home() {
       ) : (
         toggleModal[1] && (
           <Modal set={setToggleModal} index={1}>
-            <ModalDashboard updaterState={updaterState} />
+            <Hub updaterState={updaterState} />
           </Modal>
         )
       )}

@@ -1,6 +1,6 @@
 function Textarea() {
   return (
-    <div className="flex flex-col text-xs">
+    <div className="flex flex-col gap-1 text-xs">
       <label>Comentário</label>
       <textarea
         name="commentary"

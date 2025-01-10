@@ -1,3 +1,5 @@
+import { X } from 'lucide-react'
+
 interface ToggleModalProps {
   index: number
   set: React.Dispatch<React.SetStateAction<boolean[]>>
@@ -26,7 +28,7 @@ function Dismiss({ index, set }: DismissProps) {
         }}
         className="rounded-xl p-3 text-white"
       >
-        x
+        <X />
       </button>
     </div>
   )

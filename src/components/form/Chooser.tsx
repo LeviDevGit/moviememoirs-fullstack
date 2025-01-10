@@ -1,8 +1,8 @@
 function Chooser() {
   return (
-    <div className="flex w-1/2 flex-col text-xs">
+    <div className="flex w-1/2 flex-col gap-1 text-xs">
       <label>
-        Tipo <strong>*</strong>
+        Tipo <strong className="text-red-600">*</strong>
       </label>
       <select
         name="type"

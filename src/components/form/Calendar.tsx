@@ -2,7 +2,7 @@ function Calendar() {
   return (
     <div className="flex w-1/2 flex-col gap-1 text-xs">
       <label>
-        Data de visualização <strong>*</strong>
+        Data de visualização <strong className="text-red-600">*</strong>
       </label>
       <input
         type="date"
