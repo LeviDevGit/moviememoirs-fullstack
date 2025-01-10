@@ -45,18 +45,33 @@ function Paginator({ handlePage, page }: PaginatorProps) {
         </button>
         <div className="flex w-[150px] gap-4">
           {counter &&
-            Array.from({ length: counter }).map(
-              (_, index) =>
-                (page === index + 1 ||
-                  (index <= page && index + 3 >= page) ||
-                  (index >= page && index - 1 <= page)) && (
+            Array.from({ length: counter }).map((_, index) =>
+              page === index + 1 ||
+              (index <= page && index + 3 >= page) ||
+              (index >= page &&
+                index - (page === 1 ? 3 : page === 2 ? 2 : 1) <= page) ? (
+                <div
+                  key={`${index}`}
+                  className={`${index + 1 === page && 'bg-blue-500'}`}
+                >
+                  <h2>{index + 1}</h2>
+                </div>
+              ) : (
+                index + 1 === counter &&
+                page + 2 !== counter && (
                   <div
                     key={`${index}`}
-                    className={`${index + 1 === page && 'bg-blue-500'}`}
+                    className={`flex w-[50px] gap-4 ${index + 1 === page && 'bg-red-500'}`}
                   >
-                    <h2>{index + 1}</h2>
+                    <div>
+                      <h2>...</h2>
+                    </div>
+                    <div>
+                      <h2>{index + 1}</h2>
+                    </div>
                   </div>
-                ),
+                )
+              ),
             )}
         </div>
         <button
