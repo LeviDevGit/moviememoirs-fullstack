@@ -24,12 +24,21 @@ function Hub({ updaterState }: HubProps) {
   >(undefined)
   const [page, setPage] = useState(1)
 
-  const submitData = async (pageProp: number) => {
+  const submitData = async (pageProp: number, filter: string | undefined) => {
+    let teste = ''
+
+    if (filter && filter !== '') {
+      teste = filter
+    }
+
     try {
-      const response = await fetch(`/api/pagination?page=${pageProp}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      })
+      const response = await fetch(
+        `/api/pagination?page=${pageProp}&filter=${teste}`,
+        {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        },
+      )
 
       const data = await response.json()
 
@@ -40,9 +49,11 @@ function Hub({ updaterState }: HubProps) {
     }
   }
 
+  const [filter, setFilter] = useState<string>()
+
   useEffect(() => {
-    submitData(page)
-  }, [page])
+    submitData(page, filter)
+  }, [page, filter])
 
   const deleteData = async (movieId: number, movieImagePath: string) => {
     try {
@@ -69,7 +80,7 @@ function Hub({ updaterState }: HubProps) {
   return (
     <div className="flex h-[620px] flex-col gap-3 rounded-2xl bg-[#27272a] p-7 text-xs text-white">
       <TopBar />
-      <Controls />
+      <Controls setFilter={setFilter} />
       <List data={data} setSafetyButton={setSafetyButton} />
       {safetyButton && (
         <Confirm
