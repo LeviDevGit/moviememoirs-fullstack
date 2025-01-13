@@ -9,7 +9,7 @@ function Modal({ set, index, children }: ModalProps) {
   return (
     <div className="absolute left-0 top-0 z-30 flex h-full w-full items-center justify-center bg-black/70">
       <div className="relative">
-        <div className="absolute right-1 top-0">
+        <div className="absolute right-0">
           <Dismiss set={set} index={index} />
         </div>
         <div>{children}</div>

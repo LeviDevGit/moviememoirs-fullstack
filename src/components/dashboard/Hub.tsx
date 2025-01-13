@@ -67,7 +67,7 @@ function Hub({ updaterState }: HubProps) {
   }
 
   return (
-    <div className="flex flex-col justify-between gap-3 rounded-2xl bg-[#27272a] p-5 text-xs text-white">
+    <div className="flex h-[620px] flex-col gap-3 rounded-2xl bg-[#27272a] p-7 text-xs text-white">
       <TopBar />
       <Controls />
       <List data={data} setSafetyButton={setSafetyButton} />
