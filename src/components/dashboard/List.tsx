@@ -42,7 +42,7 @@ function List({ data, setSafetyButton }: ListProps) {
                 <button
                   className="rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
                   onClick={() => {
-                    setSafetyButton([element.id, element.movie.img])
+                    setSafetyButton([element.movie.id, element.movie.img])
                   }}
                 >
                   Editar

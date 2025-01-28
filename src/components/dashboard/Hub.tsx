@@ -1,12 +1,6 @@
 import { dataFetchProps } from '@/types/interfaces'
 import { useEffect, useState } from 'react'
-import {
-  Confirm,
-  Controls,
-  List,
-  Paginator,
-  TopBar,
-} from '@/components/dashboard'
+import { Confirm, Controls, List, Paginator } from '@/components/dashboard'
 
 interface updaterStateProps {
   updater: boolean
@@ -79,7 +73,15 @@ function Hub({ updaterState }: HubProps) {
 
   return (
     <div className="flex h-[620px] flex-col gap-3 rounded-2xl bg-[#27272a] p-7 text-xs text-white">
-      <TopBar />
+      <div className="mb-5 flex flex-col gap-2">
+        <h1 className="text-2xl font-bold">
+          Lista de <span className="text-[#dd4d51]">Mídias</span>
+        </h1>
+        <p className="text-sm text-[#e0e0e0]">
+          Com este painel, organize, filtre e acompanhe suas mídias com
+          facilidade.
+        </p>
+      </div>
       <Controls setFilter={setFilter} />
       <List data={data} setSafetyButton={setSafetyButton} />
       {safetyButton && (
