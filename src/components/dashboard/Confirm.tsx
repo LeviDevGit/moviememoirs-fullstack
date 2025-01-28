@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { InputField } from '../form'
+import { Calendar, Chooser, InputField, Pair, Textarea } from '../form'
+import Image from 'next/image'
 
 interface ConfirmProps {
   deleteData: (movieId: number, movieImagePath: string) => Promise<void>
@@ -18,12 +19,12 @@ interface dataProps {
   value: number
   img: string
   type: string
-  view: {
+  views: {
     id: number
     date: Date
     commentary: string | null
     movieId: number
-  }
+  }[]
 }
 
 function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
@@ -51,32 +52,24 @@ function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
 
   return (
     <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/70">
-      <div className="flex w-[300px] flex-col gap-4 bg-white p-5">
-        <h1 className="text-center">Tem certeza disso?</h1>
-        <div className="flex items-center justify-between">
-          <button
-            className="border border-black text-green-500"
-            onClick={() => {
-              deleteData(safetyButton[0], safetyButton[1])
-              setSafetyButton(undefined)
-            }}
-          >
-            Sim, deletar
-          </button>
-          <button
-            className="border border-black text-red-500"
-            onClick={() => {
-              setSafetyButton(undefined)
-            }}
-          >
-            Cancelar
-          </button>
+      <div>
+        <div className="relative aspect-[345/518] shadow-cardShadow duration-[2500ms] hover:blur hover:grayscale">
+          {data && (
+            <Image
+              alt="Poster"
+              src={data?.img}
+              width={345}
+              height={518}
+              priority
+              className="aspect-[345/518] rounded-md object-cover object-center shadow-imageShadow"
+            />
+          )}
         </div>
       </div>
       <div className="page-specific w-[600px] rounded-2xl bg-[#27272a] p-5 text-white">
         <div className="mb-5 flex flex-col gap-2">
           <h1 className="text-xl font-medium">
-            Registrar <span className="text-[#dd4d51]">Mídia</span>
+            Editar <span className="text-[#dd4d51]">Mídia</span>
           </h1>
           <p className="text-xs text-[#e0e0e0]">
             Ajude a construir um registro detalhado do que você assiste.
@@ -89,36 +82,70 @@ function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
             autoComplete="off"
           >
             <InputField name="name" text="Nome" placeholder={data.name} />
-            {/* <Pair>
-            <Chooser />
-            <InputField
-              name="movieDate"
-              text="Lançamento"
-              placeholder="Ex: 2004"
-            />
-          </Pair>
-          <Pair>
-            <InputField name="time" text="Duração" placeholder="Ex: 2hr 2min" />
-            <InputField
-              name="direction"
-              text="Diretor(a)"
-              placeholder="Digite o nome do(a) diretor(a)"
-            />
-          </Pair>
-          <Pair>
-            <Calendar />
-            <InputField name="movieValue" text="Nota" placeholder="De 0 a 5" />
-          </Pair>
-          <Dropzone />
-          <Textarea />
-          <div className="flex w-full items-center justify-end">
-            <button
-              type="submit"
-              className="rounded-xl bg-[#8f001a] px-4 py-2 text-sm font-bold"
-            >
-              Registrar
-            </button>
-          </div> */}
+            <Pair>
+              <Chooser />
+              <InputField
+                name="movieDate"
+                text="Lançamento"
+                placeholder={data.date}
+              />
+            </Pair>
+            <Pair>
+              <InputField name="time" text="Duração" placeholder={data.time} />
+              <InputField
+                name="direction"
+                text="Diretor(a)"
+                placeholder={data.direction}
+              />
+            </Pair>
+            <div className="w-full">
+              <InputField
+                name="movieValue"
+                text="Nota"
+                placeholder={data.value.toString()}
+              />
+            </div>
+            {data.views.map((e) => (
+              <div
+                key={`${e.id}`}
+                className="flex items-center justify-between gap-6"
+              >
+                <Calendar
+                  custom={new Date(e.date).toISOString().slice(0, 10)}
+                />
+
+                <div className="w-1/2">
+                  <Textarea custom={e.commentary} />
+                </div>
+              </div>
+            ))}
+            <div className="flex items-center justify-between">
+              <button
+                className="rounded-xl bg-red-600 px-4 py-2 text-sm font-bold"
+                onClick={() => {
+                  deleteData(safetyButton[0], safetyButton[1])
+                  setSafetyButton(undefined)
+                }}
+              >
+                Deletar
+              </button>
+              <div className="flex w-full items-center justify-end gap-4">
+                <button
+                  className="rounded-xl px-4 py-2 text-sm font-bold"
+                  onClick={() => {
+                    setSafetyButton(undefined)
+                  }}
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  className="rounded-xl bg-green-600 px-4 py-2 text-sm font-bold"
+                >
+                  Salvar
+                </button>
+              </div>
+            </div>
           </form>
         )}
       </div>

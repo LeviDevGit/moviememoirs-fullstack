@@ -5,7 +5,9 @@ interface PairProps {
 }
 
 function Pair({ children }: PairProps) {
-  return <div className="flex items-center gap-6">{children}</div>
+  return (
+    <div className="flex items-center justify-between gap-6">{children}</div>
+  )
 }
 
 export default Pair
