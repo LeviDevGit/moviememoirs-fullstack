@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Calendar, Chooser, InputField, Pair, Textarea } from '../form'
+import { Calendar, Chooser, InputField, Textarea } from '../form'
 import Image from 'next/image'
 
 interface ConfirmProps {
@@ -82,22 +82,22 @@ function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
             autoComplete="off"
           >
             <InputField name="name" text="Nome" placeholder={data.name} />
-            <Pair>
+            <div className="flex items-center justify-between gap-6">
               <Chooser />
               <InputField
                 name="movieDate"
                 text="Lançamento"
                 placeholder={data.date}
               />
-            </Pair>
-            <Pair>
+            </div>
+            <div className="flex items-center justify-between gap-6">
               <InputField name="time" text="Duração" placeholder={data.time} />
               <InputField
                 name="direction"
                 text="Diretor(a)"
                 placeholder={data.direction}
               />
-            </Pair>
+            </div>
             <div className="w-full">
               <InputField
                 name="movieValue"

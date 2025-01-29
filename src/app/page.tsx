@@ -4,10 +4,10 @@ import { Modal, Options, Search } from '@/components'
 import DropdownFilter from '@/components/filter/DropdownFilter'
 import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
-import AddForm from '@/components/form'
 import { useState } from 'react'
 import Gallery from '@/components/carousel'
 import Hub from '@/components/dashboard'
+import Form from '@/components/form'
 
 interface FilterContent {
   searchString: string
@@ -50,7 +50,7 @@ export default function Home() {
     <div className="relative flex h-full w-full flex-col items-center gap-8 p-10">
       {toggleModal[0] ? (
         <Modal set={setToggleModal} index={0}>
-          <AddForm updaterState={updaterState} />
+          <Form updaterState={updaterState} />
         </Modal>
       ) : (
         toggleModal[1] && (
