@@ -33,7 +33,6 @@ export default function Home() {
 
   // State updater
   const [updater, setUpdater] = useState<boolean>(false)
-
   const updaterState = { updater, setUpdater }
 
   // Central hook: setup data
