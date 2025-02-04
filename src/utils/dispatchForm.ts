@@ -15,7 +15,7 @@ async function dispatchForm({ e, updaterState }: dispatchFormProps) {
     const formData = new FormData(e.currentTarget)
     console.log(formData)
 
-    const response = await fetch('/api/post', {
+    const response = await fetch('/api/create', {
       method: 'POST',
       body: formData,
     })
