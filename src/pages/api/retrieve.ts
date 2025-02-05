@@ -1,10 +1,8 @@
+import { withPrismaError } from '@/lib/errorHandler'
 import prisma from '@/lib/prisma'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handle(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+async function handle(req: NextApiRequest, res: NextApiResponse) {
   const { mediaId } = req.query
 
   const result = await prisma.movie.findUniqueOrThrow({
@@ -18,3 +16,5 @@ export default async function handle(
 
   return res.json(result)
 }
+
+export default withPrismaError(handle)

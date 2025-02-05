@@ -44,11 +44,7 @@ function Form({ updaterState }: FormProps) {
           />
           <div className="flex items-center justify-between gap-6">
             <Chooser />
-            <InputField
-              name="movieDate"
-              text="Lançamento"
-              placeholder="Ex: 2004"
-            />
+            <InputField name="year" text="Lançamento" placeholder="Ex: 2004" />
           </div>
           <div className="flex items-center justify-between gap-6">
             <InputField name="time" text="Duração" placeholder="Ex: 2hr 2min" />
@@ -60,7 +56,7 @@ function Form({ updaterState }: FormProps) {
           </div>
           <div className="flex items-center justify-between gap-6">
             <Calendar />
-            <InputField text="Id" placeholder="IMDB" />
+            <InputField name="imdb" text="Id" placeholder="IMDB" />
           </div>
           <Textarea />
           <div className="flex w-full items-center justify-end">

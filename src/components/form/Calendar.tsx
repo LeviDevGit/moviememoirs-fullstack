@@ -12,7 +12,7 @@ function Calendar({
       </label>
       <input
         type="date"
-        name="viewDate"
+        name="date"
         className="rounded-xl border border-gray-500 bg-transparent p-2"
         defaultValue={custom}
         max={new Date().toISOString().slice(0, 10)}

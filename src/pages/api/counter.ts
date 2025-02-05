@@ -1,5 +1,5 @@
+import { withPrismaError } from '@/lib/errorHandler'
 import prisma from '@/lib/prisma'
-import { Prisma } from '@prisma/client'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 async function handle(req: NextApiRequest, res: NextApiResponse) {
@@ -7,24 +7,9 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     return res.status(405).json({ error: 'Método não permitido' })
   }
 
-  try {
-    const counter = await prisma.view.count()
+  const counter = await prisma.view.count()
 
-    return res.json(counter)
-  } catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      if (error.code === 'P2002') {
-        console.log(
-          'There is a unique constraint violation, a new user cannot be created with this email',
-        )
-      }
-      res.status(500).json({
-        error: 'Prisma error',
-        message: error.message,
-        code: error.code,
-      })
-    }
-  }
+  return res.json(counter)
 }
 
-export default handle
+export default withPrismaError(handle)

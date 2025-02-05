@@ -14,6 +14,7 @@ function Rating(
         const isHalf = offsetX < clientWidth / 2
         setRating(i + 0.5 + (isHalf ? 0 : 0.5))
       }}
+      type="button"
     >
       {rating >= i + 1 ? (
         <Star

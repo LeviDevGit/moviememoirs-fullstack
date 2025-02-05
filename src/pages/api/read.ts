@@ -1,11 +1,9 @@
+import { withPrismaError } from '@/lib/errorHandler'
 import prisma from '@/lib/prisma'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 // GET /api/read
-export default async function handle(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+async function handle(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Método não permitido' })
   }
@@ -25,7 +23,7 @@ export default async function handle(
         direction: {
           contains: getFirstOrValue(directorString),
         },
-        date: getFirstOrValue(yearString),
+        year: getFirstOrValue(yearString),
         value:
           valueString && !isNaN(Number(valueString))
             ? {
@@ -44,3 +42,5 @@ export default async function handle(
 
   return res.json(result)
 }
+
+export default withPrismaError(handle)

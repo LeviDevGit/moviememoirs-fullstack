@@ -22,6 +22,8 @@ async function dispatchForm({ e, updaterState }: dispatchFormProps) {
 
     const data = await response.json()
 
+    console.log(data)
+
     if (data) updaterState.setUpdater(!updaterState.updater)
   } catch (error) {
     console.log('Erro dentro da requisição')

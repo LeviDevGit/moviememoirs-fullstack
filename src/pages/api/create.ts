@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { Files, IncomingForm } from 'formidable'
 import prisma from '@/lib/prisma'
 import path from 'path'
-import { Prisma } from '@prisma/client'
 import { withPrismaError } from '@/lib/errorHandler'
 
 export const config = {
@@ -12,20 +11,20 @@ export const config = {
 }
 
 interface FormFields {
-  movieDate: string[]
+  year: string[]
   direction: string[]
   name: string[]
   time: string[]
   type: string[]
-  movieValue: string[]
-  viewDate: string[]
+  value: string[]
+  date: string[]
+  imdb: string[]
   commentary?: string[]
 }
 
 interface jsonArrayProps {
   id: number
   name: string
-  date: string
   time: string
   direction: string
   value: number
@@ -35,39 +34,39 @@ interface jsonArrayProps {
 
 // CREATE /api/create
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // const publicDir = path.join(process.cwd(), 'public', 'uploads')
+  const publicDir = path.join(process.cwd(), 'public', 'uploads')
 
-  // const latestQuery = await prisma.movie.findFirst({
-  //   orderBy: {
-  //     id: 'desc',
-  //   },
-  // })
+  const latestQuery = await prisma.movie.findFirst({
+    orderBy: {
+      id: 'desc',
+    },
+  })
 
-  // function obterProximoNumero(jsonArray: jsonArrayProps) {
-  //   const ultimoElemento = jsonArray
-  //   const regex = /(\d+)\.jpg$/
+  function obterProximoNumero(jsonArray: jsonArrayProps) {
+    const ultimoElemento = jsonArray
+    const regex = /(\d+)\.jpg$/
 
-  //   const match = ultimoElemento.img.match(regex)
-  //   if (match) {
-  //     const numeroAtual = parseInt(match[1], 10)
-  //     return numeroAtual + 1
-  //   }
-  //   throw new Error('Caminho inválido no último elemento do JSON')
-  // }
+    const match = ultimoElemento.img.match(regex)
+    if (match) {
+      const numeroAtual = parseInt(match[1], 10)
+      return numeroAtual + 1
+    }
+    throw new Error('Caminho inválido no último elemento do JSON')
+  }
 
   const { fields, files }: { fields: FormFields; files: Files } =
     await new Promise((resolve, reject) => {
       const form = new IncomingForm({
-        // uploadDir: publicDir,
-        // keepExtensions: true,
-        // filename: (name, ext, part) => {
-        //   if (latestQuery) {
-        //     const novoNumero = obterProximoNumero(latestQuery)
-        //     return `${novoNumero}${ext}`
-        //   } else {
-        //     return part.originalFilename || `unknown-file${ext}`
-        //   }
-        // },
+        uploadDir: publicDir,
+        keepExtensions: true,
+        filename: (name, ext, part) => {
+          if (latestQuery) {
+            const novoNumero = obterProximoNumero(latestQuery)
+            return `${novoNumero}${ext}`
+          } else {
+            return part.originalFilename || `unknown-file${ext}`
+          }
+        },
       })
 
       form.parse(req, (err, fields, files) => {
@@ -78,41 +77,46 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       })
     })
 
-  // const file = files.file
-
-  // const publicUrl = `/uploads/${path.basename(file![0].filepath)}`
-
   function convertToDate(dateString: string): string {
     const [day, month, year] = dateString.split('/')
     return `${year}-${month}-${day}`
   }
 
-  const viewDate = convertToDate(fields.viewDate![0])
-  const commentaryValidated =
-    fields.commentary && fields.commentary[0] !== ''
-      ? fields.commentary[0]
-      : null
+  const viewDate = convertToDate(fields.date![0])
 
   const result = await prisma.movie.create({
     data: {
-      date: fields.movieDate![0],
-      direction: fields.direction![0],
-      // img: publicUrl,
-      img: 'Teste/uploads',
       name: fields.name![0],
-      time: fields.time![0],
       type: fields.type![0],
-      value: Number(fields.movieValue![0]),
+      year: fields.year![0],
+      time: fields.time![0],
+      direction: fields.direction![0],
+      imdb: fields.imdb[0],
+      img: '',
+      // value: Number(fields.movieValue![0]),
+      value: 5,
       views: {
         create: {
           date: new Date(viewDate),
-          commentary: commentaryValidated,
+          commentary: fields.commentary![0],
         },
       },
     },
   })
 
-  res.status(200).json(result)
+  if (files.file) {
+    const publicUrl = `/uploads/${path.basename(files.file[0].filepath)}`
+
+    const addition = await prisma.movie.update({
+      where: {
+        id: result.id,
+      },
+      data: {
+        img: publicUrl,
+      },
+    })
+    res.status(200).json(addition)
+  }
 }
 
 export default withPrismaError(handler)
