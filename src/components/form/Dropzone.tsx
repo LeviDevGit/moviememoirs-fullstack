@@ -17,34 +17,34 @@ function Dropzone() {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center rounded-xl border border-dotted border-gray-500 p-2">
-      <label className="h-full w-full cursor-pointer">
-        {file ? (
-          <div className="w-[200px]">
-            <Image
-              src={URL.createObjectURL(file)}
-              alt="Poster"
-              width={300}
-              height={300}
-            />
-          </div>
-        ) : (
-          <div className="flex h-full flex-col items-center justify-center gap-2 py-5 text-xs">
-            <ImageUp strokeWidth={1} className="h-[2em] w-[2em]" />
-            <p className="text-center">
-              Solte um poster ou <br /> <strong>Explore arquivos .JPG</strong>
-            </p>
-          </div>
-        )}
-        <input
-          type="file"
-          name="file"
-          accept=".jpg"
-          className="hidden"
-          onChange={handleFileChange}
-        />
-      </label>
-    </div>
+    <label className="h-[330px] w-[220px] cursor-pointer border border-dotted border-gray-500">
+      {file ? (
+        <div className="w-full shadow-cardShadow">
+          <Image
+            alt="Poster"
+            src={URL.createObjectURL(file)}
+            width={220}
+            height={330}
+            priority
+            className="h-[330px] w-[220px] rounded-md object-cover object-center shadow-imageShadow"
+          />
+        </div>
+      ) : (
+        <div className="flex h-full flex-col items-center justify-center gap-2 py-5 text-xs">
+          <ImageUp strokeWidth={1} className="h-[2em] w-[2em]" />
+          <p className="text-center">
+            Solte um poster ou <br /> <strong>Explore arquivos .JPG</strong>
+          </p>
+        </div>
+      )}
+      <input
+        type="file"
+        name="file"
+        accept=".jpg"
+        className="hidden"
+        onChange={handleFileChange}
+      />
+    </label>
   )
 }
 

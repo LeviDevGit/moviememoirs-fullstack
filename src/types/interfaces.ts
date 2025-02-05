@@ -2,13 +2,14 @@ export interface CardProps {
   source: {
     movie: {
       id: number
-      date: string
       name: string
+      year: string
       time: string
       direction: string
       value: number
       img: string
       type: string
+      imdb: string
     }
   } & {
     id: number
@@ -21,13 +22,14 @@ export interface CardProps {
 export type dataFetchProps = ({
   movie: {
     id: number
-    date: string
     name: string
+    year: string
     time: string
     direction: string
     value: number
     img: string
     type: string
+    imdb: string
   }
 } & {
   id: number

@@ -18,22 +18,22 @@ function Rating(
     >
       {rating >= i + 1 ? (
         <Star
-          width={50}
-          height={50}
+          width={40}
+          height={40}
           className="text-[#ffff00]"
           fill="#ffff00"
           strokeWidth={0}
         />
       ) : rating - i === 0.5 ? (
         <StarHalf
-          width={50}
-          height={50}
+          width={40}
+          height={40}
           className="text-[#ffff00]"
           fill="#ffff00"
           strokeWidth={0}
         />
       ) : (
-        <Star width={50} height={50} fill="white" strokeWidth={0} />
+        <Star width={40} height={40} fill="white" strokeWidth={0} />
       )}
     </button>
   ))
@@ -42,7 +42,12 @@ function Rating(
 function Rater() {
   const [rating, setRating] = useState(0)
 
-  return <div className="flex">{Rating(setRating, rating)}</div>
+  return (
+    <div className="flex w-[220px] items-center justify-center">
+      {Rating(setRating, rating)}
+      <input type="hidden" name="value" value={rating} />
+    </div>
+  )
 }
 
 export default Rater

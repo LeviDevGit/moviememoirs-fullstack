@@ -59,13 +59,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       const form = new IncomingForm({
         uploadDir: publicDir,
         keepExtensions: true,
-        filename: (name, ext, part) => {
-          if (latestQuery) {
-            const novoNumero = obterProximoNumero(latestQuery)
-            return `${novoNumero}${ext}`
-          } else {
-            return part.originalFilename || `unknown-file${ext}`
-          }
+        filename: (_, ext) => {
+          const novoNumero = latestQuery ? obterProximoNumero(latestQuery) : 1
+          return `${novoNumero}${ext}`
         },
       })
 
@@ -93,8 +89,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       direction: fields.direction![0],
       imdb: fields.imdb[0],
       img: '',
-      // value: Number(fields.movieValue![0]),
-      value: 5,
+      value: Number(fields.value![0]),
       views: {
         create: {
           date: new Date(viewDate),
