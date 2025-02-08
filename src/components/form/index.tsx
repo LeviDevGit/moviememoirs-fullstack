@@ -18,7 +18,7 @@ interface FormProps {
 
 function Form({ updaterState }: FormProps) {
   return (
-    <div className="page-specific w-[700px] rounded-2xl bg-[#27272a] p-5 text-white">
+    <div className="page-specific w-[700px] rounded-lg bg-[#27272a] p-5 text-white">
       <div className="mb-5 flex flex-col gap-2">
         <h1 className="text-xl font-medium">
           Registrar <span className="text-[#dd4d51]">Mídia</span>
@@ -28,15 +28,15 @@ function Form({ updaterState }: FormProps) {
         </p>
       </div>
       <form
-        className="flex h-full w-full justify-between"
+        className="flex justify-between"
         onSubmit={(e) => dispatchForm({ e, updaterState })}
         autoComplete="off"
       >
-        <div className="flex flex-col items-center gap-4 border border-red-500">
+        <div className="flex flex-col items-center gap-4">
           <Dropzone />
           <Rater />
         </div>
-        <div>
+        <div className="h-11/12 flex flex-col justify-between">
           <InputField
             name="name"
             text="Nome"

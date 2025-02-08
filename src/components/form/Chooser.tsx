@@ -6,7 +6,6 @@ function Chooser() {
       </label>
       <select
         name="type"
-        required
         className="rounded-xl border border-gray-500 bg-transparent p-2"
       >
         <option value="MOVIE">Filme</option>

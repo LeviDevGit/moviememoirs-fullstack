@@ -27,6 +27,22 @@ interface dataProps {
   }[]
 }
 
+async function updateMedia(id: number, e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault()
+  const formData = new FormData(e.currentTarget)
+
+  if (formData) {
+    const response = await fetch(`/api/update?mediaid=${id}`, {
+      method: 'PATCH',
+      body: formData,
+    })
+
+    const data = await response.json()
+
+    console.log(data)
+  }
+}
+
 function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
   const [data, setData] = useState<dataProps>()
 
@@ -78,8 +94,8 @@ function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
         {data && (
           <form
             className="flex flex-col gap-3"
-            // onSubmit={(e) => dispatchForm({ e, updaterState })}
             autoComplete="off"
+            onSubmit={(e) => updateMedia(safetyButton[0], e)}
           >
             <InputField name="name" text="Nome" placeholder={data.name} />
             <div className="flex items-center justify-between gap-6">
@@ -126,6 +142,7 @@ function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
                   deleteData(safetyButton[0], safetyButton[1])
                   setSafetyButton(undefined)
                 }}
+                type="button"
               >
                 Deletar
               </button>
@@ -135,6 +152,7 @@ function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
                   onClick={() => {
                     setSafetyButton(undefined)
                   }}
+                  type="button"
                 >
                   Cancelar
                 </button>

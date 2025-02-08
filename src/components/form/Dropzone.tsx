@@ -17,7 +17,7 @@ function Dropzone() {
   }
 
   return (
-    <label className="h-[330px] w-[220px] cursor-pointer border border-dotted border-gray-500">
+    <label className="h-[330px] w-[220px] cursor-pointer rounded-md border border-dotted border-gray-500">
       {file ? (
         <div className="w-full shadow-cardShadow">
           <Image

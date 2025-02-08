@@ -12,7 +12,7 @@ async function main() {
     await prisma.movie.create({
       data: {
         name: movie.name,
-        date: movie.date,
+        year: movie.date,
         time: movie.time,
         direction: movie.direction,
         value: movie.value,
@@ -24,6 +24,7 @@ async function main() {
             date: convertToDate(viewDate),
           })),
         },
+        imdb: '',
       },
     })
   }

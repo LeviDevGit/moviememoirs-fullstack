@@ -3512,5 +3512,18 @@
     "value": 4,
     "img": "/posters/270.jpg",
     "type": "Movie"
+  },
+  {
+    "id": 271,
+    "name": "A Primeira Noite de um Homem",
+    "date": "1967",
+    "time": "1hr 46min",
+    "direction": "    Mike Nichols",
+    "view": [
+      "07/01/2024"
+    ],
+    "value": 4,
+    "img": "/posters/271.jpg",
+    "type": "Movie"
   }
 ]}

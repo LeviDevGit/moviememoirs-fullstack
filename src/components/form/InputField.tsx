@@ -13,7 +13,6 @@ function InputField({ text, ...rest }: InputFieldProps) {
       <input
         type="text"
         {...rest}
-        required
         className="h-[32px] rounded-xl border border-gray-500 bg-transparent p-2"
       />
     </div>
