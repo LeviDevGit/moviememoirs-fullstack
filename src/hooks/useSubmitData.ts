@@ -2,10 +2,7 @@ import { dataFetchProps } from '@/types/interfaces'
 import { useEffect } from 'react'
 
 interface useSubmitDataProps {
-  direction: {
-    start: number
-    end: number
-  }
+  direction: number
   filterContent: {
     searchString: string
     directorString: string | undefined
@@ -14,6 +11,7 @@ interface useSubmitDataProps {
   }
   setDataFetch: (value: React.SetStateAction<dataFetchProps>) => void
   updater: boolean
+  setTotalItems: React.Dispatch<React.SetStateAction<number>>
 }
 
 function useSubmitData({
@@ -21,65 +19,44 @@ function useSubmitData({
   filterContent,
   setDataFetch,
   updater,
+  setTotalItems,
 }: useSubmitDataProps) {
   useEffect(() => {
     const submitData = async () => {
       try {
         console.log(filterContent)
 
-        const queryParams = new URLSearchParams()
-
-        if (filterContent.searchString) {
-          queryParams.append('searchString', filterContent.searchString)
-        }
-
-        if (filterContent.directorString) {
-          queryParams.append('directorString', filterContent.directorString)
-        }
-
-        if (filterContent.yearString) {
-          queryParams.append('yearString', filterContent.yearString)
-        }
-
-        if (filterContent.valueString) {
-          queryParams.append('valueString', filterContent.valueString)
-        }
-
-        const response = await fetch(`/api/read?${queryParams.toString()}`, {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' },
+        const filters = new URLSearchParams({
+          name: filterContent.searchString.toString(),
+          director: filterContent.directorString
+            ? filterContent.directorString.toString()
+            : '',
+          year: filterContent.yearString
+            ? filterContent.yearString.toString()
+            : '',
+          value: filterContent.valueString
+            ? filterContent.valueString.toString()
+            : '',
         })
+
+        const response = await fetch(
+          `api/read?start=${direction}&${filters.toString()}`,
+          {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+          },
+        )
 
         const data = await response.json()
 
-        let modifiedData = data
-        console.log(data)
-
-        const lastItem = modifiedData.pop()
-
-        modifiedData = [lastItem, ...modifiedData]
-
-        const finalArray: dataFetchProps = []
-
-        for (let index = direction.start; index < direction.end; index++) {
-          const adjustedIndex =
-            ((index % modifiedData.length) + modifiedData.length) %
-            modifiedData.length
-
-          if (!finalArray.includes(modifiedData[adjustedIndex])) {
-            finalArray.push(modifiedData[adjustedIndex])
-          }
-        }
-
-        console.log(finalArray.slice(6, 12))
-
-        setDataFetch(finalArray)
+        setTotalItems(data.totalItems)
+        setDataFetch(data.items)
       } catch (error) {
         console.error(error)
       }
     }
 
     submitData()
-  }, [direction, filterContent, setDataFetch, updater])
+  }, [direction, filterContent, setDataFetch, updater, setTotalItems])
 }
 export default useSubmitData

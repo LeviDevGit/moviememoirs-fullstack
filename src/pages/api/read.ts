@@ -8,39 +8,69 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     return res.status(405).json({ error: 'Método não permitido' })
   }
 
-  const { searchString, directorString, yearString, valueString } = req.query
+  const { start } = req.query
 
-  function getFirstOrValue(value: string | string[] | undefined) {
-    return Array.isArray(value) ? value[0] : value
+  const whereCondition = {
+    movie: {
+      name: {
+        contains: req.query.name ? req.query.name.toString() : '',
+      },
+      direction: req.query.director
+        ? { contains: req.query.director as string }
+        : undefined,
+      year:
+        req.query.year && req.query.year !== ''
+          ? req.query.year.toString()
+          : undefined,
+      value: req.query.value ? Number(req.query.value) : undefined,
+    },
   }
 
-  const result = await prisma.view.findMany({
-    where: {
-      movie: {
-        name: {
-          contains: getFirstOrValue(searchString),
-        },
-        direction: {
-          contains: getFirstOrValue(directorString),
-        },
-        year: getFirstOrValue(yearString),
-        value:
-          valueString && !isNaN(Number(valueString))
-            ? {
-                equals: Number(valueString),
-              }
-            : undefined,
-      },
-    },
+  const totalItems = await prisma.view.count({
+    where: whereCondition,
+  })
+
+  let items = await prisma.view.findMany({
+    where: whereCondition,
     include: {
       movie: true,
     },
     orderBy: {
       date: 'desc',
     },
+    take: Number(start) === 0 ? 5 : 6,
+    skip: Number(start),
   })
 
-  return res.json(result)
+  // Se o carrossel estiver no começo, buscar os últimos itens para completar a rotação
+  if (Number(start) === 0 && totalItems > 1) {
+    const extraItems = await prisma.view.findFirst({
+      where: whereCondition,
+      include: {
+        movie: true,
+      },
+      orderBy: {
+        date: 'asc',
+      },
+    })
+    if (extraItems) items = [extraItems, ...items]
+  }
+
+  if (Number(start) + 6 > totalItems) {
+    const extraItems = await prisma.view.findMany({
+      where: whereCondition,
+      take: (Number(start) + 6) % totalItems,
+      include: {
+        movie: true,
+      },
+      orderBy: {
+        date: 'desc',
+      },
+    })
+    items = [...items, ...extraItems]
+  }
+
+  return res.json({ items, totalItems })
 }
 
 export default withPrismaError(handle)

@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Calendar, Chooser, InputField, Textarea } from '../form'
 import Image from 'next/image'
+import { Plus } from 'lucide-react'
+
+interface updaterStateProps {
+  updater: boolean
+  setUpdater: React.Dispatch<React.SetStateAction<boolean>>
+}
 
 interface ConfirmProps {
-  deleteData: (movieId: number, movieImagePath: string) => Promise<void>
+  updaterState: updaterStateProps
   safetyButton: [number, string]
   setSafetyButton: (
     value: React.SetStateAction<[number, string] | undefined>,
@@ -12,13 +18,14 @@ interface ConfirmProps {
 
 interface dataProps {
   id: number
-  date: string
+  year: string
   name: string
   time: string
   direction: string
   value: number
   img: string
   type: string
+  imdb: string
   views: {
     id: number
     date: Date
@@ -43,7 +50,29 @@ async function updateMedia(id: number, e: React.FormEvent<HTMLFormElement>) {
   }
 }
 
-function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
+async function deleteData(
+  movieId: number,
+  movieImagePath: string,
+  updaterState: updaterStateProps,
+) {
+  try {
+    await fetch('/api/delete', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ movieId, movieImagePath }),
+    })
+  } catch (error) {
+    console.error(error)
+  } finally {
+    updaterState.setUpdater(!updaterState.updater)
+  }
+}
+
+function Confirm({
+  updaterState,
+  safetyButton,
+  setSafetyButton,
+}: ConfirmProps) {
   const [data, setData] = useState<dataProps>()
 
   const submitData = async (id: number) => {
@@ -93,7 +122,7 @@ function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
         </div>
         {data && (
           <form
-            className="flex flex-col gap-3"
+            className="flex w-full flex-col gap-3"
             autoComplete="off"
             onSubmit={(e) => updateMedia(safetyButton[0], e)}
           >
@@ -103,7 +132,7 @@ function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
               <InputField
                 name="movieDate"
                 text="Lançamento"
-                placeholder={data.date}
+                placeholder={data.year}
               />
             </div>
             <div className="flex items-center justify-between gap-6">
@@ -114,32 +143,45 @@ function Confirm({ deleteData, safetyButton, setSafetyButton }: ConfirmProps) {
                 placeholder={data.direction}
               />
             </div>
-            <div className="w-full">
+            <div className="flex items-center justify-between gap-6">
               <InputField
                 name="movieValue"
                 text="Nota"
                 placeholder={data.value.toString()}
               />
+              <InputField name="imdb" text="Id" placeholder={data.imdb} />
             </div>
-            {data.views.map((e) => (
-              <div
-                key={`${e.id}`}
-                className="flex items-center justify-between gap-6"
-              >
-                <Calendar
-                  custom={new Date(e.date).toISOString().slice(0, 10)}
-                />
-
-                <div className="w-1/2">
-                  <Textarea custom={e.commentary} />
+            <div className="bg-[#18181B] p-2">
+              <div className="flex flex-col">
+                <button className="self-end">
+                  <Plus />
+                </button>
+                <div className="flex">
+                  <Calendar />
+                  <div className="w-1/2">
+                    <Textarea />
+                  </div>
                 </div>
+                {data.views.map((e) => (
+                  <div
+                    key={`${e.id}`}
+                    className="flex items-center justify-between gap-6"
+                  >
+                    <Calendar
+                      custom={new Date(e.date).toISOString().slice(0, 10)}
+                    />
+                    <div className="w-1/2">
+                      <Textarea custom={e.commentary} />
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
             <div className="flex items-center justify-between">
               <button
                 className="rounded-xl bg-red-600 px-4 py-2 text-sm font-bold"
                 onClick={() => {
-                  deleteData(safetyButton[0], safetyButton[1])
+                  deleteData(safetyButton[0], safetyButton[1], updaterState)
                   setSafetyButton(undefined)
                 }}
                 type="button"

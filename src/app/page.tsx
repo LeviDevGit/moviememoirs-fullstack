@@ -6,8 +6,8 @@ import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
 import { useState } from 'react'
 import Gallery from '@/components/carousel'
-import Hub from '@/components/dashboard'
 import Form from '@/components/form'
+import Dashboard from '@/components/dashboard'
 
 interface FilterContent {
   searchString: string
@@ -25,7 +25,8 @@ const initialFilterContent: FilterContent = {
 
 export default function Home() {
   const [dataFetch, setDataFetch] = useState<dataFetchProps>([])
-  const [direction, setDirection] = useState({ start: -6, end: 12 })
+  const [direction, setDirection] = useState(0)
+  const [totalItems, setTotalItems] = useState(0)
   // 0: Form, 1: Managment, 2: Filter
   const [toggleModal, setToggleModal] = useState([false, false, false])
   const [filterContent, setFilterContent] =
@@ -36,13 +37,32 @@ export default function Home() {
   const updaterState = { updater, setUpdater }
 
   // Central hook: setup data
-  useSubmitData({ direction, filterContent, setDataFetch, updater })
+  useSubmitData({
+    direction,
+    filterContent,
+    setDataFetch,
+    updater,
+    setTotalItems,
+  })
 
   const handleDirectionChange = (operation: number) => {
-    setDirection({
-      start: direction.start + operation,
-      end: direction.end + operation,
-    })
+    let newStart = direction + operation
+
+    if (newStart < 0) {
+      if (newStart === -1) {
+        newStart = totalItems - 2
+      } else {
+        newStart = totalItems - 1
+      }
+    }
+
+    // Se ultrapassar o último índice, volta para 0
+    if (newStart >= totalItems) {
+      newStart = 0
+    }
+
+    console.log(newStart)
+    setDirection(newStart)
   }
 
   return (
@@ -54,7 +74,7 @@ export default function Home() {
       ) : (
         toggleModal[1] && (
           <Modal set={setToggleModal} index={1}>
-            <Hub updaterState={updaterState} />
+            <Dashboard updaterState={updaterState} />
           </Modal>
         )
       )}

@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 function Card({ source }: CardProps) {
   return (
-    <div className="flex max-h-[696px] w-fit flex-col items-center rounded-md text-white">
+    <div className="flex max-h-[696px] w-fit flex-col items-center rounded-md bg-[#27272a] p-4 pb-0 text-white">
       <div className="group relative w-fit">
         <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 opacity-0 blur duration-[1000ms] group-hover:opacity-100 group-hover:blur-none">
           <div className="flex flex-col items-center">

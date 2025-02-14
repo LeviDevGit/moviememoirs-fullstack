@@ -33,7 +33,7 @@ function List({ data, setSafetyButton }: ListProps) {
             <div className="mx-1 my-1 grid h-[40px] auto-cols-auto grid-flow-col items-center justify-between rounded-lg px-4 text-[#e0e0e0] hover:bg-black/10">
               <p className="w-[400px]">{element.movie.name}</p>
               <h1 className="w-[200px] truncate">{element.movie.direction}</h1>
-              <h1 className="w-[60px]">{element.movie.date}</h1>
+              <h1 className="w-[60px]">{element.movie.year}</h1>
               <h1 className="w-[60px]">{element.movie.type}</h1>
               <h1 className="w-[80px]">
                 {new Date(element.date).toLocaleDateString()}

@@ -8,7 +8,7 @@ interface GalleryProps {
 
 function Gallery({ handleDirectionChange, dataFetch }: GalleryProps) {
   return (
-    <div className="relative flex w-full items-center justify-center gap-x-12 overflow-x-hidden py-4">
+    <div className="relative flex w-full items-center justify-center gap-x-6 overflow-x-hidden py-4">
       <Directional
         onClick={() => handleDirectionChange(-1)}
         dataLength={dataFetch.length}

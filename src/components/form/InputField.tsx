@@ -5,7 +5,7 @@ interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
 function InputField({ text, ...rest }: InputFieldProps) {
   return (
     <div
-      className={`flex flex-col gap-1 text-xs ${text !== 'Nome' && 'w-1/2'}`}
+      className={`flex w-full flex-col gap-1 text-xs ${text !== 'Nome' && 'w-1/2'}`}
     >
       <label>
         {text} <strong className="text-red-600">*</strong>
