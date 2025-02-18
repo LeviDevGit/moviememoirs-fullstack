@@ -17,6 +17,7 @@ export interface CardProps {
     commentary: string | null
     movieId: number
   }
+  setToggleDetail: React.Dispatch<React.SetStateAction<number | undefined>>
 }
 
 export type dataFetchProps = ({
@@ -37,3 +38,23 @@ export type dataFetchProps = ({
   commentary: string | null
   movieId: number
 })[]
+
+export interface PaginatedData {
+  id: number
+  name: string
+  year: string
+  time: string
+  direction: string
+  value: number
+  img: string
+  type: string
+  imdb: string
+  views: [
+    {
+      id: number
+      date: Date
+      commentary: string | null
+      movieId: number
+    },
+  ]
+}

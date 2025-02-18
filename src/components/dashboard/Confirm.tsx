@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Calendar, Chooser, InputField, Textarea } from '../form'
+import { Chooser, InputField } from '../form'
 import Image from 'next/image'
-import { Plus } from 'lucide-react'
+import Visualization from './confirm/Visualization'
 
 interface updaterStateProps {
   updater: boolean
@@ -34,9 +34,17 @@ interface dataProps {
   }[]
 }
 
-async function updateMedia(id: number, e: React.FormEvent<HTMLFormElement>) {
+async function updateMedia(
+  id: number,
+  e: React.FormEvent<HTMLFormElement>,
+  setSafetyButton: (
+    value: React.SetStateAction<[number, string] | undefined>,
+  ) => void,
+) {
   e.preventDefault()
   const formData = new FormData(e.currentTarget)
+
+  console.log(formData)
 
   if (formData) {
     const response = await fetch(`/api/update?mediaid=${id}`, {
@@ -47,6 +55,7 @@ async function updateMedia(id: number, e: React.FormEvent<HTMLFormElement>) {
     const data = await response.json()
 
     console.log(data)
+    if (data) setSafetyButton(undefined)
   }
 }
 
@@ -124,7 +133,7 @@ function Confirm({
           <form
             className="flex w-full flex-col gap-3"
             autoComplete="off"
-            onSubmit={(e) => updateMedia(safetyButton[0], e)}
+            onSubmit={(e) => updateMedia(safetyButton[0], e, setSafetyButton)}
           >
             <InputField name="name" text="Nome" placeholder={data.name} />
             <div className="flex items-center justify-between gap-6">
@@ -151,32 +160,7 @@ function Confirm({
               />
               <InputField name="imdb" text="Id" placeholder={data.imdb} />
             </div>
-            <div className="bg-[#18181B] p-2">
-              <div className="flex flex-col">
-                <button className="self-end">
-                  <Plus />
-                </button>
-                <div className="flex">
-                  <Calendar />
-                  <div className="w-1/2">
-                    <Textarea />
-                  </div>
-                </div>
-                {data.views.map((e) => (
-                  <div
-                    key={`${e.id}`}
-                    className="flex items-center justify-between gap-6"
-                  >
-                    <Calendar
-                      custom={new Date(e.date).toISOString().slice(0, 10)}
-                    />
-                    <div className="w-1/2">
-                      <Textarea custom={e.commentary} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <Visualization data={data.views} />
             <div className="flex items-center justify-between">
               <button
                 className="rounded-xl bg-red-600 px-4 py-2 text-sm font-bold"

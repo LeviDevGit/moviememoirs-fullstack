@@ -15,8 +15,10 @@ export function toggleModal({ set, index, toggler }: ToggleModalProps) {
 }
 
 export interface DismissProps {
-  index: number
-  set: React.Dispatch<React.SetStateAction<boolean[]>>
+  index: number | undefined
+  set:
+    | React.Dispatch<React.SetStateAction<boolean[]>>
+    | React.Dispatch<React.SetStateAction<number | undefined>>
 }
 
 function Dismiss({ index, set }: DismissProps) {
@@ -24,7 +26,11 @@ function Dismiss({ index, set }: DismissProps) {
     <div className="flex gap-5">
       <button
         onClick={() => {
-          toggleModal({ index, set, toggler: false })
+          if (typeof index === 'undefined') {
+            set(undefined)
+          } else {
+            toggleModal({ index, set, toggler: false })
+          }
         }}
         className="rounded-xl p-3 text-white"
       >

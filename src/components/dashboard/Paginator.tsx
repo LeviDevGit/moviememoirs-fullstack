@@ -1,37 +1,12 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useEffect, useState } from 'react'
 
 interface PaginatorProps {
   handlePage: (next?: boolean) => void
   page: number
+  counter: number | undefined
 }
 
-function Paginator({ handlePage, page }: PaginatorProps) {
-  const [counter, setCounter] = useState<number>()
-
-  async function requestCounter() {
-    try {
-      const response = await fetch(`/api/counter`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      })
-
-      const data = await response.json()
-
-      if (data & 6) {
-        setCounter(Math.floor(data / 6) + 1)
-      } else {
-        setCounter(Math.floor(data / 6))
-      }
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  useEffect(() => {
-    requestCounter()
-  }, [counter])
-
+function Paginator({ handlePage, page, counter }: PaginatorProps) {
   return (
     <div className="mt-1 flex w-[268px] items-center justify-between rounded-lg bg-[#3e3e42] p-2 text-xs">
       <div className="flex gap-4">
@@ -78,6 +53,7 @@ function Paginator({ handlePage, page }: PaginatorProps) {
           onClick={() => {
             handlePage(true)
           }}
+          disabled={page === counter}
         >
           <ChevronRight className="h-[1em] w-[1em]" />
         </button>

@@ -37,6 +37,37 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     },
   )
 
+  function convertToDate(dateString: string) {
+    const [day, month, year] = dateString.split('/')
+    return `${year}-${month}-${day}`
+  }
+
+  function validateFieldsOrUndefined(data: string[]) {
+    if (data && data[0]) {
+      return data[0]
+    } else {
+      return undefined
+    }
+  }
+
+  const viewDate = convertToDate(fields.date[0])
+
+  if (fields.commentary && viewDate && fields.commentary[0] !== '') {
+    await prisma.movie.update({
+      where: {
+        id: Number(mediaid),
+      },
+      data: {
+        views: {
+          create: {
+            date: new Date(viewDate),
+            commentary: fields.commentary[0],
+          },
+        },
+      },
+    })
+  }
+
   const result = await prisma.movie.update({
     where: {
       id: Number(mediaid),
@@ -45,7 +76,7 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
       views: true,
     },
     data: {
-      name: fields.name![0],
+      name: validateFieldsOrUndefined(fields.name),
     },
   })
 

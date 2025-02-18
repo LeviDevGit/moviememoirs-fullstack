@@ -7,33 +7,21 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     return res.status(405).json({ error: 'Método não permitido' })
   }
 
-  const { page, filter } = req.query
-
-  const pageNumber = Array.isArray(page) ? Number(page[0]) : Number(page)
+  const { filter } = req.query
 
   function getFirstOrValue(value: string | string[] | undefined) {
     return Array.isArray(value) ? value[0] : value
   }
 
-  const result = await prisma.movie.findMany({
-    skip: (pageNumber - 1) * 6,
-    take: 6,
+  const counter = await prisma.movie.count({
     where: {
       name: {
         contains: getFirstOrValue(filter),
       },
     },
-    include: {
-      views: {
-        orderBy: {
-          date: 'desc',
-        },
-        take: 1,
-      },
-    },
   })
 
-  return res.json(result)
+  return res.json(counter)
 }
 
 export default withPrismaError(handle)

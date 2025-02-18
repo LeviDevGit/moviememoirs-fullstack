@@ -8,6 +8,7 @@ import { useState } from 'react'
 import Gallery from '@/components/carousel'
 import Form from '@/components/form'
 import Dashboard from '@/components/dashboard'
+import Detail from '@/components/detail'
 
 interface FilterContent {
   searchString: string
@@ -29,6 +30,8 @@ export default function Home() {
   const [totalItems, setTotalItems] = useState(0)
   // 0: Form, 1: Managment, 2: Filter
   const [toggleModal, setToggleModal] = useState([false, false, false])
+  // Especial 3: Detail
+  const [toggleDetail, setToggleDetail] = useState<number | undefined>()
   const [filterContent, setFilterContent] =
     useState<FilterContent>(initialFilterContent)
 
@@ -71,10 +74,14 @@ export default function Home() {
         <Modal set={setToggleModal} index={0}>
           <Form updaterState={updaterState} />
         </Modal>
+      ) : toggleModal[1] ? (
+        <Modal set={setToggleModal} index={1}>
+          <Dashboard updaterState={updaterState} />
+        </Modal>
       ) : (
-        toggleModal[1] && (
-          <Modal set={setToggleModal} index={1}>
-            <Dashboard updaterState={updaterState} />
+        toggleDetail && (
+          <Modal set={setToggleDetail} index={undefined}>
+            <Detail id={toggleDetail} />
           </Modal>
         )
       )}
@@ -89,10 +96,11 @@ export default function Home() {
         </div>
         <Options openIt={setToggleModal} />
       </header>
-      <main className="w-full pt-4">
+      <main className="w-full">
         <Gallery
           handleDirectionChange={handleDirectionChange}
           dataFetch={dataFetch}
+          setToggleDetail={setToggleDetail}
         />
       </main>
     </div>

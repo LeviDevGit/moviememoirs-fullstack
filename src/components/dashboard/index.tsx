@@ -3,7 +3,7 @@ import Controls from './Controls'
 import List from './List'
 import Paginator from './Paginator'
 
-import { dataFetchProps } from '@/types/interfaces'
+import { PaginatedData } from '@/types/interfaces'
 import { useEffect, useState } from 'react'
 
 interface updaterStateProps {
@@ -16,11 +16,12 @@ interface DashboardProps {
 }
 
 function Dashboard({ updaterState }: DashboardProps) {
-  const [data, setData] = useState<dataFetchProps>([])
+  const [data, setData] = useState<PaginatedData[]>([])
   const [safetyButton, setSafetyButton] = useState<
     [number, string] | undefined
   >(undefined)
   const [page, setPage] = useState(1)
+  const [counter, setCounter] = useState<number>()
 
   const submitData = async (pageProp: number, filter: string | undefined) => {
     let teste = ''
@@ -42,6 +43,25 @@ function Dashboard({ updaterState }: DashboardProps) {
 
       console.log(data)
       setData(data)
+
+      const counterFetch = await fetch(`/api/movie/counter?filter=${teste}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
+
+      const counterData = await counterFetch.json()
+
+      if (counterData % 6) {
+        setCounter(Math.floor(counterData / 6) + 1)
+        if (counterData + 1 < page * 6) {
+          setPage(1)
+        }
+      } else {
+        setCounter(Math.floor(counterData / 6))
+        if (counterData < page * 6) {
+          setPage(1)
+        }
+      }
     } catch (error) {
       console.error(error)
     }
@@ -50,7 +70,11 @@ function Dashboard({ updaterState }: DashboardProps) {
   const [filter, setFilter] = useState<string>()
 
   useEffect(() => {
+    if (safetyButton) {
+      console.log(safetyButton[0])
+    }
     submitData(page, filter)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, filter, safetyButton])
 
   function handlePage(next: boolean = false) {
@@ -81,7 +105,7 @@ function Dashboard({ updaterState }: DashboardProps) {
           setSafetyButton={setSafetyButton}
         />
       )}
-      <Paginator handlePage={handlePage} page={page} />
+      <Paginator handlePage={handlePage} page={page} counter={counter} />
     </div>
   )
 }
