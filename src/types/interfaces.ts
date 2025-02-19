@@ -41,20 +41,18 @@ export type dataFetchProps = ({
 
 export interface PaginatedData {
   id: number
-  name: string
-  year: string
-  time: string
-  direction: string
-  value: number
-  img: string
-  type: string
-  imdb: string
-  views: [
-    {
-      id: number
-      date: Date
-      commentary: string | null
-      movieId: number
-    },
-  ]
+  date: Date
+  commentary: string | null
+  movieId: number
+  movie: {
+    id: number
+    name: string
+    year: string
+    time: string
+    direction: string
+    value: number
+    img: string
+    type: string
+    imdb: string
+  }
 }

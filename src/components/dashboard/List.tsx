@@ -31,18 +31,18 @@ function List({ data, setSafetyButton }: ListProps) {
               className={`w-full border-gray-500/50 ${index + 1 === 1 && 'hidden'}`}
             />
             <div className="mx-1 my-1 grid h-[40px] auto-cols-auto grid-flow-col items-center justify-between rounded-lg px-4 text-[#e0e0e0] hover:bg-black/10">
-              <p className="w-[400px]">{element.name}</p>
-              <h1 className="w-[200px] truncate">{element.direction}</h1>
-              <h1 className="w-[60px]">{element.year}</h1>
-              <h1 className="w-[60px]">{element.type}</h1>
+              <p className="w-[400px]">{element.movie.name}</p>
+              <h1 className="w-[200px] truncate">{element.movie.direction}</h1>
+              <h1 className="w-[60px]">{element.movie.year}</h1>
+              <h1 className="w-[60px]">{element.movie.type}</h1>
               <h1 className="w-[80px]">
-                {new Date(element.views[0].date).toLocaleDateString()}
+                {new Date(element.date).toLocaleDateString()}
               </h1>
               <div className="flex w-[80px] justify-end font-semibold text-[#e0e0e0]">
                 <button
                   className="rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
                   onClick={() => {
-                    setSafetyButton([element.id, element.img])
+                    setSafetyButton([element.movieId, element.movie.img])
                   }}
                 >
                   Editar

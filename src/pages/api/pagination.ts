@@ -15,22 +15,23 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     return Array.isArray(value) ? value[0] : value
   }
 
-  const result = await prisma.movie.findMany({
+  const result = await prisma.view.findMany({
+    orderBy: {
+      date: 'desc',
+    },
     skip: (pageNumber - 1) * 6,
     take: 6,
-    where: {
-      name: {
-        contains: getFirstOrValue(filter),
-      },
-    },
     include: {
-      views: {
-        orderBy: {
-          date: 'desc',
+      movie: true,
+    },
+    where: {
+      movie: {
+        name: {
+          contains: getFirstOrValue(filter),
         },
-        take: 1,
       },
     },
+    distinct: ['movieId'],
   })
 
   return res.json(result)

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Chooser, InputField } from '../form'
 import Image from 'next/image'
 import Visualization from './confirm/Visualization'
+import Rater from '../Rater'
 
 interface updaterStateProps {
   updater: boolean
@@ -106,21 +107,7 @@ function Confirm({
 
   return (
     <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/70">
-      <div>
-        <div className="relative aspect-[345/518] shadow-cardShadow duration-[2500ms] hover:blur hover:grayscale">
-          {data && (
-            <Image
-              alt="Poster"
-              src={data?.img}
-              width={345}
-              height={518}
-              priority
-              className="aspect-[345/518] rounded-md object-cover object-center shadow-imageShadow"
-            />
-          )}
-        </div>
-      </div>
-      <div className="page-specific w-[600px] rounded-2xl bg-[#27272a] p-5 text-white">
+      <div className="page-specific rounded-2xl bg-[#27272a] p-5 text-white">
         <div className="mb-5 flex flex-col gap-2">
           <h1 className="text-xl font-medium">
             Editar <span className="text-[#dd4d51]">Mídia</span>
@@ -131,63 +118,79 @@ function Confirm({
         </div>
         {data && (
           <form
-            className="flex w-full flex-col gap-3"
+            className="flex w-full gap-3"
             autoComplete="off"
             onSubmit={(e) => updateMedia(safetyButton[0], e, setSafetyButton)}
           >
-            <InputField name="name" text="Nome" placeholder={data.name} />
-            <div className="flex items-center justify-between gap-6">
-              <Chooser />
-              <InputField
-                name="movieDate"
-                text="Lançamento"
-                placeholder={data.year}
-              />
+            <div className="flex flex-col items-center">
+              <div className="relative aspect-[345/518] shadow-cardShadow duration-[2500ms] hover:blur hover:grayscale">
+                {data && (
+                  <Image
+                    alt="Poster"
+                    src={data?.img}
+                    width={345}
+                    height={518}
+                    priority
+                    className="aspect-[345/518] rounded-md object-cover object-center shadow-imageShadow"
+                  />
+                )}
+              </div>
+              <Rater defaultValue={data.value} />
             </div>
-            <div className="flex items-center justify-between gap-6">
-              <InputField name="time" text="Duração" placeholder={data.time} />
-              <InputField
-                name="direction"
-                text="Diretor(a)"
-                placeholder={data.direction}
-              />
-            </div>
-            <div className="flex items-center justify-between gap-6">
-              <InputField
-                name="movieValue"
-                text="Nota"
-                placeholder={data.value.toString()}
-              />
-              <InputField name="imdb" text="Id" placeholder={data.imdb} />
-            </div>
-            <Visualization data={data.views} />
-            <div className="flex items-center justify-between">
-              <button
-                className="rounded-xl bg-red-600 px-4 py-2 text-sm font-bold"
-                onClick={() => {
-                  deleteData(safetyButton[0], safetyButton[1], updaterState)
-                  setSafetyButton(undefined)
-                }}
-                type="button"
-              >
-                Deletar
-              </button>
-              <div className="flex w-full items-center justify-end gap-4">
+            <div className="flex flex-col gap-3">
+              <InputField name="name" text="Nome" placeholder={data.name} />
+              <div className="flex items-center justify-between gap-6">
+                <Chooser />
+                <InputField
+                  name="movieDate"
+                  text="Lançamento"
+                  placeholder={data.year}
+                />
+              </div>
+              <div className="flex items-center justify-between gap-6">
+                <InputField
+                  name="time"
+                  text="Duração"
+                  placeholder={data.time}
+                />
+                <InputField
+                  name="direction"
+                  text="Diretor(a)"
+                  placeholder={data.direction}
+                />
+              </div>
+              <div className="flex items-center justify-between gap-6">
+                <InputField name="imdb" text="Id" placeholder={data.imdb} />
+              </div>
+              <Visualization data={data.views} />
+              <div className="flex items-center justify-between">
                 <button
-                  className="rounded-xl px-4 py-2 text-sm font-bold"
+                  className="rounded-xl bg-red-600 px-4 py-2 text-sm font-bold"
                   onClick={() => {
+                    deleteData(safetyButton[0], safetyButton[1], updaterState)
                     setSafetyButton(undefined)
                   }}
                   type="button"
                 >
-                  Cancelar
+                  Deletar
                 </button>
-                <button
-                  type="submit"
-                  className="rounded-xl bg-green-600 px-4 py-2 text-sm font-bold"
-                >
-                  Salvar
-                </button>
+                <div className="flex w-full items-center justify-end gap-4">
+                  <button
+                    className="rounded-xl px-4 py-2 text-sm font-bold"
+                    onClick={() => {
+                      setSafetyButton(undefined)
+                    }}
+                    type="button"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="submit"
+                    className="rounded-xl bg-green-600 px-4 py-2 text-sm font-bold"
+                  >
+                    Salvar
+                  </button>
+                </div>
               </div>
             </div>
           </form>

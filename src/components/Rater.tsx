@@ -1,5 +1,9 @@
 import { Star, StarHalf } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+interface RaterProps {
+  defaultValue?: number | undefined
+}
 
 function Rating(
   setRating: React.Dispatch<React.SetStateAction<number>>,
@@ -39,8 +43,14 @@ function Rating(
   ))
 }
 
-function Rater() {
+function Rater({ defaultValue }: RaterProps) {
   const [rating, setRating] = useState(0)
+
+  useEffect(() => {
+    if (defaultValue) {
+      setRating(defaultValue)
+    }
+  }, [defaultValue])
 
   return (
     <div className="flex w-[220px] items-center justify-center">
