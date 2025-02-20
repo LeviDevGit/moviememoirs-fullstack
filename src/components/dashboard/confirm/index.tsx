@@ -101,7 +101,7 @@ function Confirm({
       const data = await response.json()
 
       console.log(data)
-      const ultimoFilme = data.views.slice(-1)[0]
+      const ultimoFilme = data.views.pop()
       console.log(ultimoFilme)
 
       setLast(ultimoFilme)

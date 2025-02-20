@@ -16,7 +16,7 @@ model Movie {
   year       String    // Data do lançamento
   time       String    // Duração do filme no formato "HH:MM:SS"
   direction  String    // Diretor do filme
-  value      Float     // Avaliação (ex.: 8.5)
+  value      Float?    // Avaliação (ex.: 8.5)
   img        String    // URL ou caminho da imagem
   type       String    // Tipo do conteúdo (enum)
   imdb       String    // Id IMDB para API do TMDB
@@ -27,6 +27,7 @@ model View {
   id          Int       @id @default(autoincrement()) // Chave primária auto-incrementada
   date        DateTime  // Data da visualização
   commentary  String?   // Comentário opcional
+  rating      Float     // Nota do filme naquele dia
   movieId     Int       // Chave estrangeira para Movie
   movie       Movie     @relation(fields: [movieId], references: [id], onDelete: Cascade) // Relacionamento
 }

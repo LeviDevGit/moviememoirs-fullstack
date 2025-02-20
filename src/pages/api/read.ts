@@ -43,7 +43,7 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
   })
 
   // Se o carrossel estiver no começo, buscar os últimos itens para completar a rotação
-  if (Number(start) === 0 && totalItems > 1) {
+  if (Number(start) === 0 && totalItems > 5) {
     const extraItems = await prisma.view.findFirst({
       where: whereCondition,
       include: {

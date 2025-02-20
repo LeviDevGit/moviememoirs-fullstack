@@ -1,5 +1,6 @@
 import { withPrismaError } from '@/lib/errorHandler'
 import prisma from '@/lib/prisma'
+import updateRating from '@/lib/updateRating'
 import { IncomingForm } from 'formidable'
 import { NextApiRequest, NextApiResponse } from 'next'
 
@@ -62,6 +63,7 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
           create: {
             date: new Date(viewDate),
             commentary: fields.commentary[0],
+            rating: Number(fields.value[0]),
           },
         },
       },
@@ -79,6 +81,8 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
       name: validateFieldsOrUndefined(fields.name),
     },
   })
+
+  await updateRating(result.id)
 
   return res.json(result)
 }

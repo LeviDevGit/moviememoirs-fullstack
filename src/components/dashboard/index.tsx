@@ -41,7 +41,6 @@ function Dashboard({ updaterState }: DashboardProps) {
 
       const data = await response.json()
 
-      console.log(data)
       setData(data)
 
       const counterFetch = await fetch(`/api/movie/counter?filter=${teste}`, {
@@ -53,12 +52,12 @@ function Dashboard({ updaterState }: DashboardProps) {
 
       if (counterData % 6) {
         setCounter(Math.floor(counterData / 6) + 1)
-        if (counterData + 1 < page * 6) {
+        if (counterData + 1 > page * 6) {
           setPage(1)
         }
       } else {
         setCounter(Math.floor(counterData / 6))
-        if (counterData < page * 6) {
+        if (counterData > page * 6) {
           setPage(1)
         }
       }

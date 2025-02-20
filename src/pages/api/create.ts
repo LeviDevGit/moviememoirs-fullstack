@@ -3,6 +3,7 @@ import { Files, IncomingForm } from 'formidable'
 import prisma from '@/lib/prisma'
 import path from 'path'
 import { withPrismaError } from '@/lib/errorHandler'
+import updateRating from '@/lib/updateRating'
 
 export const config = {
   api: {
@@ -22,14 +23,8 @@ interface FormFields {
   commentary?: string[]
 }
 
-interface jsonArrayProps {
-  id: number
-  name: string
-  time: string
-  direction: string
-  value: number
+interface latestQueryProps {
   img: string
-  type: string
 }
 
 // CREATE /api/create
@@ -40,9 +35,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     orderBy: {
       id: 'desc',
     },
+    select: {
+      img: true,
+    },
   })
 
-  function obterProximoNumero(jsonArray: jsonArrayProps) {
+  function obterProximoNumero(jsonArray: latestQueryProps) {
     const ultimoElemento = jsonArray
     const regex = /(\d+)\.jpg$/
 
@@ -89,9 +87,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       direction: fields.direction![0],
       imdb: fields.imdb[0],
       img: '',
-      value: Number(fields.value![0]),
       views: {
         create: {
+          rating: Number(fields.value![0]),
           date: new Date(viewDate),
           commentary: fields.commentary![0],
         },
@@ -110,6 +108,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         img: publicUrl,
       },
     })
+
+    await updateRating(result.id)
+
     res.status(200).json(addition)
   }
 }

@@ -49,8 +49,10 @@ function useSubmitData({
 
         const data = await response.json()
 
-        setTotalItems(data.totalItems)
-        setDataFetch(data.items)
+        if (data) {
+          setTotalItems(data.totalItems)
+          setDataFetch(data.items)
+        }
       } catch (error) {
         console.error(error)
       }

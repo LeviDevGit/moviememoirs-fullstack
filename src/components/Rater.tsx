@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react'
 interface RaterProps {
   defaultValue?: number | undefined
   width?: string
+  readonly?: boolean
 }
 
 function Rating(
   setRating: React.Dispatch<React.SetStateAction<number>>,
   rating: number,
+  readonly: boolean,
 ) {
   return Array.from({ length: 5 }).map((_, i) => (
     <button
@@ -17,10 +19,13 @@ function Rating(
         const { offsetX } = e.nativeEvent
         const { clientWidth } = e.currentTarget
         const isHalf = offsetX < clientWidth / 2
-        setRating(i + 0.5 + (isHalf ? 0 : 0.5))
+
+        if (!readonly) {
+          setRating(i + 0.5 + (isHalf ? 0 : 0.5))
+        }
       }}
       type="button"
-      className="h-1/5 w-1/5"
+      className={`h-1/5 w-1/5 ${readonly && 'cursor-default'}`}
     >
       {rating >= i + 1 ? (
         <Star
@@ -41,7 +46,7 @@ function Rating(
   ))
 }
 
-function Rater({ defaultValue, width }: RaterProps) {
+function Rater({ defaultValue, width, readonly = false }: RaterProps) {
   const [rating, setRating] = useState(0)
 
   useEffect(() => {
@@ -51,9 +56,11 @@ function Rater({ defaultValue, width }: RaterProps) {
   }, [defaultValue])
 
   return (
-    <div className={`flex items-center justify-center ${width || 'w-[220px]'}`}>
-      {Rating(setRating, rating)}
-      <input type="hidden" name="value" value={rating} />
+    <div
+      className={`flex items-center justify-center ${width || 'w-[220px]'} `}
+    >
+      {Rating(setRating, rating, readonly)}
+      <input type="hidden" name={`${!readonly && 'value'}`} value={rating} />
     </div>
   )
 }

@@ -18,6 +18,7 @@ interface dataProps {
     id: number
     date: Date
     commentary: string | null
+    rating: number
     movieId: number
   }[]
 }
@@ -26,6 +27,8 @@ interface LastProp {
   id: number
   date: Date
   commentary: string | null
+
+  rating: number
   movieId: number
 }
 
@@ -85,7 +88,11 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
                         <Trash className="w-[1.5em]" />
                       </button>
                     </div>
-                    <Rater defaultValue={data.value} width="w-[100px] mb-3" />
+                    <Rater
+                      defaultValue={data.value}
+                      width="w-[100px] mb-3"
+                      readonly={true}
+                    />
                     <h2 className="text-white/50">
                       Assistido em{' '}
                       {new Date(last.date).toLocaleDateString('pt-BR', {
@@ -109,36 +116,43 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
           <h2 className="text-lg">Histórico</h2>
           <hr className="border border-white" />
           <div className="flex h-[100px] flex-col overflow-y-auto">
-            {data.views.map((e) => (
-              <div
-                key={`${e.id}`}
-                className="flex w-full items-center justify-between gap-6"
-              >
-                <div className="flex w-full flex-col gap-2 py-5 pr-3">
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-white/60">
-                      Assistido em{' '}
-                      {new Date(e.date).toLocaleDateString('pt-BR', {
-                        day: 'numeric',
-                        month: 'short',
-                        year: 'numeric',
-                      })}
-                    </h2>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        deleteView(e.id, setRefresh, refresh)
-                      }}
-                    >
-                      <Trash className="w-[1.5em]" />
-                    </button>
-                  </div>
-                  <div>
-                    <p>{e.commentary}</p>
+            {data.views
+              .map((e) => (
+                <div
+                  key={`${e.id}`}
+                  className="flex w-full items-center justify-between gap-6"
+                >
+                  <div className="flex w-full flex-col gap-2 py-5 pr-3">
+                    <div className="flex items-center justify-between">
+                      <h2 className="text-white/60">
+                        Assistido em{' '}
+                        {new Date(e.date).toLocaleDateString('pt-BR', {
+                          day: 'numeric',
+                          month: 'short',
+                          year: 'numeric',
+                        })}
+                      </h2>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          deleteView(e.id, setRefresh, refresh)
+                        }}
+                      >
+                        <Trash className="w-[1.5em]" />
+                      </button>
+                    </div>
+                    <Rater
+                      defaultValue={e.rating}
+                      width="w-[80px]"
+                      readonly={true}
+                    />
+                    <div>
+                      <p>{e.commentary}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+              .reverse()}
           </div>
         </div>
       </div>
