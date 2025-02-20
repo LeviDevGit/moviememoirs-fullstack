@@ -22,7 +22,7 @@ function Card({ source, setToggleDetail }: CardProps) {
       </div>
       <div className="group h-full w-[220px] pt-4 2xl:w-[345px]">
         <div className="flex h-[50px] 2xl:h-[80px]">
-          <h2 className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-center text-sm font-semibold 2xl:text-2xl">
+          <h2 className="w-full truncate text-center text-sm font-semibold 2xl:text-2xl">
             {source.movie.name}
           </h2>
         </div>

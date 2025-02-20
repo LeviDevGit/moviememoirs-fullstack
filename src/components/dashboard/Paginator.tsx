@@ -8,7 +8,7 @@ interface PaginatorProps {
 
 function Paginator({ handlePage, page, counter }: PaginatorProps) {
   return (
-    <div className="mt-1 flex w-[268px] items-center justify-between rounded-lg bg-[#3e3e42] p-2 text-xs">
+    <div className="mt-1 flex w-fit max-w-[268px] items-center justify-between rounded-lg bg-[#3e3e42] p-2 text-xs">
       <div className="flex gap-4">
         <button
           onClick={() => {
@@ -18,7 +18,7 @@ function Paginator({ handlePage, page, counter }: PaginatorProps) {
         >
           <ChevronLeft className="h-[1em] w-[1em]" />
         </button>
-        <div className="flex w-[196px] cursor-default gap-2">
+        <div className="flex max-w-[196px] cursor-default gap-2">
           {counter &&
             Array.from({ length: counter }).map((_, index) =>
               page === index + 1 ||

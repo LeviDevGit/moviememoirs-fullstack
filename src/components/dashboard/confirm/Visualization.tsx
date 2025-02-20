@@ -1,53 +1,39 @@
-import { Calendar, Textarea } from '@/components/form'
-import { Plus } from 'lucide-react'
+import { Minus, Plus } from 'lucide-react'
 import { useState } from 'react'
 
-interface VisualizationProps {
-  data: {
-    id: number
-    date: Date
-    commentary: string | null
-    movieId: number
-  }[]
-}
-
-function Visualization({ data }: VisualizationProps) {
+function Visualization() {
   const [adition, setAdition] = useState(false)
 
   return (
-    <div className="border border-red-500 bg-[#18181B] p-2">
-      <div className="flex flex-col">
+    <div className="flex h-full flex-col gap-2">
+      <div className="flex h-fit items-center justify-between">
+        <h1 className="text-lg font-medium">Novo comentário</h1>
         <button
-          className={`self-end ${adition ? 'hidden' : 'block'}`}
+          className="self-end"
           onClick={() => {
-            setAdition(true)
+            setAdition(!adition)
           }}
           type="button"
         >
-          <Plus />
+          {adition ? <Minus /> : <Plus />}
         </button>
-        {adition && (
-          <div className="flex items-center justify-between gap-6">
-            <Calendar />
-            <div className="w-1/2">
-              <Textarea />
-            </div>
-          </div>
-        )}
-        <div className="flex h-[140px] flex-col overflow-y-auto">
-          {data.map((e) => (
-            <div
-              key={`${e.id}`}
-              className="flex w-full items-center justify-between gap-6"
-            >
-              <Calendar custom={new Date(e.date).toISOString().slice(0, 10)} />
-              <div className="w-1/2">
-                <Textarea custom={e.commentary} disabled />
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
+      {adition && (
+        <div className="flex h-full w-full flex-col items-start justify-center gap-2">
+          <input
+            type="date"
+            name="date"
+            className="rounded-xl border border-gray-500 bg-transparent p-2"
+            defaultValue={new Date().toISOString().slice(0, 10)}
+            max={new Date().toISOString().slice(0, 10)}
+          />
+          <textarea
+            name="commentary"
+            placeholder={'Faça um novo comentário'}
+            className="h-full w-full resize-none rounded-xl border border-gray-500 bg-transparent p-3 text-base"
+          />
+        </div>
+      )}
     </div>
   )
 }

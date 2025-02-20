@@ -109,14 +109,6 @@ function Detail({ id }: DetailProps) {
             )}
           </div>
         ))}
-        <div className="flex w-full items-center justify-end">
-          <button
-            type="submit"
-            className="rounded-xl bg-[#8f001a] px-4 py-2 text-sm font-bold"
-          >
-            Registrar
-          </button>
-        </div>
       </div>
     </div>
   )

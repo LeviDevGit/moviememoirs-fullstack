@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Chooser, InputField } from '../form'
-import Image from 'next/image'
-import Visualization from './confirm/Visualization'
-import Rater from '../Rater'
+import Modify from './Modify'
 
 interface updaterStateProps {
   updater: boolean
@@ -33,6 +30,13 @@ interface dataProps {
     commentary: string | null
     movieId: number
   }[]
+}
+
+interface LastProp {
+  id: number
+  date: Date
+  commentary: string | null
+  movieId: number
 }
 
 async function updateMedia(
@@ -84,6 +88,8 @@ function Confirm({
   setSafetyButton,
 }: ConfirmProps) {
   const [data, setData] = useState<dataProps>()
+  const [last, setLast] = useState<LastProp>()
+  const [refresh, setRefresh] = useState(false)
 
   const submitData = async (id: number) => {
     try {
@@ -95,6 +101,11 @@ function Confirm({
       const data = await response.json()
 
       console.log(data)
+      const ultimoFilme = data.views.slice(-1)[0]
+      console.log(ultimoFilme)
+
+      setLast(ultimoFilme)
+
       setData(data)
     } catch (error) {
       console.error(error)
@@ -103,7 +114,7 @@ function Confirm({
 
   useEffect(() => {
     submitData(safetyButton[0])
-  }, [safetyButton])
+  }, [safetyButton, refresh])
 
   return (
     <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/70">
@@ -118,79 +129,43 @@ function Confirm({
         </div>
         {data && (
           <form
-            className="flex w-full gap-3"
+            className="flex w-full flex-col gap-3"
             autoComplete="off"
             onSubmit={(e) => updateMedia(safetyButton[0], e, setSafetyButton)}
           >
-            <div className="flex flex-col items-center">
-              <div className="relative aspect-[345/518] shadow-cardShadow duration-[2500ms] hover:blur hover:grayscale">
-                {data && (
-                  <Image
-                    alt="Poster"
-                    src={data?.img}
-                    width={345}
-                    height={518}
-                    priority
-                    className="aspect-[345/518] rounded-md object-cover object-center shadow-imageShadow"
-                  />
-                )}
-              </div>
-              <Rater defaultValue={data.value} />
-            </div>
-            <div className="flex flex-col gap-3">
-              <InputField name="name" text="Nome" placeholder={data.name} />
-              <div className="flex items-center justify-between gap-6">
-                <Chooser />
-                <InputField
-                  name="movieDate"
-                  text="Lançamento"
-                  placeholder={data.year}
-                />
-              </div>
-              <div className="flex items-center justify-between gap-6">
-                <InputField
-                  name="time"
-                  text="Duração"
-                  placeholder={data.time}
-                />
-                <InputField
-                  name="direction"
-                  text="Diretor(a)"
-                  placeholder={data.direction}
-                />
-              </div>
-              <div className="flex items-center justify-between gap-6">
-                <InputField name="imdb" text="Id" placeholder={data.imdb} />
-              </div>
-              <Visualization data={data.views} />
-              <div className="flex items-center justify-between">
+            <Modify
+              data={data}
+              last={last}
+              setRefresh={setRefresh}
+              refresh={refresh}
+            />
+            <div className="flex items-center justify-between">
+              <button
+                className="rounded-xl bg-red-600 px-4 py-2 text-sm font-bold"
+                onClick={() => {
+                  deleteData(safetyButton[0], safetyButton[1], updaterState)
+                  setSafetyButton(undefined)
+                }}
+                type="button"
+              >
+                Deletar
+              </button>
+              <div className="flex w-full items-center justify-end gap-4">
                 <button
-                  className="rounded-xl bg-red-600 px-4 py-2 text-sm font-bold"
+                  className="rounded-xl px-4 py-2 text-sm font-bold"
                   onClick={() => {
-                    deleteData(safetyButton[0], safetyButton[1], updaterState)
                     setSafetyButton(undefined)
                   }}
                   type="button"
                 >
-                  Deletar
+                  Cancelar
                 </button>
-                <div className="flex w-full items-center justify-end gap-4">
-                  <button
-                    className="rounded-xl px-4 py-2 text-sm font-bold"
-                    onClick={() => {
-                      setSafetyButton(undefined)
-                    }}
-                    type="button"
-                  >
-                    Cancelar
-                  </button>
-                  <button
-                    type="submit"
-                    className="rounded-xl bg-green-600 px-4 py-2 text-sm font-bold"
-                  >
-                    Salvar
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  className="rounded-xl bg-green-600 px-4 py-2 text-sm font-bold"
+                >
+                  Salvar
+                </button>
               </div>
             </div>
           </form>

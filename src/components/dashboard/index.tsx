@@ -1,4 +1,4 @@
-import Confirm from './Confirm'
+import Confirm from './confirm'
 import Controls from './Controls'
 import List from './List'
 import Paginator from './Paginator'

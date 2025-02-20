@@ -34,7 +34,9 @@ function Form({ updaterState }: FormProps) {
       >
         <div className="flex flex-col items-center gap-4">
           <Dropzone />
-          <Rater />
+          <div>
+            <Rater width="w-[220px]" />
+          </div>
         </div>
         <div className="h-11/12 flex flex-col justify-between">
           <InputField

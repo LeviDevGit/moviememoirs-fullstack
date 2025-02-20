@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 interface RaterProps {
   defaultValue?: number | undefined
+  width?: string
 }
 
 function Rating(
@@ -19,31 +20,28 @@ function Rating(
         setRating(i + 0.5 + (isHalf ? 0 : 0.5))
       }}
       type="button"
+      className="h-1/5 w-1/5"
     >
       {rating >= i + 1 ? (
         <Star
-          width={40}
-          height={40}
-          className="text-[#ffff00]"
+          className="h-full w-full text-[#ffff00]"
           fill="#ffff00"
           strokeWidth={0}
         />
       ) : rating - i === 0.5 ? (
         <StarHalf
-          width={40}
-          height={40}
-          className="text-[#ffff00]"
+          className="h-full w-full text-[#ffff00]"
           fill="#ffff00"
           strokeWidth={0}
         />
       ) : (
-        <Star width={40} height={40} fill="white" strokeWidth={0} />
+        <Star fill="white" className="h-full w-full" strokeWidth={0} />
       )}
     </button>
   ))
 }
 
-function Rater({ defaultValue }: RaterProps) {
+function Rater({ defaultValue, width }: RaterProps) {
   const [rating, setRating] = useState(0)
 
   useEffect(() => {
@@ -53,7 +51,7 @@ function Rater({ defaultValue }: RaterProps) {
   }, [defaultValue])
 
   return (
-    <div className="flex w-[220px] items-center justify-center">
+    <div className={`flex items-center justify-center ${width || 'w-[220px]'}`}>
       {Rating(setRating, rating)}
       <input type="hidden" name="value" value={rating} />
     </div>
