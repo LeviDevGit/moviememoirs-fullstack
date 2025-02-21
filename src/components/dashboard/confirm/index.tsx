@@ -28,6 +28,7 @@ interface dataProps {
     id: number
     date: Date
     commentary: string | null
+    rating: number
     movieId: number
   }[]
 }
@@ -36,6 +37,7 @@ interface LastProp {
   id: number
   date: Date
   commentary: string | null
+  rating: number
   movieId: number
 }
 
@@ -123,9 +125,6 @@ function Confirm({
           <h1 className="text-xl font-medium">
             Editar <span className="text-[#dd4d51]">Mídia</span>
           </h1>
-          <p className="text-xs text-[#e0e0e0]">
-            Ajude a construir um registro detalhado do que você assiste.
-          </p>
         </div>
         {data && (
           <form

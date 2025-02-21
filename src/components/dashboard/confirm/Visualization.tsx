@@ -3,27 +3,6 @@ import { useState } from 'react'
 
 function Visualization() {
   const [adition, setAdition] = useState(false)
-  const [rating, setRating] = useState<number | string>(0)
-
-  const allowedValues = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseFloat(e.target.value)
-    if (allowedValues.includes(value) || e.target.value === '') {
-      setRating(e.target.value)
-    }
-  }
-
-  const handleBlur = () => {
-    if (rating !== '') {
-      const closest = allowedValues.reduce((prev, curr) =>
-        Math.abs(curr - Number(rating)) < Math.abs(prev - Number(rating))
-          ? curr
-          : prev,
-      )
-      setRating(closest)
-    }
-  }
 
   return (
     <div className="flex h-full flex-col gap-2">
@@ -57,9 +36,6 @@ function Visualization() {
               min="0"
               max="5"
               step="0.5"
-              value={rating}
-              onChange={handleChange}
-              onBlur={handleBlur}
             />
           </div>
           <textarea

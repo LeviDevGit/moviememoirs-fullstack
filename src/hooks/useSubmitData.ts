@@ -24,8 +24,6 @@ function useSubmitData({
   useEffect(() => {
     const submitData = async () => {
       try {
-        console.log(filterContent)
-
         const filters = new URLSearchParams({
           name: filterContent.searchString.toString(),
           director: filterContent.directorString

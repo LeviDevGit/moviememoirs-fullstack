@@ -60,7 +60,7 @@ function Rater({ defaultValue, width, readonly = false }: RaterProps) {
       className={`flex items-center justify-center ${width || 'w-[220px]'} `}
     >
       {Rating(setRating, rating, readonly)}
-      <input type="hidden" name={`${!readonly && 'value'}`} value={rating} />
+      {!readonly && <input type="hidden" name="value" value={rating} />}
     </div>
   )
 }

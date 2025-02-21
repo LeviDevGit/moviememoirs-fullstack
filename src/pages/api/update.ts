@@ -51,7 +51,11 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     }
   }
 
-  const viewDate = convertToDate(fields.date[0])
+  let viewDate = ''
+
+  if (fields.date) {
+    viewDate = convertToDate(fields.date[0])
+  }
 
   if (fields.commentary && viewDate && fields.commentary[0] !== '') {
     await prisma.movie.update({
@@ -79,6 +83,11 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     },
     data: {
       name: validateFieldsOrUndefined(fields.name),
+      direction: validateFieldsOrUndefined(fields.direction),
+      imdb: validateFieldsOrUndefined(fields.imdb),
+      time: validateFieldsOrUndefined(fields.time),
+      year: validateFieldsOrUndefined(fields.year),
+      type: validateFieldsOrUndefined(fields.type),
     },
   })
 

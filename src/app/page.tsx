@@ -64,7 +64,6 @@ export default function Home() {
       newStart = 0
     }
 
-    console.log(newStart)
     setDirection(newStart)
   }
 

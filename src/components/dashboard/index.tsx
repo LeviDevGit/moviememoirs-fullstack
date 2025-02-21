@@ -49,6 +49,7 @@ function Dashboard({ updaterState }: DashboardProps) {
       })
 
       const counterData = await counterFetch.json()
+      console.log(counterData)
 
       if (counterData % 6) {
         setCounter(Math.floor(counterData / 6) + 1)

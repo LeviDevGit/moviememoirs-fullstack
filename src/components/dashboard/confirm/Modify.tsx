@@ -3,6 +3,7 @@ import Visualization from './Visualization'
 import { Trash } from 'lucide-react'
 import Rater from '@/components/Rater'
 import Image from 'next/image'
+import { useState } from 'react'
 
 interface dataProps {
   id: number
@@ -55,10 +56,59 @@ async function deleteView(
   }
 }
 
-function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
+interface confirmModalComponentProps {
+  setConfirmModal: React.Dispatch<React.SetStateAction<boolean>>
+  id: number
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>
+  refresh: boolean
+}
+
+function ConfirmModalComponent({
+  setConfirmModal,
+  id,
+  setRefresh,
+  refresh,
+}: confirmModalComponentProps) {
   return (
-    <div className="flex w-full gap-3">
-      <div className="flex w-[500px] flex-col items-center rounded-lg bg-[#18181B] p-3">
+    <div className="fixed left-0 top-0 z-50 h-full w-full bg-black/90">
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="flex flex-col gap-6 rounded-lg bg-[#27272a] p-8">
+          <div className="flex flex-col items-center gap-4">
+            <Trash className="h-[50px] w-[50px]" />
+            <p className="text-lg text-white/90">
+              Você quer realmente apagar essa visualização?
+            </p>
+          </div>
+          <div className="flex w-full items-center justify-center gap-10">
+            <button
+              onClick={() => {
+                setConfirmModal(false)
+              }}
+              className="rounded-lg border px-4 py-2 text-sm font-bold"
+            >
+              Não, cancelar
+            </button>
+            <button
+              onClick={() => {
+                deleteView(id, setRefresh, refresh)
+              }}
+              className="rounded-lg bg-red-600 px-4 py-2 text-sm font-bold"
+            >
+              Sim, quero apagar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
+  const [confirmModal, setConfirmModal] = useState(false)
+
+  return (
+    <div className="relative flex w-full gap-3">
+      <div className="flex w-[500px] flex-col items-center rounded-lg bg-[#18181B] p-4">
         <div className="mb-5 flex w-full items-center justify-between gap-2">
           <div className="h-[330px] w-[220px] self-start shadow-cardShadow">
             <Image
@@ -70,21 +120,35 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
               className="h-[330px] w-[220px] rounded-md object-cover object-center shadow-imageShadow"
             />
           </div>
-          <div className="flex flex-1 items-center">
+          <div className="flex max-h-[330px] flex-1 flex-col items-center gap-1">
+            <h2 className="w-full text-center text-base">Último comentário</h2>
+            <hr className="w-full border border-[#ffffff4d]" />
             {last && (
               <div
                 key={last.id}
                 className="flex w-full items-center justify-between gap-6"
               >
+                {confirmModal && (
+                  <ConfirmModalComponent
+                    setConfirmModal={setConfirmModal}
+                    id={last.id}
+                    refresh={refresh}
+                    setRefresh={setRefresh}
+                  />
+                )}
                 <div className="flex w-full flex-col gap-4">
-                  {/* <h2 className="text-lg">Último comentário</h2> */}
-                  <div className="flex flex-col gap-1 bg-[#18181B] p-2">
+                  <div className="flex flex-col gap-1 bg-[#18181B] p-1">
                     <div className="flex items-center justify-between">
                       <div className="flex gap-2">
                         <h3 className="w-[160px] truncate">{data.name}</h3>
                         <h4 className="text-white/70">{data.year}</h4>
                       </div>
-                      <button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setConfirmModal(true)
+                        }}
+                      >
                         <Trash className="w-[1.5em]" />
                       </button>
                     </div>
@@ -101,8 +165,8 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
                         year: 'numeric',
                       })}
                     </h2>
-                    <div className="overflow-y-scroll pr-2">
-                      <p className="trucante max-h-[220px] text-white/90">
+                    <div className="overflow-y-scroll pr-3">
+                      <p className="trucante max-h-[150px] text-white/90">
                         {last.commentary}
                       </p>
                     </div>
@@ -114,7 +178,7 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
         </div>
         <div className="w-full rounded-lg bg-[#18181B] p-2">
           <h2 className="text-lg">Histórico</h2>
-          <hr className="border border-white" />
+          <hr className="w-full border border-[#ffffff4d]" />
           <div className="flex h-[100px] flex-col overflow-y-auto">
             {data.views
               .map((e) => (
@@ -122,6 +186,14 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
                   key={`${e.id}`}
                   className="flex w-full items-center justify-between gap-6"
                 >
+                  {confirmModal && (
+                    <ConfirmModalComponent
+                      setConfirmModal={setConfirmModal}
+                      id={e.id}
+                      refresh={refresh}
+                      setRefresh={setRefresh}
+                    />
+                  )}
                   <div className="flex w-full flex-col gap-2 py-5 pr-3">
                     <div className="flex items-center justify-between">
                       <h2 className="text-white/60">
@@ -135,7 +207,7 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
                       <button
                         type="button"
                         onClick={() => {
-                          deleteView(e.id, setRefresh, refresh)
+                          setConfirmModal(true)
                         }}
                       >
                         <Trash className="w-[1.5em]" />
@@ -160,11 +232,7 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
         <InputField name="name" text="Nome" placeholder={data.name} />
         <div className="flex items-center justify-between gap-6">
           <Chooser />
-          <InputField
-            name="movieDate"
-            text="Lançamento"
-            placeholder={data.year}
-          />
+          <InputField name="year" text="Lançamento" placeholder={data.year} />
         </div>
         <div className="flex items-center justify-between gap-6">
           <InputField name="time" text="Duração" placeholder={data.time} />
