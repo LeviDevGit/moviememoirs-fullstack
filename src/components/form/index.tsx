@@ -6,6 +6,7 @@ import Calendar from './Calendar'
 
 import dispatchForm from '@/utils/dispatchForm'
 import Rater from '../Rater'
+import React from 'react'
 
 interface updaterStateProps {
   updater: boolean
@@ -14,11 +15,12 @@ interface updaterStateProps {
 
 interface FormProps {
   updaterState: updaterStateProps
+  setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
-function Form({ updaterState }: FormProps) {
+function Form({ updaterState, setToggleModal }: FormProps) {
   return (
-    <div className="page-specific w-[700px] rounded-lg bg-[#27272a] p-5 text-white">
+    <div className="page-specific w-[800px] rounded-lg bg-[#27272a] p-5 text-white">
       <div className="mb-5 flex flex-col gap-2">
         <h1 className="text-xl font-medium">
           Registrar <span className="text-[#dd4d51]">Mídia</span>
@@ -28,8 +30,8 @@ function Form({ updaterState }: FormProps) {
         </p>
       </div>
       <form
-        className="flex justify-between"
-        onSubmit={(e) => dispatchForm({ e, updaterState })}
+        className="flex w-full justify-between gap-10"
+        onSubmit={(e) => dispatchForm({ e, updaterState, setToggleModal })}
         autoComplete="off"
       >
         <div className="flex flex-col items-center gap-4">
@@ -38,7 +40,7 @@ function Form({ updaterState }: FormProps) {
             <Rater width="w-[220px]" />
           </div>
         </div>
-        <div className="h-11/12 flex flex-col justify-between">
+        <div className="flex w-full flex-col justify-between gap-3">
           <InputField
             name="name"
             text="Nome"
@@ -46,7 +48,11 @@ function Form({ updaterState }: FormProps) {
           />
           <div className="flex items-center justify-between gap-6">
             <Chooser />
-            <InputField name="year" text="Lançamento" placeholder="Ex: 2004" />
+            <InputField
+              name="year"
+              text="Ano de lançamento"
+              placeholder="Ex: 2004"
+            />
           </div>
           <div className="flex items-center justify-between gap-6">
             <InputField name="time" text="Duração" placeholder="Ex: 2hr 2min" />
@@ -58,7 +64,11 @@ function Form({ updaterState }: FormProps) {
           </div>
           <div className="flex items-center justify-between gap-6">
             <Calendar />
-            <InputField name="imdb" text="Id" placeholder="IMDB" />
+            <InputField
+              name="imdb"
+              text="Id do imdb"
+              placeholder="Ex: tt28015403"
+            />
           </div>
           <Textarea />
           <div className="flex w-full items-center justify-end">

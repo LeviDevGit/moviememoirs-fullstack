@@ -39,6 +39,8 @@ export default function Home() {
   const [updater, setUpdater] = useState<boolean>(false)
   const updaterState = { updater, setUpdater }
 
+  const [takeLimit, setTakeLimit] = useState(6)
+
   // Central hook: setup data
   useSubmitData({
     direction,
@@ -46,6 +48,7 @@ export default function Home() {
     setDataFetch,
     updater,
     setTotalItems,
+    takeLimit,
   })
 
   const handleDirectionChange = (operation: number) => {
@@ -67,11 +70,13 @@ export default function Home() {
     setDirection(newStart)
   }
 
+  const takeLimitState = { takeLimit, setTakeLimit }
+
   return (
     <div className="relative flex h-full w-full flex-col items-center gap-8 p-10">
       {toggleModal[0] ? (
         <Modal set={setToggleModal} index={0}>
-          <Form updaterState={updaterState} />
+          <Form updaterState={updaterState} setToggleModal={setToggleModal} />
         </Modal>
       ) : toggleModal[1] ? (
         <Modal set={setToggleModal} index={1}>
@@ -100,6 +105,7 @@ export default function Home() {
           handleDirectionChange={handleDirectionChange}
           dataFetch={dataFetch}
           setToggleDetail={setToggleDetail}
+          takeLimitState={takeLimitState}
         />
       </main>
     </div>

@@ -22,6 +22,7 @@ async function main() {
           create: movie.view.map((viewDate: string) => ({
             // Converte o formato "Dia/Mês/Ano" para DateTime
             date: convertToDate(viewDate),
+            rating: movie.value,
           })),
         },
         imdb: '',

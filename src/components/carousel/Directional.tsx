@@ -4,6 +4,7 @@ import { ButtonHTMLAttributes } from 'react'
 interface DirectionalProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   left?: boolean
   dataLength: number
+  limit: number
 }
 
 const commonProps = {
@@ -13,14 +14,19 @@ const commonProps = {
     'group-transition-transform text-[#ffffff80] group-hover:scale-110 group-hover:text-[#ffffffCC]',
 }
 
-function Directional({ left = true, dataLength, ...rest }: DirectionalProps) {
+function Directional({
+  left = true,
+  dataLength,
+  limit,
+  ...rest
+}: DirectionalProps) {
   const ChevronIcon = left ? ChevronLeft : ChevronRight
 
   const positionClass = left
     ? 'left-0 justify-start bg-gradient-to-r'
     : 'right-0 justify-end bg-gradient-to-l'
 
-  const visibilityClass = dataLength < 6 ? 'hidden' : ''
+  const visibilityClass = dataLength < limit ? 'hidden' : ''
 
   return (
     <button

@@ -29,7 +29,7 @@ interface latestQueryProps {
 
 // CREATE /api/create
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const publicDir = path.join(process.cwd(), 'public', 'uploads')
+  const publicDir = path.join(process.cwd(), 'public', 'posters')
 
   const latestQuery = await prisma.movie.findFirst({
     orderBy: {
@@ -98,7 +98,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   })
 
   if (files.file) {
-    const publicUrl = `/uploads/${path.basename(files.file[0].filepath)}`
+    const publicUrl = `/posters/${path.basename(files.file[0].filepath)}`
 
     const addition = await prisma.movie.update({
       where: {

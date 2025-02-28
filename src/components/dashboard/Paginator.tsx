@@ -18,7 +18,9 @@ function Paginator({ handlePage, page, counter }: PaginatorProps) {
         >
           <ChevronLeft className="h-[1em] w-[1em]" />
         </button>
-        <div className="flex max-w-[196px] cursor-default gap-2">
+        <div
+          className={`flex cursor-default gap-2 ${counter && counter < 6 ? 'max-w-[196px]' : 'w-[196px]'}`}
+        >
           {counter &&
             Array.from({ length: counter }).map((_, index) =>
               page === index + 1 ||

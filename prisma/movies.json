@@ -3455,7 +3455,7 @@
     "time": "1hr 50min",
     "direction": "Scott Beck, Bryan Woods",
     "view": [
-      "25/01/2024"
+      "25/01/2025"
     ],
     "value": 4,
     "img": "/posters/266.jpg",
@@ -3468,7 +3468,7 @@
     "time": "1hr 44min",
     "direction": "Ti West",
     "view": [
-      "25/01/2024"
+      "25/01/2025"
     ],
     "value": 3.5,
     "img": "/posters/267.jpg",
@@ -3481,7 +3481,7 @@
     "time": "1hr 55min",
     "direction": "Richard Linklater",
     "view": [
-      "29/01/2024"
+      "29/01/2025"
     ],
     "value": 4.5,
     "img": "/posters/268.jpg",
@@ -3494,7 +3494,7 @@
     "time": "2hr 22min",
     "direction": "Kim Jee-woon",
     "view": [
-      "31/01/2024"
+      "31/01/2025"
     ],
     "value": 5,
     "img": "/posters/269.jpg",
@@ -3507,7 +3507,7 @@
     "time": "1hr 39min",
     "direction": "Michael Sarnoski",
     "view": [
-      "02/02/2024"
+      "02/02/2025"
     ],
     "value": 4,
     "img": "/posters/270.jpg",
@@ -3520,7 +3520,7 @@
     "time": "1hr 46min",
     "direction": "Mike Nichols",
     "view": [
-      "07/02/2024"
+      "07/02/2025"
     ],
     "value": 4,
     "img": "/posters/271.jpg",
@@ -3533,7 +3533,7 @@
     "time": "8 Episódios",
     "direction": "Ryan J. Condal, George R. R. Martin",
     "view": [
-      "11/02/2024"
+      "11/02/2025"
     ],
     "value": 3.5,
     "img": "/posters/272.jpg",
@@ -3546,10 +3546,23 @@
     "time": "9 Episódios",
     "direction": "Christian Linke, Alex Yee",
     "view": [
-      "14/02/2024"
+      "14/02/2025"
     ],
     "value": 4.5,
     "img": "/posters/273.jpg",
     "type": "Series"
+  },
+  {
+    "id": 274,
+    "name": "Acossado",
+    "date": "1960",
+    "time": "1hr 30min",
+    "direction": "Jean-Luc Godard",
+    "view": [
+      "28/01/2025"
+    ],
+    "value": 4,
+    "img": "/posters/274.jpg",
+    "type": "Movie"
   }
 ]}

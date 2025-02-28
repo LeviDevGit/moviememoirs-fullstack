@@ -12,6 +12,7 @@ interface useSubmitDataProps {
   setDataFetch: (value: React.SetStateAction<dataFetchProps>) => void
   updater: boolean
   setTotalItems: React.Dispatch<React.SetStateAction<number>>
+  takeLimit: number
 }
 
 function useSubmitData({
@@ -20,6 +21,7 @@ function useSubmitData({
   setDataFetch,
   updater,
   setTotalItems,
+  takeLimit,
 }: useSubmitDataProps) {
   useEffect(() => {
     const submitData = async () => {
@@ -38,7 +40,7 @@ function useSubmitData({
         })
 
         const response = await fetch(
-          `api/read?start=${direction}&${filters.toString()}`,
+          `api/read?takeLimit=${takeLimit}&start=${direction}&${filters.toString()}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -57,6 +59,13 @@ function useSubmitData({
     }
 
     submitData()
-  }, [direction, filterContent, setDataFetch, updater, setTotalItems])
+  }, [
+    direction,
+    filterContent,
+    setDataFetch,
+    updater,
+    setTotalItems,
+    takeLimit,
+  ])
 }
 export default useSubmitData

@@ -8,7 +8,14 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     return res.status(405).json({ error: 'Método não permitido' })
   }
 
-  const { start } = req.query
+  const { start, takeLimit } = req.query
+
+  if (!takeLimit) {
+    return res.status(404).json({ error: 'Não passou o limite' })
+  }
+
+  // const TAKE_LIMIT = 6
+  const TAKE_LIMIT = Number(takeLimit)
 
   const whereCondition = {
     movie: {
@@ -38,12 +45,12 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     orderBy: {
       date: 'desc',
     },
-    take: Number(start) === 0 ? 5 : 6,
+    take: Number(start) === 0 ? TAKE_LIMIT - 1 : TAKE_LIMIT,
     skip: Number(start),
   })
 
   // Se o carrossel estiver no começo, buscar os últimos itens para completar a rotação
-  if (Number(start) === 0 && totalItems > 5) {
+  if (Number(start) === 0 && totalItems > TAKE_LIMIT - 1) {
     const extraItems = await prisma.view.findFirst({
       where: whereCondition,
       include: {
@@ -56,10 +63,10 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     if (extraItems) items = [extraItems, ...items]
   }
 
-  if (Number(start) + 6 > totalItems) {
+  if (Number(start) + TAKE_LIMIT > totalItems) {
     const extraItems = await prisma.view.findMany({
       where: whereCondition,
-      take: (Number(start) + 6) % totalItems,
+      take: (Number(start) + TAKE_LIMIT) % totalItems,
       include: {
         movie: true,
       },

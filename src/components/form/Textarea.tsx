@@ -13,7 +13,7 @@ function Textarea({
       <textarea
         name="commentary"
         placeholder={custom || 'Sem comentário'}
-        className="resize-none rounded-xl border border-gray-500 bg-transparent p-2"
+        className="h-[100px] resize-none rounded-xl border border-gray-500 bg-transparent p-2 text-base"
         {...rest}
       />
     </div>
