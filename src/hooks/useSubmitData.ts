@@ -1,5 +1,6 @@
 import { dataFetchProps } from '@/types/interfaces'
 import { useEffect } from 'react'
+import toast from 'react-hot-toast'
 
 interface useSubmitDataProps {
   direction: number
@@ -26,21 +27,27 @@ function useSubmitData({
   useEffect(() => {
     const submitData = async () => {
       try {
-        const filters = new URLSearchParams({
-          name: filterContent.searchString.toString(),
-          director: filterContent.directorString
-            ? filterContent.directorString.toString()
-            : '',
-          year: filterContent.yearString
-            ? filterContent.yearString.toString()
-            : '',
-          value: filterContent.valueString
-            ? filterContent.valueString.toString()
-            : '',
-        })
+        const filters: Record<string, string> = {}
+
+        if (filterContent.searchString) {
+          filters.name = filterContent.searchString.toString()
+        }
+        if (filterContent.directorString) {
+          filters.director = filterContent.directorString.toString()
+        }
+
+        if (filterContent.yearString) {
+          filters.year = filterContent.yearString.toString()
+        }
+
+        if (filterContent.valueString) {
+          filters.value = filterContent.valueString.toString()
+        }
+
+        const searchParams = new URLSearchParams(filters)
 
         const response = await fetch(
-          `api/read?takeLimit=${takeLimit}&start=${direction}&${filters.toString()}`,
+          `api/read?takeLimit=${takeLimit}&start=${direction}${searchParams.size > 0 ? `&${searchParams}` : ''}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -55,6 +62,8 @@ function useSubmitData({
         }
       } catch (error) {
         console.error(error)
+        console.log(error)
+        toast.error('Here is your toast.')
       }
     }
 

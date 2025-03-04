@@ -39,7 +39,7 @@ function Gallery({
   return (
     <div
       ref={componentRef}
-      className="relative flex h-full w-full items-start justify-center gap-x-6 overflow-x-hidden pb-4"
+      className="relative flex h-full w-full items-start justify-center gap-x-6 overflow-x-hidden"
     >
       <Directional
         onClick={() => handleDirectionChange(-1)}

@@ -9,6 +9,7 @@ import Gallery from '@/components/carousel'
 import Form from '@/components/form'
 import Dashboard from '@/components/dashboard'
 import Detail from '@/components/detail'
+import { Toaster } from 'react-hot-toast'
 
 interface FilterContent {
   searchString: string
@@ -54,6 +55,8 @@ export default function Home() {
   const handleDirectionChange = (operation: number) => {
     let newStart = direction + operation
 
+    console.log(newStart, totalItems, direction, operation)
+
     if (newStart < 0) {
       if (newStart === -1) {
         newStart = totalItems - 2
@@ -64,7 +67,7 @@ export default function Home() {
 
     // Se ultrapassar o último índice, volta para 0
     if (newStart >= totalItems) {
-      newStart = 0
+      newStart = 1
     }
 
     setDirection(newStart)
@@ -73,7 +76,23 @@ export default function Home() {
   const takeLimitState = { takeLimit, setTakeLimit }
 
   return (
-    <div className="relative flex h-full w-full flex-col items-center gap-8 p-10">
+    <div className="relative flex h-full w-full flex-col items-center justify-center gap-8 p-10">
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          className: '',
+          duration: 5000,
+          removeDelay: 1000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+          },
+        }}
+      />
       {toggleModal[0] ? (
         <Modal set={setToggleModal} index={0}>
           <Form updaterState={updaterState} setToggleModal={setToggleModal} />
@@ -108,6 +127,11 @@ export default function Home() {
           takeLimitState={takeLimitState}
         />
       </main>
+      <footer className="w-full">
+        <p className="text-end text-white">
+          {totalItems} {totalItems > 1 ? 'Mídias' : 'Mídia'}
+        </p>
+      </footer>
     </div>
   )
 }

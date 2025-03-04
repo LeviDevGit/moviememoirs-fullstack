@@ -208,18 +208,15 @@ function Detail({ id }: DetailProps) {
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <div className="flex flex-col items-start gap-2">
-              <h2>Gêneros</h2>
-              <div className="flex items-center gap-2">
-                {api.data.title.genres.map((e) => (
-                  <p
-                    key={`${e}`}
-                    className="inline-block whitespace-nowrap rounded-[3px] bg-[#283038] px-[6px] py-[3px] leading-[1.5] text-[#9ab] shadow-inner shadow-[hsla(0,0%,100%,0.05)]"
-                  >
-                    {e}
-                  </p>
-                ))}
-              </div>
+            <div className="flex items-center gap-2">
+              {api.data.title.genres.map((e) => (
+                <p
+                  key={`${e}`}
+                  className="inline-block whitespace-nowrap rounded-[3px] bg-[#283038] px-[6px] py-[3px] leading-[1.5] text-[#9ab] shadow-inner shadow-[hsla(0,0%,100%,0.05)]"
+                >
+                  {e}
+                </p>
+              ))}
             </div>
           </div>
           <div className="h-full w-full overflow-y-scroll">
