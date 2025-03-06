@@ -1,5 +1,5 @@
 import { Ellipsis } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect } from 'react'
 
 interface RequestProps {
   inputRef: React.RefObject<HTMLInputElement>
@@ -12,6 +12,10 @@ interface RequestProps {
     value: string
   }
   selectOption: 'director' | 'year' | 'value'
+  selectLimitState: {
+    selectLimit: boolean
+    setSelectLimit: React.Dispatch<React.SetStateAction<boolean>>
+  }
 }
 
 function Request({
@@ -19,41 +23,58 @@ function Request({
   setSelectOption,
   option,
   selectOption,
+  selectLimitState,
 }: RequestProps) {
-  const [selected, setSelected] = useState(option.director)
-
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(event.target.value)
-    setSelected(event.target.value)
-  }
+  useEffect(() => {
+    if (option[selectOption] !== '') {
+      const newSelectKey = Object.entries(option).filter(
+        ([, value]) => value === '',
+      )[0]?.[0]
+      if (newSelectKey) {
+        setSelectOption(newSelectKey as keyof typeof option)
+        if (inputRef.current) {
+          inputRef.current.value = ''
+        }
+      } else {
+        selectLimitState.setSelectLimit(true)
+      }
+    }
+  }, [inputRef, option, selectLimitState, selectOption, setSelectOption])
 
   const getOptionText = (key: string) => {
     if (key === 'director') return 'Diretor'
-    if (key === 'year') return 'Ano de lançamento'
+    if (key === 'year') return 'Lançamento'
     if (key === 'value') return 'Nota'
   }
 
+  if (selectLimitState.selectLimit) {
+    return <div></div>
+  }
+
   return (
-    <div className="flex items-center gap-4 px-5">
+    <div className="flex items-center gap-4 px-5 text-sm">
       <label>Onde</label>
-      <select
-        className="rounded-lg border border-[#747476] bg-transparent p-2"
-        onChange={(e) => {
-          setSelectOption(e.target.value as keyof typeof option)
-          handleChange(e)
-        }}
-        value={selected}
-      >
-        {Object.entries(option).map(([key, value]) => {
-          return (
-            <option key={key} value={key} disabled={value !== ''}>
-              {getOptionText(key)}
-            </option>
-          )
-        })}
-      </select>
-      <label className="w-[70px] text-center">
-        {selectOption === 'director' ? 'contenha' : 'igual a'}
+      {
+        <select
+          className="rounded-lg border border-[#747476] bg-transparent p-2"
+          onChange={(e) => {
+            setSelectOption(e.target.value as keyof typeof option)
+          }}
+          value={selectOption}
+        >
+          {Object.entries(option)
+            .filter(([value]) => value !== '')
+            .map(([key, value]) => {
+              return (
+                <option key={key} value={value} disabled={value !== ''}>
+                  {getOptionText(key)}
+                </option>
+              )
+            })}
+        </select>
+      }
+      <label className="w-[90px] text-center">
+        {selectOption === 'director' ? 'contenha' : 'seja igual a'}
       </label>
       <input
         type="text"

@@ -231,7 +231,7 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
       <div className="flex flex-col gap-3">
         <InputField name="name" text="Nome" placeholder={data.name} />
         <div className="flex items-center justify-between gap-6">
-          <Chooser />
+          <Chooser defaultValue={data.type} />
           <InputField name="year" text="Lançamento" placeholder={data.year} />
         </div>
         <div className="flex items-center justify-between gap-6">

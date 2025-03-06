@@ -1,4 +1,4 @@
-import { Filter, Plus } from 'lucide-react'
+import { FilterIcon, Plus } from 'lucide-react'
 import { useRef, useState } from 'react'
 import useDropdown from '@/hooks/useDropdown'
 import { toggleModal } from '../Dismiss'
@@ -19,7 +19,7 @@ interface Dropdownprops {
   >
 }
 
-export default function DropdownFilter({
+export default function Filter({
   toggleDropdown,
   isOpen,
   request,
@@ -39,8 +39,12 @@ export default function DropdownFilter({
 
   const inputRef = useRef<HTMLInputElement>(null)
 
+  const [selectLimit, setSelectLimit] = useState(false)
+
+  const selectLimitState = { selectLimit, setSelectLimit }
+
   return (
-    <div className="relative h-full">
+    <div className="relative h-full text-sm">
       <button
         onClick={(event) => {
           event.stopPropagation()
@@ -48,14 +52,14 @@ export default function DropdownFilter({
         }}
         className="h-full rounded-lg px-4 text-white/50 hover:text-white/70"
       >
-        <Filter />
+        <FilterIcon />
       </button>
       {isOpen[2] && (
         <div
-          className="absolute left-0 top-12 z-20 flex flex-col justify-between gap-4 rounded-lg bg-[#27272a] text-white"
+          className="absolute left-0 top-12 z-20 flex flex-col justify-between gap-4 rounded-lg bg-[#27272a] text-sm text-white"
           ref={dropdown}
         >
-          <p className="p-5 pb-0">Nesta visualização mostre filmes</p>
+          <p className="p-5 pb-0">Nesta visualização mostre mídias</p>
           <hr className="border-[#747476]" />
           {Object.entries(option)
             .filter(([, value]) => value !== '')
@@ -68,22 +72,29 @@ export default function DropdownFilter({
               inputRef={inputRef}
               selectOption={selectOption}
               setSelectOption={setSelectOption}
+              selectLimitState={selectLimitState}
             />
           )}
           <hr className="border-[#5D5D5F]" />
-          <div className="flex items-center justify-between p-5 pt-0">
-            <button
-              className={`flex items-center gap-2 ${option[selectOption] && 'hidden'}`}
-              onClick={() => {
-                queryFilterAdd({ inputRef, request, selectOption, setOption })
-              }}
-            >
-              <Plus size={20} /> Adicionar filtro
-            </button>
+          <div className="flex items-center justify-between p-5 pt-0 text-sm">
+            {!selectLimit && (
+              <button
+                className={`flex items-center gap-2 text-sm`}
+                onClick={() => {
+                  queryFilterAdd({ inputRef, request, selectOption, setOption })
+                }}
+              >
+                <Plus size={20} /> Adicionar filtro
+              </button>
+            )}
             <button
               onClick={() => {
                 queryFilterClear({ request, setOption })
+                if (inputRef.current) {
+                  inputRef.current.value = ''
+                }
               }}
+              className="text-sm"
             >
               Excluir todos os filtros
             </button>

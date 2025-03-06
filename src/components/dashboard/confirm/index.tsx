@@ -84,6 +84,23 @@ async function deleteData(
   }
 }
 
+function handleFormChange(
+  e: React.FormEvent<HTMLFormElement>,
+  initialType: string,
+  setFilled: React.Dispatch<React.SetStateAction<boolean>>,
+) {
+  const formData = new FormData(e.currentTarget)
+  const hasValue = Array.from(formData.entries()).some(([key, value]) => {
+    if (key === 'type') {
+      return value !== initialType
+    } else {
+      return value.toString().trim() !== ''
+    }
+  })
+
+  setFilled(hasValue)
+}
+
 function Confirm({
   updaterState,
   safetyButton,
@@ -92,6 +109,7 @@ function Confirm({
   const [data, setData] = useState<dataProps>()
   const [last, setLast] = useState<LastProp>()
   const [refresh, setRefresh] = useState(false)
+  const [filled, setFilled] = useState(false)
 
   const submitData = async (id: number) => {
     try {
@@ -102,9 +120,9 @@ function Confirm({
 
       const data = await response.json()
 
-      console.log(data)
+      // console.log(data)
       const ultimoFilme = data.views.pop()
-      console.log(ultimoFilme)
+      // console.log(ultimoFilme)
 
       setLast(ultimoFilme)
 
@@ -131,6 +149,7 @@ function Confirm({
             className="flex w-full flex-col gap-3"
             autoComplete="off"
             onSubmit={(e) => updateMedia(safetyButton[0], e, setSafetyButton)}
+            onChange={(e) => handleFormChange(e, data.type, setFilled)}
           >
             <Modify
               data={data}
@@ -161,7 +180,8 @@ function Confirm({
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl bg-green-600 px-4 py-2 text-sm font-bold"
+                  className={`rounded-xl px-4 py-2 text-sm font-bold ${filled ? 'bg-green-600' : 'bg-gray-500'}`}
+                  disabled={!filled}
                 >
                   Salvar
                 </button>

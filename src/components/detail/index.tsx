@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import Rater from '../Rater'
 import { MovieDataImdb } from '@/types/imdb'
-import { ImageOff } from 'lucide-react'
+import { ImageOff, UserRound } from 'lucide-react'
 
 interface DetailProps {
   id: number
@@ -115,17 +115,23 @@ interface ImageWithFallbackProps {
 const ImageWithFallback = ({ src }: ImageWithFallbackProps) => {
   const [hasError, setHasError] = useState(false)
 
+  console.log(src)
+
   return hasError ? (
-    <div className="flex h-[169px] w-[113px] items-center justify-center rounded-lg border border-white">
-      <ImageOff />
+    <div className="flex h-[169px] w-[113px] items-center justify-center rounded-lg bg-[#e5e5e5]">
+      <ImageOff className="h-[50px] w-[50px]" color="#cecece" />
     </div>
   ) : (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt="Avatar"
-      onError={() => setHasError(true)}
-      className="h-[151px] w-[101px] rounded-lg object-cover object-center"
+      onError={(e) => {
+        setHasError(true)
+        console.log('teste')
+        e.currentTarget.textContent = 'Error'
+      }}
+      className="h-[169px] w-[113px] rounded-lg object-cover object-center"
     />
   )
 }
@@ -172,13 +178,13 @@ function Detail({ id }: DetailProps) {
               <p>{data.name}</p>
               <p className="text-white/70 underline">{data?.year}</p>
             </div>
-            <p className="text-white/60">
+            <p className="max-w-[250px] truncate text-white/60">
               Dirigido por{' '}
               <span className="text-white/70 underline">{data?.direction}</span>
             </p>
           </div>
           <div className="h-full w-[250px]">
-            <p className="line-clamp-4 h-[100px] max-w-[250px] select-none overflow-hidden text-[#9ab]">
+            <p className="line-clamp-4 h-[100px] max-w-[250px] select-none overflow-hidden text-justify text-[#9ab]">
               {api.data.title.plot}
             </p>
           </div>
@@ -186,20 +192,27 @@ function Detail({ id }: DetailProps) {
         <div className="flex w-[600px] flex-col justify-between gap-2">
           <div className="flex w-full flex-col gap-2">
             <h1>Elenco e Equipe</h1>
-            <div className="w-full overflow-x-auto whitespace-nowrap py-3">
+            <div className="w-full overflow-x-auto whitespace-nowrap py-2 pb-6">
               <div className="flex w-max gap-10">
                 {api.data.title.casts.map((e, index) => (
                   <div
                     key={`${e.characters} ${index}`}
                     className="flex w-[120px] flex-col items-center gap-1"
                   >
-                    {e.name.avatars && (
+                    {e.name.avatars && e.name.avatars[0].url ? (
                       <ImageWithFallback src={e.name.avatars[0].url} />
+                    ) : (
+                      <div className="flex h-[169px] w-[113px] items-center justify-center rounded-lg bg-[#e5e5e5]">
+                        <UserRound
+                          className="h-[50px] w-[50px]"
+                          color="#cecece"
+                        />
+                      </div>
                     )}
-                    <h3 className="text-center text-sm">
+                    <h3 className="w-[113px] truncate text-center text-sm">
                       {e.name.display_name}
                     </h3>
-                    <h4 className="text-center text-xs text-white/60">
+                    <h4 className="w-[113px] truncate text-center text-xs text-white/60">
                       Como {e.characters[0]}
                     </h4>
                   </div>

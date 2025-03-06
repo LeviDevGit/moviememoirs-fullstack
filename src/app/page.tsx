@@ -1,7 +1,6 @@
 'use client'
 
 import { Modal, Options, Search } from '@/components'
-import DropdownFilter from '@/components/filter/DropdownFilter'
 import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
 import { useState } from 'react'
@@ -10,6 +9,7 @@ import Form from '@/components/form'
 import Dashboard from '@/components/dashboard'
 import Detail from '@/components/detail'
 import { Toaster } from 'react-hot-toast'
+import Filter from '@/components/filter'
 
 interface FilterContent {
   searchString: string
@@ -111,7 +111,7 @@ export default function Home() {
       <header className="flex w-full items-center justify-between">
         <div className="flex h-[45px] items-center gap-1">
           <Search request={setFilterContent} />
-          <DropdownFilter
+          <Filter
             toggleDropdown={setToggleModal}
             isOpen={toggleModal}
             request={setFilterContent}
@@ -119,7 +119,7 @@ export default function Home() {
         </div>
         <Options openIt={setToggleModal} />
       </header>
-      <main className="w-full">
+      <main className="h-full w-full">
         <Gallery
           handleDirectionChange={handleDirectionChange}
           dataFetch={dataFetch}
@@ -128,7 +128,7 @@ export default function Home() {
         />
       </main>
       <footer className="w-full">
-        <p className="text-end text-white">
+        <p className="text-center text-white">
           {totalItems} {totalItems > 1 ? 'Mídias' : 'Mídia'}
         </p>
       </footer>

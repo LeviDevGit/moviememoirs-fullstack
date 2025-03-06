@@ -1,4 +1,8 @@
-function Chooser() {
+interface ChooserProps {
+  defaultValue?: string | undefined
+}
+
+function Chooser({ defaultValue = undefined }: ChooserProps) {
   return (
     <div className="flex w-1/2 flex-col gap-1 text-xs">
       <label>
@@ -7,6 +11,7 @@ function Chooser() {
       <select
         name="type"
         className="rounded-xl border border-gray-500 bg-transparent p-2"
+        defaultValue={defaultValue}
       >
         <option value="MOVIE">Filme</option>
         <option value="SERIES">Série</option>

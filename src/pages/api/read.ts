@@ -63,7 +63,7 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     if (extraItems) items = [extraItems, ...items]
   }
 
-  if (Number(start) + TAKE_LIMIT > totalItems && totalItems > TAKE_LIMIT - 1) {
+  if (Number(start) + TAKE_LIMIT > totalItems && totalItems > 1) {
     const extraItems = await prisma.view.findMany({
       where: whereCondition,
       take: (Number(start) + TAKE_LIMIT) % totalItems,
