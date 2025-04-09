@@ -59,6 +59,11 @@ function useSubmitData({
         if (data) {
           setTotalItems(data.totalItems)
           setDataFetch(data.items)
+
+          if (data.totalItems === 0) {
+            // Resetar os filtros
+            toast.error('Sem retornos')
+          }
         }
       } catch (error) {
         console.error(error)

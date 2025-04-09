@@ -86,7 +86,7 @@ function Dashboard({ updaterState }: DashboardProps) {
   }
 
   return (
-    <div className="flex h-[620px] flex-col gap-3 rounded-lg bg-[#27272a] p-7 text-xs text-white">
+    <div className="flex h-[620px] w-[976px] flex-col gap-3 rounded-lg bg-[#27272a] p-7 text-xs text-white">
       <div className="mb-5 flex flex-col gap-2">
         <h1 className="text-2xl font-bold">
           Lista de <span className="text-[#dd4d51]">Mídias</span>

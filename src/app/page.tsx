@@ -1,15 +1,13 @@
 'use client'
 
-import { Modal, Options, Search } from '@/components'
+import { Options, Search } from '@/components'
 import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
 import { useState } from 'react'
 import Gallery from '@/components/carousel'
-import Form from '@/components/form'
-import Dashboard from '@/components/dashboard'
-import Detail from '@/components/detail'
-import { Toaster } from 'react-hot-toast'
 import Filter from '@/components/filter'
+import Overlay from '@/components/Overlay'
+import { Toaster } from 'react-hot-toast'
 
 interface FilterContent {
   searchString: string
@@ -76,62 +74,71 @@ export default function Home() {
   const takeLimitState = { takeLimit, setTakeLimit }
 
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center gap-8 p-10">
-      <Toaster
-        position="top-center"
-        reverseOrder={false}
-        gutter={8}
-        containerClassName=""
-        containerStyle={{}}
-        toastOptions={{
-          className: '',
-          duration: 5000,
-          removeDelay: 1000,
-          style: {
-            background: '#363636',
-            color: '#fff',
-          },
-        }}
-      />
-      {toggleModal[0] ? (
-        <Modal set={setToggleModal} index={0}>
-          <Form updaterState={updaterState} setToggleModal={setToggleModal} />
-        </Modal>
-      ) : toggleModal[1] ? (
-        <Modal set={setToggleModal} index={1}>
-          <Dashboard updaterState={updaterState} />
-        </Modal>
-      ) : (
-        toggleDetail && (
-          <Modal set={setToggleDetail} index={undefined}>
-            <Detail id={toggleDetail} />
-          </Modal>
-        )
-      )}
-      <header className="flex w-full items-center justify-between">
-        <div className="flex h-[45px] items-center gap-1">
-          <Search request={setFilterContent} />
-          <Filter
-            toggleDropdown={setToggleModal}
-            isOpen={toggleModal}
-            request={setFilterContent}
-          />
-        </div>
-        <Options openIt={setToggleModal} />
-      </header>
-      <main className="h-full w-full">
-        <Gallery
-          handleDirectionChange={handleDirectionChange}
-          dataFetch={dataFetch}
-          setToggleDetail={setToggleDetail}
-          takeLimitState={takeLimitState}
+    <div className="relative flex h-full w-full items-center justify-center bg-[#18181B]">
+      <div className="flex w-full flex-col items-center justify-center gap-8 p-10">
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          gutter={8}
+          containerClassName=""
+          containerStyle={{}}
+          toastOptions={{
+            className: '',
+            duration: 5000,
+            removeDelay: 1000,
+            style: {
+              background: '#363636',
+              color: '#fff',
+            },
+          }}
         />
-      </main>
-      <footer className="w-full">
-        <p className="text-center text-white">
-          {totalItems} {totalItems > 1 ? 'Mídias' : 'Mídia'}
-        </p>
-      </footer>
+        <Overlay
+          setToggleDetail={setToggleDetail}
+          setToggleModal={setToggleModal}
+          toggleDetail={toggleDetail}
+          toggleModal={toggleModal}
+          updaterState={updaterState}
+        />
+        {/* {toggleModal[0] ? (
+          <Modal set={setToggleModal} index={0}>
+            <Form updaterState={updaterState} setToggleModal={setToggleModal} />
+          </Modal>
+        ) : toggleModal[1] ? (
+          <Modal set={setToggleModal} index={1}>
+            <Dashboard updaterState={updaterState} />
+          </Modal>
+        ) : (
+          toggleDetail && (
+            <Modal set={setToggleDetail} index={undefined}>
+              <Detail id={toggleDetail} />
+            </Modal>
+          )
+        )} */}
+        <header className="flex w-full items-center justify-between">
+          <div className="flex h-[45px] items-center gap-1">
+            <Search request={setFilterContent} />
+            <Filter
+              toggleDropdown={setToggleModal}
+              isOpen={toggleModal}
+              request={setFilterContent}
+            />
+          </div>
+          <Options openIt={setToggleModal} />
+        </header>
+        <main className="h-[513px] w-full">
+          <Gallery
+            handleDirectionChange={handleDirectionChange}
+            dataFetch={dataFetch}
+            setToggleDetail={setToggleDetail}
+            takeLimitState={takeLimitState}
+          />
+        </main>
+        <footer className="w-full">
+          <p className="text-center text-white">
+            {totalItems} {totalItems > 1 ? 'Mídias' : 'Mídia'}
+          </p>
+        </footer>
+      </div>
     </div>
   )
 }

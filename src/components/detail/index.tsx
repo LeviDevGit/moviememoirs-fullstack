@@ -144,7 +144,7 @@ function Detail({ id }: DetailProps) {
     submitData(id, setData, setApi)
   }, [id, setData])
 
-  if (!data) return <p>Erro ao carregar os dados.</p>
+  if (!data) return <p>Carregando...</p>
   if (!api) return <p>Erro com o id do imdb.</p>
   if (api.errors) return <p className="text-white">Erro com o request da api</p>
 
