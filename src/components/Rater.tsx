@@ -1,13 +1,7 @@
 import { Star, StarHalf } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
-interface RaterProps {
-  defaultValue?: number | undefined
-  width?: string
-  readonly?: boolean
-}
-
-function Rating(
+function generateStars(
   setRating: React.Dispatch<React.SetStateAction<number>>,
   rating: number,
   readonly: boolean,
@@ -46,6 +40,12 @@ function Rating(
   ))
 }
 
+interface RaterProps {
+  defaultValue?: number | undefined
+  width?: string
+  readonly?: boolean
+}
+
 function Rater({ defaultValue, width, readonly = false }: RaterProps) {
   const [rating, setRating] = useState(0)
 
@@ -59,7 +59,7 @@ function Rater({ defaultValue, width, readonly = false }: RaterProps) {
     <div
       className={`flex items-center justify-center ${width || 'w-[220px]'} `}
     >
-      {Rating(setRating, rating, readonly)}
+      {generateStars(setRating, rating, readonly)}
       {!readonly && <input type="hidden" name="value" value={rating} />}
     </div>
   )

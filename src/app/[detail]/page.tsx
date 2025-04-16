@@ -1,12 +1,10 @@
+'use client'
+
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import Rater from '../Rater'
 import { MovieDataImdb } from '@/types/imdb'
 import { ImageOff, UserRound } from 'lucide-react'
-
-interface DetailProps {
-  id: number
-}
+import Rater from '@/components/Rater'
 
 interface dataProps {
   id: number
@@ -28,12 +26,12 @@ interface dataProps {
 }
 
 async function submitData(
-  id: number,
+  id: string,
   setData: React.Dispatch<React.SetStateAction<dataProps | undefined>>,
   setApi: React.Dispatch<React.SetStateAction<MovieDataImdb | undefined>>,
 ) {
   try {
-    const response = await fetch(`/api/retrieve?mediaId=${id}`, {
+    const response = await fetch(`/api/retrieve?mediaId=${Number(id)}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -136,12 +134,19 @@ const ImageWithFallback = ({ src }: ImageWithFallbackProps) => {
   )
 }
 
-function Detail({ id }: DetailProps) {
+interface PageProps {
+  id: number
+  params: Promise<{ detail: string }>
+}
+
+function Page({ id, params }: PageProps) {
   const [data, setData] = useState<dataProps>()
   const [api, setApi] = useState<MovieDataImdb>()
 
-  useEffect(() => {
-    submitData(id, setData, setApi)
+  useEffect(async () => {
+    const { detail } = await params
+
+    submitData(detail, setData, setApi)
   }, [id, setData])
 
   if (!data) return <p>Carregando...</p>
@@ -267,4 +272,4 @@ function Detail({ id }: DetailProps) {
   )
 }
 
-export default Detail
+export default Page

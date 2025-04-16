@@ -8,13 +8,11 @@ import dispatchForm from '@/utils/dispatchForm'
 import Rater from '../Rater'
 import React from 'react'
 
-interface updaterStateProps {
-  updater: boolean
-  setUpdater: React.Dispatch<React.SetStateAction<boolean>>
-}
-
 interface FormProps {
-  updaterState: updaterStateProps
+  updaterState: {
+    updater: boolean
+    setUpdater: React.Dispatch<React.SetStateAction<boolean>>
+  }
   setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 

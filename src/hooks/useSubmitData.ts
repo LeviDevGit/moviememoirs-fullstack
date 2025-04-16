@@ -12,8 +12,8 @@ interface useSubmitDataProps {
   }
   setDataFetch: (value: React.SetStateAction<dataFetchProps>) => void
   updater: boolean
-  setTotalItems: React.Dispatch<React.SetStateAction<number>>
   takeLimit: number
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 function useSubmitData({
@@ -21,11 +21,12 @@ function useSubmitData({
   filterContent,
   setDataFetch,
   updater,
-  setTotalItems,
   takeLimit,
+  setLoading,
 }: useSubmitDataProps) {
   useEffect(() => {
     const submitData = async () => {
+      setLoading(true)
       try {
         const filters: Record<string, string> = {}
 
@@ -55,13 +56,12 @@ function useSubmitData({
         )
 
         const data = await response.json()
+        console.log(data)
 
         if (data) {
-          setTotalItems(data.totalItems)
-          setDataFetch(data.items)
+          setDataFetch(data)
 
           if (data.totalItems === 0) {
-            // Resetar os filtros
             toast.error('Sem retornos')
           }
         }
@@ -69,17 +69,12 @@ function useSubmitData({
         console.error(error)
         console.log(error)
         toast.error('Here is your toast.')
+      } finally {
+        setLoading(false)
       }
     }
 
     submitData()
-  }, [
-    direction,
-    filterContent,
-    setDataFetch,
-    updater,
-    setTotalItems,
-    takeLimit,
-  ])
+  }, [direction, filterContent, setDataFetch, updater, takeLimit, setLoading])
 }
 export default useSubmitData

@@ -1,8 +1,9 @@
 import { CardProps } from '@/types/interfaces'
 import renderStars from '@/utils/renderStars'
 import Image from 'next/image'
+import Link from 'next/link'
 
-function Card({ source, setToggleDetail }: CardProps) {
+function Card({ source }: CardProps) {
   return (
     <div className="flex w-[252px] flex-col items-center rounded-md bg-[#27272a] p-4 pb-0 text-white">
       <div className="group relative w-fit">
@@ -27,12 +28,7 @@ function Card({ source, setToggleDetail }: CardProps) {
           </h2>
         </div>
         <hr className="w-full border border-[#ffffff4d]" />
-        <button
-          onClick={() => {
-            setToggleDetail(source.movieId)
-          }}
-          className="w-full"
-        >
+        <Link href={`/${source.movieId}`} className="w-full">
           <div className="my-6 flex flex-col gap-2 font-['Inter'] text-xs 2xl:text-sm">
             <span className="truncate text-start">
               {source.movie.direction}
@@ -42,7 +38,7 @@ function Card({ source, setToggleDetail }: CardProps) {
               {source.movie.time} | {source.movie.year}
             </span>
           </div>
-        </button>
+        </Link>
       </div>
     </div>
   )
