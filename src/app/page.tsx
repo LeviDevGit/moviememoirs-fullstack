@@ -29,6 +29,7 @@ export default function Home() {
     items: [],
     totalItems: 0,
   })
+
   const [direction, setDirection] = useState(0)
   // 0: Form, 1: Managment, 2: Filter
   // const [toggleModal, setToggleModal] = useState([false, false, false])
@@ -48,8 +49,6 @@ export default function Home() {
   const [updater, setUpdater] = useState<boolean>(false)
   const updaterState = { updater, setUpdater }
 
-  const [takeLimit, setTakeLimit] = useState(6)
-
   const [loading, setLoading] = useState(false)
 
   // Central hook: setup data
@@ -58,7 +57,6 @@ export default function Home() {
     filterContent,
     setDataFetch,
     updater,
-    takeLimit,
     setLoading,
   })
 
@@ -68,11 +66,9 @@ export default function Home() {
     setDirection,
   }
 
-  const takeLimitState = { takeLimit, setTakeLimit }
-
   return (
     <div className="relative flex h-full w-full items-center justify-center bg-[#18181B]">
-      <div className="flex h-full max-h-[650px] w-full max-w-[1300px] flex-col items-center justify-between">
+      <div className="flex h-full max-h-[650px] w-full flex-col items-center justify-between px-4">
         <header className="flex h-[45px] w-full items-center justify-between gap-1">
           <div className="flex h-[45px] items-center gap-1">
             <Search request={setFilterContent} />
@@ -85,11 +81,7 @@ export default function Home() {
           <Options openIt={setToggleModal} />
         </header>
         <main className="h-[520px] w-full">
-          <Carousel
-            directionData={directionData}
-            takeLimitState={takeLimitState}
-            loading={loading}
-          />
+          <Carousel directionData={directionData} loading={loading} />
         </main>
         <footer className="w-full">
           <p className="text-center text-white">

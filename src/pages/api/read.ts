@@ -8,14 +8,9 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     return res.status(405).json({ error: 'Método não permitido' })
   }
 
-  const { start, takeLimit } = req.query
+  const { start } = req.query
 
-  if (!takeLimit) {
-    return res.status(404).json({ error: 'Não passou o limite' })
-  }
-
-  // const TAKE_LIMIT = 6
-  const TAKE_LIMIT = Number(takeLimit)
+  const TAKE_LIMIT = 10
 
   const whereCondition = {
     movie: {

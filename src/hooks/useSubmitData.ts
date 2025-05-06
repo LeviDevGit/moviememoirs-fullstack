@@ -12,7 +12,6 @@ interface useSubmitDataProps {
   }
   setDataFetch: (value: React.SetStateAction<dataFetchProps>) => void
   updater: boolean
-  takeLimit: number
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -21,7 +20,6 @@ function useSubmitData({
   filterContent,
   setDataFetch,
   updater,
-  takeLimit,
   setLoading,
 }: useSubmitDataProps) {
   useEffect(() => {
@@ -48,7 +46,7 @@ function useSubmitData({
         const searchParams = new URLSearchParams(filters)
 
         const response = await fetch(
-          `api/read?takeLimit=${takeLimit}&start=${direction}${searchParams.size > 0 ? `&${searchParams}` : ''}`,
+          `api/read?start=${direction}${searchParams.size > 0 ? `&${searchParams}` : ''}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -75,6 +73,6 @@ function useSubmitData({
     }
 
     submitData()
-  }, [direction, filterContent, setDataFetch, updater, takeLimit, setLoading])
+  }, [direction, filterContent, setDataFetch, updater, setLoading])
 }
 export default useSubmitData

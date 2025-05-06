@@ -21,15 +21,15 @@ function Card({ source }: CardProps) {
           />
         </div>
       </div>
-      <div className="group h-full w-[220px] pt-4 2xl:w-[345px]">
-        <div className="flex h-[50px] 2xl:h-[80px]">
-          <h2 className="w-full truncate text-center text-sm font-semibold 2xl:text-2xl">
+      <div className="group h-full w-[220px] pt-4">
+        <div className="flex h-[50px]">
+          <h2 className="w-full truncate text-center text-sm font-semibold">
             {source.movie.name}
           </h2>
         </div>
         <hr className="w-full border border-[#ffffff4d]" />
         <Link href={`/${source.movieId}`} className="w-full">
-          <div className="my-6 flex flex-col gap-2 font-['Inter'] text-xs 2xl:text-sm">
+          <div className="my-6 flex flex-col gap-2 font-['Inter'] text-xs">
             <span className="truncate text-start">
               {source.movie.direction}
             </span>

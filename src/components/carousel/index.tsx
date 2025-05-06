@@ -1,7 +1,6 @@
 import Card from './Card'
 import Directional from './Directional'
 import { dataFetchProps } from '@/types/interfaces'
-import { useEffect, useRef } from 'react'
 import { handleDirectionChange } from './carousel.utils'
 
 interface CarouselProps {
@@ -10,34 +9,12 @@ interface CarouselProps {
     dataFetch: dataFetchProps
     setDirection: React.Dispatch<React.SetStateAction<number>>
   }
-  takeLimitState: {
-    takeLimit: number
-    setTakeLimit: React.Dispatch<React.SetStateAction<number>>
-  }
   loading: boolean
 }
 
-function Carousel({ directionData, takeLimitState, loading }: CarouselProps) {
-  const componentRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const updateColumns = () => {
-      if (componentRef.current) {
-        const width = componentRef.current.offsetWidth
-        console.log(width, width < 600)
-        takeLimitState.setTakeLimit(width < 600 ? 3 : 6)
-      }
-    }
-    // Chama a função no início para configurar o valor correto
-    updateColumns()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+function Carousel({ directionData, loading }: CarouselProps) {
   return (
-    <div
-      ref={componentRef}
-      className="relative flex h-full w-full items-start justify-center gap-x-6 overflow-x-hidden"
-    >
+    <div className="relative flex h-full w-full items-start justify-start gap-x-6 overflow-x-hidden">
       <Directional
         onClick={() =>
           handleDirectionChange(
@@ -48,7 +25,6 @@ function Carousel({ directionData, takeLimitState, loading }: CarouselProps) {
           )
         }
         dataLength={directionData.dataFetch.totalItems}
-        limit={takeLimitState.takeLimit}
       />
       {!loading ? (
         directionData.dataFetch.items.map((element, index) => (
@@ -70,7 +46,6 @@ function Carousel({ directionData, takeLimitState, loading }: CarouselProps) {
           )
         }
         dataLength={directionData.dataFetch.totalItems}
-        limit={takeLimitState.takeLimit}
       />
     </div>
   )
