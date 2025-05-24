@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import { MovieDataImdb } from '@/types/imdb'
 import { ImageOff, UserRound } from 'lucide-react'
 import Rater from '@/components/Rater'
@@ -143,18 +143,18 @@ function Page({ id, params }: PageProps) {
   const [data, setData] = useState<dataProps>()
   const [api, setApi] = useState<MovieDataImdb>()
 
-  useEffect(async () => {
-    const { detail } = await params
+  const { detail } = use(params)
 
+  useEffect(() => {
     submitData(detail, setData, setApi)
-  }, [id, setData])
+  }, [id, setData, detail])
 
   if (!data) return <p>Carregando...</p>
   if (!api) return <p>Erro com o id do imdb.</p>
   if (api.errors) return <p className="text-white">Erro com o request da api</p>
 
   return (
-    <div className="flex rounded-lg bg-[#27272a] p-5 text-white">
+    <div className="flex h-full w-full bg-[#27272a] p-5 text-white">
       <div className="flex h-[600px] w-full justify-between gap-4 p-2">
         <div className="flex flex-col items-center justify-start gap-4">
           {data.img && (
@@ -218,7 +218,7 @@ function Page({ id, params }: PageProps) {
                       {e.name.display_name}
                     </h3>
                     <h4 className="w-[113px] truncate text-center text-xs text-white/60">
-                      Como {e.characters[0]}
+                      Como {e.characters && e.characters[0]}
                     </h4>
                   </div>
                 ))}
