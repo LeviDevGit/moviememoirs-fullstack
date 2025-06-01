@@ -1,4 +1,4 @@
-import Confirm from './confirm'
+import Confirm from '../confirm'
 import Controls from './Controls'
 import List from './List'
 import Paginator from './Paginator'
@@ -17,9 +17,7 @@ interface DashboardProps {
 
 function Dashboard({ updaterState }: DashboardProps) {
   const [data, setData] = useState<PaginatedData[]>([])
-  const [safetyButton, setSafetyButton] = useState<
-    [number, string] | undefined
-  >(undefined)
+
   const [page, setPage] = useState(1)
   const [counter, setCounter] = useState<number>()
 
@@ -98,13 +96,7 @@ function Dashboard({ updaterState }: DashboardProps) {
       </div>
       <Controls setFilter={setFilter} />
       <List data={data} setSafetyButton={setSafetyButton} />
-      {safetyButton && (
-        <Confirm
-          updaterState={updaterState}
-          safetyButton={safetyButton}
-          setSafetyButton={setSafetyButton}
-        />
-      )}
+
       <Paginator handlePage={handlePage} page={page} counter={counter} />
     </div>
   )

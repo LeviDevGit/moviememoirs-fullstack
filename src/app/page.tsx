@@ -40,14 +40,15 @@ export default function Home() {
     throw new Error('GlobalContext is undefined')
   }
 
-  const { toggleModal, setToggleModal } = context
+  const { toggleModal, setToggleModal, updater, setUpdater } = context
+  const updaterState = { updater, setUpdater }
 
   const [filterContent, setFilterContent] =
     useState<FilterContent>(initialFilterContent)
 
-  // State updater
-  const [updater, setUpdater] = useState<boolean>(false)
-  const updaterState = { updater, setUpdater }
+  // // State updater
+  // const [updater, setUpdater] = useState<boolean>(false)
+  // const updaterState = { updater, setUpdater }
 
   const [loading, setLoading] = useState(false)
 
@@ -67,9 +68,9 @@ export default function Home() {
   }
 
   return (
-    <div className="relative flex h-full w-full items-center justify-center bg-[#18181B]">
+    <div className="relative flex h-full w-full items-center justify-center">
       <div className="flex h-full max-h-[650px] w-full flex-col items-center justify-between px-4">
-        <header className="flex h-[45px] w-full items-center justify-between gap-1">
+        <header className="flex h-[45px] w-full items-center justify-between gap-1 border border-green-500">
           <div className="flex h-[45px] items-center gap-1">
             <Search request={setFilterContent} />
             <Filter
@@ -83,12 +84,6 @@ export default function Home() {
         <main className="h-[520px] w-full">
           <Carousel directionData={directionData} loading={loading} />
         </main>
-        <footer className="w-full">
-          <p className="text-center text-white">
-            {dataFetch.totalItems}{' '}
-            {dataFetch.totalItems > 1 ? 'Mídias' : 'Mídia'}
-          </p>
-        </footer>
         <Toaster
           position="top-center"
           reverseOrder={false}

@@ -8,10 +8,9 @@ interface updaterStateProps {
 
 interface ConfirmProps {
   updaterState: updaterStateProps
-  safetyButton: [number, string]
-  setSafetyButton: (
-    value: React.SetStateAction<[number, string] | undefined>,
-  ) => void
+  safetyButton: number
+  setSafetyButton: (value: React.SetStateAction<number | undefined>) => void
+  dataImageSrc: string
 }
 
 interface dataProps {
@@ -44,9 +43,7 @@ interface LastProp {
 async function updateMedia(
   id: number,
   e: React.FormEvent<HTMLFormElement>,
-  setSafetyButton: (
-    value: React.SetStateAction<[number, string] | undefined>,
-  ) => void,
+  setSafetyButton: (value: React.SetStateAction<number | undefined>) => void,
 ) {
   e.preventDefault()
   const formData = new FormData(e.currentTarget)
@@ -105,6 +102,7 @@ function Confirm({
   updaterState,
   safetyButton,
   setSafetyButton,
+  dataImageSrc,
 }: ConfirmProps) {
   const [data, setData] = useState<dataProps>()
   const [last, setLast] = useState<LastProp>()
@@ -133,7 +131,7 @@ function Confirm({
   }
 
   useEffect(() => {
-    submitData(safetyButton[0])
+    submitData(safetyButton)
   }, [safetyButton, refresh])
 
   return (
@@ -148,7 +146,7 @@ function Confirm({
           <form
             className="flex w-full flex-col gap-3"
             autoComplete="off"
-            onSubmit={(e) => updateMedia(safetyButton[0], e, setSafetyButton)}
+            onSubmit={(e) => updateMedia(safetyButton, e, setSafetyButton)}
             onChange={(e) => handleFormChange(e, data.type, setFilled)}
           >
             <Modify
@@ -161,7 +159,7 @@ function Confirm({
               <button
                 className="rounded-xl bg-red-600 px-4 py-2 text-sm font-bold"
                 onClick={() => {
-                  deleteData(safetyButton[0], safetyButton[1], updaterState)
+                  deleteData(safetyButton, dataImageSrc, updaterState)
                   setSafetyButton(undefined)
                 }}
                 type="button"

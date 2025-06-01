@@ -56,7 +56,7 @@ export default function Filter({
       </button>
       {isOpen[2] && (
         <div
-          className="absolute left-0 top-12 z-20 flex flex-col justify-between gap-4 rounded-lg bg-[#27272a] text-sm text-white"
+          className="bg-filter absolute left-0 top-12 z-20 flex flex-col justify-between gap-4 rounded-lg text-sm text-white"
           ref={dropdown}
         >
           <p className="p-5 pb-0">Nesta visualização mostre mídias</p>

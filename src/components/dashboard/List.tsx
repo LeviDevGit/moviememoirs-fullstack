@@ -40,16 +40,6 @@ function List({ data, setSafetyButton }: ListProps) {
               <h1 className="w-[80px]">
                 {new Date(element.date).toLocaleDateString()}
               </h1>
-              <div className="flex w-[80px] justify-end font-semibold text-[#e0e0e0]">
-                <button
-                  className="rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
-                  onClick={() => {
-                    setSafetyButton([element.movieId, element.movie.img])
-                  }}
-                >
-                  Editar
-                </button>
-              </div>
             </div>
           </div>
         ))}

@@ -20,13 +20,12 @@ function Directional({ left = true, dataLength, ...rest }: DirectionalProps) {
     ? 'left-0 justify-start bg-gradient-to-r'
     : 'right-0 justify-end bg-gradient-to-l'
 
-  // const visibilityClass = dataLength < limit ? 'hidden' : ''
+  const visibilityClass = dataLength < 8 ? 'hidden' : ''
 
   return (
     <button
       {...rest}
-      // className={`group absolute inset-y-0 z-10 flex w-[100px] items-center from-zinc-900 to-transparent ${positionClass} ${visibilityClass}`}
-      className={`group absolute inset-y-0 z-10 flex w-[100px] items-center from-zinc-900 to-transparent ${positionClass} `}
+      className={`group absolute inset-y-0 z-10 flex w-[100px] items-center from-zinc-900 to-transparent ${positionClass} ${visibilityClass}`}
     >
       <ChevronIcon {...commonProps} />
     </button>

@@ -58,7 +58,6 @@ function useSubmitData({
 
         if (data) {
           setDataFetch(data)
-
           if (data.totalItems === 0) {
             toast.error('Sem retornos')
           }

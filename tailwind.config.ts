@@ -8,14 +8,15 @@ export default {
   ],
   theme: {
     extend: {
-      backgroundColor: {
-        'solid-pink': '#832F3E',
-        'north-texas-green': '#009D1A',
-      },
       colors: {
-        'antique-ruby': '#841B2D',
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        background: '#1f1f1f',
+        button: '#009D1A',
+        card: '#27272a',
+        filter: '#5B655E',
+        modal: '#634643',
+        submit: '#8f001a',
+        // Another option for background
+        'eerie-black': '#18181B',
       },
       boxShadow: {
         cardShadow:

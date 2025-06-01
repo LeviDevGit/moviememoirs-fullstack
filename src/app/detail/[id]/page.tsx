@@ -1,110 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import { use, useEffect, useState } from 'react'
+import { use, useContext, useEffect, useState } from 'react'
 import { MovieDataImdb } from '@/types/imdb'
 import { ImageOff, UserRound } from 'lucide-react'
 import Rater from '@/components/Rater'
-
-interface dataProps {
-  id: number
-  year: string
-  name: string
-  time: string
-  direction: string
-  value: number
-  img: string
-  type: string
-  imdb: string
-  views: {
-    id: number
-    date: Date
-    commentary: string | null
-    rating: number
-    movieId: number
-  }[]
-}
-
-async function submitData(
-  id: string,
-  setData: React.Dispatch<React.SetStateAction<dataProps | undefined>>,
-  setApi: React.Dispatch<React.SetStateAction<MovieDataImdb | undefined>>,
-) {
-  try {
-    const response = await fetch(`/api/retrieve?mediaId=${Number(id)}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
-
-    const data = await response.json()
-
-    const teste = await fetch('https://graph.imdbapi.dev/v1', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `
-            {
-  title(id: "${data.imdb}") {
-    id
-    primary_title
-    genres
-    plot
- 
-    # Get the first 5 directors
-    directors: credits(first: 5, categories:[ "director" ]) {
-      name {
-        id
-        display_name
-        avatars {
-          url
-          width
-          height
-        }
-      }
-    }
- 
-    # Get the first 5 directors
-    writers: credits(first: 5, categories:[ "writer" ]) {
-      name {
-        id
-        display_name
-        avatars {
-          url
-          width
-          height
-        }
-      }
-    }
- 
-    # Get the first 5 casts
-    casts: credits(first: 5, categories:[ "actor", "actress" ]) {
-      name {
-        id
-        display_name
-        avatars {
-          url
-          width
-          height
-        }
-      }
-      characters
-    }
-  }
-}
-          `,
-      }),
-    })
-
-    setData(data)
-
-    const testeData = await teste.json()
-    setApi(testeData)
-  } catch (error) {
-    console.error(error)
-  }
-}
+import dispatchDetail, { dataProps } from '@/utils/dispatchDetail'
+import { GlobalContext } from '@/providers/global'
+import Confirm from '@/components/confirm'
 
 interface ImageWithFallbackProps {
   src: string
@@ -135,27 +38,46 @@ const ImageWithFallback = ({ src }: ImageWithFallbackProps) => {
 }
 
 interface PageProps {
-  id: number
-  params: Promise<{ detail: string }>
+  params: Promise<{ id: string }>
 }
 
-function Page({ id, params }: PageProps) {
+function Page({ params }: PageProps) {
+  const [safetyButton, setSafetyButton] = useState<number | undefined>(
+    undefined,
+  )
   const [data, setData] = useState<dataProps>()
   const [api, setApi] = useState<MovieDataImdb>()
 
-  const { detail } = use(params)
+  const { id } = use(params)
 
   useEffect(() => {
-    submitData(detail, setData, setApi)
-  }, [id, setData, detail])
+    dispatchDetail(id, setData, setApi)
+  }, [id, setData])
 
-  if (!data) return <p>Carregando...</p>
+  const context = useContext(GlobalContext)
+
+  if (!context) {
+    throw new Error('GlobalContext is undefined')
+  }
+
+  const { updater, setUpdater } = context
+
+  const updaterState = { updater, setUpdater }
+
+  if (!data)
+    return (
+      <div className="flex h-full w-full items-center">
+        <div className="flex h-full w-full items-center justify-center border-red-500">
+          <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-blue-500"></div>
+        </div>
+      </div>
+    )
   if (!api) return <p>Erro com o id do imdb.</p>
   if (api.errors) return <p className="text-white">Erro com o request da api</p>
 
   return (
-    <div className="flex h-full w-full bg-[#27272a] p-5 text-white">
-      <div className="flex h-[600px] w-full justify-between gap-4 p-2">
+    <div className="flex h-full w-full items-center justify-center p-5 text-white">
+      <div className="flex h-[650px] w-[1200px] justify-between gap-4 border border-red-500 p-2">
         <div className="flex flex-col items-center justify-start gap-4">
           {data.img && (
             <div className="h-[330px] w-[220px] shadow-cardShadow">
@@ -178,6 +100,24 @@ function Page({ id, params }: PageProps) {
               />
             )}
           </div>
+          <div className="flex w-[80px] justify-end font-semibold text-[#e0e0e0]">
+            <button
+              className="rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
+              onClick={() => {
+                setSafetyButton(Number(id))
+              }}
+            >
+              Editar
+            </button>
+          </div>
+          {safetyButton && (
+            <Confirm
+              updaterState={updaterState}
+              safetyButton={safetyButton}
+              setSafetyButton={setSafetyButton}
+              dataImageSrc={data.img}
+            />
+          )}
           <div className="flex flex-col gap-4">
             <div className="flex w-full items-center justify-center gap-4">
               <p>{data.name}</p>

@@ -18,7 +18,7 @@ interface FormProps {
 
 function Form({ updaterState, setToggleModal }: FormProps) {
   return (
-    <div className="page-specific w-[800px] rounded-lg bg-[#27272a] p-5 text-white">
+    <div className="page-specific bg-modal w-[800px] rounded-lg p-5 text-white">
       <div className="mb-5 flex flex-col gap-2">
         <h1 className="text-xl font-medium">
           Registrar <span className="text-[#dd4d51]">Mídia</span>
@@ -72,7 +72,7 @@ function Form({ updaterState, setToggleModal }: FormProps) {
           <div className="flex w-full items-center justify-end">
             <button
               type="submit"
-              className="rounded-xl bg-[#8f001a] px-4 py-2 text-sm font-bold"
+              className="bg-submit rounded-xl px-4 py-2 text-sm font-bold"
             >
               Registrar
             </button>

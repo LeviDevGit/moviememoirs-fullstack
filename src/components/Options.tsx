@@ -9,7 +9,7 @@ function Options({ openIt }: OptionsProps) {
   return (
     <div className="flex h-[35px] items-center font-bold text-white 2xl:h-[40px]">
       <button
-        className="flex h-full w-full items-center gap-2 rounded-l-lg bg-north-texas-green/90 px-3 pr-7 hover:bg-north-texas-green"
+        className="bg-button/90 hover:bg-button flex h-full w-full items-center gap-2 rounded-l-lg px-3 pr-7"
         onClick={() => {
           toggleModal({ index: 0, set: openIt, toggler: true })
         }}
@@ -18,7 +18,7 @@ function Options({ openIt }: OptionsProps) {
         <span>Log</span>
       </button>
       <button
-        className="h-full rounded-r-lg bg-north-texas-green/60 px-3 hover:bg-north-texas-green/70"
+        className="bg-button/60 hover:bg-button/70 h-full rounded-r-lg px-3"
         onClick={() => {
           toggleModal({ index: 1, set: openIt, toggler: true })
         }}
