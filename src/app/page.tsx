@@ -31,8 +31,6 @@ export default function Home() {
   })
 
   const [direction, setDirection] = useState(0)
-  // 0: Form, 1: Managment, 2: Filter
-  // const [toggleModal, setToggleModal] = useState([false, false, false])
 
   const context = useContext(GlobalContext)
 
@@ -70,8 +68,8 @@ export default function Home() {
   return (
     <div className="relative flex h-full w-full items-center justify-center">
       <div className="flex h-full max-h-[650px] w-full flex-col items-center justify-between px-4">
-        <header className="flex h-[45px] w-full items-center justify-between gap-1 border border-green-500">
-          <div className="flex h-[45px] items-center gap-1">
+        <header className="flex h-[45px] w-full items-center justify-between gap-1 border border-red-500">
+          <div className="flex h-full items-center gap-1">
             <Search request={setFilterContent} />
             <Filter
               toggleDropdown={setToggleModal}

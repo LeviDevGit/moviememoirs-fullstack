@@ -48,15 +48,15 @@ export default function Filter({
       <button
         onClick={(event) => {
           event.stopPropagation()
-          toggleModal({ index: 2, set: toggleDropdown, toggler: !isOpen[2] })
+          toggleModal({ index: 1, set: toggleDropdown, toggler: !isOpen[1] })
         }}
         className="h-full rounded-lg px-4 text-white/50 hover:text-white/70"
       >
         <FilterIcon />
       </button>
-      {isOpen[2] && (
+      {isOpen[1] && (
         <div
-          className="bg-filter absolute left-0 top-12 z-20 flex flex-col justify-between gap-4 rounded-lg text-sm text-white"
+          className="absolute left-0 top-12 z-20 flex flex-col justify-between gap-4 rounded-lg bg-filter text-sm text-white"
           ref={dropdown}
         >
           <p className="p-5 pb-0">Nesta visualização mostre mídias</p>

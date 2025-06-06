@@ -1,4 +1,3 @@
-import Dashboard from './dashboard'
 import Form from './form'
 import Modal from './Modal'
 
@@ -14,16 +13,10 @@ interface OverlayProps {
 function Overlay({ toggleModal, setToggleModal, updaterState }: OverlayProps) {
   return (
     <>
-      {toggleModal[0] ? (
+      {toggleModal[0] && (
         <Modal set={setToggleModal} index={0}>
           <Form updaterState={updaterState} setToggleModal={setToggleModal} />
         </Modal>
-      ) : (
-        toggleModal[1] && (
-          <Modal set={setToggleModal} index={1}>
-            <Dashboard updaterState={updaterState} />
-          </Modal>
-        )
       )}
     </>
   )

@@ -9,7 +9,7 @@ interface useDropdownProps {
 
 function useDropdown({ isOpen, dropdown, toggleDropdown }: useDropdownProps) {
   useEffect(() => {
-    if (!isOpen[2]) return
+    if (!isOpen[1]) return
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
