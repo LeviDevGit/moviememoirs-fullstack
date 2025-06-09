@@ -43,6 +43,8 @@ export default function Filter({
 
   const selectLimitState = { selectLimit, setSelectLimit }
 
+  const [filterSelectHandle, setFilterSelectHandle] = useState(false)
+
   return (
     <div className="relative h-full text-sm">
       <button
@@ -61,27 +63,35 @@ export default function Filter({
         >
           <p className="p-5 pb-0">Nesta visualização mostre mídias</p>
           <hr className="border-[#747476]" />
-          {Object.entries(option)
-            .filter(([, value]) => value !== '')
-            .map(([key, value], index) => (
-              <Selection key={`${index}`} propKey={key} propValue={value} />
-            ))}
-          {option && (
+          {!selectLimit && (
             <Request
               option={option}
               inputRef={inputRef}
               selectOption={selectOption}
               setSelectOption={setSelectOption}
               selectLimitState={selectLimitState}
+              filterSelectHandle={filterSelectHandle}
+              setFilterSelectHandle={setFilterSelectHandle}
             />
           )}
+          {Object.entries(option)
+            .filter(([, value]) => value !== '')
+            .map(([key, value], index) => (
+              <Selection key={`${index}`} propKey={key} propValue={value} />
+            ))}
           <hr className="border-[#5D5D5F]" />
           <div className="flex items-center justify-between p-5 pt-0 text-sm">
             {!selectLimit && (
               <button
                 className={`flex items-center gap-2 text-sm`}
                 onClick={() => {
-                  queryFilterAdd({ inputRef, request, selectOption, setOption })
+                  queryFilterAdd({
+                    inputRef,
+                    request,
+                    selectOption,
+                    setOption,
+                    setFilterSelectHandle,
+                  })
                 }}
               >
                 <Plus size={20} /> Adicionar filtro
@@ -89,7 +99,12 @@ export default function Filter({
             )}
             <button
               onClick={() => {
-                queryFilterClear({ request, setOption })
+                queryFilterClear({
+                  request,
+                  setOption,
+                  setSelectOption,
+                  setSelectLimit,
+                })
                 if (inputRef.current) {
                   inputRef.current.value = ''
                 }

@@ -135,8 +135,8 @@ function Confirm({
   }, [safetyButton, refresh])
 
   return (
-    <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/70">
-      <div className="page-specific rounded-2xl bg-[#27272a] p-5 text-white">
+    <div className="absolute inset-0 z-40 flex items-center justify-center bg-modal-overlay/90">
+      <div className="page-specific rounded-2xl bg-background p-5 text-white">
         <div className="mb-5 flex flex-col gap-2">
           <h1 className="text-xl font-medium">
             Editar <span className="text-[#dd4d51]">Mídia</span>

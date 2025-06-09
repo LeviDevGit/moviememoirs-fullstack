@@ -17,7 +17,7 @@ function useDropdown({ isOpen, dropdown, toggleDropdown }: useDropdownProps) {
         event.target instanceof Node &&
         !dropdown.current.contains(event.target)
       ) {
-        toggleModal({ index: 2, set: toggleDropdown, toggler: false })
+        toggleModal({ index: 1, set: toggleDropdown, toggler: false })
       }
     }
 

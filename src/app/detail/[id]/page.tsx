@@ -7,7 +7,7 @@ import Rater from '@/components/Rater'
 import dispatchDetail, { dataProps } from '@/utils/dispatchDetail'
 import { GlobalContext } from '@/providers/global'
 import Confirm from '@/components/confirm'
-import MediaInfo from '@/components/features/detail/media-info'
+import MediaInfo from '@/components/media-info'
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -83,17 +83,17 @@ function Page({ params }: PageProps) {
                 Editar
               </button>
             </div>
-            {safetyButton && (
-              <Confirm
-                updaterState={updaterState}
-                safetyButton={safetyButton}
-                setSafetyButton={setSafetyButton}
-                dataImageSrc={data.img}
-              />
-            )}
           </div>
           <MediaInfo data={data} api={api} />
         </div>
+        {safetyButton && (
+          <Confirm
+            updaterState={updaterState}
+            safetyButton={safetyButton}
+            setSafetyButton={setSafetyButton}
+            dataImageSrc={data.img}
+          />
+        )}
       </div>
     </div>
   )

@@ -9,14 +9,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#1f1f1f',
+        background: '#18181B',
         button: '#009D1A',
         card: '#27272a',
-        filter: '#5B655E',
-        modal: '#634643',
+        filter: '#1f1f1f',
         submit: '#8f001a',
-        // Another option for background
-        'eerie-black': '#18181B',
+        'modal-overlay': '#5d5d5d',
       },
       boxShadow: {
         cardShadow:
