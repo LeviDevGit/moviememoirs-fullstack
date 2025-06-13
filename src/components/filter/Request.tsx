@@ -69,11 +69,11 @@ function Request({
   }
 
   return (
-    <div className="flex items-center gap-4 px-5 text-sm">
+    <div className="flex w-[550px] items-center gap-4 px-5 text-sm">
       <label>Onde</label>
       {
         <select
-          className="rounded-lg border border-[#747476] bg-transparent p-2"
+          className="w-[118px] rounded-lg border border-[#747476] bg-transparent p-2"
           onChange={(e) => {
             handleSelectChange(e)
           }}
@@ -86,13 +86,13 @@ function Request({
           ))}
         </select>
       }
-      <label className="w-[90px] text-center">
+      <label className="min-w-[90px] text-center">
         {selectOption === 'director' ? 'contenha' : 'seja igual a'}
       </label>
       <input
         type="text"
         placeholder="Digite o valor..."
-        className="rounded-lg border border-[#747476] bg-transparent p-2 outline-none"
+        className="min-w-[226px] rounded-lg border border-[#747476] bg-transparent p-2 outline-none"
         ref={inputRef}
       />
     </div>

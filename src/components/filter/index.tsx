@@ -45,6 +45,10 @@ export default function Filter({
 
   const [filterSelectHandle, setFilterSelectHandle] = useState(false)
 
+  const [filterEllipsisHandle, setFilterEllipsisHandle] = useState<
+    keyof typeof option | undefined
+  >(undefined)
+
   return (
     <div className="relative h-full text-sm">
       <button
@@ -58,7 +62,7 @@ export default function Filter({
       </button>
       {isOpen[1] && (
         <div
-          className="absolute left-0 top-12 z-20 flex flex-col justify-between gap-4 rounded-lg bg-filter text-sm text-white"
+          className="absolute left-0 top-12 z-20 flex w-[600px] flex-col justify-between gap-4 rounded-lg bg-filter text-sm text-white"
           ref={dropdown}
         >
           <p className="p-5 pb-0">Nesta visualização mostre mídias</p>
@@ -77,7 +81,16 @@ export default function Filter({
           {Object.entries(option)
             .filter(([, value]) => value !== '')
             .map(([key, value], index) => (
-              <Selection key={`${index}`} propKey={key} propValue={value} />
+              <Selection
+                key={`${index}`}
+                propKey={key}
+                propValue={value}
+                filterEllipsisHandle={filterEllipsisHandle}
+                setFilterEllipsisHandle={setFilterEllipsisHandle}
+                setOption={setOption}
+                setSelectLimit={setSelectLimit}
+                request={request}
+              />
             ))}
           <hr className="border-[#5D5D5F]" />
           <div className="flex items-center justify-between p-5 pt-0 text-sm">
