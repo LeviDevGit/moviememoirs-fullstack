@@ -1,4 +1,5 @@
 import { MovieDataImdb } from '@/types/imdb'
+import toast from 'react-hot-toast'
 
 export interface dataProps {
   id: number
@@ -23,7 +24,12 @@ async function dispatchDetail(
   id: string,
   setData: React.Dispatch<React.SetStateAction<dataProps | undefined>>,
   setApi: React.Dispatch<React.SetStateAction<MovieDataImdb | undefined>>,
+  api: MovieDataImdb | undefined,
+  setLive: React.Dispatch<React.SetStateAction<boolean>>,
+  live: boolean,
 ) {
+  let imdbNumber = ''
+
   try {
     const response = await fetch(`/api/retrieve?mediaId=${Number(id)}`, {
       method: 'GET',
@@ -32,7 +38,16 @@ async function dispatchDetail(
 
     const data = await response.json()
 
-    const teste = await fetch('https://graph.imdbapi.dev/v1', {
+    setData(data)
+    console.log(data)
+
+    imdbNumber = data.imdb
+  } catch (error) {
+    console.error(error)
+  }
+
+  try {
+    const imdb = await fetch('https://graph.imdbapi.dev/v1', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +55,7 @@ async function dispatchDetail(
       body: JSON.stringify({
         query: `
               {
-    title(id: "${data.imdb}") {
+    title(id: "${imdbNumber}") {
       id
       primary_title
       genres
@@ -91,12 +106,18 @@ async function dispatchDetail(
       }),
     })
 
-    setData(data)
-
-    const testeData = await teste.json()
-    setApi(testeData)
+    const imdbData = await imdb.json()
+    setApi(imdbData)
   } catch (error) {
-    console.error(error)
+    console.log(error)
+  } finally {
+    if (!api) {
+      setLive(false)
+    }
+  }
+
+  if (!live) {
+    toast.error('Sem internet, BABY!')
   }
 }
 

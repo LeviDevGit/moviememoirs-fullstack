@@ -1,11 +1,11 @@
 import { CardProps } from '@/types/interfaces'
-import renderStars from '@/utils/renderStars'
 import Image from 'next/image'
 import Link from 'next/link'
+import renderStars from './render-star'
 
 function Card({ source }: CardProps) {
   return (
-    <div className="bg-card flex w-[252px] flex-col items-center rounded-md p-4 pb-0 text-white">
+    <div className="flex w-[252px] flex-col items-center rounded-md bg-card p-4 pb-0 text-white">
       <div className="group relative w-fit">
         <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 opacity-0 blur duration-[1000ms] group-hover:opacity-100 group-hover:blur-none">
           <div className="flex">{renderStars(source.movie.value)}</div>

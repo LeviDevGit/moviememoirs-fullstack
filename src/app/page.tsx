@@ -7,7 +7,6 @@ import { useContext, useState } from 'react'
 import Carousel from '@/components/carousel'
 import Filter from '@/components/filter'
 import Overlay from '@/components/Overlay'
-import { Toaster } from 'react-hot-toast'
 import { GlobalContext } from '@/providers/global'
 
 interface FilterContent {
@@ -82,22 +81,6 @@ export default function Home() {
         <main className="h-[520px] w-full">
           <Carousel directionData={directionData} loading={loading} />
         </main>
-        <Toaster
-          position="top-center"
-          reverseOrder={false}
-          gutter={8}
-          containerClassName=""
-          containerStyle={{}}
-          toastOptions={{
-            className: '',
-            duration: 5000,
-            removeDelay: 1000,
-            style: {
-              background: '#363636',
-              color: '#fff',
-            },
-          }}
-        />
         <Overlay
           setToggleModal={setToggleModal}
           toggleModal={toggleModal}

@@ -7,7 +7,7 @@ import Rater from '@/components/Rater'
 import dispatchDetail, { dataProps } from '@/utils/dispatchDetail'
 import { GlobalContext } from '@/providers/global'
 import Confirm from '@/components/confirm'
-import MediaInfo from '@/components/media-info'
+import MediaInfo from '@/components/info/media-info'
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -19,12 +19,14 @@ function Page({ params }: PageProps) {
   )
   const [data, setData] = useState<dataProps>()
   const [api, setApi] = useState<MovieDataImdb>()
+  const [live, setLive] = useState(true)
 
   const { id } = use(params)
 
   useEffect(() => {
-    dispatchDetail(id, setData, setApi)
-  }, [id, setData])
+    dispatchDetail(id, setData, setApi, api, setLive, live)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, live])
 
   const context = useContext(GlobalContext)
 
@@ -44,8 +46,9 @@ function Page({ params }: PageProps) {
         </div>
       </div>
     )
-  if (!api) return <p>Erro com o id do imdb.</p>
-  if (api.errors) return <p className="text-white">Erro com o request da api</p>
+
+  if (api && api.errors)
+    return <p className="text-white">Erro com o request da api</p>
 
   return (
     <div className="flex h-full w-full items-center justify-center p-5 text-white">
@@ -84,7 +87,7 @@ function Page({ params }: PageProps) {
               </button>
             </div>
           </div>
-          <MediaInfo data={data} api={api} />
+          {api && live && <MediaInfo data={data} api={api} />}
         </div>
         {safetyButton && (
           <Confirm

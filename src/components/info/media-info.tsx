@@ -1,8 +1,8 @@
 import Rater from '@/components/Rater'
 import { MovieDataImdb } from '@/types/imdb'
 import { dataProps } from '@/utils/dispatchDetail'
-import ImageWithFallback from '@/utils/imageFallback'
 import { UserRound } from 'lucide-react'
+import ImageWithFallback from './image-fallback'
 
 interface MediaInfoProps {
   data: dataProps
