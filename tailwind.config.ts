@@ -9,12 +9,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#18181B',
-        button: '#009D1A',
-        card: '#27272a',
+        background: '#0e0f12',
+        primary: '#7b98f0',
+        secondary: '#5b4b60',
+        accent: '#831b2c',
+        card: '#16181b',
+
+        // Others
         filter: '#1f1f1f',
-        submit: '#8f001a',
-        'modal-overlay': '#5d5d5d',
+        'modal-overlay': 'rgba(0, 0, 0, 0.5)',
+        text: {
+          50: '#e2e4e9',
+        },
       },
       boxShadow: {
         cardShadow:

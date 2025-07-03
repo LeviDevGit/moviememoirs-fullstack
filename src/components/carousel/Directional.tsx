@@ -25,9 +25,9 @@ function Directional({ left = true, dataLength, ...rest }: DirectionalProps) {
   return (
     <button
       {...rest}
-      className={`group absolute inset-y-0 z-10 flex w-[100px] items-center from-zinc-900 to-transparent ${positionClass} ${visibilityClass}`}
+      className={`group absolute inset-y-0 z-10 flex w-[100px] items-center from-background to-transparent ${positionClass} ${visibilityClass}`}
     >
-      <ChevronIcon {...commonProps} />
+      <ChevronIcon {...commonProps} className="text-text-50" />
     </button>
   )
 }

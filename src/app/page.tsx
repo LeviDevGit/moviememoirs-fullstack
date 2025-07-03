@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <div className="relative flex h-full w-full items-center justify-center">
       <div className="flex h-full max-h-[650px] w-full flex-col items-center justify-between px-4">
-        <header className="flex h-[45px] w-full items-center justify-between gap-1 border border-red-500">
+        <header className="flex h-[45px] w-full items-center justify-between gap-1">
           <div className="flex h-full items-center gap-1">
             <Search request={setFilterContent} />
             <Filter

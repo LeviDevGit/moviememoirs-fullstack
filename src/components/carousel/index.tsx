@@ -14,7 +14,7 @@ interface CarouselProps {
 
 function Carousel({ directionData, loading }: CarouselProps) {
   return (
-    <div className="relative flex h-full w-full overflow-x-hidden border border-red-500">
+    <div className="relative flex h-full w-full overflow-x-hidden">
       <Directional
         onClick={() =>
           handleDirectionChange(
@@ -34,8 +34,8 @@ function Carousel({ directionData, loading }: CarouselProps) {
             ))}
           </div>
         ) : (
-          <div className="flex h-full w-full items-center justify-center border-red-500">
-            <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-blue-500"></div>
+          <div className="flex h-full w-full items-center justify-center">
+            <div className="border-t-primary h-10 w-10 animate-spin rounded-full border-4 border-gray-300"></div>
           </div>
         )}
       </div>

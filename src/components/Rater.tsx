@@ -23,14 +23,12 @@ function generateStars(
     >
       {rating >= i + 1 ? (
         <Star
-          className="h-full w-full text-[#ffff00]"
-          fill="#ffff00"
+          className="h-full w-full fill-current text-accent"
           strokeWidth={0}
         />
       ) : rating - i === 0.5 ? (
         <StarHalf
-          className="h-full w-full text-[#ffff00]"
-          fill="#ffff00"
+          className="h-full w-full fill-current text-accent"
           strokeWidth={0}
         />
       ) : (

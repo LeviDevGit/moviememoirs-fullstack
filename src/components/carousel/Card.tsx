@@ -5,7 +5,7 @@ import renderStars from './render-star'
 
 function Card({ source }: CardProps) {
   return (
-    <div className="flex w-[252px] flex-col items-center rounded-md bg-card p-4 pb-0 text-white">
+    <div className="flex w-[252px] flex-col items-center rounded-2xl bg-card p-4 pb-0">
       <div className="group relative w-fit">
         <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 opacity-0 blur duration-[1000ms] group-hover:opacity-100 group-hover:blur-none">
           <div className="flex">{renderStars(source.movie.value)}</div>
@@ -24,12 +24,12 @@ function Card({ source }: CardProps) {
       <div className="group h-full w-[220px] pt-4">
         <Link href={`/detail/${source.movieId}`} className="w-full bg-red-500">
           <div className="flex h-[50px]">
-            <h2 className="w-full truncate text-center text-sm font-semibold">
+            <h2 className="text-text-50 w-full truncate text-center text-sm font-bold">
               {source.movie.name}
             </h2>
           </div>
-          <hr className="w-full border border-[#ffffff4d]" />
-          <div className="my-6 flex flex-col gap-2 font-['Inter'] text-xs">
+          <hr className="border-text-50 w-full border opacity-25" />
+          <div className="text-text-50 my-6 flex flex-col gap-2 font-['Inter'] text-xs font-medium">
             <span className="truncate text-start">
               {source.movie.direction}
             </span>

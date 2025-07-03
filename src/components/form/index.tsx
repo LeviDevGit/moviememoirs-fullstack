@@ -21,7 +21,7 @@ function Form({ updaterState, setToggleModal }: FormProps) {
     <div className="page-specific w-[800px] rounded-lg bg-background p-5 text-white">
       <div className="mb-5 flex flex-col gap-2">
         <h1 className="text-xl font-medium">
-          Registrar <span className="text-[#dd4d51]">Mídia</span>
+          Registrar <span className="text-primary">Mídia</span>
         </h1>
         <p className="text-xs text-[#e0e0e0]">
           Ajude a construir um registro detalhado do que você assiste.
@@ -72,7 +72,7 @@ function Form({ updaterState, setToggleModal }: FormProps) {
           <div className="flex w-full items-center justify-end">
             <button
               type="submit"
-              className="rounded-xl bg-submit px-4 py-2 text-sm font-bold"
+              className="bg-primary rounded-2xl px-4 py-2 text-sm font-semibold text-[#0e0f12]"
             >
               Registrar
             </button>

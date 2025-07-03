@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`relative h-screen w-screen bg-background ${inter.className} flex justify-center`}
+        className={`text-text-50 relative h-screen w-screen bg-background ${inter.className} flex justify-center`}
       >
         <Providers>
           {children}
