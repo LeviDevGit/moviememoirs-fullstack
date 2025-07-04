@@ -24,12 +24,12 @@ function Card({ source }: CardProps) {
       <div className="group h-full w-[220px] pt-4">
         <Link href={`/detail/${source.movieId}`} className="w-full bg-red-500">
           <div className="flex h-[50px]">
-            <h2 className="text-text-50 w-full truncate text-center text-sm font-bold">
+            <h2 className="w-full truncate text-center text-sm font-bold text-text-50">
               {source.movie.name}
             </h2>
           </div>
-          <hr className="border-text-50 w-full border opacity-25" />
-          <div className="text-text-50 my-6 flex flex-col gap-2 font-['Inter'] text-xs font-medium">
+          <hr className="w-full border border-text-50 opacity-25" />
+          <div className="my-6 flex flex-col gap-2 font-['Inter'] text-xs font-medium text-text-50">
             <span className="truncate text-start">
               {source.movie.direction}
             </span>

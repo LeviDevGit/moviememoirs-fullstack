@@ -1,12 +1,8 @@
-import { Ellipsis } from 'lucide-react'
+import { TrashIcon } from 'lucide-react'
 
 interface SelectionProps {
   propKey: string
   propValue: string
-  setFilterEllipsisHandle: React.Dispatch<
-    React.SetStateAction<'director' | 'year' | 'value' | undefined>
-  >
-  filterEllipsisHandle: 'director' | 'year' | 'value' | undefined
   setOption: React.Dispatch<
     React.SetStateAction<{
       director: string
@@ -28,14 +24,12 @@ interface SelectionProps {
 function Selection({
   propKey,
   propValue,
-  filterEllipsisHandle,
-  setFilterEllipsisHandle,
   setOption,
   setSelectLimit,
   request,
 }: SelectionProps) {
   return (
-    <div className="flex w-[580px] justify-between">
+    <div className="flex w-[580px] items-center justify-between">
       <div className="flex w-[550px] items-center gap-4 px-5">
         <label>Onde</label>
         <p className="min-w-[118px] p-2">
@@ -53,35 +47,19 @@ function Selection({
       <div className="relative">
         <button
           onClick={() => {
-            if (propKey === filterEllipsisHandle) {
-              setFilterEllipsisHandle(undefined)
-            } else {
-              setFilterEllipsisHandle(
-                propKey as keyof typeof filterEllipsisHandle,
-              )
-            }
+            setOption((prev) => ({
+              ...prev,
+              [propKey]: '',
+            }))
+            request((prev) => ({
+              ...prev,
+              [`${propKey}String`]: '',
+            }))
+            setSelectLimit(false)
           }}
         >
-          <Ellipsis />
+          <TrashIcon size={20} className="text-red-500" />
         </button>
-        {filterEllipsisHandle === propKey && (
-          <button
-            className="absolute bg-white p-5 text-red-500"
-            onClick={() => {
-              setOption((prev) => ({
-                ...prev,
-                [propKey]: '',
-              }))
-              request((prev) => ({
-                ...prev,
-                [`${propKey}String`]: '',
-              }))
-              setSelectLimit(false)
-            }}
-          >
-            Deletar
-          </button>
-        )}
       </div>
     </div>
   )

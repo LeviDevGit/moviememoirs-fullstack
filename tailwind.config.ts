@@ -11,16 +11,26 @@ export default {
       colors: {
         background: '#0e0f12',
         primary: '#7b98f0',
-        secondary: '#5b4b60',
+        secondary: {
+          600: '#6d5a72',
+          700: '#514356',
+        },
         accent: '#831b2c',
         card: '#16181b',
 
         // Others
-        filter: '#1f1f1f',
-        'modal-overlay': 'rgba(0, 0, 0, 0.5)',
+        filter: '#26272A',
         text: {
-          50: '#e2e4e9',
+          50: '#f2f2f2',
+          100: '#e6e6e6',
+          200: '#cccccc',
+          300: '#b3b3b3',
+          400: '#999999',
+          500: '#808080',
+          950: '#0d0d0d',
         },
+
+        'modal-overlay': 'rgba(0, 0, 0, 0.5)',
       },
       boxShadow: {
         cardShadow:

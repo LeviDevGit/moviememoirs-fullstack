@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { use, useContext, useEffect, useState } from 'react'
-import { MovieDataImdb } from '@/types/imdb'
 import Rater from '@/components/Rater'
 import dispatchDetail, { dataProps } from '@/utils/dispatchDetail'
 import { GlobalContext } from '@/providers/global'
@@ -18,15 +17,12 @@ function Page({ params }: PageProps) {
     undefined,
   )
   const [data, setData] = useState<dataProps>()
-  const [api, setApi] = useState<MovieDataImdb>()
-  const [live, setLive] = useState(true)
 
   const { id } = use(params)
 
   useEffect(() => {
-    dispatchDetail(id, setData, setApi, api, setLive, live)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, live])
+    dispatchDetail(id, setData)
+  }, [id])
 
   const context = useContext(GlobalContext)
 
@@ -47,14 +43,12 @@ function Page({ params }: PageProps) {
       </div>
     )
 
-  if (api && api.errors)
-    return <p className="text-white">Erro com o request da api</p>
-
   return (
-    <div className="flex h-full w-full items-center justify-center p-5 text-white">
-      <div className="flex h-[650px] w-[1200px] justify-between gap-4 overflow-y-scroll border border-red-500 p-2">
-        <div className="relative flex h-[1000px] w-full flex-1 justify-around">
-          <div className="sticky top-11 flex h-fit flex-col items-center justify-start gap-4">
+    <div className="flex h-full w-full flex-col items-center justify-center">
+      <div className="h-[200px]"></div>
+      <div className="flex h-full w-full overflow-y-scroll">
+        <div className="relative flex h-[1000px] w-full flex-1 justify-center gap-40">
+          <div className="sticky top-1 flex h-fit flex-col items-center justify-start gap-4">
             {data.img && (
               <div className="h-[330px] w-[220px] shadow-cardShadow">
                 <Image
@@ -87,7 +81,7 @@ function Page({ params }: PageProps) {
               </button>
             </div>
           </div>
-          {api && live && <MediaInfo data={data} api={api} />}
+          <MediaInfo data={data} />
         </div>
         {safetyButton && (
           <Confirm

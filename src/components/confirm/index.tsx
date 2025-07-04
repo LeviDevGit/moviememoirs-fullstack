@@ -136,10 +136,10 @@ function Confirm({
 
   return (
     <div className="absolute inset-0 z-40 flex items-center justify-center bg-modal-overlay/90">
-      <div className="page-specific rounded-2xl bg-background p-5 text-white">
+      <div className="page-specific rounded-2xl bg-background p-5">
         <div className="mb-5 flex flex-col gap-2">
           <h1 className="text-xl font-medium">
-            Editar <span className="text-[#dd4d51]">Mídia</span>
+            Editar <span className="text-primary">Mídia</span>
           </h1>
         </div>
         {data && (

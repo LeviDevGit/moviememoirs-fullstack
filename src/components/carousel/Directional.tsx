@@ -6,13 +6,6 @@ interface DirectionalProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   dataLength: number
 }
 
-const commonProps = {
-  size: 64,
-  absoluteStrokeWidth: true,
-  className:
-    'group-transition-transform text-[#ffffff80] group-hover:scale-110 group-hover:text-[#ffffffCC]',
-}
-
 function Directional({ left = true, dataLength, ...rest }: DirectionalProps) {
   const ChevronIcon = left ? ChevronLeft : ChevronRight
 
@@ -27,7 +20,11 @@ function Directional({ left = true, dataLength, ...rest }: DirectionalProps) {
       {...rest}
       className={`group absolute inset-y-0 z-10 flex w-[100px] items-center from-background to-transparent ${positionClass} ${visibilityClass}`}
     >
-      <ChevronIcon {...commonProps} className="text-text-50" />
+      <ChevronIcon
+        size={64}
+        absoluteStrokeWidth
+        className="group-transition-transform text-text-200 group-hover:scale-110 group-hover:text-text-50"
+      />
     </button>
   )
 }

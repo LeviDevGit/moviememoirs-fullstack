@@ -26,7 +26,7 @@ function Search({ request }: SearchProps) {
   }
 
   return (
-    <div className="relative flex h-full items-center rounded-lg border border-zinc-800 bg-zinc-700 px-2 text-white has-[:focus]:border-blue-600">
+    <div className="relative flex h-full items-center rounded-lg border border-zinc-800 bg-zinc-700 px-2 has-[:focus]:border-blue-600">
       <div className="flex h-[20px] items-center">
         <SearchIcon size={20} />
       </div>

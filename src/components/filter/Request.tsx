@@ -39,7 +39,6 @@ function Request({
       )?.[0]
 
       if (nextEmptyKey) {
-        console.log('Mudou')
         setSelectOption(nextEmptyKey as keyof typeof option)
         if (inputRef.current) {
           inputRef.current.value = ''

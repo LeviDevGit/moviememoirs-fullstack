@@ -45,10 +45,6 @@ export default function Filter({
 
   const [filterSelectHandle, setFilterSelectHandle] = useState(false)
 
-  const [filterEllipsisHandle, setFilterEllipsisHandle] = useState<
-    keyof typeof option | undefined
-  >(undefined)
-
   return (
     <div className="relative h-full text-sm">
       <button
@@ -56,13 +52,13 @@ export default function Filter({
           event.stopPropagation()
           toggleModal({ index: 1, set: toggleDropdown, toggler: !isOpen[1] })
         }}
-        className="h-full rounded-lg px-4 text-white/50 hover:text-white/70"
+        className="text-text-200 h-full rounded-lg px-4 hover:text-text-50"
       >
         <FilterIcon />
       </button>
       {isOpen[1] && (
         <div
-          className="absolute left-0 top-12 z-20 flex w-[600px] flex-col justify-between gap-4 rounded-lg bg-filter text-sm text-white"
+          className="absolute left-0 top-12 z-20 flex w-[600px] flex-col justify-between gap-4 rounded-lg bg-filter text-sm"
           ref={dropdown}
         >
           <p className="p-5 pb-0">Nesta visualização mostre mídias</p>
@@ -85,8 +81,6 @@ export default function Filter({
                 key={`${index}`}
                 propKey={key}
                 propValue={value}
-                filterEllipsisHandle={filterEllipsisHandle}
-                setFilterEllipsisHandle={setFilterEllipsisHandle}
                 setOption={setOption}
                 setSelectLimit={setSelectLimit}
                 request={request}
@@ -110,22 +104,24 @@ export default function Filter({
                 <Plus size={20} /> Adicionar filtro
               </button>
             )}
-            <button
-              onClick={() => {
-                queryFilterClear({
-                  request,
-                  setOption,
-                  setSelectOption,
-                  setSelectLimit,
-                })
-                if (inputRef.current) {
-                  inputRef.current.value = ''
-                }
-              }}
-              className="text-sm"
-            >
-              Excluir todos os filtros
-            </button>
+            {Object.values(option).some((value) => value !== '') && (
+              <button
+                onClick={() => {
+                  queryFilterClear({
+                    request,
+                    setOption,
+                    setSelectOption,
+                    setSelectLimit,
+                  })
+                  if (inputRef.current) {
+                    inputRef.current.value = ''
+                  }
+                }}
+                className="text-sm text-red-500"
+              >
+                Excluir todos os filtros
+              </button>
+            )}
           </div>
         </div>
       )}

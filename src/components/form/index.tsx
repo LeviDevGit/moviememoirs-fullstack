@@ -18,12 +18,12 @@ interface FormProps {
 
 function Form({ updaterState, setToggleModal }: FormProps) {
   return (
-    <div className="page-specific w-[800px] rounded-lg bg-background p-5 text-white">
+    <div className="page-specific w-[800px] rounded-lg bg-background p-5">
       <div className="mb-5 flex flex-col gap-2">
         <h1 className="text-xl font-medium">
           Registrar <span className="text-primary">Mídia</span>
         </h1>
-        <p className="text-xs text-[#e0e0e0]">
+        <p className="text-text-200 text-xs">
           Ajude a construir um registro detalhado do que você assiste.
         </p>
       </div>
@@ -72,7 +72,7 @@ function Form({ updaterState, setToggleModal }: FormProps) {
           <div className="flex w-full items-center justify-end">
             <button
               type="submit"
-              className="bg-primary rounded-2xl px-4 py-2 text-sm font-semibold text-[#0e0f12]"
+              className="text-text-950 rounded-2xl bg-primary px-4 py-2 text-sm font-semibold"
             >
               Registrar
             </button>

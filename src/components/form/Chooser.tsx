@@ -6,7 +6,7 @@ function Chooser({ defaultValue = undefined }: ChooserProps) {
   return (
     <div className="flex w-1/2 flex-col gap-1 text-xs">
       <label>
-        Tipo <strong className="text-red-600">*</strong>
+        Tipo <strong className="text-primary">*</strong>
       </label>
       <select
         name="type"

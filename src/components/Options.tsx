@@ -1,4 +1,4 @@
-import { Plus } from 'lucide-react'
+import { ChevronDownIcon, Plus } from 'lucide-react'
 import { toggleModal } from './Dismiss'
 
 interface OptionsProps {
@@ -7,15 +7,19 @@ interface OptionsProps {
 
 function Options({ openIt }: OptionsProps) {
   return (
-    <div className="flex h-full items-center justify-center font-bold text-white">
+    <div className="flex h-full items-center justify-center font-bold">
       <button
-        className="bg-secondary hover:bg-secondary flex h-full w-[110px] items-center justify-center gap-2 rounded-lg px-3"
+        className="bg-secondary-700 hover:bg-secondary-600 flex h-full w-[110px] items-center justify-center gap-2 rounded-l-lg px-3"
         onClick={() => {
           toggleModal({ index: 0, set: openIt, toggler: true })
         }}
       >
         <Plus />
         <span>Log</span>
+      </button>
+      <div className="h-full w-1 bg-card"></div>
+      <button className="bg-secondary-700 hover:bg-secondary-600 flex h-full w-[50px] items-center justify-center gap-2 rounded-r-lg px-3">
+        <ChevronDownIcon />
       </button>
     </div>
   )

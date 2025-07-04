@@ -32,9 +32,9 @@ function Dismiss({ index, set }: DismissProps) {
             toggleModal({ index, set, toggler: false })
           }
         }}
-        className="rounded-xl p-3 text-white"
+        className="rounded-xl p-3"
       >
-        <X />
+        <X className="text-text-50" />
       </button>
     </div>
   )

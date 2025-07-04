@@ -13,7 +13,7 @@ function InputField({ text, className, ...rest }: InputFieldProps) {
       )}
     >
       <label>
-        {text} <strong className="text-red-600">*</strong>
+        {text} <strong className="text-primary">*</strong>
       </label>
       <input
         type="text"

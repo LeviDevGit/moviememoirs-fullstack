@@ -8,7 +8,7 @@ function Calendar({
   return (
     <div className="flex w-1/2 flex-col gap-1 text-xs">
       <label>
-        Data <strong className="text-red-600">*</strong>
+        Data <strong className="text-primary">*</strong>
       </label>
       <input
         type="date"
