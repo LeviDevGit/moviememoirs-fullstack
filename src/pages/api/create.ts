@@ -12,15 +12,15 @@ export const config = {
 }
 
 interface FormFields {
-  year: string[]
-  direction: string[]
-  name: string[]
-  time: string[]
-  type: string[]
-  value: string[]
-  date: string[]
-  imdb: string[]
+  Nome: string[]
+  Tipo: string[]
+  'Ano de lançamento': string[]
+  Duração: string[]
+  'Diretor(a)': string[]
+  Data: string[]
+  'Id do imdb': string[]
   commentary?: string[]
+  value: string[]
 }
 
 interface latestQueryProps {
@@ -76,16 +76,16 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return `${year}-${month}-${day}`
   }
 
-  const viewDate = convertToDate(fields.date![0])
+  const viewDate = convertToDate(fields.Data![0])
 
   const result = await prisma.movie.create({
     data: {
-      name: fields.name![0],
-      type: fields.type![0],
-      year: fields.year![0],
-      time: fields.time![0],
-      direction: fields.direction![0],
-      imdb: fields.imdb[0],
+      name: fields.Nome![0],
+      type: fields.Tipo![0],
+      year: fields['Ano de lançamento']![0],
+      time: fields.Duração![0],
+      direction: fields['Diretor(a)']![0],
+      imdb: fields['Id do imdb'][0],
       img: '',
       views: {
         create: {

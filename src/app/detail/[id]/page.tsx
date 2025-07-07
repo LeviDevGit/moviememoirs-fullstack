@@ -6,7 +6,7 @@ import Rater from '@/components/Rater'
 import dispatchDetail, { dataProps } from '@/utils/dispatchDetail'
 import { GlobalContext } from '@/providers/global'
 import Confirm from '@/components/confirm'
-import MediaInfo from '@/components/info/media-info'
+import MediaInfo from '@/components/info/MediaInfo'
 
 interface PageProps {
   params: Promise<{ id: string }>

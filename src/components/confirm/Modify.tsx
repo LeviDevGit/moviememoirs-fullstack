@@ -1,9 +1,10 @@
-import { Chooser, InputField } from '@/components/form'
 import Visualization from './Visualization'
 import { Trash } from 'lucide-react'
 import Rater from '@/components/Rater'
 import Image from 'next/image'
 import { useState } from 'react'
+import Select from '../ui/Select'
+import { Input } from '../ui/Inputs'
 
 interface dataProps {
   id: number
@@ -229,21 +230,17 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
         </div>
       </div>
       <div className="flex flex-col gap-3">
-        <InputField name="name" text="Nome" placeholder={data.name} />
+        <Input text="Nome" placeholder={data.name} />
         <div className="flex items-center justify-between gap-6">
-          <Chooser defaultValue={data.type} />
-          <InputField name="year" text="Lançamento" placeholder={data.year} />
+          <Select defaultValue={data.type} />
+          <Input text="Lançamento" placeholder={data.year} />
         </div>
         <div className="flex items-center justify-between gap-6">
-          <InputField name="time" text="Duração" placeholder={data.time} />
-          <InputField
-            name="direction"
-            text="Diretor(a)"
-            placeholder={data.direction}
-          />
+          <Input text="Duração" placeholder={data.time} />
+          <Input text="Diretor(a)" placeholder={data.direction} />
         </div>
         <div className="flex items-center justify-between gap-6">
-          <InputField name="imdb" text="Id" placeholder={data.imdb} />
+          <Input text="Id" placeholder={data.imdb} />
         </div>
         <Visualization />
       </div>

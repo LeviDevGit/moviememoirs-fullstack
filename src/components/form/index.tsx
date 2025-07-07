@@ -1,12 +1,11 @@
-import InputField from './InputField'
 import Dropzone from './Dropzone'
-import Textarea from './Textarea'
-import Chooser from './Chooser'
-import Calendar from './Calendar'
 
 import dispatchForm from '@/utils/dispatchForm'
 import Rater from '../Rater'
 import React from 'react'
+import Select from '../ui/Select'
+import { Input } from '../ui/Inputs'
+import Textarea from '../ui/Textarea'
 
 interface FormProps {
   updaterState: {
@@ -23,7 +22,7 @@ function Form({ updaterState, setToggleModal }: FormProps) {
         <h1 className="text-xl font-medium">
           Registrar <span className="text-primary">Mídia</span>
         </h1>
-        <p className="text-text-200 text-xs">
+        <p className="text-xs text-text-200">
           Ajude a construir um registro detalhado do que você assiste.
         </p>
       </div>
@@ -39,40 +38,27 @@ function Form({ updaterState, setToggleModal }: FormProps) {
           </div>
         </div>
         <div className="flex w-full flex-col justify-between gap-3">
-          <InputField
-            name="name"
-            text="Nome"
-            placeholder="Digite o nome do filme ou série"
-          />
+          <Input text="Nome" placeholder="Digite o nome do filme ou série" />
           <div className="flex items-center justify-between gap-6">
-            <Chooser />
-            <InputField
-              name="year"
-              text="Ano de lançamento"
-              placeholder="Ex: 2004"
-            />
+            <Select />
+            <Input text="Ano de lançamento" placeholder="Ex: 2004" />
           </div>
           <div className="flex items-center justify-between gap-6">
-            <InputField name="time" text="Duração" placeholder="Ex: 2hr 2min" />
-            <InputField
-              name="direction"
+            <Input text="Duração" placeholder="Ex: 2hr 2min" />
+            <Input
               text="Diretor(a)"
               placeholder="Digite o nome do(a) diretor(a)"
             />
           </div>
           <div className="flex items-center justify-between gap-6">
-            <Calendar />
-            <InputField
-              name="imdb"
-              text="Id do imdb"
-              placeholder="Ex: tt28015403"
-            />
+            <Input text="Data" type="date" useTodayDate />
+            <Input text="Id do imdb" placeholder="Ex: tt28015403" />
           </div>
           <Textarea />
           <div className="flex w-full items-center justify-end">
             <button
               type="submit"
-              className="text-text-950 rounded-2xl bg-primary px-4 py-2 text-sm font-semibold"
+              className="rounded-2xl bg-primary px-4 py-2 text-sm font-semibold text-text-950"
             >
               Registrar
             </button>
@@ -84,5 +70,3 @@ function Form({ updaterState, setToggleModal }: FormProps) {
 }
 
 export default Form
-
-export { Calendar, Chooser, InputField, Textarea }

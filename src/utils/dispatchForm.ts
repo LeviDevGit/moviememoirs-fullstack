@@ -1,4 +1,5 @@
-import { toggleModal } from '@/components/Dismiss'
+import toast from 'react-hot-toast'
+import { toggleModal } from './toggleModal'
 
 interface updaterStateProps {
   updater: boolean
@@ -29,13 +30,14 @@ async function dispatchForm({
 
     const data = await response.json()
 
-    console.log(data)
+    toggleModal({ index: 0, set: setToggleModal, toggler: false })
+    if (!data || data.error) {
+      return toast.error('Erro dentro da requisição')
+    }
 
-    if (data) updaterState.setUpdater(!updaterState.updater)
-    if (data) toggleModal({ index: 0, set: setToggleModal, toggler: false })
+    updaterState.setUpdater(!updaterState.updater)
   } catch (error) {
-    console.log('Erro dentro da requisição')
-    console.error(error)
+    toast.error('Erro dentro da requisição')
 
     return error
   }

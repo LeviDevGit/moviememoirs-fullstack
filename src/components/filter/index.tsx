@@ -1,10 +1,10 @@
 import { FilterIcon, Plus } from 'lucide-react'
 import { useRef, useState } from 'react'
 import useDropdown from '@/hooks/useDropdown'
-import { toggleModal } from '../Dismiss'
 import Request from './Request'
 import Selection from './Selection'
 import { queryFilterAdd, queryFilterClear } from '@/utils/queryFilter'
+import { toggleModal } from '@/utils/toggleModal'
 
 interface Dropdownprops {
   toggleDropdown: React.Dispatch<React.SetStateAction<boolean[]>>
@@ -52,7 +52,7 @@ export default function Filter({
           event.stopPropagation()
           toggleModal({ index: 1, set: toggleDropdown, toggler: !isOpen[1] })
         }}
-        className="text-text-200 h-full rounded-lg px-4 hover:text-text-50"
+        className="h-full rounded-lg px-4 text-text-200 hover:text-text-50"
       >
         <FilterIcon />
       </button>

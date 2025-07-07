@@ -1,4 +1,4 @@
-import { toggleModal } from '@/components/Dismiss'
+import { toggleModal } from '@/utils/toggleModal'
 import { useEffect } from 'react'
 
 interface useDropdownProps {

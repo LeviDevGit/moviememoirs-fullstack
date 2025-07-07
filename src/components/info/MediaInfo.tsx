@@ -15,10 +15,10 @@ function MediaInfo({ data }: MediaInfoProps) {
           <div className="flex w-full flex-col gap-4">
             <div className="flex w-full items-end justify-start gap-4 text-4xl">
               <p>{data.name}</p>
-              <p className="text-text-300 text-xl underline">{data?.year}</p>
+              <p className="text-xl text-text-300 underline">{data?.year}</p>
             </div>
             <div className="flex w-full justify-end">
-              <p className="text-text-400 max-w-[250px] truncate text-right">
+              <p className="max-w-[250px] truncate text-right text-text-400">
                 Dirigido por{' '}
                 <span className="text-text-300 underline">
                   {data?.direction}
