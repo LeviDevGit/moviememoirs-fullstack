@@ -1,22 +1,32 @@
+import { queryFilterAdd } from '@/utils/queryFilter'
 import { useEffect } from 'react'
 
 interface RequestProps {
   inputRef: React.RefObject<HTMLInputElement>
-  setSelectOption: React.Dispatch<
-    React.SetStateAction<'director' | 'year' | 'value'>
-  >
-  option: {
-    director: string
-    year: string
-    value: string
-  }
-  selectOption: 'director' | 'year' | 'value'
+  option: object
+  selectOption: undefined | string
+  setSelectOption: React.Dispatch<React.SetStateAction<undefined | string>>
   selectLimitState: {
     selectLimit: boolean
     setSelectLimit: React.Dispatch<React.SetStateAction<boolean>>
   }
   filterSelectHandle: boolean
   setFilterSelectHandle: React.Dispatch<React.SetStateAction<boolean>>
+  setOption: React.Dispatch<
+    React.SetStateAction<{
+      director: string
+      year: string
+      value: string
+    }>
+  >
+  request: React.Dispatch<
+    React.SetStateAction<{
+      searchString: string
+      directorString: string | undefined
+      yearString: string | undefined
+      valueString: string | undefined
+    }>
+  >
 }
 
 function Request({
@@ -27,6 +37,8 @@ function Request({
   selectLimitState,
   filterSelectHandle,
   setFilterSelectHandle,
+  request,
+  setOption,
 }: RequestProps) {
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectOption(e.target.value as keyof typeof option)
@@ -93,6 +105,16 @@ function Request({
         placeholder="Digite o valor..."
         className="min-w-[226px] rounded-lg border border-[#747476] bg-transparent p-2 outline-none"
         ref={inputRef}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter')
+            queryFilterAdd({
+              inputRef,
+              request,
+              selectOption,
+              setOption,
+              setFilterSelectHandle,
+            })
+        }}
       />
     </div>
   )

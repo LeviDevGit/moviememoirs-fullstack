@@ -232,7 +232,12 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
       <div className="flex flex-col gap-3">
         <Input text="Nome" placeholder={data.name} />
         <div className="flex items-center justify-between gap-6">
-          <Select defaultValue={data.type} />
+          <Select defaultValue={data.type} text="Tipo">
+            <option value="MOVIE">Filme</option>
+            <option value="SERIES">Série</option>
+            <option value="DOCUMENTARY">Documentário</option>
+            <option value="SHORT FILM">Curta</option>
+          </Select>
           <Input text="Lançamento" placeholder={data.year} />
         </div>
         <div className="flex items-center justify-between gap-6">

@@ -7,7 +7,7 @@ interface queryFilterAddProps {
       value: string
     }>
   >
-  selectOption: 'director' | 'year' | 'value'
+  selectOption: string | undefined
   request: (
     value: React.SetStateAction<{
       searchString: string
@@ -26,7 +26,7 @@ function queryFilterAdd({
   request,
   setFilterSelectHandle,
 }: queryFilterAddProps) {
-  if (inputRef.current && inputRef.current.value !== '') {
+  if (inputRef.current && inputRef.current.value !== '' && selectOption) {
     setOption((prev) => ({
       ...prev,
       [selectOption]: inputRef.current!.value,
@@ -57,9 +57,7 @@ interface queryFilterClearProps {
       valueString: string | undefined
     }>,
   ) => void
-  setSelectOption: React.Dispatch<
-    React.SetStateAction<'director' | 'year' | 'value'>
-  >
+  setSelectOption: React.Dispatch<React.SetStateAction<undefined | string>>
   setSelectLimit: React.Dispatch<React.SetStateAction<boolean>>
 }
 

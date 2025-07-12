@@ -40,7 +40,12 @@ function Form({ updaterState, setToggleModal }: FormProps) {
         <div className="flex w-full flex-col justify-between gap-3">
           <Input text="Nome" placeholder="Digite o nome do filme ou série" />
           <div className="flex items-center justify-between gap-6">
-            <Select />
+            <Select text="Tipo">
+              <option value="MOVIE">Filme</option>
+              <option value="SERIES">Série</option>
+              <option value="DOCUMENTARY">Documentário</option>
+              <option value="SHORT FILM">Curta</option>
+            </Select>
             <Input text="Ano de lançamento" placeholder="Ex: 2004" />
           </div>
           <div className="flex items-center justify-between gap-6">

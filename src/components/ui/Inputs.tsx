@@ -25,11 +25,12 @@ function Input({ text, type = 'text', useTodayDate, ...rest }: InputProps) {
 }
 
 interface InputIconProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  text: string
+  text?: string
+  ref?: React.RefObject<HTMLInputElement>
   children: React.ReactNode
 }
 
-function InputIcon({ text, children, ...rest }: InputIconProps) {
+function InputIcon({ text, children, ref, ...rest }: InputIconProps) {
   return (
     <label htmlFor={text}>
       <span className="text-sm font-medium text-gray-200">{text}</span>
@@ -40,6 +41,7 @@ function InputIcon({ text, children, ...rest }: InputIconProps) {
           name={text}
           className="mt-0.5 w-full rounded border-gray-600 bg-transparent text-white shadow-sm sm:text-sm"
           {...rest}
+          ref={ref}
         />
         <span className="absolute inset-y-0 right-0 grid w-8 place-content-center text-gray-200">
           {children}

@@ -3,8 +3,9 @@ import { useRef, useState } from 'react'
 import useDropdown from '@/hooks/useDropdown'
 import Request from './Request'
 import Selection from './Selection'
-import { queryFilterAdd, queryFilterClear } from '@/utils/queryFilter'
+import { queryFilterClear } from '@/utils/queryFilter'
 import { toggleModal } from '@/utils/toggleModal'
+import VerticalMenu from '../ui/VerticalMenu'
 
 interface Dropdownprops {
   toggleDropdown: React.Dispatch<React.SetStateAction<boolean[]>>
@@ -28,14 +29,11 @@ export default function Filter({
 
   useDropdown({ isOpen, dropdown, toggleDropdown })
 
-  const [option, setOption] = useState({
-    director: '',
-    year: '',
-    value: '',
-  })
+  const [option, setOption] = useState({})
 
-  const [selectOption, setSelectOption] =
-    useState<keyof typeof option>('director')
+  const [selectOption, setSelectOption] = useState<undefined | string>(
+    undefined,
+  )
 
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -44,6 +42,8 @@ export default function Filter({
   const selectLimitState = { selectLimit, setSelectLimit }
 
   const [filterSelectHandle, setFilterSelectHandle] = useState(false)
+
+  const [filterDropdown, setFilterDropdown] = useState(false)
 
   return (
     <div className="relative h-full text-sm">
@@ -58,12 +58,18 @@ export default function Filter({
       </button>
       {isOpen[1] && (
         <div
-          className="absolute left-0 top-12 z-20 flex w-[600px] flex-col justify-between gap-4 rounded-lg bg-filter text-sm"
+          className="absolute left-16 top-0 z-20 flex w-[600px] flex-col justify-between gap-4 rounded-lg bg-filter text-sm"
           ref={dropdown}
         >
-          <p className="p-5 pb-0">Nesta visualização mostre mídias</p>
+          {Object.values(option).some((value) => value !== undefined) ? (
+            <p className="p-5 pb-0">Nesta visualização mostre mídias</p>
+          ) : (
+            <h1 className="p-5 pb-0">
+              Ainda não há filtros nesta visualização.
+            </h1>
+          )}
           <hr className="border-[#747476]" />
-          {!selectLimit && (
+          {Object.values(option).some((value) => value !== undefined) && (
             <Request
               option={option}
               inputRef={inputRef}
@@ -72,6 +78,8 @@ export default function Filter({
               selectLimitState={selectLimitState}
               filterSelectHandle={filterSelectHandle}
               setFilterSelectHandle={setFilterSelectHandle}
+              request={request}
+              setOption={setOption}
             />
           )}
           {Object.entries(option)
@@ -80,25 +88,26 @@ export default function Filter({
               <Selection
                 key={`${index}`}
                 propKey={key}
-                propValue={value}
+                propValue={`${value}`}
                 setOption={setOption}
                 setSelectLimit={setSelectLimit}
                 request={request}
               />
             ))}
+          {filterDropdown && (
+            <VerticalMenu
+              setOption={setOption}
+              option={option}
+              setFilterDropdown={setFilterDropdown}
+            />
+          )}
           <hr className="border-[#5D5D5F]" />
           <div className="flex items-center justify-between p-5 pt-0 text-sm">
             {!selectLimit && (
               <button
                 className={`flex items-center gap-2 text-sm`}
                 onClick={() => {
-                  queryFilterAdd({
-                    inputRef,
-                    request,
-                    selectOption,
-                    setOption,
-                    setFilterSelectHandle,
-                  })
+                  setFilterDropdown(!filterDropdown)
                 }}
               >
                 <Plus size={20} /> Adicionar filtro
