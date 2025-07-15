@@ -1,12 +1,6 @@
 interface queryFilterAddProps {
   inputRef: React.RefObject<HTMLInputElement>
-  setOption: React.Dispatch<
-    React.SetStateAction<{
-      director: string
-      year: string
-      value: string
-    }>
-  >
+  setOption: React.Dispatch<React.SetStateAction<Record<string, string>>>
   selectOption: string | undefined
   request: (
     value: React.SetStateAction<{
@@ -16,7 +10,6 @@ interface queryFilterAddProps {
       valueString: string | undefined
     }>,
   ) => void
-  setFilterSelectHandle: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 function queryFilterAdd({
@@ -24,15 +17,12 @@ function queryFilterAdd({
   setOption,
   selectOption,
   request,
-  setFilterSelectHandle,
 }: queryFilterAddProps) {
   if (inputRef.current && inputRef.current.value !== '' && selectOption) {
     setOption((prev) => ({
       ...prev,
       [selectOption]: inputRef.current!.value,
     }))
-
-    setFilterSelectHandle(true)
 
     request((prevState) => ({
       ...prevState,
@@ -42,13 +32,7 @@ function queryFilterAdd({
 }
 
 interface queryFilterClearProps {
-  setOption: (
-    value: React.SetStateAction<{
-      director: string
-      year: string
-      value: string
-    }>,
-  ) => void
+  setOption: React.Dispatch<React.SetStateAction<Record<string, string>>>
   request: (
     value: React.SetStateAction<{
       searchString: string

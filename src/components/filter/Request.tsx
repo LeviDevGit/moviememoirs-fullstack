@@ -1,24 +1,15 @@
 import { queryFilterAdd } from '@/utils/queryFilter'
-import { useEffect } from 'react'
+import { Filters } from '../ui/VerticalMenu'
 
 interface RequestProps {
   inputRef: React.RefObject<HTMLInputElement>
   option: object
   selectOption: undefined | string
-  setSelectOption: React.Dispatch<React.SetStateAction<undefined | string>>
   selectLimitState: {
     selectLimit: boolean
     setSelectLimit: React.Dispatch<React.SetStateAction<boolean>>
   }
-  filterSelectHandle: boolean
-  setFilterSelectHandle: React.Dispatch<React.SetStateAction<boolean>>
-  setOption: React.Dispatch<
-    React.SetStateAction<{
-      director: string
-      year: string
-      value: string
-    }>
-  >
+  setOption: React.Dispatch<React.SetStateAction<Record<string, string>>>
   request: React.Dispatch<
     React.SetStateAction<{
       searchString: string
@@ -27,47 +18,29 @@ interface RequestProps {
       valueString: string | undefined
     }>
   >
+  valueOption: string
 }
 
 function Request({
   inputRef,
-  setSelectOption,
   option,
   selectOption,
   selectLimitState,
-  filterSelectHandle,
-  setFilterSelectHandle,
   request,
   setOption,
+  valueOption,
 }: RequestProps) {
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectOption(e.target.value as keyof typeof option)
-  }
+    setOption((prev) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { [valueOption]: oldValue, ...rest } = prev
 
-  useEffect(() => {
-    if (filterSelectHandle) {
-      const nextEmptyKey = Object.entries(option).find(
-        ([, value]) => value === '',
-      )?.[0]
-
-      if (nextEmptyKey) {
-        setSelectOption(nextEmptyKey as keyof typeof option)
-        if (inputRef.current) {
-          inputRef.current.value = ''
-        }
-      } else {
-        selectLimitState.setSelectLimit(true)
+      return {
+        [e.target.value]: '',
+        ...rest,
       }
-      setFilterSelectHandle(false)
-    }
-  }, [
-    filterSelectHandle,
-    inputRef,
-    option,
-    selectLimitState,
-    setFilterSelectHandle,
-    setSelectOption,
-  ])
+    })
+  }
 
   const getOptionText = (key: string) => {
     if (key === 'director') return 'Diretor'
@@ -86,15 +59,18 @@ function Request({
         <select
           className="w-[118px] rounded-lg border border-[#747476] bg-transparent p-2"
           onChange={(e) => {
+            console.log(e.currentTarget.value)
             handleSelectChange(e)
           }}
-          value={selectOption}
         >
-          {Object.entries(option).map(([key, value]) => (
-            <option key={key} value={key} disabled={value !== ''}>
-              {getOptionText(key)}
-            </option>
-          ))}
+          <option value={valueOption}>{getOptionText(valueOption)}</option>
+          {Object.entries(Filters)
+            .filter(([, value]) => !(value.value in option))
+            .map(([key, value]) => (
+              <option key={value.value} value={value.value}>
+                {key}
+              </option>
+            ))}
         </select>
       }
       <label className="min-w-[90px] text-center">
@@ -112,7 +88,6 @@ function Request({
               request,
               selectOption,
               setOption,
-              setFilterSelectHandle,
             })
         }}
       />

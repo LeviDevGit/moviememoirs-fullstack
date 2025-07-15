@@ -1,9 +1,15 @@
 import { CalendarRangeIcon, SparklesIcon, UserRoundIcon } from 'lucide-react'
 
 interface VerticalMenuProps {
-  setOption: React.Dispatch<React.SetStateAction<object>>
+  setOption: React.Dispatch<React.SetStateAction<Record<string, string>>>
   option: object
   setFilterDropdown: (value: React.SetStateAction<boolean>) => void
+}
+
+export const Filters = {
+  Diretor: { value: 'director', icon: <UserRoundIcon /> },
+  Ano: { value: 'year', icon: <CalendarRangeIcon /> },
+  Nota: { value: 'value', icon: <SparklesIcon /> },
 }
 
 function VerticalMenu({
@@ -11,12 +17,6 @@ function VerticalMenu({
   option,
   setFilterDropdown,
 }: VerticalMenuProps) {
-  const Filters = {
-    Diretor: { value: 'director', icon: <UserRoundIcon /> },
-    Ano: { value: 'year', icon: <CalendarRangeIcon /> },
-    Nota: { value: 'value', icon: <SparklesIcon /> },
-  }
-
   return (
     <ul className="space-y-1">
       {Object.entries(Filters)

@@ -29,7 +29,7 @@ export default function Filter({
 
   useDropdown({ isOpen, dropdown, toggleDropdown })
 
-  const [option, setOption] = useState({})
+  const [option, setOption] = useState<Record<string, string>>({})
 
   const [selectOption, setSelectOption] = useState<undefined | string>(
     undefined,
@@ -40,8 +40,6 @@ export default function Filter({
   const [selectLimit, setSelectLimit] = useState(false)
 
   const selectLimitState = { selectLimit, setSelectLimit }
-
-  const [filterSelectHandle, setFilterSelectHandle] = useState(false)
 
   const [filterDropdown, setFilterDropdown] = useState(false)
 
@@ -69,19 +67,19 @@ export default function Filter({
             </h1>
           )}
           <hr className="border-[#747476]" />
-          {Object.values(option).some((value) => value !== undefined) && (
-            <Request
-              option={option}
-              inputRef={inputRef}
-              selectOption={selectOption}
-              setSelectOption={setSelectOption}
-              selectLimitState={selectLimitState}
-              filterSelectHandle={filterSelectHandle}
-              setFilterSelectHandle={setFilterSelectHandle}
-              request={request}
-              setOption={setOption}
-            />
-          )}
+          {Object.values(option).some((value) => value !== undefined) &&
+            Object.keys(option).map((value) => (
+              <Request
+                key={value}
+                option={option}
+                inputRef={inputRef}
+                selectOption={selectOption}
+                selectLimitState={selectLimitState}
+                request={request}
+                setOption={setOption}
+                valueOption={value}
+              />
+            ))}
           {Object.entries(option)
             .filter(([, value]) => value !== '')
             .map(([key, value], index) => (

@@ -3,13 +3,7 @@ import { TrashIcon } from 'lucide-react'
 interface SelectionProps {
   propKey: string
   propValue: string
-  setOption: React.Dispatch<
-    React.SetStateAction<{
-      director: string
-      year: string
-      value: string
-    }>
-  >
+  setOption: React.Dispatch<React.SetStateAction<Record<string, string>>>
   setSelectLimit: React.Dispatch<React.SetStateAction<boolean>>
   request: React.Dispatch<
     React.SetStateAction<{
