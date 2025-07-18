@@ -43,6 +43,8 @@ function useSubmitData({
           filters.value = filterContent.valueString.toString()
         }
 
+        console.log(filterContent)
+
         const searchParams = new URLSearchParams(filters)
 
         const response = await fetch(

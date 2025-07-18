@@ -1,10 +1,11 @@
 import { queryFilterAdd } from '@/utils/queryFilter'
 import { Filters } from '../ui/VerticalMenu'
+import { TrashIcon } from 'lucide-react'
+import { FilterContent } from '@/app/page'
 
 interface RequestProps {
   inputRef: React.RefObject<HTMLInputElement>
   option: object
-  selectOption: undefined | string
   selectLimitState: {
     selectLimit: boolean
     setSelectLimit: React.Dispatch<React.SetStateAction<boolean>>
@@ -19,16 +20,23 @@ interface RequestProps {
     }>
   >
   valueOption: string
+  filterContent: FilterContent
+}
+
+function getRequestValue(key: string, filterContent: FilterContent) {
+  const composedKey = `${key}String` as keyof typeof filterContent
+
+  return filterContent[composedKey as keyof typeof filterContent]
 }
 
 function Request({
   inputRef,
   option,
-  selectOption,
   selectLimitState,
   request,
   setOption,
   valueOption,
+  filterContent,
 }: RequestProps) {
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setOption((prev) => {
@@ -74,11 +82,13 @@ function Request({
         </select>
       }
       <label className="min-w-[90px] text-center">
-        {selectOption === 'director' ? 'contenha' : 'seja igual a'}
+        {valueOption === 'director' ? 'contenha' : 'seja igual a'}
       </label>
       <input
         type="text"
-        placeholder="Digite o valor..."
+        placeholder={
+          getRequestValue(valueOption, filterContent) || 'Digite o valor...'
+        }
         className="min-w-[226px] rounded-lg border border-[#747476] bg-transparent p-2 outline-none"
         ref={inputRef}
         onKeyDown={(e) => {
@@ -86,11 +96,28 @@ function Request({
             queryFilterAdd({
               inputRef,
               request,
-              selectOption,
+              valueOption,
               setOption,
             })
         }}
       />
+      <div className="relative">
+        <button
+          onClick={() => {
+            setOption((prev) => ({
+              ...prev,
+              [valueOption]: '',
+            }))
+            request((prev) => ({
+              ...prev,
+              [`${valueOption}String`]: '',
+            }))
+            selectLimitState.setSelectLimit(false)
+          }}
+        >
+          <TrashIcon size={20} className="text-red-500" />
+        </button>
+      </div>
     </div>
   )
 }

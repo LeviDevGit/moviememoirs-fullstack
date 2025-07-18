@@ -9,7 +9,7 @@ import Filter from '@/components/filter'
 import Overlay from '@/components/Overlay'
 import { GlobalContext } from '@/providers/global'
 
-interface FilterContent {
+export interface FilterContent {
   searchString: string
   directorString: string | undefined
   yearString: string | undefined
@@ -74,6 +74,7 @@ export default function Home() {
               toggleDropdown={setToggleModal}
               isOpen={toggleModal}
               request={setFilterContent}
+              filterContent={filterContent}
             />
           </div>
           <Options openIt={setToggleModal} />

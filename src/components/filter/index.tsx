@@ -2,10 +2,10 @@ import { FilterIcon, Plus } from 'lucide-react'
 import { useRef, useState } from 'react'
 import useDropdown from '@/hooks/useDropdown'
 import Request from './Request'
-import Selection from './Selection'
 import { queryFilterClear } from '@/utils/queryFilter'
 import { toggleModal } from '@/utils/toggleModal'
 import VerticalMenu from '../ui/VerticalMenu'
+import { FilterContent } from '@/app/page'
 
 interface Dropdownprops {
   toggleDropdown: React.Dispatch<React.SetStateAction<boolean[]>>
@@ -18,22 +18,20 @@ interface Dropdownprops {
       valueString: string | undefined
     }>
   >
+  filterContent: FilterContent
 }
 
 export default function Filter({
   toggleDropdown,
   isOpen,
   request,
+  filterContent,
 }: Dropdownprops) {
   const dropdown = useRef<HTMLDivElement | null>(null)
 
   useDropdown({ isOpen, dropdown, toggleDropdown })
 
   const [option, setOption] = useState<Record<string, string>>({})
-
-  const [selectOption, setSelectOption] = useState<undefined | string>(
-    undefined,
-  )
 
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -56,7 +54,7 @@ export default function Filter({
       </button>
       {isOpen[1] && (
         <div
-          className="absolute left-16 top-0 z-20 flex w-[600px] flex-col justify-between gap-4 rounded-lg bg-filter text-sm"
+          className="absolute left-16 top-0 z-20 flex w-[600px] flex-col justify-between gap-4 divide-y divide-gray-300 rounded-lg bg-filter text-sm"
           ref={dropdown}
         >
           {Object.values(option).some((value) => value !== undefined) ? (
@@ -66,50 +64,38 @@ export default function Filter({
               Ainda não há filtros nesta visualização.
             </h1>
           )}
-          <hr className="border-[#747476]" />
           {Object.values(option).some((value) => value !== undefined) &&
             Object.keys(option).map((value) => (
               <Request
                 key={value}
                 option={option}
                 inputRef={inputRef}
-                selectOption={selectOption}
                 selectLimitState={selectLimitState}
                 request={request}
                 setOption={setOption}
                 valueOption={value}
+                filterContent={filterContent}
               />
             ))}
-          {Object.entries(option)
-            .filter(([, value]) => value !== '')
-            .map(([key, value], index) => (
-              <Selection
-                key={`${index}`}
-                propKey={key}
-                propValue={`${value}`}
-                setOption={setOption}
-                setSelectLimit={setSelectLimit}
-                request={request}
-              />
-            ))}
-          {filterDropdown && (
-            <VerticalMenu
-              setOption={setOption}
-              option={option}
-              setFilterDropdown={setFilterDropdown}
-            />
-          )}
-          <hr className="border-[#5D5D5F]" />
-          <div className="flex items-center justify-between p-5 pt-0 text-sm">
+          <div className="relative flex items-center justify-between p-5 pt-0 text-sm">
             {!selectLimit && (
-              <button
-                className={`flex items-center gap-2 text-sm`}
-                onClick={() => {
-                  setFilterDropdown(!filterDropdown)
-                }}
-              >
-                <Plus size={20} /> Adicionar filtro
-              </button>
+              <div className="relative">
+                <button
+                  className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-400 hover:bg-gray-800 hover:text-gray-200"
+                  onClick={() => {
+                    setFilterDropdown(!filterDropdown)
+                  }}
+                >
+                  <Plus size={20} /> Adicionar filtro
+                </button>
+                {filterDropdown && (
+                  <VerticalMenu
+                    setOption={setOption}
+                    option={option}
+                    setFilterDropdown={setFilterDropdown}
+                  />
+                )}
+              </div>
             )}
             {Object.values(option).some((value) => value !== '') && (
               <button
@@ -117,7 +103,6 @@ export default function Filter({
                   queryFilterClear({
                     request,
                     setOption,
-                    setSelectOption,
                     setSelectLimit,
                   })
                   if (inputRef.current) {

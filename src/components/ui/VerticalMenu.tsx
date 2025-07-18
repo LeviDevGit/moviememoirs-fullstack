@@ -18,13 +18,13 @@ function VerticalMenu({
   setFilterDropdown,
 }: VerticalMenuProps) {
   return (
-    <ul className="space-y-1">
+    <ul className="absolute top-10 space-y-1 bg-filter shadow-md shadow-black">
       {Object.entries(Filters)
         .filter(([, value]) => !(value.value in option))
         .map(([key, value]) => (
           <li key={value.value}>
             <button
-              className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+              className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"
               onClick={(event) => {
                 event.stopPropagation()
                 setOption((prev) => ({
