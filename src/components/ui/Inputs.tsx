@@ -1,10 +1,17 @@
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  text: string
+  text?: string
   type?: React.HTMLInputTypeAttribute
+  ref?: React.RefObject<HTMLInputElement>
   useTodayDate?: boolean
 }
 
-function Input({ text, type = 'text', useTodayDate, ...rest }: InputProps) {
+function Input({
+  text,
+  type = 'text',
+  ref,
+  useTodayDate,
+  ...rest
+}: InputProps) {
   const today = new Date().toISOString().slice(0, 10)
   const todayValue = useTodayDate ? today : ''
 
@@ -19,6 +26,7 @@ function Input({ text, type = 'text', useTodayDate, ...rest }: InputProps) {
         {...rest}
         defaultValue={todayValue}
         max={todayValue}
+        ref={ref}
       />
     </label>
   )

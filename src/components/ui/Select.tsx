@@ -1,11 +1,12 @@
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   text?: string
+  className?: string | undefined
   children: React.ReactNode
 }
 
-function Select({ children, text, ...rest }: SelectProps) {
+function Select({ children, className, text, ...rest }: SelectProps) {
   return (
-    <div>
+    <div className={className}>
       <label htmlFor={text}>
         <span className="text-sm font-medium text-gray-200">{text}</span>
         <select

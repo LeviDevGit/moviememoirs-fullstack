@@ -3,11 +3,14 @@
 import { Options, Search } from '@/components'
 import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
-import { useContext, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import Carousel from '@/components/carousel'
-import Filter from '@/components/filter'
 import Overlay from '@/components/Overlay'
 import { GlobalContext } from '@/providers/global'
+import { FilterIcon } from 'lucide-react'
+import { toggleModal } from '@/utils/toggleModal'
+import useDropdown from '@/hooks/useDropdown'
+import { FilterDropdown } from '@/components/FilterDropdown'
 
 export interface FilterContent {
   searchString: string
@@ -37,7 +40,7 @@ export default function Home() {
     throw new Error('GlobalContext is undefined')
   }
 
-  const { toggleModal, setToggleModal, updater, setUpdater } = context
+  const { toggleModalList, setToggleModalList, updater, setUpdater } = context
   const updaterState = { updater, setUpdater }
 
   const [filterContent, setFilterContent] =
@@ -64,27 +67,47 @@ export default function Home() {
     setDirection,
   }
 
+  const dropdown = useRef<HTMLDivElement | null>(null)
+
+  useDropdown({ toggleModalList, dropdown, setToggleModalList })
+
   return (
     <div className="relative flex h-full w-full items-center justify-center">
       <div className="flex h-full max-h-[650px] w-full flex-col items-center justify-between px-4">
         <header className="flex h-[45px] w-full items-center justify-between gap-1">
           <div className="flex h-full items-center gap-1">
             <Search request={setFilterContent} />
-            <Filter
-              toggleDropdown={setToggleModal}
-              isOpen={toggleModal}
-              request={setFilterContent}
-              filterContent={filterContent}
-            />
+            <div className="relative h-full text-sm">
+              <button
+                onClick={(event) => {
+                  event.stopPropagation()
+                  toggleModal({
+                    index: 1,
+                    set: setToggleModalList,
+                    toggler: !toggleModalList[1],
+                  })
+                }}
+                className="h-full rounded-lg px-4 text-text-200 hover:text-text-50"
+              >
+                <FilterIcon />
+              </button>
+              {toggleModalList[1] && (
+                <FilterDropdown
+                  dropdown={dropdown}
+                  filterContent={filterContent}
+                  request={setFilterContent}
+                />
+              )}
+            </div>
           </div>
-          <Options openIt={setToggleModal} />
+          <Options openIt={setToggleModalList} />
         </header>
         <main className="h-[520px] w-full">
           <Carousel directionData={directionData} loading={loading} />
         </main>
         <Overlay
-          setToggleModal={setToggleModal}
-          toggleModal={toggleModal}
+          setToggleModal={setToggleModalList}
+          toggleModal={toggleModalList}
           updaterState={updaterState}
         />
       </div>

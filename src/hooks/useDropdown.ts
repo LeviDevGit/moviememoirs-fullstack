@@ -2,14 +2,18 @@ import { toggleModal } from '@/utils/toggleModal'
 import { useEffect } from 'react'
 
 interface useDropdownProps {
-  isOpen: boolean[]
+  toggleModalList: boolean[]
   dropdown: React.MutableRefObject<HTMLDivElement | null>
-  toggleDropdown: React.Dispatch<React.SetStateAction<boolean[]>>
+  setToggleModalList: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
-function useDropdown({ isOpen, dropdown, toggleDropdown }: useDropdownProps) {
+function useDropdown({
+  toggleModalList,
+  dropdown,
+  setToggleModalList,
+}: useDropdownProps) {
   useEffect(() => {
-    if (!isOpen[1]) return
+    if (!toggleModalList[1]) return
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -17,7 +21,7 @@ function useDropdown({ isOpen, dropdown, toggleDropdown }: useDropdownProps) {
         event.target instanceof Node &&
         !dropdown.current.contains(event.target)
       ) {
-        toggleModal({ index: 1, set: toggleDropdown, toggler: false })
+        toggleModal({ index: 1, set: setToggleModalList, toggler: false })
       }
     }
 
@@ -26,7 +30,7 @@ function useDropdown({ isOpen, dropdown, toggleDropdown }: useDropdownProps) {
     return () => {
       window.removeEventListener('click', handleClickOutside)
     }
-  }, [dropdown, isOpen, toggleDropdown])
+  }, [dropdown, toggleModalList, setToggleModalList])
 }
 
 export default useDropdown

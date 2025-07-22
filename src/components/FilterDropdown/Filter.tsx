@@ -2,8 +2,10 @@ import { queryFilterAdd } from '@/utils/queryFilter'
 import { Filters } from '../ui/VerticalMenu'
 import { TrashIcon } from 'lucide-react'
 import { FilterContent } from '@/app/page'
+import Select from '../ui/Select'
+import { Input } from '../ui/Inputs'
 
-interface RequestProps {
+interface FilterProps {
   inputRef: React.RefObject<HTMLInputElement>
   option: object
   selectLimitState: {
@@ -29,7 +31,7 @@ function getRequestValue(key: string, filterContent: FilterContent) {
   return filterContent[composedKey as keyof typeof filterContent]
 }
 
-function Request({
+function Filter({
   inputRef,
   option,
   selectLimitState,
@@ -37,7 +39,7 @@ function Request({
   setOption,
   valueOption,
   filterContent,
-}: RequestProps) {
+}: FilterProps) {
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setOption((prev) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -52,7 +54,7 @@ function Request({
 
   const getOptionText = (key: string) => {
     if (key === 'director') return 'Diretor'
-    if (key === 'year') return 'Lançamento'
+    if (key === 'year') return 'Ano'
     if (key === 'value') return 'Nota'
   }
 
@@ -64,33 +66,34 @@ function Request({
     <div className="flex w-[550px] items-center gap-4 px-5 text-sm">
       <label>Onde</label>
       {
-        <select
-          className="w-[118px] rounded-lg border border-[#747476] bg-transparent p-2"
-          onChange={(e) => {
-            console.log(e.currentTarget.value)
-            handleSelectChange(e)
-          }}
-        >
-          <option value={valueOption}>{getOptionText(valueOption)}</option>
-          {Object.entries(Filters)
-            .filter(([, value]) => !(value.value in option))
-            .map(([key, value]) => (
-              <option key={value.value} value={value.value}>
-                {key}
-              </option>
-            ))}
-        </select>
+        <div>
+          <Select
+            onChange={(e) => {
+              console.log(e.currentTarget.value)
+              handleSelectChange(e)
+            }}
+            className="w-[100px]"
+          >
+            <option value={valueOption}>{getOptionText(valueOption)}</option>
+            {Object.entries(Filters)
+              .filter(([, value]) => !(value.value in option))
+              .map(([key, value]) => (
+                <option key={value.value} value={value.value}>
+                  {key}
+                </option>
+              ))}
+          </Select>
+        </div>
       }
       <label className="min-w-[90px] text-center">
         {valueOption === 'director' ? 'contenha' : 'seja igual a'}
       </label>
-      <input
+      <Input
         type="text"
+        ref={inputRef}
         placeholder={
           getRequestValue(valueOption, filterContent) || 'Digite o valor...'
         }
-        className="min-w-[226px] rounded-lg border border-[#747476] bg-transparent p-2 outline-none"
-        ref={inputRef}
         onKeyDown={(e) => {
           if (e.key === 'Enter')
             queryFilterAdd({
@@ -103,16 +106,18 @@ function Request({
       />
       <div className="relative">
         <button
-          onClick={() => {
-            setOption((prev) => ({
-              ...prev,
-              [valueOption]: '',
-            }))
+          onClick={(e) => {
+            setOption((prev) => {
+              const newOption = { ...prev }
+              delete newOption[valueOption]
+              return newOption
+            })
             request((prev) => ({
               ...prev,
               [`${valueOption}String`]: '',
             }))
             selectLimitState.setSelectLimit(false)
+            e.stopPropagation()
           }}
         >
           <TrashIcon size={20} className="text-red-500" />
@@ -122,4 +127,4 @@ function Request({
   )
 }
 
-export default Request
+export default Filter

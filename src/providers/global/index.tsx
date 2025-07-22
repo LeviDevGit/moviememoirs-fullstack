@@ -1,8 +1,8 @@
 import { createContext, ReactNode, useState } from 'react'
 
 interface GlobalContextProps {
-  toggleModal: boolean[]
-  setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
+  toggleModalList: boolean[]
+  setToggleModalList: React.Dispatch<React.SetStateAction<boolean[]>>
   updater: boolean
   setUpdater: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -17,14 +17,14 @@ interface GlobalProviderProps {
 
 export function GlobalProvider({ children }: GlobalProviderProps) {
   // 0: Form, 1: Filter
-  const [toggleModal, setToggleModal] = useState([false, false])
+  const [toggleModalList, setToggleModalList] = useState([false, false])
 
   // State updater
   const [updater, setUpdater] = useState<boolean>(false)
 
   return (
     <GlobalContext.Provider
-      value={{ toggleModal, setToggleModal, updater, setUpdater }}
+      value={{ toggleModalList, setToggleModalList, updater, setUpdater }}
     >
       {children}
     </GlobalContext.Provider>

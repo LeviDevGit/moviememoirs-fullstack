@@ -18,7 +18,7 @@ function queryFilterAdd({
   valueOption,
   request,
 }: queryFilterAddProps) {
-  if (inputRef.current && inputRef.current.value !== '' && valueOption) {
+  if (inputRef.current && valueOption) {
     console.log('teste')
     setOption((prev) => ({
       ...prev,
