@@ -17,7 +17,12 @@ function Options({ openIt }: OptionsProps) {
         <span>Log</span>
       </button>
       <div className="h-full w-1 bg-card"></div>
-      <button className="flex h-full w-[50px] items-center justify-center gap-2 rounded-r-lg bg-secondary-700 px-3 hover:bg-secondary-600">
+      <button
+        className="flex h-full w-[50px] items-center justify-center gap-2 rounded-r-lg bg-secondary-700 px-3 hover:bg-secondary-600"
+        onClick={() => {
+          toggleModal({ index: 2, set: openIt, toggler: true })
+        }}
+      >
         <ChevronDownIcon />
       </button>
     </div>

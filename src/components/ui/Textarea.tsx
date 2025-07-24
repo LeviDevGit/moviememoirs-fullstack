@@ -1,14 +1,16 @@
-type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>
+interface TextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  text?: string
+}
 
-function Textarea({ ...rest }: TextareaProps) {
+function Textarea({ text, ...rest }: TextareaProps) {
   return (
-    <label htmlFor="Comentário">
-      <span className="text-sm font-medium text-gray-200">Comentário</span>
+    <label htmlFor={text}>
+      <span className="text-sm font-medium text-gray-200">{text}</span>
       <textarea
-        id="Comentário"
+        id={text}
         className="mt-0.5 w-full resize-none rounded border-gray-600 bg-transparent text-white shadow-sm sm:text-sm"
         rows={4}
-        placeholder="Escreva um comentário (opcional)"
         {...rest}
       ></textarea>
     </label>

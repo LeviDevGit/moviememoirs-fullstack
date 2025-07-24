@@ -59,7 +59,10 @@ function Form({ updaterState, setToggleModal }: FormProps) {
             <Input text="Data" type="date" useTodayDate />
             <Input text="Id do imdb" placeholder="Ex: tt28015403" />
           </div>
-          <Textarea />
+          <Textarea
+            text="Comentário"
+            placeholder="Escreva um comentário (opcional)"
+          />
           <div className="flex w-full items-center justify-end">
             <button
               type="submit"

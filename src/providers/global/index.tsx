@@ -16,8 +16,8 @@ interface GlobalProviderProps {
 }
 
 export function GlobalProvider({ children }: GlobalProviderProps) {
-  // 0: Form, 1: Filter
-  const [toggleModalList, setToggleModalList] = useState([false, false])
+  // 0: FormMedia, 1: Filter, 2: FormCategory
+  const [toggleModalList, setToggleModalList] = useState([false, false, false])
 
   // State updater
   const [updater, setUpdater] = useState<boolean>(false)
