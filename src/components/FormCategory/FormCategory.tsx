@@ -1,5 +1,7 @@
+import { XIcon } from 'lucide-react'
 import { Input } from '../ui/Inputs'
 import Select from '../ui/Select'
+import Divider from '../ui/Divider'
 
 function FormCategory() {
   return (
@@ -13,28 +15,23 @@ function FormCategory() {
         </p>
       </div>
       <form action="" className="flex flex-col gap-4">
-        <Input disabled />
+        <Input placeholder="Inserir nome" text="Nome categoria" />
+        <Divider>Extras seções</Divider>
         <div className="flex items-center justify-between">
-          <Input placeholder="Nome da seção" />
           <Select>
-            <option value=""></option>
+            <option value="">Tags</option>
+            <option value="">Elenco e equipe</option>
           </Select>
-          <button className="mt-0.5 w-full rounded border-gray-600 bg-transparent text-white shadow-sm sm:text-sm">
-            Salvar
+          <button className="mt-0.5 h-full w-fit rounded border border-gray-600 bg-transparent text-white shadow-sm sm:text-sm">
+            <XIcon />
           </button>
         </div>
-        <button className="mt-0.5 w-full rounded border border-gray-600 bg-transparent text-white shadow-sm sm:text-sm">
-          Adicionar nova seção
+        <button className="mt-0.5 w-fit rounded border border-gray-600 bg-transparent text-start text-white shadow-sm sm:text-sm">
+          Adicionar
         </button>
-        <span className="flex items-center">
-          <span className="h-px flex-1 bg-gray-300 dark:bg-gray-600"></span>
-          <span className="shrink-0 px-4 text-gray-900 dark:text-white">
-            Proporção
-          </span>
-          <span className="h-px flex-1 bg-gray-300 dark:bg-gray-600"></span>
-        </span>
-        <fieldset className="flex justify-between">
-          <div>
+        <Divider>Proporção</Divider>
+        <fieldset className="flex gap-4">
+          <div className="w-1/2">
             <input
               type="radio"
               name="DeliveryOption"
@@ -50,7 +47,7 @@ function FormCategory() {
               <p className="text-gray-900 dark:text-white">Retangular</p>
             </label>
           </div>
-          <div>
+          <div className="w-1/2">
             <input
               type="radio"
               name="DeliveryOption"
