@@ -1,9 +1,42 @@
-import { XIcon } from 'lucide-react'
+import { PlusIcon, XIcon } from 'lucide-react'
 import { Input } from '../ui/Inputs'
 import Select from '../ui/Select'
 import Divider from '../ui/Divider'
+import { useState } from 'react'
+
+const OPTIONS = ['Sinopse', 'Tags', 'Elenco']
 
 function FormCategory() {
+  const [sectionOptions, setSectionOptions] = useState<string[]>([OPTIONS[0]])
+
+  const handleAddSelect = () => {
+    const usedValues = sectionOptions.filter((v) => v)
+    const available = OPTIONS.find((opt) => !usedValues.includes(opt))
+
+    if (available) {
+      setSectionOptions([...sectionOptions, available])
+    }
+  }
+
+  // Remove um select pelo índice
+  const handleRemoveSelect = (value: string) => {
+    const updated = [...sectionOptions]
+    setSectionOptions(updated.filter((e) => e !== value))
+  }
+
+  // Atualiza o valor de um select e impede duplicatas
+  const handleChangeSelect = (value: string, index: number) => {
+    const updated = [...sectionOptions]
+    updated[index] = value
+    setSectionOptions(updated)
+  }
+
+  // Retorna as opções disponíveis para um select, desconsiderando o valor atual
+  const getAvailableOptions = () => {
+    const usedOptions = OPTIONS.filter((opt) => !sectionOptions.includes(opt))
+    return usedOptions
+  }
+
   return (
     <div className="rounded-lg bg-background p-5">
       <div className="mb-5 flex flex-col gap-2">
@@ -17,18 +50,44 @@ function FormCategory() {
       <form action="" className="flex flex-col gap-4">
         <Input placeholder="Inserir nome" text="Nome categoria" />
         <Divider>Extras seções</Divider>
-        <div className="flex items-center justify-between">
-          <Select>
-            <option value="">Tags</option>
-            <option value="">Elenco e equipe</option>
-          </Select>
-          <button className="mt-0.5 h-full w-fit rounded border border-gray-600 bg-transparent text-white shadow-sm sm:text-sm">
-            <XIcon />
+        {sectionOptions.map((value, index) => (
+          <div className="flex items-center gap-4" key={index}>
+            <Select
+              className="w-full"
+              onChange={(e) => handleChangeSelect(e.target.value, index)}
+              defaultValue={value}
+            >
+              <option key={value} value={value}>
+                {value}
+              </option>
+              {getAvailableOptions().map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </Select>
+            {sectionOptions.length > 1 && (
+              <button
+                className="mt-0.5 h-full w-fit rounded text-white shadow-sm sm:text-sm"
+                type="button"
+                onClick={() => handleRemoveSelect(value)}
+              >
+                <XIcon />
+              </button>
+            )}
+          </div>
+        ))}
+        {sectionOptions.length < OPTIONS.length && (
+          <button
+            className="mt-0.5 flex w-fit items-center gap-2 rounded bg-transparent text-start text-white shadow-sm sm:text-sm"
+            type="button"
+            onClick={handleAddSelect}
+          >
+            <PlusIcon />
+            <span>Adicionar</span>
           </button>
-        </div>
-        <button className="mt-0.5 w-fit rounded border border-gray-600 bg-transparent text-start text-white shadow-sm sm:text-sm">
-          Adicionar
-        </button>
+        )}
+
         <Divider>Proporção</Divider>
         <fieldset className="flex gap-4">
           <div className="w-1/2">
