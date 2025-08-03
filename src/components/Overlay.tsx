@@ -1,6 +1,6 @@
-import Form from './form'
-import FormCategory from './FormCategory/FormCategory'
-import Modal from './Modal'
+import { FormCategory } from './features/form-category'
+import { FormMedia } from './features/form-media'
+import { Modal } from './ui/Modal'
 
 interface OverlayProps {
   toggleModal: boolean[]
@@ -15,14 +15,21 @@ function Overlay({ toggleModal, setToggleModal, updaterState }: OverlayProps) {
   return (
     <>
       {toggleModal[0] ? (
-        <Modal set={setToggleModal} index={0}>
-          <Form updaterState={updaterState} setToggleModal={setToggleModal} />
-        </Modal>
+        <Modal.Root set={setToggleModal} index={0}>
+          <Modal.Main>
+            <FormMedia
+              updaterState={updaterState}
+              setToggleModal={setToggleModal}
+            />
+          </Modal.Main>
+        </Modal.Root>
       ) : (
         toggleModal[2] && (
-          <Modal set={setToggleModal} index={2}>
-            <FormCategory />
-          </Modal>
+          <Modal.Root set={setToggleModal} index={2}>
+            <Modal.Main>
+              <FormCategory />
+            </Modal.Main>
+          </Modal.Root>
         )
       )}
     </>

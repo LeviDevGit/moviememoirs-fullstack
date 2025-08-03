@@ -4,7 +4,7 @@ import Rater from '@/components/Rater'
 import Image from 'next/image'
 import { useState } from 'react'
 import Select from '../ui/Select'
-import { Input } from '../ui/Inputs'
+import Input from '../ui/Input'
 
 interface dataProps {
   id: number

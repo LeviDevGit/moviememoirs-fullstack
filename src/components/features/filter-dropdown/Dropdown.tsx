@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react'
 import { FilterContent } from '@/app/page'
 import { PlusIcon } from 'lucide-react'
-import VerticalMenu from '../ui/VerticalMenu'
 import { queryFilterClear } from '@/utils/queryFilter'
 import Filter from './Filter'
+import VerticalMenu from '@/components/ui/VerticalMenu'
 
 interface DropdownProps {
   dropdown: React.MutableRefObject<HTMLDivElement | null>

@@ -1,6 +1,6 @@
 import { SearchIcon } from 'lucide-react'
 import { useRef } from 'react'
-import { InputIcon } from './ui/Inputs'
+import Input from './ui/Input'
 
 type requestType = React.Dispatch<
   React.SetStateAction<{
@@ -32,7 +32,7 @@ function Search({ request }: SearchProps) {
   const inputRef = useRef<HTMLInputElement>(null) // useRef para acessar o valor do input
 
   return (
-    <InputIcon
+    <Input
       placeholder="Procurar por midias"
       ref={inputRef}
       onKeyDown={(e) => {
@@ -40,7 +40,7 @@ function Search({ request }: SearchProps) {
       }}
     >
       <SearchIcon />
-    </InputIcon>
+    </Input>
   )
 }
 

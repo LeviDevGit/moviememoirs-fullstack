@@ -1,13 +1,11 @@
-import Dropzone from './Dropzone'
-
 import dispatchForm from '@/utils/dispatchForm'
-import Rater from '../Rater'
-import React from 'react'
-import Select from '../ui/Select'
-import { Input } from '../ui/Inputs'
-import Textarea from '../ui/Textarea'
+import Dropzone from './Dropzone'
+import Rater from '@/components/Rater'
+import Select from '@/components/ui/Select'
+import Textarea from '@/components/ui/Textarea'
+import Input from '@/components/ui/Input'
 
-interface FormProps {
+interface FormMediaProps {
   updaterState: {
     updater: boolean
     setUpdater: React.Dispatch<React.SetStateAction<boolean>>
@@ -15,7 +13,7 @@ interface FormProps {
   setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
-function Form({ updaterState, setToggleModal }: FormProps) {
+function FormMedia({ updaterState, setToggleModal }: FormMediaProps) {
   return (
     <div className="page-specific w-[800px] rounded-lg bg-background p-5">
       <div className="mb-5 flex flex-col gap-2">
@@ -77,4 +75,4 @@ function Form({ updaterState, setToggleModal }: FormProps) {
   )
 }
 
-export default Form
+export default FormMedia

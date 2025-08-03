@@ -4,13 +4,13 @@ import { Options, Search } from '@/components'
 import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
 import { useContext, useRef, useState } from 'react'
-import Carousel from '@/components/carousel'
+import Carousel from '@/components/features/carousel'
 import Overlay from '@/components/Overlay'
 import { GlobalContext } from '@/providers/global'
 import { FilterIcon } from 'lucide-react'
 import { toggleModal } from '@/utils/toggleModal'
 import useDropdown from '@/hooks/useDropdown'
-import { FilterDropdown } from '@/components/FilterDropdown'
+import { FilterDropdown } from '@/components/features/filter-dropdown'
 
 export interface FilterContent {
   searchString: string

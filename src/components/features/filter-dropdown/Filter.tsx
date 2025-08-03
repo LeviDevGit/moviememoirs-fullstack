@@ -1,10 +1,9 @@
 import { queryFilterAdd } from '@/utils/queryFilter'
-import { Filters } from '../ui/VerticalMenu'
 import { TrashIcon } from 'lucide-react'
 import { FilterContent } from '@/app/page'
-import Select from '../ui/Select'
-import { Input } from '../ui/Inputs'
-
+import Select from '@/components/ui/Select'
+import { Filters } from '@/components/ui/VerticalMenu'
+import Input from '@/components/ui/Input'
 interface FilterProps {
   inputRef: React.RefObject<HTMLInputElement>
   option: object

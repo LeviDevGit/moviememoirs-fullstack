@@ -1,7 +1,6 @@
-import Card from './carousel/Card'
-import Directional from './carousel/Directional'
-import Modal from './Modal'
+import Card from './features/carousel/Card'
+import Directional from './features/carousel/Directional'
 import Options from './Options'
 import Search from './Search'
 
-export { Card, Directional, Modal, Options, Search }
+export { Card, Directional, Options, Search }
