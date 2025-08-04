@@ -1,6 +1,6 @@
 import dispatchForm from '@/utils/dispatchForm'
 import Dropzone from './Dropzone'
-import Rater from '@/components/Rater'
+import Rater from '@/components/shared/Rater'
 import Select from '@/components/ui/Select'
 import Textarea from '@/components/ui/Textarea'
 import Input from '@/components/ui/Input'

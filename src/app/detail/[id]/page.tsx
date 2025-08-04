@@ -2,11 +2,11 @@
 
 import Image from 'next/image'
 import { use, useContext, useEffect, useState } from 'react'
-import Rater from '@/components/Rater'
+import Rater from '@/components/shared/Rater'
 import dispatchDetail, { dataProps } from '@/utils/dispatchDetail'
 import { GlobalContext } from '@/providers/global'
-import Confirm from '@/components/confirm'
-import MediaInfo from '@/components/info/MediaInfo'
+import Confirm from '@/components/features/form-media-edit'
+import MediaInfo from '@/components/features/media-info/MediaInfo'
 
 interface PageProps {
   params: Promise<{ id: string }>

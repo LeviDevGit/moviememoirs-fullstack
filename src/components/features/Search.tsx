@@ -1,6 +1,6 @@
 import { SearchIcon } from 'lucide-react'
 import { useRef } from 'react'
-import Input from './ui/Input'
+import Input from '../ui/Input'
 
 type requestType = React.Dispatch<
   React.SetStateAction<{

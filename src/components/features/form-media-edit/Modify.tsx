@@ -1,10 +1,10 @@
 import Visualization from './Visualization'
 import { Trash } from 'lucide-react'
-import Rater from '@/components/Rater'
+import Rater from '@/components/shared/Rater'
 import Image from 'next/image'
 import { useState } from 'react'
-import Select from '../ui/Select'
-import Input from '../ui/Input'
+import Select from '../../ui/Select'
+import Input from '../../ui/Input'
 
 interface dataProps {
   id: number

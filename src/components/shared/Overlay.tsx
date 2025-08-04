@@ -1,6 +1,6 @@
-import { FormCategory } from './features/form-category'
-import { FormMedia } from './features/form-media'
-import { Modal } from './ui/Modal'
+import { FormCategory } from '../features/form-category'
+import { FormMedia } from '../features/form-media'
+import { Modal } from '../ui/Modal'
 
 interface OverlayProps {
   toggleModal: boolean[]

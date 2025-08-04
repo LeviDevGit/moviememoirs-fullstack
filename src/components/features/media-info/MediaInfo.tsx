@@ -1,4 +1,4 @@
-import Rater from '@/components/Rater'
+import Rater from '@/components/shared/Rater'
 import { dataProps } from '@/utils/dispatchDetail'
 import { UserRound } from 'lucide-react'
 // import ImageWithFallback from './image-fallback'

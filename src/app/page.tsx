@@ -1,16 +1,17 @@
 'use client'
 
-import { Options, Search } from '@/components'
 import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
 import { useContext, useRef, useState } from 'react'
 import Carousel from '@/components/features/carousel'
-import Overlay from '@/components/Overlay'
 import { GlobalContext } from '@/providers/global'
 import { FilterIcon } from 'lucide-react'
 import { toggleModal } from '@/utils/toggleModal'
 import useDropdown from '@/hooks/useDropdown'
 import { FilterDropdown } from '@/components/features/filter-dropdown'
+import Search from '@/components/features/Search'
+import Options from '@/components/features/Options'
+import Overlay from '@/components/shared/Overlay'
 
 export interface FilterContent {
   searchString: string
