@@ -20,9 +20,7 @@ function MediaInfo({ data }: MediaInfoProps) {
             <div className="flex w-full justify-end">
               <p className="max-w-[250px] truncate text-right text-text-400">
                 Dirigido por{' '}
-                <span className="text-text-300 underline">
-                  {data?.direction}
-                </span>
+                <span className="text-text-300 underline">{data?.creator}</span>
               </p>
             </div>
           </div>
@@ -62,7 +60,6 @@ function MediaInfo({ data }: MediaInfoProps) {
               </div>
             </div>
           </div>
-
           <div className="mb-20">
             <h1 className="mb-2">Comentários</h1>
             <div className="flex flex-col gap-4">

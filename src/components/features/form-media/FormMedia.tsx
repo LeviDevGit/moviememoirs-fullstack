@@ -1,9 +1,9 @@
-import dispatchForm from '@/utils/dispatchForm'
 import Dropzone from './Dropzone'
 import Rater from '@/components/shared/Rater'
 import Select from '@/components/ui/Select'
 import Textarea from '@/components/ui/Textarea'
 import Input from '@/components/ui/Input'
+import dispatchMediaCreate from '@/utils/dispatchMediaCreate'
 
 interface FormMediaProps {
   updaterState: {
@@ -26,7 +26,9 @@ function FormMedia({ updaterState, setToggleModal }: FormMediaProps) {
       </div>
       <form
         className="flex w-full justify-between gap-10"
-        onSubmit={(e) => dispatchForm({ e, updaterState, setToggleModal })}
+        onSubmit={(e) =>
+          dispatchMediaCreate({ e, updaterState, setToggleModal })
+        }
         autoComplete="off"
       >
         <div className="flex flex-col items-center gap-4">

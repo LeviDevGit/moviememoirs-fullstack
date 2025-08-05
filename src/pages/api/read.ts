@@ -13,11 +13,11 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
   const TAKE_LIMIT = 10
 
   const whereCondition = {
-    movie: {
+    media: {
       name: {
         contains: req.query.name ? req.query.name.toString() : '',
       },
-      direction: req.query.director
+      creator: req.query.director
         ? { contains: req.query.director as string }
         : undefined,
       year:
@@ -35,7 +35,7 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
   let items = await prisma.view.findMany({
     where: whereCondition,
     include: {
-      movie: true,
+      media: true,
     },
     orderBy: {
       date: 'desc',
@@ -49,7 +49,7 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     const extraItems = await prisma.view.findFirst({
       where: whereCondition,
       include: {
-        movie: true,
+        media: true,
       },
       orderBy: {
         date: 'asc',
@@ -63,7 +63,7 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
       where: whereCondition,
       take: (Number(start) + TAKE_LIMIT) % totalItems,
       include: {
-        movie: true,
+        media: true,
       },
       orderBy: {
         date: 'desc',

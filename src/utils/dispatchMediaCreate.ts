@@ -6,17 +6,17 @@ interface updaterStateProps {
   setUpdater: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-interface dispatchFormProps {
+interface dispatchMediaCreateProps {
   e: React.FormEvent<HTMLFormElement>
   updaterState: updaterStateProps
   setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
-async function dispatchForm({
+async function dispatchMediaCreate({
   e,
   updaterState,
   setToggleModal,
-}: dispatchFormProps) {
+}: dispatchMediaCreateProps) {
   e.preventDefault()
 
   try {
@@ -43,4 +43,4 @@ async function dispatchForm({
   }
 }
 
-export default dispatchForm
+export default dispatchMediaCreate

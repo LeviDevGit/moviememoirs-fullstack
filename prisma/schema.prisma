@@ -10,17 +10,41 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Movie {
+// model Movie {
+//   id         Int       @id @default(autoincrement()) // Chave primária auto-incrementada
+//   name       String    // Nome do filme
+//   year       String    // Data do lançamento
+//   time       String    // Duração do filme no formato "HH:MM:SS"
+//   direction  String    // Diretor do filme
+//   value      Float?    // Avaliação (ex.: 8.5)
+//   img        String    // URL ou caminho da imagem
+//   type       String    // Tipo do conteúdo (enum)
+//   imdb       String    // Id IMDB para API do TMDB
+//   views      View[]    // Relacionamento com as visualizações
+// }
+
+// model View {
+//   id          Int       @id @default(autoincrement()) // Chave primária auto-incrementada
+//   date        DateTime  // Data da visualização
+//   commentary  String?   // Comentário opcional
+//   rating      Float     // Nota do filme naquele dia
+//   movieId     Int       // Chave estrangeira para Movie
+//   movie       Movie     @relation(fields: [movieId], references: [id], onDelete: Cascade) // Relacionamento
+// }
+
+// 
+
+model Media {
   id         Int       @id @default(autoincrement()) // Chave primária auto-incrementada
-  name       String    // Nome do filme
+  name       String    // Nome da midia
   year       String    // Data do lançamento
-  time       String    // Duração do filme no formato "HH:MM:SS"
-  direction  String    // Diretor do filme
+  time       String    // Duração da mídia no formato "HH:MM:SS"
+  creator    String    // Criador da mídia
   value      Float?    // Avaliação (ex.: 8.5)
   img        String    // URL ou caminho da imagem
-  type       String    // Tipo do conteúdo (enum)
-  imdb       String    // Id IMDB para API do TMDB
   views      View[]    // Relacionamento com as visualizações
+  category   Category  @relation(fields: [categoryId], references: [id])
+  categoryId Int
 }
 
 model View {
@@ -28,6 +52,33 @@ model View {
   date        DateTime  // Data da visualização
   commentary  String?   // Comentário opcional
   rating      Float     // Nota do filme naquele dia
-  movieId     Int       // Chave estrangeira para Movie
-  movie       Movie     @relation(fields: [movieId], references: [id], onDelete: Cascade) // Relacionamento
+  mediaId     Int       // Chave estrangeira para Mídia
+  media       Media     @relation(fields: [mediaId], references: [id], onDelete: Cascade) // Relacionamento
+}
+
+//  enum ProportionType {
+//   SQUARE
+//   RECTANGLE
+// }
+
+model Category{
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  proportion  String
+  sections    CategorySection[]
+  medias       Media[]
+}
+
+//  enum SectionType {
+//   PARAGRAPH
+//   TAG
+//   IMAGE
+// }
+
+model CategorySection{
+  id          Int       @id @default(autoincrement())
+  name        String
+  type        String
+  categoryId   Int
+  category     Category  @relation(fields: [categoryId], references: [id])
 }

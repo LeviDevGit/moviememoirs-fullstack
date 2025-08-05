@@ -1,0 +1,2207 @@
+[
+  {
+    "id": 1,
+    "date": 1644375600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 1
+  },
+  {
+    "id": 2,
+    "date": 1644462000000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 2
+  },
+  {
+    "id": 3,
+    "date": 1644548400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 3
+  },
+  {
+    "id": 4,
+    "date": 1645585200000,
+    "commentary": null,
+    "rating": 2.5,
+    "movieId": 4
+  },
+  {
+    "id": 5,
+    "date": 1645671600000,
+    "commentary": null,
+    "rating": 2,
+    "movieId": 5
+  },
+  {
+    "id": 6,
+    "date": 1647745200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 6
+  },
+  {
+    "id": 7,
+    "date": 1677294000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 6
+  },
+  {
+    "id": 8,
+    "date": 1647918000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 7
+  },
+  {
+    "id": 9,
+    "date": 1648350000000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 8
+  },
+  {
+    "id": 10,
+    "date": 1650250800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 9
+  },
+  {
+    "id": 11,
+    "date": 1650855600000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 10
+  },
+  {
+    "id": 12,
+    "date": 1650942000000,
+    "commentary": null,
+    "rating": 2,
+    "movieId": 11
+  },
+  {
+    "id": 13,
+    "date": 1651546800000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 12
+  },
+  {
+    "id": 14,
+    "date": 1651806000000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 13
+  },
+  {
+    "id": 15,
+    "date": 1652065200000,
+    "commentary": null,
+    "rating": 2,
+    "movieId": 14
+  },
+  {
+    "id": 16,
+    "date": 1652842800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 15
+  },
+  {
+    "id": 17,
+    "date": 1652842800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 16
+  },
+  {
+    "id": 18,
+    "date": 1653706800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 17
+  },
+  {
+    "id": 19,
+    "date": 1653793200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 18
+  },
+  {
+    "id": 20,
+    "date": 1653793200000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 19
+  },
+  {
+    "id": 21,
+    "date": 1653966000000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 20
+  },
+  {
+    "id": 22,
+    "date": 1654398000000,
+    "commentary": null,
+    "rating": 1.5,
+    "movieId": 21
+  },
+  {
+    "id": 23,
+    "date": 1654484400000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 22
+  },
+  {
+    "id": 24,
+    "date": 1655694000000,
+    "commentary": null,
+    "rating": 2.5,
+    "movieId": 23
+  },
+  {
+    "id": 25,
+    "date": 1655780400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 24
+  },
+  {
+    "id": 26,
+    "date": 1656298800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 25
+  },
+  {
+    "id": 27,
+    "date": 1656298800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 26
+  },
+  {
+    "id": 28,
+    "date": 1656644400000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 27
+  },
+  {
+    "id": 29,
+    "date": 1657940400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 28
+  },
+  {
+    "id": 30,
+    "date": 1658286000000,
+    "commentary": null,
+    "rating": 2,
+    "movieId": 29
+  },
+  {
+    "id": 31,
+    "date": 1658372400000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 30
+  },
+  {
+    "id": 32,
+    "date": 1713150000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 30
+  },
+  {
+    "id": 33,
+    "date": 1658977200000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 31
+  },
+  {
+    "id": 34,
+    "date": 1660791600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 32
+  },
+  {
+    "id": 35,
+    "date": 1731466800000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 32
+  },
+  {
+    "id": 36,
+    "date": 1660964400000,
+    "commentary": null,
+    "rating": 2.5,
+    "movieId": 33
+  },
+  {
+    "id": 37,
+    "date": 1660964400000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 34
+  },
+  {
+    "id": 38,
+    "date": 1660964400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 35
+  },
+  {
+    "id": 39,
+    "date": 1661655600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 36
+  },
+  {
+    "id": 40,
+    "date": 1663815600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 37
+  },
+  {
+    "id": 41,
+    "date": 1732330800000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 37
+  },
+  {
+    "id": 42,
+    "date": 1664938800000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 38
+  },
+  {
+    "id": 43,
+    "date": 1666321200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 39
+  },
+  {
+    "id": 44,
+    "date": 1666407600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 40
+  },
+  {
+    "id": 45,
+    "date": 1666580400000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 41
+  },
+  {
+    "id": 46,
+    "date": 1667530800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 42
+  },
+  {
+    "id": 47,
+    "date": 1667703600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 43
+  },
+  {
+    "id": 48,
+    "date": 1668567600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 44
+  },
+  {
+    "id": 49,
+    "date": 1668913200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 45
+  },
+  {
+    "id": 50,
+    "date": 1668999600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 46
+  },
+  {
+    "id": 51,
+    "date": 1669086000000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 47
+  },
+  {
+    "id": 52,
+    "date": 1669258800000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 48
+  },
+  {
+    "id": 53,
+    "date": 1669604400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 49
+  },
+  {
+    "id": 54,
+    "date": 1670209200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 50
+  },
+  {
+    "id": 55,
+    "date": 1670814000000,
+    "commentary": null,
+    "rating": 2.5,
+    "movieId": 51
+  },
+  {
+    "id": 56,
+    "date": 1671246000000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 52
+  },
+  {
+    "id": 57,
+    "date": 1671418800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 53
+  },
+  {
+    "id": 58,
+    "date": 1671678000000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 54
+  },
+  {
+    "id": 59,
+    "date": 1672023600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 55
+  },
+  {
+    "id": 60,
+    "date": 1673233200000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 56
+  },
+  {
+    "id": 61,
+    "date": 1674874800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 57
+  },
+  {
+    "id": 62,
+    "date": 1676084400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 58
+  },
+  {
+    "id": 63,
+    "date": 1676170800000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 59
+  },
+  {
+    "id": 64,
+    "date": 1676948400000,
+    "commentary": null,
+    "rating": 2,
+    "movieId": 60
+  },
+  {
+    "id": 65,
+    "date": 1677121200000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 61
+  },
+  {
+    "id": 66,
+    "date": 1677380400000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 62
+  },
+  {
+    "id": 67,
+    "date": 1677466800000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 63
+  },
+  {
+    "id": 68,
+    "date": 1677639600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 64
+  },
+  {
+    "id": 69,
+    "date": 1677639600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 65
+  },
+  {
+    "id": 70,
+    "date": 1677812400000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 66
+  },
+  {
+    "id": 71,
+    "date": 1677812400000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 67
+  },
+  {
+    "id": 72,
+    "date": 1677898800000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 68
+  },
+  {
+    "id": 73,
+    "date": 1677898800000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 69
+  },
+  {
+    "id": 74,
+    "date": 1677985200000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 70
+  },
+  {
+    "id": 75,
+    "date": 1678071600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 71
+  },
+  {
+    "id": 76,
+    "date": 1678158000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 72
+  },
+  {
+    "id": 77,
+    "date": 1678417200000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 73
+  },
+  {
+    "id": 78,
+    "date": 1678849200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 74
+  },
+  {
+    "id": 79,
+    "date": 1678935600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 75
+  },
+  {
+    "id": 80,
+    "date": 1679022000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 76
+  },
+  {
+    "id": 81,
+    "date": 1679108400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 77
+  },
+  {
+    "id": 82,
+    "date": 1679108400000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 78
+  },
+  {
+    "id": 83,
+    "date": 1679108400000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 79
+  },
+  {
+    "id": 84,
+    "date": 1679194800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 80
+  },
+  {
+    "id": 85,
+    "date": 1679367600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 81
+  },
+  {
+    "id": 86,
+    "date": 1679367600000,
+    "commentary": null,
+    "rating": 2,
+    "movieId": 82
+  },
+  {
+    "id": 87,
+    "date": 1679367600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 83
+  },
+  {
+    "id": 88,
+    "date": 1679540400000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 84
+  },
+  {
+    "id": 89,
+    "date": 1679626800000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 85
+  },
+  {
+    "id": 90,
+    "date": 1679713200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 86
+  },
+  {
+    "id": 91,
+    "date": 1679799600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 87
+  },
+  {
+    "id": 92,
+    "date": 1679799600000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 88
+  },
+  {
+    "id": 93,
+    "date": 1679799600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 89
+  },
+  {
+    "id": 94,
+    "date": 1680058800000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 90
+  },
+  {
+    "id": 95,
+    "date": 1680404400000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 91
+  },
+  {
+    "id": 96,
+    "date": 1680577200000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 92
+  },
+  {
+    "id": 97,
+    "date": 1681441200000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 93
+  },
+  {
+    "id": 98,
+    "date": 1681786800000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 94
+  },
+  {
+    "id": 99,
+    "date": 1681873200000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 95
+  },
+  {
+    "id": 100,
+    "date": 1681959600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 96
+  },
+  {
+    "id": 101,
+    "date": 1682132400000,
+    "commentary": null,
+    "rating": 2,
+    "movieId": 97
+  },
+  {
+    "id": 102,
+    "date": 1682391600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 98
+  },
+  {
+    "id": 103,
+    "date": 1682391600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 99
+  },
+  {
+    "id": 104,
+    "date": 1682996400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 100
+  },
+  {
+    "id": 105,
+    "date": 1683774000000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 101
+  },
+  {
+    "id": 106,
+    "date": 1684810800000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 102
+  },
+  {
+    "id": 107,
+    "date": 1684897200000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 103
+  },
+  {
+    "id": 108,
+    "date": 1685934000000,
+    "commentary": null,
+    "rating": 2.5,
+    "movieId": 104
+  },
+  {
+    "id": 109,
+    "date": 1686193200000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 105
+  },
+  {
+    "id": 110,
+    "date": 1686366000000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 106
+  },
+  {
+    "id": 111,
+    "date": 1686452400000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 107
+  },
+  {
+    "id": 112,
+    "date": 1687402800000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 108
+  },
+  {
+    "id": 113,
+    "date": 1687489200000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 109
+  },
+  {
+    "id": 114,
+    "date": 1687575600000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 110
+  },
+  {
+    "id": 115,
+    "date": 1687662000000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 111
+  },
+  {
+    "id": 116,
+    "date": 1687748400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 112
+  },
+  {
+    "id": 117,
+    "date": 1687748400000,
+    "commentary": null,
+    "rating": 2,
+    "movieId": 113
+  },
+  {
+    "id": 118,
+    "date": 1687834800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 114
+  },
+  {
+    "id": 119,
+    "date": 1687834800000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 115
+  },
+  {
+    "id": 120,
+    "date": 1688439600000,
+    "commentary": null,
+    "rating": 2.5,
+    "movieId": 116
+  },
+  {
+    "id": 121,
+    "date": 1688526000000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 117
+  },
+  {
+    "id": 122,
+    "date": 1688698800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 118
+  },
+  {
+    "id": 123,
+    "date": 1688871600000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 119
+  },
+  {
+    "id": 124,
+    "date": 1689130800000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 120
+  },
+  {
+    "id": 125,
+    "date": 1689303600000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 121
+  },
+  {
+    "id": 126,
+    "date": 1689390000000,
+    "commentary": null,
+    "rating": 2.5,
+    "movieId": 122
+  },
+  {
+    "id": 127,
+    "date": 1690081200000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 123
+  },
+  {
+    "id": 128,
+    "date": 1690686000000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 124
+  },
+  {
+    "id": 129,
+    "date": 1690686000000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 125
+  },
+  {
+    "id": 130,
+    "date": 1690686000000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 126
+  },
+  {
+    "id": 131,
+    "date": 1690686000000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 127
+  },
+  {
+    "id": 132,
+    "date": 1690772400000,
+    "commentary": null,
+    "rating": 2,
+    "movieId": 128
+  },
+  {
+    "id": 133,
+    "date": 1690772400000,
+    "commentary": null,
+    "rating": 2.5,
+    "movieId": 129
+  },
+  {
+    "id": 134,
+    "date": 1691031600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 130
+  },
+  {
+    "id": 135,
+    "date": 1691118000000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 131
+  },
+  {
+    "id": 136,
+    "date": 1692327600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 132
+  },
+  {
+    "id": 137,
+    "date": 1692414000000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 133
+  },
+  {
+    "id": 138,
+    "date": 1693623600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 134
+  },
+  {
+    "id": 139,
+    "date": 1693710000000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 135
+  },
+  {
+    "id": 140,
+    "date": 1694401200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 136
+  },
+  {
+    "id": 141,
+    "date": 1694574000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 137
+  },
+  {
+    "id": 142,
+    "date": 1694660400000,
+    "commentary": null,
+    "rating": 2.5,
+    "movieId": 138
+  },
+  {
+    "id": 143,
+    "date": 1694746800000,
+    "commentary": null,
+    "rating": 2,
+    "movieId": 139
+  },
+  {
+    "id": 144,
+    "date": 1694746800000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 140
+  },
+  {
+    "id": 145,
+    "date": 1694746800000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 141
+  },
+  {
+    "id": 146,
+    "date": 1694833200000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 142
+  },
+  {
+    "id": 147,
+    "date": 1694833200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 143
+  },
+  {
+    "id": 148,
+    "date": 1695006000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 144
+  },
+  {
+    "id": 149,
+    "date": 1695006000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 145
+  },
+  {
+    "id": 150,
+    "date": 1695265200000,
+    "commentary": null,
+    "rating": 2,
+    "movieId": 146
+  },
+  {
+    "id": 151,
+    "date": 1696215600000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 147
+  },
+  {
+    "id": 152,
+    "date": 1696215600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 148
+  },
+  {
+    "id": 153,
+    "date": 1696302000000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 149
+  },
+  {
+    "id": 154,
+    "date": 1696906800000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 150
+  },
+  {
+    "id": 155,
+    "date": 1697425200000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 151
+  },
+  {
+    "id": 156,
+    "date": 1697598000000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 152
+  },
+  {
+    "id": 157,
+    "date": 1697770800000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 153
+  },
+  {
+    "id": 158,
+    "date": 1698116400000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 154
+  },
+  {
+    "id": 159,
+    "date": 1698462000000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 155
+  },
+  {
+    "id": 160,
+    "date": 1703473200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 156
+  },
+  {
+    "id": 161,
+    "date": 1705978800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 157
+  },
+  {
+    "id": 162,
+    "date": 1706583600000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 158
+  },
+  {
+    "id": 163,
+    "date": 1706756400000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 159
+  },
+  {
+    "id": 164,
+    "date": 1707102000000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 160
+  },
+  {
+    "id": 165,
+    "date": 1707534000000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 161
+  },
+  {
+    "id": 166,
+    "date": 1707879600000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 162
+  },
+  {
+    "id": 167,
+    "date": 1708052400000,
+    "commentary": null,
+    "rating": 2.5,
+    "movieId": 163
+  },
+  {
+    "id": 168,
+    "date": 1708225200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 164
+  },
+  {
+    "id": 169,
+    "date": 1708484400000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 165
+  },
+  {
+    "id": 170,
+    "date": 1708830000000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 166
+  },
+  {
+    "id": 171,
+    "date": 1708916400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 167
+  },
+  {
+    "id": 172,
+    "date": 1709089200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 168
+  },
+  {
+    "id": 173,
+    "date": 1709521200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 169
+  },
+  {
+    "id": 174,
+    "date": 1709521200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 170
+  },
+  {
+    "id": 175,
+    "date": 1709521200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 171
+  },
+  {
+    "id": 176,
+    "date": 1709521200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 172
+  },
+  {
+    "id": 177,
+    "date": 1709521200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 173
+  },
+  {
+    "id": 178,
+    "date": 1712372400000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 174
+  },
+  {
+    "id": 179,
+    "date": 1712545200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 175
+  },
+  {
+    "id": 180,
+    "date": 1712631600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 176
+  },
+  {
+    "id": 181,
+    "date": 1712718000000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 177
+  },
+  {
+    "id": 182,
+    "date": 1712890800000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 178
+  },
+  {
+    "id": 183,
+    "date": 1713063600000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 179
+  },
+  {
+    "id": 184,
+    "date": 1713063600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 180
+  },
+  {
+    "id": 185,
+    "date": 1713495600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 181
+  },
+  {
+    "id": 186,
+    "date": 1715223600000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 182
+  },
+  {
+    "id": 187,
+    "date": 1715569200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 183
+  },
+  {
+    "id": 188,
+    "date": 1716087600000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 184
+  },
+  {
+    "id": 189,
+    "date": 1716174000000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 185
+  },
+  {
+    "id": 190,
+    "date": 1716260400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 186
+  },
+  {
+    "id": 191,
+    "date": 1716260400000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 187
+  },
+  {
+    "id": 192,
+    "date": 1716433200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 188
+  },
+  {
+    "id": 193,
+    "date": 1716606000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 189
+  },
+  {
+    "id": 194,
+    "date": 1716606000000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 190
+  },
+  {
+    "id": 195,
+    "date": 1716778800000,
+    "commentary": null,
+    "rating": 1,
+    "movieId": 191
+  },
+  {
+    "id": 196,
+    "date": 1716951600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 192
+  },
+  {
+    "id": 197,
+    "date": 1717124400000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 193
+  },
+  {
+    "id": 198,
+    "date": 1717556400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 194
+  },
+  {
+    "id": 199,
+    "date": 1717556400000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 195
+  },
+  {
+    "id": 200,
+    "date": 1717729200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 196
+  },
+  {
+    "id": 201,
+    "date": 1718247600000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 197
+  },
+  {
+    "id": 202,
+    "date": 1718679600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 198
+  },
+  {
+    "id": 203,
+    "date": 1718679600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 199
+  },
+  {
+    "id": 204,
+    "date": 1719370800000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 200
+  },
+  {
+    "id": 205,
+    "date": 1719630000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 201
+  },
+  {
+    "id": 206,
+    "date": 1720148400000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 202
+  },
+  {
+    "id": 207,
+    "date": 1720494000000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 203
+  },
+  {
+    "id": 208,
+    "date": 1721185200000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 204
+  },
+  {
+    "id": 209,
+    "date": 1721530800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 205
+  },
+  {
+    "id": 210,
+    "date": 1721530800000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 206
+  },
+  {
+    "id": 211,
+    "date": 1721617200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 207
+  },
+  {
+    "id": 212,
+    "date": 1722135600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 208
+  },
+  {
+    "id": 213,
+    "date": 1722135600000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 209
+  },
+  {
+    "id": 214,
+    "date": 1722308400000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 210
+  },
+  {
+    "id": 215,
+    "date": 1722394800000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 211
+  },
+  {
+    "id": 216,
+    "date": 1722481200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 212
+  },
+  {
+    "id": 217,
+    "date": 1722481200000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 213
+  },
+  {
+    "id": 218,
+    "date": 1722481200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 214
+  },
+  {
+    "id": 219,
+    "date": 1722567600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 215
+  },
+  {
+    "id": 220,
+    "date": 1722740400000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 216
+  },
+  {
+    "id": 221,
+    "date": 1722913200000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 217
+  },
+  {
+    "id": 222,
+    "date": 1722913200000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 218
+  },
+  {
+    "id": 223,
+    "date": 1722999600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 219
+  },
+  {
+    "id": 224,
+    "date": 1723086000000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 220
+  },
+  {
+    "id": 225,
+    "date": 1723172400000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 221
+  },
+  {
+    "id": 226,
+    "date": 1723431600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 222
+  },
+  {
+    "id": 227,
+    "date": 1723518000000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 223
+  },
+  {
+    "id": 228,
+    "date": 1723518000000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 224
+  },
+  {
+    "id": 229,
+    "date": 1723518000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 225
+  },
+  {
+    "id": 230,
+    "date": 1723690800000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 226
+  },
+  {
+    "id": 231,
+    "date": 1723690800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 227
+  },
+  {
+    "id": 232,
+    "date": 1723777200000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 228
+  },
+  {
+    "id": 233,
+    "date": 1723777200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 229
+  },
+  {
+    "id": 234,
+    "date": 1723863600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 230
+  },
+  {
+    "id": 235,
+    "date": 1724036400000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 231
+  },
+  {
+    "id": 236,
+    "date": 1724295600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 232
+  },
+  {
+    "id": 237,
+    "date": 1724641200000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 233
+  },
+  {
+    "id": 238,
+    "date": 1725246000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 234
+  },
+  {
+    "id": 239,
+    "date": 1725332400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 235
+  },
+  {
+    "id": 240,
+    "date": 1725591600000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 236
+  },
+  {
+    "id": 241,
+    "date": 1725764400000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 237
+  },
+  {
+    "id": 242,
+    "date": 1725850800000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 238
+  },
+  {
+    "id": 243,
+    "date": 1726196400000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 239
+  },
+  {
+    "id": 244,
+    "date": 1726369200000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 240
+  },
+  {
+    "id": 245,
+    "date": 1726455600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 241
+  },
+  {
+    "id": 246,
+    "date": 1726542000000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 242
+  },
+  {
+    "id": 247,
+    "date": 1726714800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 243
+  },
+  {
+    "id": 248,
+    "date": 1726974000000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 244
+  },
+  {
+    "id": 249,
+    "date": 1727060400000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 245
+  },
+  {
+    "id": 250,
+    "date": 1727060400000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 246
+  },
+  {
+    "id": 251,
+    "date": 1727233200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 247
+  },
+  {
+    "id": 252,
+    "date": 1727492400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 248
+  },
+  {
+    "id": 253,
+    "date": 1728356400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 249
+  },
+  {
+    "id": 254,
+    "date": 1729393200000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 250
+  },
+  {
+    "id": 255,
+    "date": 1729479600000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 251
+  },
+  {
+    "id": 256,
+    "date": 1729652400000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 252
+  },
+  {
+    "id": 257,
+    "date": 1730084400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 253
+  },
+  {
+    "id": 258,
+    "date": 1730343600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 254
+  },
+  {
+    "id": 259,
+    "date": 1730516400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 255
+  },
+  {
+    "id": 260,
+    "date": 1730689200000,
+    "commentary": null,
+    "rating": 3,
+    "movieId": 256
+  },
+  {
+    "id": 261,
+    "date": 1730948400000,
+    "commentary": null,
+    "rating": 2.5,
+    "movieId": 257
+  },
+  {
+    "id": 262,
+    "date": 1731121200000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 258
+  },
+  {
+    "id": 263,
+    "date": 1731207600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 259
+  },
+  {
+    "id": 264,
+    "date": 1731294000000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 260
+  },
+  {
+    "id": 265,
+    "date": 1732244400000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 261
+  },
+  {
+    "id": 266,
+    "date": 1732676400000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 262
+  },
+  {
+    "id": 267,
+    "date": 1733626800000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 263
+  },
+  {
+    "id": 268,
+    "date": 1733799600000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 264
+  },
+  {
+    "id": 269,
+    "date": 1734231600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 265
+  },
+  {
+    "id": 270,
+    "date": 1737774000000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 266
+  },
+  {
+    "id": 271,
+    "date": 1737774000000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 267
+  },
+  {
+    "id": 272,
+    "date": 1738119600000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 268
+  },
+  {
+    "id": 273,
+    "date": 1738292400000,
+    "commentary": null,
+    "rating": 5,
+    "movieId": 269
+  },
+  {
+    "id": 274,
+    "date": 1738465200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 270
+  },
+  {
+    "id": 275,
+    "date": 1738897200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 271
+  },
+  {
+    "id": 276,
+    "date": 1739242800000,
+    "commentary": null,
+    "rating": 3.5,
+    "movieId": 272
+  },
+  {
+    "id": 277,
+    "date": 1739502000000,
+    "commentary": null,
+    "rating": 4.5,
+    "movieId": 273
+  },
+  {
+    "id": 278,
+    "date": 1738033200000,
+    "commentary": null,
+    "rating": 4,
+    "movieId": 274
+  },
+  {
+    "id": 279,
+    "date": 1739847600000,
+    "commentary": "Sinceramente, muito abaixo em comparação a temporada anterior. Quando fui ver pela primeira vez tinha criado uma certa expectativa por conta do furdúncio que essa temporada foi recebida mas infelizmente ela não foi especial para mim como a primeira temporada foi. A narrativa é o principal problema dessa temporada já que a qualidade de produção incluindo animação e trilha sonora continua absurda. Entretanto episódios como a Vi e Caitlyn contra a Jinx a moça do braço robótico simboliza para mim o que foi essa temporada, uma maratona que deveria ser só um passeio. Certamente essa nota 4 será vista por você com maus olhos quando estiver lendo isso, já que pelo meu questionamento e sobre essa comparação da mediocridade dos episódios em proporção a temporada se torna incompatíveis. Pois você está errado, na verdade essa série deveria ser avaliada como pior que mediocre, deveria amargurar uma nota 2.5 devido a cenas como a Vi e a Caitlyn na prisão enquanto a Jinx está indo se matar, ou as cenas sem propósito com a narrativa principal da Mel e muito menos a falta de intensidade em se tratar de problemas sociais que eram tão fortes na primeira temporada. Mas é ai que surge o melhor episódio de toda essa história que é o episódio 7, que parece que nem foi feito pela equipe que fez o resto da temporada. Um episódio mas lento entretanto perfeito em suas narrativas, doloroso e muito impactante tanto para o episódio em si quanto para toda a história. E como eu prefiro ver o lado bom disso tudo já que amo muito a primeira temporada, eu ainda acho que essa nota se torna justa simplesmente para mostrar o que eu sinto por esse episódio. ",
+    "rating": 4,
+    "movieId": 275
+  },
+  {
+    "id": 280,
+    "date": 1740193200000,
+    "commentary": "Filmasso! Romance muito intimista do jeito que eu amo mas que se passa muito no tempo das canções em tela que ficam muito mais em primeiro plano do que a interação dos próprios personagem terminando meio que estranho as relações dos dois. Por exemplo, a maravilhosa cena da festa, poderia ter mais tempo mostrando eles conversando falando do futuro ou até com personagens fora do núcleo principal. Esse filme tinha potencial de ser 10/10 pela fotografia, os atores mas no fim ele não termina com aquele saldo de após subir os créditos você já fica se imaginando assistindo de novo.",
+    "rating": 4,
+    "movieId": 276
+  },
+  {
+    "id": 281,
+    "date": 1740366000000,
+    "commentary": "Muito divertido, eu iria pegar para ver metade em um dia e ver o resto em outro mas não consegui acabei indo até o final e adorado o filme. Ele é muito acima da média em animação. Todas as cenas de ação do filme são muito boas, junto dos designs que são bem memoráveis. Entretanto é uma história simples que ao invés de passarem rodagem do filme para aprimorar essas falhas, \"Ne Zha\" prefere apostar no básico para manter uma estrutura mais fácil de digerir para todos os públicos. De qualquer maneira, quero ver o 2 que lançou recentemente.",
+    "rating": 4,
+    "movieId": 277
+  },
+  {
+    "id": 282,
+    "date": 1740366000000,
+    "commentary": "Filmasso do cacete! Muito difícil de assistir e nem consigo me imaginar reassistindo. Ponto negativo: 2 minutos finais poderiam pegar o esforço da jornada toda do filme para trazer uma catarse absurda mas acaba não ficando na mesma prateleira do resto do filme. Vale lembrar: esse é um daqueles filmes que você vai ficar pausando toda hora que, por mérito do filme, te coloca na posição desgraçada do personagem principal.",
+    "rating": 4.5,
+    "movieId": 278
+  },
+  {
+    "id": 283,
+    "date": 1740538800000,
+    "commentary": "Absurdo de bom, a animação, a trilha, a dublagem tudo perfeito. Nunca achei que iria me apegar a um personagem em tão pouco tempo. Terminei querendo mais.",
+    "rating": 5,
+    "movieId": 279
+  },
+  {
+    "id": 284,
+    "date": 1740625200000,
+    "commentary": "Frágil como o mundo é um filme que tão citações tão bonitas para um poema mas que no fim não se tornam diálogos tão delicados para um filme. E é isso que esse filme vai ficar na minha memória uma peça teatral, com atuações teatrais e direção teatral. Sim, o longa trás com certeza belíssimos poemas mas mesmo depois da experiência eu sinto que o filme poderia engrandecer esse texto que a diretora, também roteirista, extraiu de outros poetas para contar essa história.",
+    "rating": 3,
+    "movieId": 280
+  },
+  {
+    "id": 285,
+    "date": 1740711600000,
+    "commentary": "Perfeito! Não sabia ou não lembrava de como era o final e me pegou demais. Espero que você consiga um dia rever e sentir o mesmo sentimento que assisti nessa primeira vez.",
+    "rating": 5,
+    "movieId": 281
+  },
+  {
+    "id": 286,
+    "date": 1740884400000,
+    "commentary": "O ponto mais alto desse anime ainda não é suficiente para sair do nível da mediocridade visto os tantos pontos baixos ao longo desses 11 episódios que poderiam ser 6. Flashbacks usados e reutilizados no mesmo episódio que te faz sentir como os escritores tinham uma meta de episódios para preencher. Se não fosse a finalização narrativa do último episódio esse anime amargaria uma nota abaixo do medíocre pelo tanto que os episódios tem tempo ou até mesmo situações que se você ao invés de deixasse o personagem encarando o outro falando duas meias palavras e não terminando a frase decidisse que traria mais estofo para o enrendo por trás dos personagens poderia ser um bom anime ao invés de ser tão teen. A qualidade de animação não prejudica nem se destaca, a direção é neutra. a trilha sonora é ok mas poderia ser melhor mixada para dentro da trama).",
+    "rating": 3,
+    "movieId": 282
+  },
+  {
+    "id": 287,
+    "date": 1741057200000,
+    "commentary": "Mediano, mas infelizmente teve um final meio amargo por conta da direção dos personagens secundários (que são meus favoritos, vide Suwa e Hagita). A animação é bem fraquinha mas não me incomodou de maneira nenhuma. Infelizmente não consegui me sensibilizar tanto pela motivação do personagem chave da trama que é o Kakeru por ele ser simplesmente o oposto do Suwa que é muito mais interessante que o romance dos dois. Acho que a comédia funciona super bem que ao contrário do drama tem hora que dá umas forçadas legal. Tem uma cena na corrida de revezamento que é uma forçação de barra que meu jesus. Além que a cada 5 min vai ter um personagem chorando por uma coisa banal como \"Eu machuquei meu pé, quanta pressão estou sentido, vou me matar amanhã\". Eu lembro que ele deu umas flertadas para ter uns putas plotwist como o Suwa morrer no lugar do Kakeru ou o Kakeru morrer independente dos esforços, mas acho que foi só satisfatório nível mediano mesmo. Mas vi aqui a sinopse do filme e confesso que estou empolgado para meu mano Suwa ter seu momento de brilhar.",
+    "rating": 3,
+    "movieId": 283
+  },
+  {
+    "id": 288,
+    "date": 1741057200000,
+    "commentary": "Que banho de água fria. Quando soube que seria do ponto de vista do Suwa (vulgo melhor personagem da série) e peguei vendo os primeiros minutos já sabia que vinha merda por ai. Os primeiros 10 minutos são uma recapitulação do anime, o que já é uma bosta por si só. O resto se divide em 70% de flashbacks, ainda mesmo depois de toda a recapitulação de antes, 15% do Suwa e seu ponto de visto (sim, essa merda só ficou com 15% e ainda conseguiu adicionar mais camadas ao personagem com tão pouco tempo). 10% sobre o Kakeru (esse cara ainda vai vir estragar essa porra aparecendo novamente) e 5% de background estáticos (acabou o orçamento). Eu sinceramente acredito que é o maior desperdício de tempo em forma de filme, por que ele não serve para ser um filme solo para quem não assistiu o anime porque conta muito mal pelos flashbacks, mas também não serve para que assistiu o anime e veio ver o filme do \"FUTURO\", que aliás não se deixe enganar, os futuros dos dois mundos pouco são explorados, só mostram o antes e o depois. Que tragédia, parece que o produtor queria lançar esse filme solo, que não está longe de qualidade de cinema, e queria lançar só para ter no currículo porque o orçamento está super apertado com cenas novas piores que o anime e 90% de flashbacks. Não é um 0 porque o momento do Suwa ainda dão uma levantada, mas se esses pequeníssimos momentos não existissem seria uma nota 0 pelo que o filme representa tanto como filme solo quanto para um filme pós anime: NADA.",
+    "rating": 1.5,
+    "movieId": 284
+  },
+  {
+    "id": 289,
+    "date": 1742180400000,
+    "commentary": "Absurdamente bom. Esse é aquele anime de romance especialmente focado no drama nas relações interpessoais dos protagonistas, então dificilmente você vai ver eles discutindo algo que não seja seu compromisso ou como isso ou aquilo pode afetar seu namoro. Entretanto todos os dramas abordados aqui são muito convincentes, você realmente fica em dúvida de qual caminho seguir, como mudar tais comportamentos e sobretudo como se todo o esforço para continuar amando aquela pessoa vale a pena. Achei um anime muito gostosinha de assistir, as interações são absurdas. Gostei também dos personagens (vide o GOAT Takeuchi) e diálogos também, que de vez em quando sofre de uma repetição ou um caso de barriga durante os episódios mas como é tudo tão bonitinho você consegue relevar. Eu crie boas memórias vendo isso, talvez eu até tenha rushado vendo 5 episódios em um único dia, não vendo durante 4 dias e pegando o final mas no fim de tudo foi realmente uma ótima experiência. Os pontos negativos: infelizmente os defeitos são bem evidentes. O principal é a animação, Bokura ga ita foi feito por um estúdio que nem página na wikipedia tem chamado de ArtLand e o trabalho que eles fizeram aqui é muito pobre. Passando por cima disso e de toda as consequências de visual, trilha sonora, quadros estáticos e expressões, ainda acredito que valeu demais a pena ver e possivelmente rever.",
+    "rating": 4.5,
+    "movieId": 285
+  },
+  {
+    "id": 290,
+    "date": 1742439600000,
+    "commentary": "Eu tenho a leve recordação que já assiste a esse anime antes então durante algumas, principalmente no início eu senti vários dejavu. Falando da série em si, é realmente muito boa, muito bem animada, boa trilha, boa dublagem e da direção de arte é realmente acima da média. Agora sobre o foco principal: a história e os personagens. A história, principalmente o romance é muito boa, ela realmente passa aquele sentimento de romance pré-adolescente de esquentar o coração, toda a construção as finalizações dos outros interesses amorosos são também muito satisfatórios e para 12 episódios, sendo o 6º uma reprise do meio da temporada é excelente ele realmente não se estende. Em contrapartida, os personagens secundários pouco importam, aparece fazem uma graça e algumas vezes até chega a irritar. Tirando o papel deles na trama de tratar dessa mudança de escola, eles realmente não acrescentam em nada. Eu ainda prefiro um romance mais adolescente, como 'Bokura ga ita', que trata de uns assuntos mais sérios. Mas esse é realmente bem bonitinho e se ele flertasse com algumas expansões e não deixasse tudo para um slide no final para resolver a inconclusão que o último episódios trás seria realmente um dos melhores.",
+    "rating": 4,
+    "movieId": 286
+  },
+  {
+    "id": 291,
+    "date": 1742526000000,
+    "commentary": "Antes de ver o filme eu tinha uma impressão de que ele era bom mas não lembrava que era tanto, para mim o final dele terminava no estilo 'Ponyo' de caminha o filme todo mas tentar resolver só no final. E O Serviço de Entregas da Kiki faz tão bem feito isso que não tem como não adorar esse filme. Tudo nele é perfeito, a animação, os personagens, a trilha sonora (absurda de boa) e as camadas que o filme trás não só da independência da Kiki de ser uma bruxa que caminha com seus próprios pés mas também de todo o subtexto de confiança que o filme matura durante o filme. Deixo aqui meu lembrete de tornar esse filme como meu \"Confort Movie\" favorito.",
+    "rating": 5,
+    "movieId": 287
+  },
+  {
+    "id": 292,
+    "date": 1742785200000,
+    "commentary": "",
+    "rating": 4.5,
+    "movieId": 288
+  },
+  {
+    "id": 293,
+    "date": 1742785200000,
+    "commentary": "Realmente muito absurdo, tecnicamente falando. Confesso que os longos One Shot que o filme trás não me enchem tanto os olhos para eu me impressionar de maneira absurda mas os tantos outros pontos técnicos eleva essa minissérie a um outro patamar. Além disso, trás uma puta reflexão tanto na 'Adolescência' quanto sobre a própria humanidade e sua relação com a tecnologia. Será que devemos privar as crianças de acessar a internet até atingir uma certa idade? Será que como pais, o quanto conseguimos proteger de proteger de fazer uma burrada dessas? O melhor momento da série é quando foca no Jamie e os mais fracos são quando focam no outros personagens como o da escola e o final com os pais.",
+    "rating": 4,
+    "movieId": 289
+  },
+  {
+    "id": 294,
+    "date": 1742871600000,
+    "commentary": "Muito bom, muito tenso. Pena que o final é no estilo Animais Noturnos.",
+    "rating": 4.5,
+    "movieId": 290
+  },
+  {
+    "id": 295,
+    "date": 1743130800000,
+    "commentary": "Bom filme mas alguns momentos derivados da gravação found footage me tira do filme como o momento em que o bombeiro precisa de ajuda para fechar a porta do galpão e quem está gravando continua gravando ao invés de soltar a câmera e ir gravar, e isso acontece em outras cenas como a mais ridícula ser a de procurar as chaves na casa de um dos moradores e a todo momento continuar filmando a personagem ao invés de ajudar. Tem bons momentos, bons jump scares, um bom design de produção mas eu senti que quando os atores passam ser infectados o filme fica bem mais trashzeiro.",
+    "rating": 4,
+    "movieId": 291
+  },
+  {
+    "id": 296,
+    "date": 1743476400000,
+    "commentary": "Sensacional, eu queria ter dito a experiência de não saber da cena final acho que seria muito impactante, mas infelizmente cabei sendo escolhido pela internet. Uma coisa que me incomoda é como os mafiosos dessa série agem sem escrúpulos nenhum tanto em relação a sair fazendo uma chacina na cidade, uma mulher sendo a principal suspeita na morte de toda sua família podendo conversar com a criança que está quase confessando o crime ou até mesmo como eles não estão nem ai para a opinião pública ou para opinião de seus próprios capangas. Por exemplo, em Breaking Bad o Gus tem seus 3 capangas que fariam qualquer coisa por ele em troca do poder que ele possui tanto em relação a cidade quanto em relação ao outros, aqui não a Sofia simplesmente despeja uma quantidade de dinheiro em cima da mesa e fala para os chefes que auxiliavam os Falcone: \"Pronto, agora vocês vão mandar seus capangas se matar por mim. Mesmo sem vocês me conhecerem, conhecerem meus objetivos ou de eu se quer me importar com vocês\". Outro ponto que foi levantado na época foi do batman não aparecer na série, eu sinceramente não senti qualquer falta do personagem para essa história, mas senti uma certa falta de ameaça de ter algum investigador na cola dos malfeitores como disse anteriormente.",
+    "rating": 4.5,
+    "movieId": 292
+  },
+  {
+    "id": 297,
+    "date": 1743735600000,
+    "commentary": "Rec é uma franquia de terror frenética o que para mim significa que ela não vai parar o filme para partir para outras situações como a das pessoas que estão do lado de fora do prédio. Entretanto o segundo filme dessa franquia veio com uma sinopse que me ansiou muito para vê-la na tela. Mas foi muito abaixo do que eu previa, além é claro da história dela ser bem mais fraca que o primeiro os personagens são o maior defeito desse filme e vai ser por causa dele que a franquia vai quebrar sua própria regra, cortando o ritmo para mostrar adolescentes entrando no prédio para depois serem esquecidos la dentro. O filme ainda é muito mais fraco que o primeiro quanto a ciência e a própria direção me pesa um olhar sobre as outras continuações. ",
+    "rating": 3,
+    "movieId": 293
+  },
+  {
+    "id": 298,
+    "date": 1744081200000,
+    "commentary": "Sensacional, somente nesse momento de todo o tempo temos um diretor como o Miyazaki com uma carreira igual a deles com uma trajetória igual a dele tudo de melhor representado nesse documentário.",
+    "rating": 5,
+    "movieId": 294
+  },
+  {
+    "id": 299,
+    "date": 1745118000000,
+    "commentary": "É muito mais comédia do que eu lembrava, mas continua sendo perfeito. Filmão!",
+    "rating": 5,
+    "movieId": 30
+  },
+  {
+    "id": 300,
+    "date": 1745463600000,
+    "commentary": "Tragédia japonesa que mistura drama adolescente, música, tecnologia e dominação. ",
+    "rating": 4.5,
+    "movieId": 295
+  },
+  {
+    "id": 301,
+    "date": 1745636400000,
+    "commentary": "Fui assistir com minha mãe e ela dormiu no primeiro terço. Mas o filme é maneirinho. Não era o que eu estava esperando mas foi bem divertido.",
+    "rating": 3.5,
+    "movieId": 296
+  },
+  {
+    "id": 302,
+    "date": 1745809200000,
+    "commentary": "Mais uma pedrada do roberto ovos! Esse aqui acho que é a mais deslumbrante longa metragem dele no quesito estética. Todo a cidade, o castelo completamente vazio. Ficou sensacional. Durante o final do filme foi tomando a ideia que esse filme seria uma história perfeita para uma side-mission de um jogo de RPG aonde a gente encontra o marido e termina sem a gente fazer nada apenas sabendo da morte do Nosferatu na cena final com aquele belíssimo plano. E talvez foi ai que me dei conta que por mais que tenha me envolvido completamente com o filme, tenha achado o filme mais visualmente impecável da última década ele não me pegou tanto quanto ao ciclo dos personagens. Por exemplo tirando o personagem do Aaron Taylor e a Ellen que tiveram destinos trágicos, os personagem do Nicholas e os doutores tiveram apenas participações de narrador para sabermos mais do Nosferatu e talvez por isso eu tenha achado uma história secundária. Provavelmente veria de novo porque adoro a estética do roberto ovos mas há tantos filmes do nosferatu que esperam também adicionar a cartelinha de assistidos.",
+    "rating": 4,
+    "movieId": 297
+  },
+  {
+    "id": 303,
+    "date": 1746154800000,
+    "commentary": "Esse é diferente. Imagine que você ganhou a chance de passar as melhores férias da sua vida, um lugar belíssimo com seus amigos, colegas de infância prontos para sair com você e se divertir, todas as garotas que você encontra o papo flui e elas são instantaneamente interessadas em você, mas você é o maior cabaço da face da terra. Se esse filme fosse dividido em 3 partes eu comentaria sobre elas dessa maneira: na primeira eu começaria elogiando falando como é um filme tão diferente e tão potente, você ver as conversas do personagens e acha que aquilo é realmente uma recordação de férias de um jovem que buscou refugio de Paris e está procurando apenas se divertir. Ele começa com o pé direito conversando numa boas com as garotas levantando até um pezinho para o flerte e sempre que ele perdia a bola ele dava a volta e terminava com outra nos pés. A segunda parte é perfeita, trás mais camadas para o personagem agora ele além de charmosa e inteligente ele também se envolve com as mulheres e seus sentimentos trazendo o contraponto de seu primo mulherengo, sensacional! Até aqui eu não queria que o filme acabasse, eu olhava aquelas 1 hora restante e só pensava, por favor que você me entregue nessa reta final algo tão bom que fez você cortar uma parte que eles foram para uma balada e passaram o resto do outro dia só falando em como foi maravilhoso. E ai chega o pesadelo: a terceira parte. Até aqui o filme era 5/5, maravilhoso, já tinha virado um dos favoritos, eu como telespectador estava olhando e vendo o meu time golear o time inimigo e parecia que ele viria para mais. Foi quando nesse momento o técnico inimigo pediu uma pausa, eu nem sabia que poderia pedir pausa nesse estilo de jogo, mas tudo bem eu aceitei e entendi como algum tipo de simbolismo ou coisa que seria utilizado mais pra frente da trama. E foi quando esse técnico depois de muito tempo (aqui fica registrado toda a longa cena da cabra parindo, sim tinha uma cabra de verdade parindo), o time volta a campo e eu não vejo uma simples retomada mas sim uma goleada em cima do meu time de forma humilhadora. Foi cada gol contra que estava trazendo desconforto físico para mim. O Amim se tornou tudo aquilo que eu menos queria. Um voyeur. Eu não pretendo assistir a segunda parte, porque está impossível de achar um torrent disso, e também não saiu a terceira parte. Fica somente a observação que os diálogos desse filme é algo que eu nunca tinha visto na vida, são absurdamente realista. Talvez eu esteja sendo generoso demais com essa nota mas quero que fique na lembrança como eu me senti vendo as duas primeiras partes desse filme.",
+    "rating": 4,
+    "movieId": 298
+  },
+  {
+    "id": 304,
+    "date": 1746154800000,
+    "commentary": "Lindo, lindo, lindo, lindo, lindo",
+    "rating": 5,
+    "movieId": 299
+  },
+  {
+    "id": 305,
+    "date": 1746327600000,
+    "commentary": "Perfeitinho, bom demais",
+    "rating": 5,
+    "movieId": 300
+  },
+  {
+    "id": 306,
+    "date": 1746414000000,
+    "commentary": "Certamente é um gênero que teria que ser muito acima da média para me interessar a parte de hoje em diante. Foi bom eu apostar logo no melhor e saber que filmes parecidos não vão somente uma aposta em valor ao meu tempo gasto em filmes parecidos com este. Eu não aprecio esse tipo de história nesse contexto dada as problematizações político-sociais. Talvez se fosse mais escrachado teria melhor meu apreço. Mesmo assim eu imagino que goste, tem um excelente design de produção, boas cenas e bons momentos de diálogo. Mas o personagens são o ponto baixo desse filme, aqueles que aparecem não melhoram, ou se melhoram são pouca coisa diferente do casal principal que tem seu arco. Enfim, não quero mais passar tempo escrevendo para um filme que achei banal, acho que não reverei nunca mais e me sinto bem com essa escolha.",
+    "rating": 3.5,
+    "movieId": 301
+  },
+  {
+    "id": 308,
+    "date": 1746500400000,
+    "commentary": "Muito divertido, descobri porque se tornou uma das melhores franquias do cinema. Adoro o humor desse estilo de filme e o indiana merece a reputação que tem como protagonista. Ele ainda tem uma pegada meio serie B de filme de ação aonde o protagonista entra no meio da galera para roubar algo e sai de lá numa boa. Mas se levar tudo isso em consideração é uma puta filme pipoca.",
+    "rating": 4.5,
+    "movieId": 303
+  },
+  {
+    "id": 309,
+    "date": 1747018800000,
+    "commentary": "Legal! Mas queria um pouco mais de conversa entre os personagens e um pouco menos de contemplação. Aliás, -2 cabras para cenas que não mudaram a vida de ninguém.",
+    "rating": 3.5,
+    "movieId": 304
+  },
+  {
+    "id": 310,
+    "date": 1747191600000,
+    "commentary": "Menina confusa machuca corações apaixonados. Filmaralhaço!",
+    "rating": 4.5,
+    "movieId": 305
+  },
+  {
+    "id": 311,
+    "date": 1747623600000,
+    "commentary": "Bom demais, tem que dar uma forçada para tentar lembrar de todos os nomes mas no fim é excelente.",
+    "rating": 5,
+    "movieId": 306
+  },
+  {
+    "id": 312,
+    "date": 1748055600000,
+    "commentary": "Bem legal. Ele vai cozinhando o mistério só para soltar no final o que me deixa uma impressão de que poderia ter diluído melhor as informações ao longo da série. Que inclusive tive que forçar um pouco a terminar de tão pouco atrativo que estava sendo. Mas no fim foi bem interessante, não me arrependo nem um pouco. Eu considero que daqui a 3 meses quase não vou lembrar de nada e duvido muito que vá reassistir. Infelizmente foi só uma experiência passageira. No final tem uma cena com o chão transparente refletindo o por do sol que me lembrou o final de Sword Art Online e somente um dos dois eu tenho e provavelmente vou continuar tendo na memória por muito tempo. A animação é perfeita, a direção de arte é outro patamar, os conceitos ligados a cultura japonesa são muito interessantes mas é uma comida que por mais bonita que seja faltou sal. ",
+    "rating": 3.5,
+    "movieId": 307
+  },
+  {
+    "id": 313,
+    "date": 1749351600000,
+    "commentary": "Esse daqui eu peguei pra assistir depois que vi no canal Refugio Cult e em menos de uma semana já peguei para assistir mesmo tendo pego alguns spoilers. Esse filme lembra muito longlegs. Ele começa muito intrigante, tem uma direção de arte que começa bem mas diferente desse outro ele só vai sendo mastigada ao longo do filme e não renova. Nos primeiros 30 minutos tem todo esse clima folk horror europeu mas no fim vira mais um na multidão. Você se pega olhando as horas nos últimos 30 minutos de tão desgastante que te levou.",
+    "rating": 3,
+    "movieId": 308
+  },
+  {
+    "id": 314,
+    "date": 1749697200000,
+    "commentary": "Divertido e muito bem dirigido e ambientado. Transforma toda sua percepção sobre a nave, a situação da terra e toda aquele planeta congelado em algo mais próximo de você. O que mais me descolou do filme, e por isso a nota, é a realização que o Bong Joon Ho dá ao final desse filme, todo o começo trágico, ácido e cru se transforma na reta final em um filme do Steven Spielberg. Achei fora de tom e agora percebo as críticas quando o filme lançou.",
+    "rating": 4,
+    "movieId": 309
+  },
+  {
+    "id": 315,
+    "date": 1749783600000,
+    "commentary": "",
+    "rating": 4.5,
+    "movieId": 310
+  },
+  {
+    "id": 316,
+    "date": 1750388400000,
+    "commentary": "Eu peguei um certo hype para reassistir esse daqui revendo alguns vídeos do jogo de wii e realmente é tão bom quanto minha nostalgia estava tentando mascarar. Ele possui várias ressalvas, mas como eu peguei pra ver ele em um bom momento com uma nostalgia e curtindo aos poucos foi muito gostosinho de assistir. Acho que o grande problema dele são a repetição da trama: eles começam perdendo com uma desvantagem absurda mas quando chega no último minuto do 2º tempo eles consegue aprender a habilidade do episódio e viram o jogo e ganham. E mesmo nessa repetição absurdamente exagerada, ainda sim é muito bom. Todos as habilidades nessa primeira temporada são muito icônicas, diferentes dos personagens da equipe que são vão começar a ter outros temperos a partir da próxima temporada com a chegada de novos. O anime continua com episódios periódicos e por isso a temporada acaba meio em baixa, não seguindo aquela estrutura do último episódio ter aquele primor para terminar com chave de ouro. Em comparação aos outros episódios o 26º é apenas mais um, e isso me trouxe uma surpresa negativa. Não planejo seguir assistindo, acho que a minha cota em relação a querer e me satisfazer com o conteúdo já deu. Ainda acho que como shonen é muito acima da média e foi excelente rever e ter esse gosto de infância sobre esse anime tão amado por mim. ",
+    "rating": 4,
+    "movieId": 311
+  }
+]

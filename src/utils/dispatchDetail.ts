@@ -1,20 +1,21 @@
+export interface MediaView {
+  id: number
+  date: string // formato ISO: "2025-06-13T03:00:00.000Z"
+  commentary: string | null
+  rating: number
+  mediaId: number
+}
+
 export interface dataProps {
   id: number
-  year: string
   name: string
+  year: string
   time: string
-  direction: string
+  creator: string
   value: number
   img: string
-  type: string
-  imdb: string
-  views: {
-    id: number
-    date: Date
-    commentary: string | null
-    rating: number
-    movieId: number
-  }[]
+  categoryId: number
+  views: MediaView[]
 }
 
 async function dispatchDetail(
@@ -28,6 +29,7 @@ async function dispatchDetail(
     })
 
     const data = await response.json()
+    console.log(data)
 
     setData(data)
     console.log(data)
