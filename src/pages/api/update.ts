@@ -58,7 +58,7 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
   }
 
   if (fields.commentary && viewDate && fields.commentary[0] !== '') {
-    await prisma.movie.update({
+    await prisma.media.update({
       where: {
         id: Number(mediaid),
       },
@@ -74,7 +74,7 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  const result = await prisma.movie.update({
+  const result = await prisma.media.update({
     where: {
       id: Number(mediaid),
     },
@@ -83,11 +83,14 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     },
     data: {
       name: validateFieldsOrUndefined(fields.name),
-      direction: validateFieldsOrUndefined(fields.direction),
-      imdb: validateFieldsOrUndefined(fields.imdb),
+      creator: validateFieldsOrUndefined(fields.direction),
       time: validateFieldsOrUndefined(fields.time),
       year: validateFieldsOrUndefined(fields.year),
-      type: validateFieldsOrUndefined(fields.type),
+      category: {
+        connect: {
+          name: validateFieldsOrUndefined(fields.type),
+        },
+      },
     },
   })
 

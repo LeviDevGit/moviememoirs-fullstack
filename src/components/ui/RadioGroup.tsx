@@ -1,14 +1,15 @@
 interface RadioGroupsProps {
   value: string
+  name?: string
   children?: React.ReactNode
 }
 
-function RadioGroup({ value, children }: RadioGroupsProps) {
+function RadioGroup({ value, name, children }: RadioGroupsProps) {
   return (
     <div className="w-1/2">
       <input
         type="radio"
-        name="DeliveryOption"
+        name={name}
         value={value}
         id={value}
         className="peer sr-only"

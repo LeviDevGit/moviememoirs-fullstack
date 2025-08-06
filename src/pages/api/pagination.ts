@@ -22,16 +22,16 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     skip: (pageNumber - 1) * 6,
     take: 6,
     include: {
-      movie: true,
+      media: true,
     },
     where: {
-      movie: {
+      media: {
         name: {
           contains: getFirstOrValue(filter),
         },
       },
     },
-    distinct: ['movieId'],
+    distinct: ['mediaId'],
   })
 
   return res.json(result)

@@ -14,7 +14,7 @@ async function retrieveExtraSectionById(id: number) {
 
     if (data.error) {
       toast.error(data.error)
-      return undefined
+      return []
     } else {
       return data
     }

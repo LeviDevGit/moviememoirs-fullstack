@@ -25,7 +25,7 @@ function Page({ params }: PageProps) {
     dispatchDetail(id, setData)
   }, [id])
 
-  const [extraSectionData, setExtraSectionData] = useState()
+  const [extraSectionData, setExtraSectionData] = useState([])
 
   useEffect(() => {
     async function fetchData(id: number) {
@@ -34,7 +34,6 @@ function Page({ params }: PageProps) {
     }
 
     if (data?.categoryId) fetchData(data.categoryId)
-    console.log(extraSectionData)
   }, [data?.categoryId])
 
   const context = useContext(GlobalContext)

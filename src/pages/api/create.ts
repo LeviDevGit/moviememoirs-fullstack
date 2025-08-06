@@ -31,7 +31,7 @@ interface latestQueryProps {
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const publicDir = path.join(process.cwd(), 'public', 'posters')
 
-  const latestQuery = await prisma.movie.findFirst({
+  const latestQuery = await prisma.media.findFirst({
     orderBy: {
       id: 'desc',
     },
@@ -78,14 +78,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const viewDate = convertToDate(fields.Data![0])
 
-  const result = await prisma.movie.create({
+  const result = await prisma.media.create({
     data: {
       name: fields.Nome![0],
-      type: fields.Tipo![0],
       year: fields['Ano de lançamento']![0],
       time: fields.Duração![0],
-      direction: fields['Diretor(a)']![0],
-      imdb: fields['Id do imdb'][0],
+      creator: fields['Diretor(a)']![0],
       img: '',
       views: {
         create: {
@@ -94,13 +92,18 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           commentary: fields.commentary![0],
         },
       },
+      category: {
+        connect: {
+          name: fields.Tipo![0],
+        },
+      },
     },
   })
 
   if (files.file) {
     const publicUrl = `/posters/${path.basename(files.file[0].filepath)}`
 
-    const addition = await prisma.movie.update({
+    const addition = await prisma.media.update({
       where: {
         id: result.id,
       },

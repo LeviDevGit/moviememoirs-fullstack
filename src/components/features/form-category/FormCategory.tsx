@@ -10,11 +10,50 @@ import Divider from '@/components/ui/Divider'
 import Select from '@/components/ui/Select'
 import RadioGroup from '@/components/ui/RadioGroup'
 import Input from '@/components/ui/Input'
+import { ProportionType } from '../../../../prisma/seed'
+import createCategory from '@/lib/api/Category/create'
 
 const OPTIONS = ['Sinopse', 'Tags', 'Elenco']
 
+export interface CategoryBody {
+  name: string
+  proportion: ProportionType
+  sectionName: string[]
+}
+
 function FormCategory() {
   const [sectionOptions, setSectionOptions] = useState<string[]>([])
+  const [resultCategory, setResultCategory] = useState()
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    console.log('teste')
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+
+    const name = formData.get('categoryName') as string
+    const proportion = formData.get('categoryProportion') as ProportionType
+    const sectionNameList = sectionOptions.map((_, index) => {
+      const value = formData.get(index.toString())
+      if (typeof value !== 'string') {
+        throw new Error(`Valor inválido no select de índice ${index}`)
+      }
+      return value
+    })
+
+    if (name && proportion) {
+      const categoryBody: CategoryBody = {
+        name,
+        proportion,
+        sectionName: sectionNameList,
+      }
+      const result = await createCategory(categoryBody)
+      setResultCategory(result)
+      console.log(result)
+      console.log(resultCategory)
+    }
+  }
+  // useEffect(() => {
+  // }, [sectionOptions, resultCategory])
 
   return (
     <div className="rounded-lg bg-background p-5">
@@ -26,13 +65,18 @@ function FormCategory() {
           Defina os formatos que farão parte do seu acervo.
         </p>
       </div>
-      <form action="" className="flex flex-col gap-4">
-        <Input placeholder="Inserir nome" text="Nome categoria" />
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <Input
+          placeholder="Inserir nome"
+          text="Nome categoria"
+          name="categoryName"
+        />
         <Divider>Extras seções</Divider>
         {sectionOptions.map((value, index) => (
           <div className="flex items-center gap-4" key={index}>
             <Select
               className="w-full"
+              name={index.toString()}
               onChange={(e) =>
                 handleChangeSelect(
                   e.target.value,
@@ -41,7 +85,7 @@ function FormCategory() {
                   setSectionOptions,
                 )
               }
-              defaultValue={value}
+              value={value}
             >
               <option key={value} value={value}>
                 {value}
@@ -79,11 +123,11 @@ function FormCategory() {
         )}
         <Divider>Proporção</Divider>
         <fieldset className="flex gap-4">
-          <RadioGroup value="DeliveryStandard">
+          <RadioGroup value="RECTANGLE" name="categoryProportion">
             <p className="text-gray-700 dark:text-gray-200">2:3</p>
             <p className="text-gray-900 dark:text-white">Retangular</p>
           </RadioGroup>
-          <RadioGroup value="DeliveryPriority">
+          <RadioGroup value="SQUARE" name="categoryProportion">
             <p className="text-gray-700 dark:text-gray-200">Quadrada</p>
             <p className="text-gray-900 dark:text-white">1:1</p>
           </RadioGroup>
@@ -96,7 +140,7 @@ function FormCategory() {
             Cancel
           </button>
           <button
-            type="button"
+            type="submit"
             className="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
           >
             Done
