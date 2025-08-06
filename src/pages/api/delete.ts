@@ -7,7 +7,7 @@ import { withPrismaError } from '@/lib/errorHandler'
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { movieId, movieImagePath } = req.body
 
-  await prisma.movie.delete({
+  await prisma.media.delete({
     where: {
       id: Number(movieId),
     },

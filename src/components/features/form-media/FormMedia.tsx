@@ -57,7 +57,6 @@ function FormMedia({ updaterState, setToggleModal }: FormMediaProps) {
           </div>
           <div className="flex items-center justify-between gap-6">
             <Input text="Data" type="date" useTodayDate />
-            <Input text="Id do imdb" placeholder="Ex: tt28015403" />
           </div>
           <Textarea
             text="Comentário"

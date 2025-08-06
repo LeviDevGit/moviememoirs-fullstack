@@ -41,12 +41,12 @@ async function main() {
           data: {
             name: movie.type.toLowerCase(),
             proportion: ProportionType.RECTANGLE,
-            sections: {
-              create: Object.values(SectionType).map((section) => ({
-                name: section.charAt(0) + section.slice(1).toLowerCase(),
-                type: section as SectionType,
-              })),
-            },
+            // sections: {
+            //   create: Object.values(SectionType).map((section) => ({
+            //     name: section.charAt(0) + section.slice(1).toLowerCase(),
+            //     type: section as SectionType,
+            //   })),
+            // },
           },
         })
       }

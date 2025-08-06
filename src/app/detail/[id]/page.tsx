@@ -7,6 +7,7 @@ import dispatchDetail, { dataProps } from '@/utils/dispatchDetail'
 import { GlobalContext } from '@/providers/global'
 import Confirm from '@/components/features/form-media-edit'
 import MediaInfo from '@/components/features/media-info/MediaInfo'
+import retrieveExtraSectionById from '@/lib/api/ExtraSection/retrieve'
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -23,6 +24,18 @@ function Page({ params }: PageProps) {
   useEffect(() => {
     dispatchDetail(id, setData)
   }, [id])
+
+  const [extraSectionData, setExtraSectionData] = useState()
+
+  useEffect(() => {
+    async function fetchData(id: number) {
+      const result = await retrieveExtraSectionById(id)
+      setExtraSectionData(result)
+    }
+
+    if (data?.categoryId) fetchData(data.categoryId)
+    console.log(extraSectionData)
+  }, [data?.categoryId])
 
   const context = useContext(GlobalContext)
 

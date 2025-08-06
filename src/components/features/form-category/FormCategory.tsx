@@ -14,7 +14,7 @@ import Input from '@/components/ui/Input'
 const OPTIONS = ['Sinopse', 'Tags', 'Elenco']
 
 function FormCategory() {
-  const [sectionOptions, setSectionOptions] = useState<string[]>([OPTIONS[0]])
+  const [sectionOptions, setSectionOptions] = useState<string[]>([])
 
   return (
     <div className="rounded-lg bg-background p-5">
@@ -52,7 +52,7 @@ function FormCategory() {
                 </option>
               ))}
             </Select>
-            {sectionOptions.length > 1 && (
+            {sectionOptions.length > 0 && (
               <button
                 className="mt-0.5 h-full w-fit rounded text-white shadow-sm sm:text-sm"
                 type="button"

@@ -65,8 +65,8 @@ model Category{
   id          Int       @id @default(autoincrement())
   name        String    @unique
   proportion  String
-  sections    CategorySection[]
-  medias       Media[]
+  sections    ExtraSection[]
+  medias      Media[]
 }
 
 //  enum SectionType {
@@ -75,7 +75,7 @@ model Category{
 //   IMAGE
 // }
 
-model CategorySection{
+model ExtraSection{
   id          Int       @id @default(autoincrement())
   name        String
   type        String
