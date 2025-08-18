@@ -16,10 +16,9 @@ interface FormFields {
   Tipo: string[]
   'Ano de lançamento': string[]
   Duração: string[]
-  'Diretor(a)': string[]
+  'Criador(a)': string[]
   Data: string[]
-  'Id do imdb': string[]
-  commentary?: string[]
+  Comentário?: string[]
   value: string[]
 }
 
@@ -83,13 +82,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       name: fields.Nome![0],
       year: fields['Ano de lançamento']![0],
       time: fields.Duração![0],
-      creator: fields['Diretor(a)']![0],
+      creator: fields['Criador(a)']![0],
       img: '',
       views: {
         create: {
           rating: Number(fields.value![0]),
           date: new Date(viewDate),
-          commentary: fields.commentary![0],
+          commentary: fields.Comentário![0],
         },
       },
       category: {

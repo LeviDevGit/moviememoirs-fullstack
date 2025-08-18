@@ -30,6 +30,8 @@ async function dispatchMediaCreate({
 
     const data = await response.json()
 
+    console.log(data)
+
     toggleModal({ index: 0, set: setToggleModal, toggler: false })
     if (!data || data.error) {
       return toast.error('Erro dentro da requisição')

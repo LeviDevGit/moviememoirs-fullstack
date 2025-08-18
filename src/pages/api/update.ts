@@ -11,14 +11,13 @@ export const config = {
 }
 
 interface FormFields {
-  year: string[]
+  Lançamento: string[]
   direction: string[]
   name: string[]
   time: string[]
   type: string[]
   value: string[]
   date: string[]
-  imdb: string[]
   commentary?: string[]
 }
 
@@ -82,14 +81,14 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
       views: true,
     },
     data: {
-      name: validateFieldsOrUndefined(fields.name),
-      creator: validateFieldsOrUndefined(fields.direction),
-      time: validateFieldsOrUndefined(fields.time),
-      year: validateFieldsOrUndefined(fields.year),
+      // name: validateFieldsOrUndefined(fields.name),
+      // creator: validateFieldsOrUndefined(fields.direction),
+      // time: validateFieldsOrUndefined(fields.time),
+      year: validateFieldsOrUndefined(fields.Lançamento),
       category: {
-        connect: {
-          name: validateFieldsOrUndefined(fields.type),
-        },
+        // connect: {
+        //   name: validateFieldsOrUndefined(fields.type),
+        // },
       },
     },
   })

@@ -118,7 +118,7 @@ function Confirm({
 
       const data = await response.json()
 
-      // console.log(data)
+      console.log(data)
       const ultimoFilme = data.views.pop()
       // console.log(ultimoFilme)
 

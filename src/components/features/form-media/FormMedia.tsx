@@ -4,6 +4,8 @@ import Select from '@/components/ui/Select'
 import Textarea from '@/components/ui/Textarea'
 import Input from '@/components/ui/Input'
 import dispatchMediaCreate from '@/utils/dispatchMediaCreate'
+import { useEffect, useState } from 'react'
+import readCategory from '@/lib/api/Category/read'
 
 interface FormMediaProps {
   updaterState: {
@@ -13,7 +15,22 @@ interface FormMediaProps {
   setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
+interface MediaType {
+  id: number
+  name: string
+  proportion: 'RECTANGLE'
+}
+
 function FormMedia({ updaterState, setToggleModal }: FormMediaProps) {
+  const [categories, setCategories] = useState<MediaType[]>()
+
+  useEffect(() => {
+    async function handleReadCategory() {
+      setCategories(await readCategory())
+    }
+    handleReadCategory()
+  }, [])
+
   return (
     <div className="page-specific w-[800px] rounded-lg bg-background p-5">
       <div className="mb-5 flex flex-col gap-2">
@@ -40,19 +57,22 @@ function FormMedia({ updaterState, setToggleModal }: FormMediaProps) {
         <div className="flex w-full flex-col justify-between gap-3">
           <Input text="Nome" placeholder="Digite o nome do filme ou série" />
           <div className="flex items-center justify-between gap-6">
-            <Select text="Tipo">
-              <option value="MOVIE">Filme</option>
-              <option value="SERIES">Série</option>
-              <option value="DOCUMENTARY">Documentário</option>
-              <option value="SHORT FILM">Curta</option>
-            </Select>
+            {categories && (
+              <Select text="Tipo">
+                {categories.map((value, index) => (
+                  <option value={value.name} key={index}>
+                    {value.name}
+                  </option>
+                ))}
+              </Select>
+            )}
             <Input text="Ano de lançamento" placeholder="Ex: 2004" />
           </div>
           <div className="flex items-center justify-between gap-6">
             <Input text="Duração" placeholder="Ex: 2hr 2min" />
             <Input
-              text="Diretor(a)"
-              placeholder="Digite o nome do(a) diretor(a)"
+              text="Criador(a)"
+              placeholder="Digite o nome do(a) criador(a)"
             />
           </div>
           <div className="flex items-center justify-between gap-6">

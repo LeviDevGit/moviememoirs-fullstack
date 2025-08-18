@@ -233,7 +233,7 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
         <Input text="Nome" placeholder={data.name} />
         <div className="flex items-center justify-between gap-6">
           <Select defaultValue={data.type} text="Tipo">
-            <option value="MOVIE">Filme</option>
+            <option value="movie">Filme</option>
             <option value="SERIES">Série</option>
             <option value="DOCUMENTARY">Documentário</option>
             <option value="SHORT FILM">Curta</option>
@@ -243,9 +243,6 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
         <div className="flex items-center justify-between gap-6">
           <Input text="Duração" placeholder={data.time} />
           <Input text="Diretor(a)" placeholder={data.direction} />
-        </div>
-        <div className="flex items-center justify-between gap-6">
-          <Input text="Id" placeholder={data.imdb} />
         </div>
         <Visualization />
       </div>

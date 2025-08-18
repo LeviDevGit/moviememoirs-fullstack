@@ -11,6 +11,7 @@ function Textarea({ text, ...rest }: TextareaProps) {
         id={text}
         className="mt-0.5 w-full resize-none rounded border-gray-600 bg-transparent text-white shadow-sm sm:text-sm"
         rows={4}
+        name={text}
         {...rest}
       ></textarea>
     </label>

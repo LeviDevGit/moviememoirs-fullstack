@@ -4,13 +4,13 @@ const prisma = new PrismaClient()
 
 async function updateRating(movieId: number) {
   const ratings = await prisma.view.findMany({
-    where: { movieId },
+    where: { mediaId: movieId },
     select: { rating: true },
     orderBy: { rating: 'asc' },
   })
 
   if (ratings.length === 0) {
-    await prisma.movie.update({
+    await prisma.media.update({
       where: { id: movieId },
       data: { value: null },
     })
@@ -27,7 +27,7 @@ async function updateRating(movieId: number) {
   }
 
   // Atualiza a nota do filme com a mediana calculada
-  await prisma.movie.update({
+  await prisma.media.update({
     where: { id: movieId },
     data: { value: median },
   })

@@ -19,7 +19,7 @@ function MediaInfo({ data }: MediaInfoProps) {
             </div>
             <div className="flex w-full justify-end">
               <p className="max-w-[250px] truncate text-right text-text-400">
-                Dirigido por{' '}
+                Criado por{' '}
                 <span className="text-text-300 underline">{data?.creator}</span>
               </p>
             </div>
