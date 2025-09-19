@@ -15,10 +15,10 @@ interface FormMediaProps {
   setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
-interface MediaType {
+export interface MediaType {
   id: number
   name: string
-  proportion: 'RECTANGLE'
+  proportion: 'RECTANGLE' | 'SQUARE'
 }
 
 function FormMedia({ updaterState, setToggleModal }: FormMediaProps) {

@@ -1,18 +1,37 @@
-interface RadioGroupsProps {
+import React, { useRef, useEffect } from 'react'
+
+interface RadioGroupsProps extends React.HTMLAttributes<HTMLInputElement> {
   value: string
   name?: string
   children?: React.ReactNode
+  checked?: boolean
 }
 
-function RadioGroup({ value, name, children }: RadioGroupsProps) {
+function RadioGroup({
+  value,
+  name,
+  children,
+  checked,
+  ...rest
+}: RadioGroupsProps) {
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.checked = !!checked
+    }
+  }, [checked])
+
   return (
     <div className="w-1/2">
       <input
+        ref={inputRef}
         type="radio"
         name={name}
         value={value}
         id={value}
         className="peer sr-only"
+        {...rest}
       />
       <label
         htmlFor={value}
