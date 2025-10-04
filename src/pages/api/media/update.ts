@@ -1,8 +1,9 @@
 import { withPrismaError } from '@/lib/errorHandler'
 import prisma from '@/lib/prisma'
 import updateRating from '@/lib/updateRating'
-import { IncomingForm } from 'formidable'
+import { Files, IncomingForm } from 'formidable'
 import { NextApiRequest, NextApiResponse } from 'next'
+import path from 'path'
 
 export const config = {
   api: {
@@ -21,21 +22,54 @@ interface FormFields {
   commentary?: string[]
 }
 
+interface latestQueryProps {
+  img: string
+}
+
 async function handle(req: NextApiRequest, res: NextApiResponse) {
   const { mediaid } = req.query
 
-  const { fields }: { fields: FormFields } = await new Promise(
-    (resolve, reject) => {
-      const form = new IncomingForm()
+  const latestQuery = await prisma.media.findFirst({
+    orderBy: {
+      id: 'desc',
+    },
+    select: {
+      img: true,
+    },
+  })
 
-      form.parse(req, (err, fields) => {
+  function obterProximoNumero(jsonArray: latestQueryProps) {
+    const ultimoElemento = jsonArray
+    const regex = /(\d+)\.jpg$/
+
+    const match = ultimoElemento.img.match(regex)
+    if (match) {
+      const numeroAtual = parseInt(match[1], 10)
+      return numeroAtual + 1
+    }
+    throw new Error('Caminho inválido no último elemento do JSON')
+  }
+
+  const publicDir = path.join(process.cwd(), 'public', 'posters')
+
+  const { fields, files }: { fields: FormFields; files: Files } =
+    await new Promise((resolve, reject) => {
+      const form = new IncomingForm({
+        uploadDir: publicDir,
+        keepExtensions: true,
+        filename: (_, ext) => {
+          const novoNumero = latestQuery ? obterProximoNumero(latestQuery) : 1
+          return `${novoNumero}${ext}`
+        },
+      })
+
+      form.parse(req, (err, fields, files) => {
         if (err) {
           return reject(err)
         }
-        resolve({ fields: fields as unknown as FormFields })
+        resolve({ fields: fields as unknown as FormFields, files })
       })
-    },
-  )
+    })
 
   function convertToDate(dateString: string) {
     const [day, month, year] = dateString.split('/')
@@ -92,6 +126,19 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
       },
     },
   })
+
+  if (files.file) {
+    const publicUrl = `/posters/${path.basename(files.file[0].filepath)}`
+
+    await prisma.media.update({
+      where: {
+        id: Number(mediaid),
+      },
+      data: {
+        img: publicUrl,
+      },
+    })
+  }
 
   await updateRating(result.id)
 

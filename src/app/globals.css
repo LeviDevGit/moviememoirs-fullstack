@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
+
+@layer utilities {
+  .heading-trail {
+    @apply relative flex items-center gap-2;
+  }
+
+  .heading-trail::before {
+    content: '';
+    display: inline-block;
+    width: 0.5rem; /* w-2 */
+    height: 1.75rem; /* h-7 */
+    border-radius: 0.375rem; /* rounded-md */
+    background-color: rgb(220 38 38); /* bg-red-600 */
+  }
+}
+
 @tailwind utilities;

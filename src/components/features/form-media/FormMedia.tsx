@@ -1,4 +1,3 @@
-import Dropzone from './Dropzone'
 import Rater from '@/components/shared/Rater'
 import Select from '@/components/ui/Select'
 import Textarea from '@/components/ui/Textarea'
@@ -6,6 +5,7 @@ import Input from '@/components/ui/Input'
 import dispatchMediaCreate from '@/utils/dispatchMediaCreate'
 import { useEffect, useState } from 'react'
 import readCategory from '@/lib/api/Category/read'
+import PosterDropzone from '@/components/shared/PosterDropzone'
 
 interface FormMediaProps {
   updaterState: {
@@ -49,7 +49,7 @@ function FormMedia({ updaterState, setToggleModal }: FormMediaProps) {
         autoComplete="off"
       >
         <div className="flex flex-col items-center gap-4">
-          <Dropzone />
+          <PosterDropzone />
           <div>
             <Rater width="w-[220px]" />
           </div>

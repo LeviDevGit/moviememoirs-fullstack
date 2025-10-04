@@ -8,6 +8,12 @@ import { GlobalContext } from '@/providers/global'
 import Confirm from '@/components/features/form-media-edit'
 import MediaInfo from '@/components/features/media-info/MediaInfo'
 import retrieveExtraSectionById from '@/lib/api/ExtraSection/retrieve'
+import Spinner from '@/components/ui/Spinner'
+import { CheckIcon, PencilIcon, UndoIcon } from 'lucide-react'
+import updateMediaByData from '@/lib/api/Media/update'
+import PosterDropzone from '@/components/shared/PosterDropzone'
+import EditTitleYearModal from '@/components/features/media-info/modals/EditTitleYearModal'
+import EditCreatorModal from '@/components/features/media-info/modals/EditCreatorModal'
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -25,7 +31,7 @@ function Page({ params }: PageProps) {
     dispatchDetail(id, setData)
   }, [id])
 
-  const [extraSectionData, setExtraSectionData] = useState([])
+  const [, setExtraSectionData] = useState([])
 
   useEffect(() => {
     async function fetchData(id: number) {
@@ -46,32 +52,42 @@ function Page({ params }: PageProps) {
 
   const updaterState = { updater, setUpdater }
 
-  if (!data)
-    return (
-      <div className="flex h-full w-full items-center">
-        <div className="flex h-full w-full items-center justify-center border-red-500">
-          <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-blue-500"></div>
-        </div>
-      </div>
-    )
+  const [editMode, setEditMode] = useState(false)
+
+  const [toggleModal, setToggleModal] = useState<boolean[]>([false, false])
+
+  if (!data) return <Spinner />
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
       <div className="h-[200px]"></div>
       <div className="flex h-full w-full overflow-y-scroll">
-        <div className="relative flex h-[1000px] w-full flex-1 justify-center gap-40">
+        <form
+          className="relative flex h-[1000px] w-full flex-1 justify-center gap-40"
+          onSubmit={(e) => {
+            e.preventDefault()
+            if (editMode) {
+              updateMediaByData(e, Number(id))
+            }
+            setEditMode((prev) => !prev)
+          }}
+        >
           <div className="sticky top-1 flex h-fit flex-col items-center justify-start gap-4">
-            {data.img && (
-              <div className="h-[330px] w-[220px] shadow-cardShadow">
-                <Image
-                  alt="Poster"
-                  src={data.img}
-                  width={220}
-                  height={330}
-                  priority
-                  className="h-[330px] w-[220px] rounded-md object-cover object-center shadow-imageShadow"
-                />
-              </div>
+            {editMode ? (
+              <PosterDropzone />
+            ) : (
+              data.img && (
+                <div className="h-[330px] w-[220px] shadow-cardShadow">
+                  <Image
+                    alt="Poster"
+                    src={data.img}
+                    width={220}
+                    height={330}
+                    priority
+                    className="h-[330px] w-[220px] rounded-md object-cover object-center shadow-imageShadow"
+                  />
+                </div>
+              )
             )}
             <div className="w-[150px]">
               {data && (
@@ -82,7 +98,7 @@ function Page({ params }: PageProps) {
                 />
               )}
             </div>
-            <div className="flex w-[80px] justify-end font-semibold text-[#e0e0e0]">
+            <div className="flex w-[80px] flex-col items-center justify-center gap-4 font-semibold text-[#e0e0e0]">
               <button
                 className="rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
                 onClick={() => {
@@ -91,10 +107,33 @@ function Page({ params }: PageProps) {
               >
                 Editar
               </button>
+              <div className="flex gap-4">
+                <button
+                  className="ml-2 rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
+                  type="submit"
+                >
+                  {editMode ? <CheckIcon /> : <PencilIcon />}
+                </button>
+                {editMode && (
+                  <button
+                    className="ml-2 rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
+                    type="button"
+                    onClick={() => {
+                      setEditMode(false)
+                    }}
+                  >
+                    <UndoIcon />
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-          <MediaInfo data={data} />
-        </div>
+          <MediaInfo
+            data={data}
+            editMode={editMode}
+            setToggleModal={setToggleModal}
+          />
+        </form>
         {safetyButton && (
           <Confirm
             updaterState={updaterState}
@@ -104,6 +143,13 @@ function Page({ params }: PageProps) {
           />
         )}
       </div>
+      {toggleModal[0] ? (
+        <EditTitleYearModal data={data} setToggleModal={setToggleModal} />
+      ) : (
+        toggleModal[1] && (
+          <EditCreatorModal data={data} setToggleModal={setToggleModal} />
+        )
+      )}
     </div>
   )
 }

@@ -2,6 +2,7 @@ import Card from './Card'
 import Directional from './Directional'
 import { dataFetchProps } from '@/types/interfaces'
 import { handleDirectionChange } from './carousel.utils'
+import Spinner from '@/components/ui/Spinner'
 
 interface CarouselProps {
   directionData: {
@@ -34,9 +35,7 @@ function Carousel({ directionData, loading }: CarouselProps) {
             ))}
           </div>
         ) : (
-          <div className="flex h-full w-full items-center justify-center">
-            <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-primary"></div>
-          </div>
+          <Spinner />
         )}
       </div>
       <Directional

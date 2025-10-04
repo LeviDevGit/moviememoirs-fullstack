@@ -51,7 +51,7 @@ async function updateMedia(
   console.log(formData)
 
   if (formData) {
-    const response = await fetch(`/api/update?mediaid=${id}`, {
+    const response = await fetch(`/api/media/update?mediaid=${id}`, {
       method: 'PATCH',
       body: formData,
     })

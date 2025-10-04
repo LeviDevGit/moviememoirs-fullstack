@@ -1,5 +1,3 @@
-import toast from 'react-hot-toast'
-
 async function retrieveExtraSectionById(id: number) {
   try {
     const response = await fetch(
@@ -13,7 +11,7 @@ async function retrieveExtraSectionById(id: number) {
     const data = await response.json()
 
     if (data.error) {
-      toast.error(data.error)
+      // toast.error(data.error)
       return []
     } else {
       return data

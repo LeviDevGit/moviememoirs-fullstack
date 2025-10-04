@@ -2,7 +2,7 @@ import { ImageUp } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 
-function Dropzone() {
+function PosterDropzone() {
   const [file, setFile] = useState<File>()
 
   const handleFileChange: React.ChangeEventHandler<HTMLInputElement> = (
@@ -48,4 +48,4 @@ function Dropzone() {
   )
 }
 
-export default Dropzone
+export default PosterDropzone
