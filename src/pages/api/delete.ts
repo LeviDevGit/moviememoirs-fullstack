@@ -5,15 +5,28 @@ import path from 'path'
 import { withPrismaError } from '@/lib/errorHandler'
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { movieId, movieImagePath } = req.body
+  const { id } = req.query
 
-  await prisma.media.delete({
+  if (req.method !== 'DELETE') {
+    return res.status(405).json({ error: 'Method not allowed' })
+  }
+
+  if (!id || Array.isArray(id)) {
+    return res.status(400).json({ error: 'Invalid id' })
+  }
+
+  const media = await prisma.media.findUnique({
     where: {
-      id: Number(movieId),
+      id: Number(id),
     },
+    select: { img: true },
   })
 
-  const absolutePath = path.join(process.cwd(), 'public', movieImagePath)
+  if (!media) {
+    return res.status(404).json({ error: 'Media not found' })
+  }
+
+  const absolutePath = path.join(process.cwd(), 'public', media.img)
 
   try {
     await fs.unlink(absolutePath)
@@ -23,6 +36,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       console.warn(`Erro ao deletar imagem: ${error.message}`)
     }
   }
+
+  await prisma.media.delete({
+    where: {
+      id: Number(id),
+    },
+  })
 
   res.status(204).end()
 }

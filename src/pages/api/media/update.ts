@@ -22,33 +22,42 @@ interface FormFields {
   commentary?: string[]
 }
 
-interface latestQueryProps {
-  img: string
-}
+// interface latestQueryProps {
+//   img: string
+// }
 
 async function handle(req: NextApiRequest, res: NextApiResponse) {
   const { mediaid } = req.query
 
-  const latestQuery = await prisma.media.findFirst({
-    orderBy: {
-      id: 'desc',
-    },
-    select: {
-      img: true,
-    },
+  const currentMedia = await prisma.media.findUnique({
+    where: { id: Number(mediaid) },
+    select: { img: true },
   })
 
-  function obterProximoNumero(jsonArray: latestQueryProps) {
-    const ultimoElemento = jsonArray
-    const regex = /(\d+)\.jpg$/
-
-    const match = ultimoElemento.img.match(regex)
-    if (match) {
-      const numeroAtual = parseInt(match[1], 10)
-      return numeroAtual + 1
-    }
-    throw new Error('Caminho inválido no último elemento do JSON')
+  if (!currentMedia) {
+    return res.status(404).json({ error: 'Media not found' })
   }
+
+  // const latestQuery = await prisma.media.findFirst({
+  //   orderBy: {
+  //     id: 'desc',
+  //   },
+  //   select: {
+  //     img: true,
+  //   },
+  // })
+
+  // function obterProximoNumero(jsonArray: latestQueryProps) {
+  //   const ultimoElemento = jsonArray
+  //   const regex = /(\d+)\.jpg$/
+
+  //   const match = ultimoElemento.img.match(regex)
+  //   if (match) {
+  //     const numeroAtual = parseInt(match[1], 10)
+  //     return numeroAtual + 1
+  //   }
+  //   throw new Error('Caminho inválido no último elemento do JSON')
+  // }
 
   const publicDir = path.join(process.cwd(), 'public', 'posters')
 
@@ -57,9 +66,8 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
       const form = new IncomingForm({
         uploadDir: publicDir,
         keepExtensions: true,
-        filename: (_, ext) => {
-          const novoNumero = latestQuery ? obterProximoNumero(latestQuery) : 1
-          return `${novoNumero}${ext}`
+        filename: () => {
+          return path.basename(currentMedia.img)
         },
       })
 
@@ -128,7 +136,9 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
   })
 
   if (files.file) {
-    const publicUrl = `/posters/${path.basename(files.file[0].filepath)}`
+    const filePath = path.basename(currentMedia.img)
+    const publicUrl = `/posters/${filePath}`
+    // const filePath = path.join(publicDir, publicUrl)
 
     await prisma.media.update({
       where: {

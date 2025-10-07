@@ -2,15 +2,21 @@ import DetailCommentary from '@/components/layout/detail/DetailCommentary'
 import DetailGenre from '@/components/layout/detail/DetailGenre'
 import DetailRole from '@/components/layout/detail/DetailRole'
 import DetailSynopsis from '@/components/layout/detail/DetailSynopsis'
-import { dataProps } from '@/utils/dispatchDetail'
+import { dataProps, MediaView } from '@/utils/dispatchDetail'
 
 interface MediaInfoProps {
   data: dataProps
   editMode: boolean
   setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
+  setModalView: React.Dispatch<React.SetStateAction<MediaView | undefined>>
 }
 
-function MediaInfo({ data, editMode, setToggleModal }: MediaInfoProps) {
+function MediaInfo({
+  data,
+  editMode,
+  setToggleModal,
+  setModalView,
+}: MediaInfoProps) {
   return (
     <div className="h-full">
       <div className="flex w-[600px] flex-col justify-between gap-2">
@@ -58,7 +64,12 @@ function MediaInfo({ data, editMode, setToggleModal }: MediaInfoProps) {
           <DetailSynopsis />
           <DetailGenre />
           <DetailRole />
-          <DetailCommentary views={data.views} />
+          <DetailCommentary
+            editMode={editMode}
+            setToggleModal={setToggleModal}
+            setModalView={setModalView}
+            views={data.views}
+          />
         </div>
       </div>
     </div>

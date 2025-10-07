@@ -3,17 +3,19 @@
 import Image from 'next/image'
 import { use, useContext, useEffect, useState } from 'react'
 import Rater from '@/components/shared/Rater'
-import dispatchDetail, { dataProps } from '@/utils/dispatchDetail'
+import dispatchDetail, { dataProps, MediaView } from '@/utils/dispatchDetail'
 import { GlobalContext } from '@/providers/global'
 import Confirm from '@/components/features/form-media-edit'
 import MediaInfo from '@/components/features/media-info/MediaInfo'
 import retrieveExtraSectionById from '@/lib/api/ExtraSection/retrieve'
 import Spinner from '@/components/ui/Spinner'
-import { CheckIcon, PencilIcon, UndoIcon } from 'lucide-react'
+import { CheckIcon, PencilIcon, TrashIcon, UndoIcon } from 'lucide-react'
 import updateMediaByData from '@/lib/api/Media/update'
 import PosterDropzone from '@/components/shared/PosterDropzone'
 import EditTitleYearModal from '@/components/features/media-info/modals/EditTitleYearModal'
 import EditCreatorModal from '@/components/features/media-info/modals/EditCreatorModal'
+import EditViewModal from '@/components/features/media-info/modals/EditViewModal'
+import deleteMediaById from '@/lib/api/Media/delete'
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -54,16 +56,23 @@ function Page({ params }: PageProps) {
 
   const [editMode, setEditMode] = useState(false)
 
-  const [toggleModal, setToggleModal] = useState<boolean[]>([false, false])
+  // 0: title/year | 1: creator | 2: commentary
+  const [toggleModal, setToggleModal] = useState<boolean[]>([
+    false,
+    false,
+    false,
+  ])
+
+  const [modalView, setModalView] = useState<MediaView | undefined>(undefined)
 
   if (!data) return <Spinner />
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
       <div className="h-[200px]"></div>
-      <div className="flex h-full w-full overflow-y-scroll">
+      <div className="flex h-full w-full justify-center gap-2 overflow-y-scroll">
         <form
-          className="relative flex h-[1000px] w-full flex-1 justify-center gap-40"
+          className="relative flex h-[1000px] justify-center gap-40"
           onSubmit={(e) => {
             e.preventDefault()
             if (editMode) {
@@ -80,7 +89,7 @@ function Page({ params }: PageProps) {
                 <div className="h-[330px] w-[220px] shadow-cardShadow">
                   <Image
                     alt="Poster"
-                    src={data.img}
+                    src={`${data.img}?timestamp=${Date.now()}`}
                     width={220}
                     height={330}
                     priority
@@ -94,7 +103,7 @@ function Page({ params }: PageProps) {
                 <Rater
                   defaultValue={data.value}
                   width="w-[150px] mb-3"
-                  readonly={true}
+                  readOnly={true}
                 />
               )}
             </div>
@@ -132,8 +141,21 @@ function Page({ params }: PageProps) {
             data={data}
             editMode={editMode}
             setToggleModal={setToggleModal}
+            setModalView={setModalView}
           />
         </form>
+        {editMode && (
+          <div>
+            <button
+              type="button"
+              onClick={() => {
+                deleteMediaById(id)
+              }}
+            >
+              <TrashIcon />
+            </button>
+          </div>
+        )}
         {safetyButton && (
           <Confirm
             updaterState={updaterState}
@@ -145,9 +167,14 @@ function Page({ params }: PageProps) {
       </div>
       {toggleModal[0] ? (
         <EditTitleYearModal data={data} setToggleModal={setToggleModal} />
+      ) : toggleModal[1] ? (
+        <EditCreatorModal data={data} setToggleModal={setToggleModal} />
       ) : (
-        toggleModal[1] && (
-          <EditCreatorModal data={data} setToggleModal={setToggleModal} />
+        toggleModal[2] && (
+          <EditViewModal
+            setToggleModal={setToggleModal}
+            modalView={modalView}
+          />
         )
       )}
     </div>

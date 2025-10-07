@@ -16,20 +16,20 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     },
   })
 
-  await updateRating(result.movieId)
+  await updateRating(result.mediaId)
 
   const viewsLeft = await prisma.view.findUnique({
     where: {
       id: Number(viewId),
     },
     select: {
-      movieId: true,
+      mediaId: true,
     },
   })
 
   if (!viewsLeft) {
-    await prisma.movie.delete({
-      where: { id: result.movieId },
+    await prisma.media.delete({
+      where: { id: result.mediaId },
     })
   }
 

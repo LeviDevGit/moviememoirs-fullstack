@@ -26,9 +26,9 @@ function Input({
           id={text}
           name={text}
           className="mt-0.5 w-full rounded border-gray-600 bg-transparent text-white shadow-sm sm:text-sm"
+          defaultValue={useTodayDate ? todayValue : undefined}
           {...rest}
           ref={ref}
-          defaultValue={useTodayDate ? todayValue : undefined}
         />
         {children && (
           <span className="absolute inset-y-0 right-0 grid w-8 place-content-center text-gray-200">

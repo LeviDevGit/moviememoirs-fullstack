@@ -156,7 +156,7 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
                     <Rater
                       defaultValue={data.value}
                       width="w-[100px] mb-3"
-                      readonly={true}
+                      readOnly={true}
                     />
                     <h2 className="text-white/50">
                       Assistido em{' '}
@@ -217,7 +217,7 @@ function Modify({ data, last, setRefresh, refresh }: ModifyProps) {
                     <Rater
                       defaultValue={e.rating}
                       width="w-[80px]"
-                      readonly={true}
+                      readOnly={true}
                     />
                     <div>
                       <p>{e.commentary}</p>
