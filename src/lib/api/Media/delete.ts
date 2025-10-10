@@ -1,4 +1,9 @@
-async function deleteMediaById(mediaId: string) {
+type DeleteResponse = {
+  success: boolean
+  message: string
+}
+
+async function deleteMediaById(mediaId: string): Promise<DeleteResponse> {
   try {
     console.log(mediaId)
 
@@ -6,12 +11,16 @@ async function deleteMediaById(mediaId: string) {
       method: 'DELETE',
     })
 
-    const data = await response.json()
+    if (!response.ok) {
+      const error = await response.json()
+      throw new Error(error.error || 'Erro ao deletar')
+    }
 
-    return data
+    const data = await response.json()
+    return { success: true, message: data.message }
   } catch (error) {
     console.log(error)
-    return error
+    return { success: false, message: (error as Error).message }
   }
 }
 

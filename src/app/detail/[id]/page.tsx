@@ -1,30 +1,26 @@
 'use client'
 
 import Image from 'next/image'
-import { use, useContext, useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import Rater from '@/components/shared/Rater'
 import dispatchDetail, { dataProps, MediaView } from '@/utils/dispatchDetail'
-import { GlobalContext } from '@/providers/global'
-import Confirm from '@/components/features/form-media-edit'
 import MediaInfo from '@/components/features/media-info/MediaInfo'
 import retrieveExtraSectionById from '@/lib/api/ExtraSection/retrieve'
 import Spinner from '@/components/ui/Spinner'
-import { CheckIcon, PencilIcon, TrashIcon, UndoIcon } from 'lucide-react'
+import { PencilIcon, TrashIcon, UndoIcon } from 'lucide-react'
 import updateMediaByData from '@/lib/api/Media/update'
 import PosterDropzone from '@/components/shared/PosterDropzone'
 import EditTitleYearModal from '@/components/features/media-info/modals/EditTitleYearModal'
 import EditCreatorModal from '@/components/features/media-info/modals/EditCreatorModal'
 import EditViewModal from '@/components/features/media-info/modals/EditViewModal'
-import deleteMediaById from '@/lib/api/Media/delete'
+import DeleteConfirmModal from '@/components/features/media-info/modals/DeleteConfirmModal'
+import ToastEditMode from '@/components/features/media-info/ToastEditMode'
 
 interface PageProps {
   params: Promise<{ id: string }>
 }
 
 function Page({ params }: PageProps) {
-  const [safetyButton, setSafetyButton] = useState<number | undefined>(
-    undefined,
-  )
   const [data, setData] = useState<dataProps>()
 
   const { id } = use(params)
@@ -44,20 +40,11 @@ function Page({ params }: PageProps) {
     if (data?.categoryId) fetchData(data.categoryId)
   }, [data?.categoryId])
 
-  const context = useContext(GlobalContext)
-
-  if (!context) {
-    throw new Error('GlobalContext is undefined')
-  }
-
-  const { updater, setUpdater } = context
-
-  const updaterState = { updater, setUpdater }
-
   const [editMode, setEditMode] = useState(false)
 
-  // 0: title/year | 1: creator | 2: commentary
+  // 0: title/year | 1: creator | 2: commentary | 3: delete
   const [toggleModal, setToggleModal] = useState<boolean[]>([
+    false,
     false,
     false,
     false,
@@ -72,6 +59,7 @@ function Page({ params }: PageProps) {
       <div className="h-[200px]"></div>
       <div className="flex h-full w-full justify-center gap-2 overflow-y-scroll">
         <form
+          id="detail-form"
           className="relative flex h-[1000px] justify-center gap-40"
           onSubmit={(e) => {
             e.preventDefault()
@@ -108,33 +96,27 @@ function Page({ params }: PageProps) {
               )}
             </div>
             <div className="flex w-[80px] flex-col items-center justify-center gap-4 font-semibold text-[#e0e0e0]">
-              <button
-                className="rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
-                onClick={() => {
-                  setSafetyButton(Number(id))
-                }}
-              >
-                Editar
-              </button>
-              <div className="flex gap-4">
+              {!editMode ? (
                 <button
                   className="ml-2 rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
-                  type="submit"
+                  type="button"
+                  onClick={() => {
+                    setEditMode(true)
+                  }}
                 >
-                  {editMode ? <CheckIcon /> : <PencilIcon />}
+                  <PencilIcon />
                 </button>
-                {editMode && (
-                  <button
-                    className="ml-2 rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
-                    type="button"
-                    onClick={() => {
-                      setEditMode(false)
-                    }}
-                  >
-                    <UndoIcon />
-                  </button>
-                )}
-              </div>
+              ) : (
+                <button
+                  className="ml-2 rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
+                  type="button"
+                  onClick={() => {
+                    setEditMode(false)
+                  }}
+                >
+                  <UndoIcon />
+                </button>
+              )}
             </div>
           </div>
           <MediaInfo
@@ -144,37 +126,31 @@ function Page({ params }: PageProps) {
             setModalView={setModalView}
           />
         </form>
-        {editMode && (
-          <div>
+        <ToastEditMode
+          onCancel={setEditMode}
+          onDelete={setToggleModal}
+          mode={editMode}
+        />
+        <div className="w-5">
+          {editMode && (
             <button
               type="button"
-              onClick={() => {
-                deleteMediaById(id)
-              }}
+              onClick={() => setToggleModal([false, false, false, true])}
             >
               <TrashIcon />
             </button>
-          </div>
-        )}
-        {safetyButton && (
-          <Confirm
-            updaterState={updaterState}
-            safetyButton={safetyButton}
-            setSafetyButton={setSafetyButton}
-            dataImageSrc={data.img}
-          />
-        )}
+          )}
+        </div>
       </div>
       {toggleModal[0] ? (
         <EditTitleYearModal data={data} setToggleModal={setToggleModal} />
       ) : toggleModal[1] ? (
         <EditCreatorModal data={data} setToggleModal={setToggleModal} />
+      ) : toggleModal[2] ? (
+        <EditViewModal setToggleModal={setToggleModal} modalView={modalView} />
       ) : (
-        toggleModal[2] && (
-          <EditViewModal
-            setToggleModal={setToggleModal}
-            modalView={modalView}
-          />
+        toggleModal[3] && (
+          <DeleteConfirmModal id={id} setToggleModal={setToggleModal} />
         )
       )}
     </div>

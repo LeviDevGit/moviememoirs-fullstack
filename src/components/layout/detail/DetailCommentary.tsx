@@ -25,7 +25,7 @@ function DetailCommentary({
           >
             {editMode ? (
               <button
-                className="flex w-full flex-col gap-4 border-2 border-transparent hover:border-dashed hover:border-red-100"
+                className="flex w-full flex-col gap-4 border-2 border-transparent text-start hover:border-dashed hover:border-red-100"
                 type="button"
                 onClick={() => {
                   setToggleModal([false, false, true])
@@ -52,7 +52,7 @@ function DetailCommentary({
                 </div>
               </button>
             ) : (
-              <div className="flex w-full flex-col gap-4">
+              <div className="flex w-full flex-col gap-4 border-2 border-transparent">
                 <div className="flex flex-col rounded-lg bg-card p-5">
                   <Rater
                     defaultValue={e.rating}

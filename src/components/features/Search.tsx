@@ -19,7 +19,7 @@ function handleInputKey(
   if (inputRef.current) {
     request((prevState) => ({
       ...prevState,
-      searchString: inputRef.current!.value,
+      searchString: inputRef.current!.value.trim(),
     })) // Atualiza o estado externo com o valor do input
   }
 }

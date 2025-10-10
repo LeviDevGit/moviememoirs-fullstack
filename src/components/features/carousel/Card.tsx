@@ -13,7 +13,7 @@ function Card({ source }: CardProps) {
         <div className="relative shadow-cardShadow duration-[2500ms] hover:blur hover:grayscale">
           <Image
             alt="Poster"
-            src={source.media.img}
+            src={`${source.media.img}?timestamp=${Date.now()}`}
             width={220}
             height={330}
             priority
