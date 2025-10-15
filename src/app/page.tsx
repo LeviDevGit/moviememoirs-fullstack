@@ -5,13 +5,11 @@ import useSubmitData from '@/hooks/useSubmitData'
 import { useContext, useRef, useState } from 'react'
 import Carousel from '@/components/features/carousel'
 import { GlobalContext } from '@/providers/global'
-import { FilterIcon } from 'lucide-react'
-import { toggleModal } from '@/utils/toggleModal'
 import useDropdown from '@/hooks/useDropdown'
-import { FilterDropdown } from '@/components/features/filter-dropdown'
-import Search from '@/components/features/Search'
-import Options from '@/components/features/Options'
 import Overlay from '@/components/shared/Overlay'
+import Header from '@/components/shared/Header'
+import Select from '@/components/ui/Select'
+import RadioGroup from '@/components/ui/RadioGroup'
 
 export interface FilterContent {
   searchString: string
@@ -73,45 +71,37 @@ export default function Home() {
   useDropdown({ toggleModalList, dropdown, setToggleModalList })
 
   return (
-    <div className="relative flex h-full w-full items-center justify-center">
-      <div className="flex h-full max-h-[650px] w-full flex-col items-center justify-between px-4">
-        <header className="flex h-[45px] w-full items-center justify-between gap-1">
-          <div className="flex h-full items-center gap-1">
-            <Search request={setFilterContent} />
-            <div className="relative h-full text-sm">
-              <button
-                onClick={(event) => {
-                  event.stopPropagation()
-                  toggleModal({
-                    index: 1,
-                    set: setToggleModalList,
-                    toggler: !toggleModalList[1],
-                  })
-                }}
-                className="h-full rounded-lg px-4 text-text-200 hover:text-text-50"
-              >
-                <FilterIcon />
-              </button>
-              {toggleModalList[1] && (
-                <FilterDropdown
-                  dropdown={dropdown}
-                  filterContent={filterContent}
-                  request={setFilterContent}
-                />
-              )}
-            </div>
+    <div className="relative flex h-full w-full flex-col items-center">
+      <Header
+        toggleModalList={toggleModalList}
+        setToggleModalList={setToggleModalList}
+        dropdown={dropdown}
+        filterContent={filterContent}
+        setFilterContent={setFilterContent}
+      />
+      <main className="flex h-full w-full flex-col items-center justify-start gap-14">
+        <div className="flex h-[100px] w-full items-center justify-between px-4">
+          <div className="flex items-center gap-4">
+            <RadioGroup value="Todos" name="categoria">
+              Todos
+            </RadioGroup>
+            <RadioGroup value="Filmes" name="categoria">
+              Filmes
+            </RadioGroup>
           </div>
-          <Options openIt={setToggleModalList} />
-        </header>
-        <main className="h-[520px] w-full">
+          <Select>
+            <option value="recent">Adicionado recentemente</option>
+          </Select>
+        </div>
+        <div className="flex h-fit w-full items-center">
           <Carousel directionData={directionData} loading={loading} />
-        </main>
-        <Overlay
-          setToggleModal={setToggleModalList}
-          toggleModal={toggleModalList}
-          updaterState={updaterState}
-        />
-      </div>
+        </div>
+      </main>
+      <Overlay
+        setToggleModal={setToggleModalList}
+        toggleModal={toggleModalList}
+        updaterState={updaterState}
+      />
     </div>
   )
 }

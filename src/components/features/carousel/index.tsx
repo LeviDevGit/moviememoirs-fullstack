@@ -15,7 +15,7 @@ interface CarouselProps {
 
 function Carousel({ directionData, loading }: CarouselProps) {
   return (
-    <div className="relative flex h-full w-full overflow-x-hidden">
+    <div className="relative flex h-[520px] w-full overflow-x-hidden">
       <Directional
         onClick={() =>
           handleDirectionChange(

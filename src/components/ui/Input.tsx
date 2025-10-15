@@ -3,7 +3,6 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type?: React.HTMLInputTypeAttribute
   ref?: React.RefObject<HTMLInputElement>
   useTodayDate?: boolean
-  children?: React.ReactNode
 }
 
 function Input({
@@ -11,7 +10,6 @@ function Input({
   type = 'text',
   ref,
   useTodayDate = false,
-  children,
   ...rest
 }: InputProps) {
   const today = new Date().toISOString().slice(0, 10)
@@ -30,11 +28,11 @@ function Input({
           {...rest}
           ref={ref}
         />
-        {children && (
+        {/* {children && (
           <span className="absolute inset-y-0 right-0 grid w-8 place-content-center text-gray-200">
             {children}
           </span>
-        )}
+        )} */}
       </div>
     </label>
   )

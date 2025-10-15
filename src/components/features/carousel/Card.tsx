@@ -23,8 +23,8 @@ function Card({ source }: CardProps) {
       </div>
       <div className="group h-full w-[220px] pt-4">
         <Link href={`/detail/${source.mediaId}`} className="w-full bg-red-500">
-          <div className="flex h-[50px]">
-            <h2 className="w-full truncate text-center text-sm font-bold text-text-50">
+          <div className="mb-2 flex h-[45px]">
+            <h2 className="line-clamp-2 w-full overflow-hidden text-ellipsis text-center text-sm font-bold text-text-50">
               {source.media.name}
             </h2>
           </div>
