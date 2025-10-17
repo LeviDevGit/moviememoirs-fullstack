@@ -5,11 +5,10 @@ import useSubmitData from '@/hooks/useSubmitData'
 import { useContext, useRef, useState } from 'react'
 import Carousel from '@/components/features/carousel'
 import { GlobalContext } from '@/providers/global'
-import useDropdown from '@/hooks/useDropdown'
+// import useDropdown from '@/hooks/useDropdown'
 import Overlay from '@/components/shared/Overlay'
 import Header from '@/components/shared/Header'
 import Select from '@/components/ui/Select'
-import RadioGroup from '@/components/ui/RadioGroup'
 
 export interface FilterContent {
   searchString: string
@@ -68,27 +67,27 @@ export default function Home() {
 
   const dropdown = useRef<HTMLDivElement | null>(null)
 
-  useDropdown({ toggleModalList, dropdown, setToggleModalList })
+  const filterData = {
+    dropdown,
+    filterContent,
+    setFilterContent,
+  }
+
+  // useDropdown({ toggleModalList, dropdown, setToggleModalList })
 
   return (
     <div className="relative flex h-full w-full flex-col items-center">
       <Header
         toggleModalList={toggleModalList}
         setToggleModalList={setToggleModalList}
-        dropdown={dropdown}
-        filterContent={filterContent}
         setFilterContent={setFilterContent}
       />
-      <main className="flex h-full w-full flex-col items-center justify-start gap-14">
+      <main className="flex h-full w-full flex-col items-center justify-start gap-6">
         <div className="flex h-[100px] w-full items-center justify-between px-4">
-          <div className="flex items-center gap-4">
-            <RadioGroup value="Todos" name="categoria">
-              Todos
-            </RadioGroup>
-            <RadioGroup value="Filmes" name="categoria">
-              Filmes
-            </RadioGroup>
-          </div>
+          <Select>
+            <option value="all">Todos</option>
+            <option value="movie">Filmes</option>
+          </Select>
           <Select>
             <option value="recent">Adicionado recentemente</option>
           </Select>
@@ -101,6 +100,7 @@ export default function Home() {
         setToggleModal={setToggleModalList}
         toggleModal={toggleModalList}
         updaterState={updaterState}
+        filterData={filterData}
       />
     </div>
   )

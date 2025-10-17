@@ -1,9 +1,13 @@
 import { useRef, useState } from 'react'
 import { FilterContent } from '@/app/page'
-import { PlusIcon } from 'lucide-react'
+import {
+  PlusIcon,
+  CalendarRangeIcon,
+  SparklesIcon,
+  UserRoundIcon,
+} from 'lucide-react'
 import { queryFilterClear } from '@/utils/queryFilter'
 import Filter from './Filter'
-import VerticalMenu from '@/components/ui/VerticalMenu'
 
 interface DropdownProps {
   dropdown: React.MutableRefObject<HTMLDivElement | null>
@@ -18,6 +22,12 @@ interface DropdownProps {
   filterContent: FilterContent
 }
 
+export const Filters = {
+  Diretor: { value: 'director', icon: <UserRoundIcon /> },
+  Ano: { value: 'year', icon: <CalendarRangeIcon /> },
+  Nota: { value: 'value', icon: <SparklesIcon /> },
+}
+
 function Dropdown({ dropdown, request, filterContent }: DropdownProps) {
   const [option, setOption] = useState<Record<string, string>>({})
 
@@ -27,11 +37,25 @@ function Dropdown({ dropdown, request, filterContent }: DropdownProps) {
 
   const selectLimitState = { selectLimit, setSelectLimit }
 
-  const [filterDropdown, setFilterDropdown] = useState(false)
+  const handleClick = () => {
+    const availableFilters = Object.entries(Filters).filter(
+      ([, value]) => !(value.value in option),
+    )
+
+    const first = availableFilters[0]
+
+    if (first) {
+      const [, value] = first
+      setOption((prev) => ({
+        ...prev,
+        [value.value]: '',
+      }))
+    }
+  }
 
   return (
     <div
-      className="absolute left-16 top-0 z-20 flex w-[600px] flex-col justify-between gap-4 divide-y divide-gray-600 rounded border-gray-600 bg-gray-900 text-sm"
+      className="flex w-[600px] flex-col justify-between gap-4 rounded border-gray-600 bg-gray-900 text-sm"
       ref={dropdown}
     >
       {Object.values(option).some((value) => value !== undefined) ? (
@@ -55,44 +79,42 @@ function Dropdown({ dropdown, request, filterContent }: DropdownProps) {
           ))}
         </div>
       )}
-      <div className="relative flex items-center justify-between p-5 text-sm">
-        {!selectLimit && (
-          <div className="relative">
+      <footer className="relative flex items-center justify-between p-5 text-sm">
+        <div>
+          {Object.keys(option).length < Object.keys(Filters).length && (
+            <div className="relative">
+              <button
+                className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-[#8B5CF6] hover:text-gray-200"
+                onClick={handleClick}
+              >
+                <PlusIcon size={20} /> Add filtro
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="flex items-center gap-4">
+          {Object.values(option).some((value) => value !== undefined) && (
             <button
-              className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-400 hover:bg-gray-800 hover:text-gray-200"
               onClick={() => {
-                setFilterDropdown(!filterDropdown)
+                queryFilterClear({
+                  request,
+                  setOption,
+                  setSelectLimit,
+                })
+                if (inputRef.current) {
+                  inputRef.current.value = ''
+                }
               }}
+              className="text-sm text-red-500"
             >
-              <PlusIcon size={20} /> Adicionar filtro
+              Excluir todos os filtros
             </button>
-            {filterDropdown && (
-              <VerticalMenu
-                setOption={setOption}
-                option={option}
-                setFilterDropdown={setFilterDropdown}
-              />
-            )}
-          </div>
-        )}
-        {Object.values(option).some((value) => value !== undefined) && (
-          <button
-            onClick={() => {
-              queryFilterClear({
-                request,
-                setOption,
-                setSelectLimit,
-              })
-              if (inputRef.current) {
-                inputRef.current.value = ''
-              }
-            }}
-            className="text-sm text-red-500"
-          >
-            Excluir todos os filtros
+          )}
+          <button className="rounded-md bg-[#8B5CF6e5] px-4 py-2 text-sm font-medium text-white">
+            Aplicar
           </button>
-        )}
-      </div>
+        </div>
+      </footer>
     </div>
   )
 }

@@ -1,3 +1,5 @@
+import { FilterContent } from '@/app/page'
+import { FilterDropdown } from '../features/filter-dropdown'
 import { FormCategory } from '../features/form-category'
 import { FormMedia } from '../features/form-media'
 import { Modal } from '../ui/Modal'
@@ -9,9 +11,19 @@ interface OverlayProps {
     updater: boolean
     setUpdater: React.Dispatch<React.SetStateAction<boolean>>
   }
+  filterData: {
+    dropdown: React.MutableRefObject<HTMLDivElement | null>
+    filterContent: FilterContent
+    setFilterContent: React.Dispatch<React.SetStateAction<FilterContent>>
+  }
 }
 
-function Overlay({ toggleModal, setToggleModal, updaterState }: OverlayProps) {
+function Overlay({
+  toggleModal,
+  setToggleModal,
+  updaterState,
+  filterData,
+}: OverlayProps) {
   return (
     <>
       {toggleModal[0] ? (
@@ -20,6 +32,16 @@ function Overlay({ toggleModal, setToggleModal, updaterState }: OverlayProps) {
             <FormMedia
               updaterState={updaterState}
               setToggleModal={setToggleModal}
+            />
+          </Modal.Main>
+        </Modal.Root>
+      ) : toggleModal[1] ? (
+        <Modal.Root set={setToggleModal} index={1}>
+          <Modal.Main>
+            <FilterDropdown
+              dropdown={filterData.dropdown}
+              filterContent={filterData.filterContent}
+              request={filterData.setFilterContent}
             />
           </Modal.Main>
         </Modal.Root>

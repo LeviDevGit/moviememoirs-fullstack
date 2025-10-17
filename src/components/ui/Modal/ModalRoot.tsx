@@ -12,7 +12,7 @@ interface ModalRootProps {
 function ModalRoot({ set, index, closeIcon = true, children }: ModalRootProps) {
   return (
     <div className="absolute left-0 top-0 z-30 flex h-full w-full items-center justify-center bg-modal-overlay/90">
-      <div className="relative bg-background p-4">
+      <div className="relative rounded-lg bg-background p-4">
         {closeIcon && (
           <div className="absolute right-0">
             <div className="flex gap-5">

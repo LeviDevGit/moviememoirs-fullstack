@@ -10,14 +10,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0e0f12',
+        // background: '#0e0f12',
+        background: '#111827',
         primary: '#7b98f0',
         secondary: {
           600: '#6d5a72',
           700: '#514356',
         },
         accent: '#831b2c',
-        card: '#16181b',
+        // card: '#16181b',
+        card: '#1F2937',
 
         // Others
         filter: '#26272A',
