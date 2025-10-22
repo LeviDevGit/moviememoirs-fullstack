@@ -7,7 +7,6 @@ import Carousel from '@/components/features/carousel'
 import { GlobalContext } from '@/providers/global'
 // import useDropdown from '@/hooks/useDropdown'
 import Overlay from '@/components/shared/Overlay'
-import Header from '@/components/shared/Header'
 import Select from '@/components/ui/Select'
 
 export interface FilterContent {
@@ -15,13 +14,6 @@ export interface FilterContent {
   directorString: string | undefined
   yearString: string | undefined
   valueString: string | undefined
-}
-
-const initialFilterContent: FilterContent = {
-  searchString: '',
-  directorString: undefined,
-  yearString: undefined,
-  valueString: undefined,
 }
 
 export default function Home() {
@@ -38,11 +30,15 @@ export default function Home() {
     throw new Error('GlobalContext is undefined')
   }
 
-  const { toggleModalList, setToggleModalList, updater, setUpdater } = context
+  const {
+    toggleModalList,
+    setToggleModalList,
+    updater,
+    setUpdater,
+    filterContent,
+    setFilterContent,
+  } = context
   const updaterState = { updater, setUpdater }
-
-  const [filterContent, setFilterContent] =
-    useState<FilterContent>(initialFilterContent)
 
   // // State updater
   // const [updater, setUpdater] = useState<boolean>(false)
@@ -77,12 +73,8 @@ export default function Home() {
 
   return (
     <div className="relative flex h-full w-full flex-col items-center">
-      <Header
-        toggleModalList={toggleModalList}
-        setToggleModalList={setToggleModalList}
-        setFilterContent={setFilterContent}
-      />
-      <main className="flex h-full w-full flex-col items-center justify-start gap-6">
+      {/* <Header /> */}
+      <div className="flex h-full w-full flex-col items-center justify-start gap-6">
         <div className="flex h-[100px] w-full items-center justify-between px-4">
           <Select>
             <option value="all">Todos</option>
@@ -95,7 +87,7 @@ export default function Home() {
         <div className="flex h-fit w-full items-center">
           <Carousel directionData={directionData} loading={loading} />
         </div>
-      </main>
+      </div>
       <Overlay
         setToggleModal={setToggleModalList}
         toggleModal={toggleModalList}

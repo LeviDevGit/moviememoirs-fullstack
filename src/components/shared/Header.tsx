@@ -1,19 +1,21 @@
-import { FilterContent } from '@/app/page'
+'use client'
+
 import Search from '../features/Search'
 import { FilterIcon, PlusIcon, UserRoundIcon } from 'lucide-react'
 import { toggleModal } from '@/utils/toggleModal'
+import Link from 'next/link'
+import { useContext } from 'react'
+import { GlobalContext } from '@/providers/global'
 
-interface HeaderProps {
-  setFilterContent: React.Dispatch<React.SetStateAction<FilterContent>>
-  setToggleModalList: React.Dispatch<React.SetStateAction<boolean[]>>
-  toggleModalList: boolean[]
-}
+function Header() {
+  const context = useContext(GlobalContext)
 
-function Header({
-  setFilterContent,
-  setToggleModalList,
-  toggleModalList,
-}: HeaderProps) {
+  if (!context) {
+    throw new Error('GlobalContext is undefined')
+  }
+
+  const { toggleModalList, setToggleModalList, setFilterContent } = context
+
   return (
     <header className="flex w-full flex-col items-center gap-6 py-4">
       <nav className="flex w-full items-center justify-between px-4">
@@ -40,7 +42,7 @@ function Header({
         </div>
         <div className="flex h-full items-center gap-4">
           <button
-            className="flex h-full items-center justify-center gap-2 rounded-lg bg-[#8B5CF6] px-5 hover:bg-[#8B5CF6e0]"
+            className="flex h-10 items-center justify-center gap-2 rounded-lg bg-[#8B5CF6] px-5 hover:bg-[#8B5CF6e0]"
             onClick={() => {
               toggleModal({ index: 0, set: setToggleModalList, toggler: true })
             }}
@@ -48,14 +50,9 @@ function Header({
             <PlusIcon />
             <span className="font-semibold">Registrar</span>
           </button>
-          <button
-            className="rounded-full bg-[#1F2937] p-2"
-            onClick={() => {
-              toggleModal({ index: 2, set: setToggleModalList, toggler: true })
-            }}
-          >
+          <Link href={'/profile'} className="rounded-full bg-[#1F2937] p-2">
             <UserRoundIcon />
-          </button>
+          </Link>
         </div>
       </nav>
       <hr className="w-full border-text-50 opacity-25" />

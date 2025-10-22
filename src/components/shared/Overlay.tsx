@@ -1,6 +1,5 @@
 import { FilterContent } from '@/app/page'
 import { FilterDropdown } from '../features/filter-dropdown'
-import { FormCategory } from '../features/form-category'
 import { FormMedia } from '../features/form-media'
 import { Modal } from '../ui/Modal'
 
@@ -35,21 +34,15 @@ function Overlay({
             />
           </Modal.Main>
         </Modal.Root>
-      ) : toggleModal[1] ? (
-        <Modal.Root set={setToggleModal} index={1}>
-          <Modal.Main>
-            <FilterDropdown
-              dropdown={filterData.dropdown}
-              filterContent={filterData.filterContent}
-              request={filterData.setFilterContent}
-            />
-          </Modal.Main>
-        </Modal.Root>
       ) : (
-        toggleModal[2] && (
-          <Modal.Root set={setToggleModal} index={2}>
+        toggleModal[1] && (
+          <Modal.Root set={setToggleModal} index={1}>
             <Modal.Main>
-              <FormCategory />
+              <FilterDropdown
+                dropdown={filterData.dropdown}
+                filterContent={filterData.filterContent}
+                request={filterData.setFilterContent}
+              />
             </Modal.Main>
           </Modal.Root>
         )

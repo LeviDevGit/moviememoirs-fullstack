@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from '@/providers'
 import { Toaster } from 'react-hot-toast'
+import Header from '@/components/shared/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,10 +19,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`relative h-screen w-screen bg-[#111827] text-text-50 ${inter.className} flex justify-center antialiased`}
+        className={`relative w-screen bg-[#111827] text-text-50 ${inter.className} flex flex-col justify-center antialiased`}
       >
         <Providers>
-          {children}
+          <Header />
+          <main>{children}</main>
           <Toaster
             position="top-center"
             reverseOrder={false}
