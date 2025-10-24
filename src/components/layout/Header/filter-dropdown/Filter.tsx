@@ -4,8 +4,8 @@ import { FilterContent } from '@/app/page'
 import Select from '@/components/ui/Select'
 import Input from '@/components/ui/Input'
 import { Filters } from './Dropdown'
+
 interface FilterProps {
-  inputRef: React.RefObject<HTMLInputElement>
   option: object
   selectLimitState: {
     selectLimit: boolean
@@ -22,6 +22,7 @@ interface FilterProps {
   >
   valueOption: string
   filterContent: FilterContent
+  inputRefs: React.MutableRefObject<Record<string, HTMLInputElement | null>>
 }
 
 function getRequestValue(key: string, filterContent: FilterContent) {
@@ -31,13 +32,13 @@ function getRequestValue(key: string, filterContent: FilterContent) {
 }
 
 function Filter({
-  inputRef,
   option,
   selectLimitState,
   request,
   setOption,
   valueOption,
   filterContent,
+  inputRefs,
 }: FilterProps) {
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setOption((prev) => {
@@ -89,18 +90,22 @@ function Filter({
       </label>
       <Input
         type="text"
-        ref={inputRef}
+        ref={(el: HTMLInputElement | null) => {
+          inputRefs.current[valueOption] = el
+        }}
         placeholder={
           getRequestValue(valueOption, filterContent) || 'Digite o valor...'
         }
         onKeyDown={(e) => {
-          if (e.key === 'Enter')
+          if (e.key === 'Enter') {
             queryFilterAdd({
-              inputRef,
+              inputRef: { current: e.currentTarget },
               request,
               valueOption,
               setOption,
             })
+            localStorage.setItem('option', JSON.stringify(option))
+          }
         }}
       />
       <div className="relative">

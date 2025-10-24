@@ -1,9 +1,9 @@
 'use client'
 
-import { FormCategory } from '@/components/features/form-category'
 import { Modal } from '@/components/ui/Modal'
 import { toggleModal } from '@/utils/toggleModal'
 import { useState } from 'react'
+import { FormCategory } from './_components/form-category'
 
 export default function Page() {
   const [toggleModalProfile, setToggleModalProfile] = useState([false])

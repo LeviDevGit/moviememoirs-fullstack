@@ -19,7 +19,8 @@ function queryFilterAdd({
   request,
 }: queryFilterAddProps) {
   if (inputRef.current && valueOption) {
-    console.log('teste')
+    console.log(valueOption, inputRef.current.value)
+
     setOption((prev) => ({
       ...prev,
       [valueOption]: inputRef.current!.value,
@@ -29,6 +30,18 @@ function queryFilterAdd({
       ...prevState,
       [`${valueOption}String`]: inputRef.current!.value,
     }))
+
+    const savedRaw = localStorage.getItem('option')
+    const savedObj: Record<string, string> = savedRaw
+      ? JSON.parse(savedRaw)
+      : {}
+
+    const updated = {
+      ...savedObj,
+      [valueOption]: inputRef.current!.value,
+    }
+
+    localStorage.setItem('option', JSON.stringify(updated))
   }
 }
 

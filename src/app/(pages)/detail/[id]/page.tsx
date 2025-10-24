@@ -1,20 +1,18 @@
 'use client'
 
-import Image from 'next/image'
 import { use, useEffect, useState } from 'react'
-import Rater from '@/components/shared/Rater'
 import dispatchDetail, { dataProps, MediaView } from '@/utils/dispatchDetail'
-import MediaInfo from '@/components/features/media-info/MediaInfo'
 import retrieveExtraSectionById from '@/lib/api/ExtraSection/retrieve'
 import Spinner from '@/components/ui/Spinner'
-import { PencilIcon, TrashIcon, UndoIcon } from 'lucide-react'
+import { TrashIcon } from 'lucide-react'
 import updateMediaByData from '@/lib/api/Media/update'
-import PosterDropzone from '@/components/shared/PosterDropzone'
-import EditTitleYearModal from '@/components/features/media-info/modals/EditTitleYearModal'
-import EditCreatorModal from '@/components/features/media-info/modals/EditCreatorModal'
-import EditViewModal from '@/components/features/media-info/modals/EditViewModal'
-import DeleteConfirmModal from '@/components/features/media-info/modals/DeleteConfirmModal'
-import ToastEditMode from '@/components/features/media-info/ToastEditMode'
+import MediaInfo from './_components/Main/MediaInfo'
+import ToastEditMode from './_components/ToastEditMode'
+import EditTitleYearModal from './_components/modals/EditTitleYearModal'
+import EditCreatorModal from './_components/modals/EditCreatorModal'
+import EditViewModal from './_components/modals/EditViewModal'
+import DeleteConfirmModal from './_components/modals/DeleteConfirmModal'
+import MediaPoster from './_components/Aside/MediaPoster'
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -56,7 +54,7 @@ function Page({ params }: PageProps) {
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
-      <div className="h-[200px]"></div>
+      <div className="h-[100px]"></div>
       <div className="flex h-full w-full justify-center gap-2 overflow-y-scroll">
         <form
           id="detail-form"
@@ -69,56 +67,11 @@ function Page({ params }: PageProps) {
             setEditMode((prev) => !prev)
           }}
         >
-          <div className="sticky top-1 flex h-fit flex-col items-center justify-start gap-4">
-            {editMode ? (
-              <PosterDropzone />
-            ) : (
-              data.img && (
-                <div className="h-[330px] w-[220px] shadow-cardShadow">
-                  <Image
-                    alt="Poster"
-                    src={`${data.img}?timestamp=${Date.now()}`}
-                    width={220}
-                    height={330}
-                    priority
-                    className="h-[330px] w-[220px] rounded-md object-cover object-center shadow-imageShadow"
-                  />
-                </div>
-              )
-            )}
-            <div className="w-[150px]">
-              {data && (
-                <Rater
-                  defaultValue={data.value}
-                  width="w-[150px] mb-3"
-                  readOnly={true}
-                />
-              )}
-            </div>
-            <div className="flex w-[80px] flex-col items-center justify-center gap-4 font-semibold text-[#e0e0e0]">
-              {!editMode ? (
-                <button
-                  className="ml-2 rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
-                  type="button"
-                  onClick={() => {
-                    setEditMode(true)
-                  }}
-                >
-                  <PencilIcon />
-                </button>
-              ) : (
-                <button
-                  className="ml-2 rounded-lg border border-gray-500 px-2 py-1 text-center hover:bg-black/10"
-                  type="button"
-                  onClick={() => {
-                    setEditMode(false)
-                  }}
-                >
-                  <UndoIcon />
-                </button>
-              )}
-            </div>
-          </div>
+          <MediaPoster
+            data={data}
+            editMode={editMode}
+            setEditMode={setEditMode}
+          />
           <MediaInfo
             data={data}
             editMode={editMode}

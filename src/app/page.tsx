@@ -2,11 +2,9 @@
 
 import { dataFetchProps } from '@/types/interfaces'
 import useSubmitData from '@/hooks/useSubmitData'
-import { useContext, useRef, useState } from 'react'
-import Carousel from '@/components/features/carousel'
+import { useContext, useState } from 'react'
+import Carousel from '@/app/_components/carousel'
 import { GlobalContext } from '@/providers/global'
-// import useDropdown from '@/hooks/useDropdown'
-import Overlay from '@/components/shared/Overlay'
 import Select from '@/components/ui/Select'
 
 export interface FilterContent {
@@ -30,19 +28,7 @@ export default function Home() {
     throw new Error('GlobalContext is undefined')
   }
 
-  const {
-    toggleModalList,
-    setToggleModalList,
-    updater,
-    setUpdater,
-    filterContent,
-    setFilterContent,
-  } = context
-  const updaterState = { updater, setUpdater }
-
-  // // State updater
-  // const [updater, setUpdater] = useState<boolean>(false)
-  // const updaterState = { updater, setUpdater }
+  const { updater, filterContent } = context
 
   const [loading, setLoading] = useState(false)
 
@@ -61,19 +47,8 @@ export default function Home() {
     setDirection,
   }
 
-  const dropdown = useRef<HTMLDivElement | null>(null)
-
-  const filterData = {
-    dropdown,
-    filterContent,
-    setFilterContent,
-  }
-
-  // useDropdown({ toggleModalList, dropdown, setToggleModalList })
-
   return (
-    <div className="relative flex h-full w-full flex-col items-center">
-      {/* <Header /> */}
+    <div className="flex h-full w-full flex-col items-center">
       <div className="flex h-full w-full flex-col items-center justify-start gap-6">
         <div className="flex h-[100px] w-full items-center justify-between px-4">
           <Select>
@@ -88,12 +63,6 @@ export default function Home() {
           <Carousel directionData={directionData} loading={loading} />
         </div>
       </div>
-      <Overlay
-        setToggleModal={setToggleModalList}
-        toggleModal={toggleModalList}
-        updaterState={updaterState}
-        filterData={filterData}
-      />
     </div>
   )
 }

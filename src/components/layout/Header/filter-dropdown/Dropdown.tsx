@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { FilterContent } from '@/app/page'
 import {
   PlusIcon,
@@ -6,11 +6,13 @@ import {
   SparklesIcon,
   UserRoundIcon,
 } from 'lucide-react'
-import { queryFilterClear } from '@/utils/queryFilter'
+import { queryFilterAdd, queryFilterClear } from '@/utils/queryFilter'
 import Filter from './Filter'
+import { toggleModal } from '@/utils/toggleModal'
+import { GlobalContext } from '@/providers/global'
+import { restoreFilters } from '@/utils/restoreFIlters'
 
 interface DropdownProps {
-  dropdown: React.MutableRefObject<HTMLDivElement | null>
   request: React.Dispatch<
     React.SetStateAction<{
       searchString: string
@@ -28,10 +30,34 @@ export const Filters = {
   Nota: { value: 'value', icon: <SparklesIcon /> },
 }
 
-function Dropdown({ dropdown, request, filterContent }: DropdownProps) {
-  const [option, setOption] = useState<Record<string, string>>({})
+function Dropdown({ request, filterContent }: DropdownProps) {
+  const context = useContext(GlobalContext)
 
-  const inputRef = useRef<HTMLInputElement>(null)
+  if (!context) {
+    throw new Error('GlobalContext is undefined')
+  }
+
+  const { setToggleModalList } = context
+
+  const [option, setOption] = useState<Record<string, string>>(() => {
+    const saved = localStorage.getItem('option')
+    return saved ? JSON.parse(saved) : {}
+  })
+
+  const inputRefs = useRef<Record<string, HTMLInputElement | null>>({})
+
+  function handleApplyAll() {
+    Object.entries(inputRefs.current).forEach(([key, input]) => {
+      if (input) {
+        queryFilterAdd({
+          inputRef: { current: input },
+          request,
+          valueOption: key,
+          setOption,
+        })
+      }
+    })
+  }
 
   const [selectLimit, setSelectLimit] = useState(false)
 
@@ -53,11 +79,13 @@ function Dropdown({ dropdown, request, filterContent }: DropdownProps) {
     }
   }
 
+  useEffect(() => {
+    restoreFilters(setOption, option, inputRefs, request)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
-    <div
-      className="flex w-[600px] flex-col justify-between gap-4 rounded border-gray-600 bg-gray-900 text-sm"
-      ref={dropdown}
-    >
+    <div className="flex w-[600px] flex-col justify-between gap-4 rounded border-gray-600 bg-gray-900 text-sm">
       {Object.values(option).some((value) => value !== undefined) ? (
         <p className="p-5 pb-0">Nesta visualização mostre mídias</p>
       ) : (
@@ -69,12 +97,12 @@ function Dropdown({ dropdown, request, filterContent }: DropdownProps) {
             <Filter
               key={value}
               option={option}
-              inputRef={inputRef}
               selectLimitState={selectLimitState}
               request={request}
               setOption={setOption}
               valueOption={value}
               filterContent={filterContent}
+              inputRefs={inputRefs}
             />
           ))}
         </div>
@@ -101,16 +129,25 @@ function Dropdown({ dropdown, request, filterContent }: DropdownProps) {
                   setOption,
                   setSelectLimit,
                 })
-                if (inputRef.current) {
-                  inputRef.current.value = ''
-                }
+                // if (inputRef.current) {
+                //   inputRef.current.value = ''
+                // }
+                localStorage.removeItem('option')
               }}
               className="text-sm text-red-500"
             >
               Excluir todos os filtros
             </button>
           )}
-          <button className="rounded-md bg-[#8B5CF6e5] px-4 py-2 text-sm font-medium text-white">
+          <button
+            className="rounded-md bg-[#8B5CF6e5] px-4 py-2 text-sm font-medium text-white"
+            onClick={(e) => {
+              console.log(option)
+              e.preventDefault()
+              handleApplyAll()
+              toggleModal({ index: 1, set: setToggleModalList, toggler: false })
+            }}
+          >
             Aplicar
           </button>
         </div>

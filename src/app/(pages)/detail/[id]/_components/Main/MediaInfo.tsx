@@ -1,7 +1,7 @@
-import DetailCommentary from '@/components/layout/detail/DetailCommentary'
-import DetailGenre from '@/components/layout/detail/DetailGenre'
-import DetailRole from '@/components/layout/detail/DetailRole'
-import DetailSynopsis from '@/components/layout/detail/DetailSynopsis'
+import DetailCommentary from '@/app/(pages)/detail/[id]/_components/Main/detail/DetailCommentary'
+import DetailGenre from '@/app/(pages)/detail/[id]/_components/Main/detail/DetailGenre'
+import DetailRole from '@/app/(pages)/detail/[id]/_components/Main/detail/DetailRole'
+import DetailSynopsis from '@/app/(pages)/detail/[id]/_components/Main/detail/DetailSynopsis'
 import { dataProps, MediaView } from '@/utils/dispatchDetail'
 
 interface MediaInfoProps {

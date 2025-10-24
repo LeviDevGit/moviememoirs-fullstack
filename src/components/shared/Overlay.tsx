@@ -1,47 +1,47 @@
-import { FilterContent } from '@/app/page'
-import { FilterDropdown } from '../features/filter-dropdown'
-import { FormMedia } from '../features/form-media'
+'use client'
+
+import { FilterDropdown } from '../layout/Header/filter-dropdown'
+import { FormMedia } from '../../app/_components/modals/form-media'
 import { Modal } from '../ui/Modal'
+import { useContext } from 'react'
+import { GlobalContext } from '@/providers/global'
 
-interface OverlayProps {
-  toggleModal: boolean[]
-  setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
-  updaterState: {
-    updater: boolean
-    setUpdater: React.Dispatch<React.SetStateAction<boolean>>
-  }
-  filterData: {
-    dropdown: React.MutableRefObject<HTMLDivElement | null>
-    filterContent: FilterContent
-    setFilterContent: React.Dispatch<React.SetStateAction<FilterContent>>
-  }
-}
+function Overlay() {
+  const context = useContext(GlobalContext)
 
-function Overlay({
-  toggleModal,
-  setToggleModal,
-  updaterState,
-  filterData,
-}: OverlayProps) {
+  if (!context) {
+    throw new Error('GlobalContext is undefined')
+  }
+
+  const {
+    toggleModalList,
+    setToggleModalList,
+    updater,
+    setUpdater,
+    filterContent,
+    setFilterContent,
+  } = context
+
+  const updaterState = { updater, setUpdater }
+
   return (
     <>
-      {toggleModal[0] ? (
-        <Modal.Root set={setToggleModal} index={0}>
+      {toggleModalList[0] ? (
+        <Modal.Root set={setToggleModalList} index={0}>
           <Modal.Main>
             <FormMedia
               updaterState={updaterState}
-              setToggleModal={setToggleModal}
+              setToggleModal={setToggleModalList}
             />
           </Modal.Main>
         </Modal.Root>
       ) : (
-        toggleModal[1] && (
-          <Modal.Root set={setToggleModal} index={1}>
+        toggleModalList[1] && (
+          <Modal.Root set={setToggleModalList} index={1}>
             <Modal.Main>
               <FilterDropdown
-                dropdown={filterData.dropdown}
-                filterContent={filterData.filterContent}
-                request={filterData.setFilterContent}
+                filterContent={filterContent}
+                request={setFilterContent}
               />
             </Modal.Main>
           </Modal.Root>

@@ -1,7 +1,7 @@
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   text?: string
   type?: React.HTMLInputTypeAttribute
-  ref?: React.RefObject<HTMLInputElement>
+  ref?: React.Ref<HTMLInputElement>
   useTodayDate?: boolean
 }
 

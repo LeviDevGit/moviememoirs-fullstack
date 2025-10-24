@@ -3,7 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from '@/providers'
 import { Toaster } from 'react-hot-toast'
-import Header from '@/components/shared/Header'
+import Header from '@/components/layout/Header'
+import Overlay from '@/components/shared/Overlay'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`relative w-screen bg-[#111827] text-text-50 ${inter.className} flex flex-col justify-center antialiased`}
+        className={`relative h-screen w-screen bg-[#111827] text-text-50 ${inter.className} flex flex-col justify-start antialiased`}
       >
         <Providers>
           <Header />
@@ -40,6 +41,7 @@ export default function RootLayout({
               },
             }}
           />
+          <Overlay />
         </Providers>
       </body>
     </html>

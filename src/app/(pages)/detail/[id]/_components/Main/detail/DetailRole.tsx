@@ -1,4 +1,4 @@
-import ImageWithFallback from '@/components/features/media-info/ImageFallback'
+import ImageWithFallback from '@/app/(pages)/detail/[id]/_components/ImageFallback'
 import { UserRoundIcon } from 'lucide-react'
 
 interface DetailRoleProps {

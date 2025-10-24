@@ -1,11 +1,11 @@
 'use client'
 
-import Search from '../features/Search'
 import { FilterIcon, PlusIcon, UserRoundIcon } from 'lucide-react'
 import { toggleModal } from '@/utils/toggleModal'
 import Link from 'next/link'
 import { useContext } from 'react'
 import { GlobalContext } from '@/providers/global'
+import Search from './Search'
 
 function Header() {
   const context = useContext(GlobalContext)
@@ -20,7 +20,9 @@ function Header() {
     <header className="flex w-full flex-col items-center gap-6 py-4">
       <nav className="flex w-full items-center justify-between px-4">
         <div className="flex items-center gap-4">
-          <h1 className="text-2xl font-bold">Minhas mídias</h1>
+          <Link href={'/'} className="text-2xl font-bold">
+            Minhas mídias
+          </Link>
         </div>
         <div className="flex h-full items-center gap-4">
           <Search request={setFilterContent} />
