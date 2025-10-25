@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useState } from 'react'
 import { FilterContent } from '@/app/page'
 import {
   PlusIcon,
@@ -10,17 +10,9 @@ import { queryFilterAdd, queryFilterClear } from '@/utils/queryFilter'
 import Filter from './Filter'
 import { toggleModal } from '@/utils/toggleModal'
 import { GlobalContext } from '@/providers/global'
-import { restoreFilters } from '@/utils/restoreFIlters'
+import { FilterContext } from '@/providers/filter'
 
 interface DropdownProps {
-  request: React.Dispatch<
-    React.SetStateAction<{
-      searchString: string
-      directorString: string | undefined
-      yearString: string | undefined
-      valueString: string | undefined
-    }>
-  >
   filterContent: FilterContent
 }
 
@@ -30,28 +22,29 @@ export const Filters = {
   Nota: { value: 'value', icon: <SparklesIcon /> },
 }
 
-function Dropdown({ request, filterContent }: DropdownProps) {
-  const context = useContext(GlobalContext)
+function Dropdown({ filterContent }: DropdownProps) {
+  const global = useContext(GlobalContext)
 
-  if (!context) {
+  if (!global) {
     throw new Error('GlobalContext is undefined')
   }
 
-  const { setToggleModalList } = context
+  const { setToggleModalList, setFilterContent } = global
 
-  const [option, setOption] = useState<Record<string, string>>(() => {
-    const saved = localStorage.getItem('option')
-    return saved ? JSON.parse(saved) : {}
-  })
+  const filter = useContext(FilterContext)
 
-  const inputRefs = useRef<Record<string, HTMLInputElement | null>>({})
+  if (!filter) {
+    throw new Error('GlobalContext is undefined')
+  }
+
+  const { option, setOption, inputRefs } = filter
 
   function handleApplyAll() {
     Object.entries(inputRefs.current).forEach(([key, input]) => {
       if (input) {
         queryFilterAdd({
           inputRef: { current: input },
-          request,
+          request: setFilterContent,
           valueOption: key,
           setOption,
         })
@@ -79,11 +72,6 @@ function Dropdown({ request, filterContent }: DropdownProps) {
     }
   }
 
-  useEffect(() => {
-    restoreFilters(setOption, option, inputRefs, request)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   return (
     <div className="flex w-[600px] flex-col justify-between gap-4 rounded border-gray-600 bg-gray-900 text-sm">
       {Object.values(option).some((value) => value !== undefined) ? (
@@ -98,7 +86,7 @@ function Dropdown({ request, filterContent }: DropdownProps) {
               key={value}
               option={option}
               selectLimitState={selectLimitState}
-              request={request}
+              request={setFilterContent}
               setOption={setOption}
               valueOption={value}
               filterContent={filterContent}
@@ -125,7 +113,7 @@ function Dropdown({ request, filterContent }: DropdownProps) {
             <button
               onClick={() => {
                 queryFilterClear({
-                  request,
+                  request: setFilterContent,
                   setOption,
                   setSelectLimit,
                 })

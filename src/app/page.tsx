@@ -6,6 +6,7 @@ import { useContext, useState } from 'react'
 import Carousel from '@/app/_components/carousel'
 import { GlobalContext } from '@/providers/global'
 import Select from '@/components/ui/Select'
+import { useRestoreFilters } from '@/hooks/useRestoreFIlters'
 
 export interface FilterContent {
   searchString: string
@@ -19,6 +20,8 @@ export default function Home() {
     items: [],
     totalItems: 0,
   })
+
+  useRestoreFilters()
 
   const [direction, setDirection] = useState(0)
 

@@ -55,7 +55,7 @@ function useSubmitData({
           },
         )
 
-        console.log(response)
+        // console.log(response)
 
         const data = await response.json()
         console.log(data)

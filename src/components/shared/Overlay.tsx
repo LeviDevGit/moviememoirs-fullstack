@@ -19,7 +19,6 @@ function Overlay() {
     updater,
     setUpdater,
     filterContent,
-    setFilterContent,
   } = context
 
   const updaterState = { updater, setUpdater }
@@ -39,10 +38,7 @@ function Overlay() {
         toggleModalList[1] && (
           <Modal.Root set={setToggleModalList} index={1}>
             <Modal.Main>
-              <FilterDropdown
-                filterContent={filterContent}
-                request={setFilterContent}
-              />
+              <FilterDropdown filterContent={filterContent} />
             </Modal.Main>
           </Modal.Root>
         )
