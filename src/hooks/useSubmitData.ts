@@ -2,6 +2,13 @@ import { dataFetchProps } from '@/types/interfaces'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 
+// function shallowEqual<T extends Record<string, unknown>>(a: T, b: T) {
+//   const keysA = Object.keys(a)
+//   const keysB = Object.keys(b)
+//   if (keysA.length !== keysB.length) return false
+//   return keysA.every((key) => a[key] === b[key])
+// }
+
 interface useSubmitDataProps {
   direction: number
   filterContent: {
@@ -62,6 +69,12 @@ function useSubmitData({
 
         if (data) {
           setDataFetch(data)
+
+          // setDataFetch((prev) => {
+          //   const next = { ...prev, ...data }
+          //   return shallowEqual(prev, next) ? prev : next
+          // })
+
           if (data.totalItems === 0) {
             toast.error('Sem retornos')
           }
@@ -78,4 +91,5 @@ function useSubmitData({
     submitData()
   }, [direction, filterContent, setDataFetch, updater, setLoading])
 }
+
 export default useSubmitData

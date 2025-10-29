@@ -14,7 +14,7 @@ export const config = {
 interface FormFields {
   Lançamento: string[]
   direction: string[]
-  name: string[]
+  Título: string[]
   time: string[]
   type: string[]
   value: string[]
@@ -37,27 +37,6 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
   if (!currentMedia) {
     return res.status(404).json({ error: 'Media not found' })
   }
-
-  // const latestQuery = await prisma.media.findFirst({
-  //   orderBy: {
-  //     id: 'desc',
-  //   },
-  //   select: {
-  //     img: true,
-  //   },
-  // })
-
-  // function obterProximoNumero(jsonArray: latestQueryProps) {
-  //   const ultimoElemento = jsonArray
-  //   const regex = /(\d+)\.jpg$/
-
-  //   const match = ultimoElemento.img.match(regex)
-  //   if (match) {
-  //     const numeroAtual = parseInt(match[1], 10)
-  //     return numeroAtual + 1
-  //   }
-  //   throw new Error('Caminho inválido no último elemento do JSON')
-  // }
 
   const publicDir = path.join(process.cwd(), 'public', 'posters')
 
@@ -123,10 +102,10 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
       views: true,
     },
     data: {
-      // name: validateFieldsOrUndefined(fields.name),
+      name: validateFieldsOrUndefined(fields.Título),
       // creator: validateFieldsOrUndefined(fields.direction),
       // time: validateFieldsOrUndefined(fields.time),
-      year: validateFieldsOrUndefined(fields.Lançamento),
+      // year: validateFieldsOrUndefined(fields.Lançamento),
       category: {
         // connect: {
         //   name: validateFieldsOrUndefined(fields.type),
@@ -138,7 +117,6 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
   if (files.file) {
     const filePath = path.basename(currentMedia.img)
     const publicUrl = `/posters/${filePath}`
-    // const filePath = path.join(publicDir, publicUrl)
 
     await prisma.media.update({
       where: {

@@ -96,7 +96,11 @@ function Page({ params }: PageProps) {
         </div>
       </div>
       {toggleModal[0] ? (
-        <EditTitleYearModal data={data} setToggleModal={setToggleModal} />
+        <EditTitleYearModal
+          data={data}
+          setToggleModal={setToggleModal}
+          id={id}
+        />
       ) : toggleModal[1] ? (
         <EditCreatorModal data={data} setToggleModal={setToggleModal} />
       ) : toggleModal[2] ? (

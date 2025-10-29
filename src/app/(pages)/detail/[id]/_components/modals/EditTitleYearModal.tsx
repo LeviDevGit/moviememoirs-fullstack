@@ -1,5 +1,7 @@
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
+import updateMediaByData from '@/lib/api/Media/update'
+import { useState } from 'react'
 
 interface EditTitleYearModalProps {
   data: {
@@ -7,9 +9,19 @@ interface EditTitleYearModalProps {
     year: string
   }
   setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
+  id: string
 }
 
-function EditTitleYearModal({ data, setToggleModal }: EditTitleYearModalProps) {
+function EditTitleYearModal({
+  data,
+  setToggleModal,
+  id,
+}: EditTitleYearModalProps) {
+  const [title, setTitle] = useState<string>(data.name)
+  const [year, setYear] = useState<string>(data.year)
+
+  const isDirty = title !== data.name || year !== data.year
+
   return (
     <Modal.Root set={setToggleModal} index={0}>
       <Modal.Main>
@@ -20,9 +32,34 @@ function EditTitleYearModal({ data, setToggleModal }: EditTitleYearModalProps) {
               <span className="text-primary">Ano</span>
             </h1>
           </div>
-          <form action="" className="flex flex-col gap-4">
-            <Input text="Título" placeholder={data.name} />
-            <Input text="Ano de lançamento" placeholder={data.year} />
+          <form
+            id="edit-titleyear-form"
+            className="flex flex-col gap-4"
+            onSubmit={(e) => {
+              if (!isDirty) {
+                e.preventDefault()
+                return
+              }
+
+              e.preventDefault()
+
+              updateMediaByData(e, Number(id)).then(() => {
+                setToggleModal([false])
+              })
+            }}
+          >
+            <Input
+              text="Título"
+              placeholder={data.name}
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+            />
+            <Input
+              text="Ano de lançamento"
+              placeholder={data.year}
+              value={year}
+              onChange={(event) => setYear(event.target.value)}
+            />
           </form>
         </div>
       </Modal.Main>
@@ -37,6 +74,8 @@ function EditTitleYearModal({ data, setToggleModal }: EditTitleYearModalProps) {
           </button>
           <button
             type="submit"
+            form="edit-titleyear-form"
+            disabled={!isDirty}
             className="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
           >
             Salvar

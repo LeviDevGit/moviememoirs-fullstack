@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast'
+
 async function updateMediaByData(
   e: React.FormEvent<HTMLFormElement>,
   id: number,
@@ -28,6 +30,8 @@ async function updateMediaByData(
     console.log(error)
 
     return error
+  } finally {
+    toast.success('Mídia atualizada com sucesso!')
   }
 }
 
