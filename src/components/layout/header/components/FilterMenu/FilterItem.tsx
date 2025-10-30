@@ -3,9 +3,9 @@ import { TrashIcon } from 'lucide-react'
 import { FilterContent } from '@/app/page'
 import Select from '@/components/ui/Select'
 import Input from '@/components/ui/Input'
-import { Filters } from './Dropdown'
+import { Filters } from './FilterMenu'
 
-interface FilterProps {
+interface FilterItemProps {
   option: object
   selectLimitState: {
     selectLimit: boolean
@@ -31,7 +31,7 @@ function getRequestValue(key: string, filterContent: FilterContent) {
   return filterContent[composedKey as keyof typeof filterContent]
 }
 
-function Filter({
+function FilterItem({
   option,
   selectLimitState,
   request,
@@ -39,7 +39,7 @@ function Filter({
   valueOption,
   filterContent,
   inputRefs,
-}: FilterProps) {
+}: FilterItemProps) {
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setOption((prev) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -97,7 +97,7 @@ function Filter({
           getRequestValue(valueOption, filterContent) || 'Digite o valor...'
         }
         onKeyDown={(e) => {
-          if (e.key === 'Enter') {
+          if (e.key === 'Enter' && e.currentTarget.value.trim() !== '') {
             queryFilterAdd({
               inputRef: { current: e.currentTarget },
               request,
@@ -131,4 +131,4 @@ function Filter({
   )
 }
 
-export default Filter
+export default FilterItem

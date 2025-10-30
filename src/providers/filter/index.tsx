@@ -15,17 +15,17 @@ interface FilterProviderProps {
 }
 
 export function FilterProvider({ children }: FilterProviderProps) {
-  const [option, setOption] = useState<Record<string, string>>(() => {
-    if (typeof window === 'undefined') return {}
+  const [option, setOption] = useState<Record<string, string>>({})
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
     try {
       const saved = localStorage.getItem('option')
-      return saved ? JSON.parse(saved) : {}
+      if (saved) setOption(JSON.parse(saved))
     } catch {
-      return {}
+      // noop
     }
-  })
-
-  const inputRefs = useRef<Record<string, HTMLInputElement | null>>({})
+  }, [])
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -35,6 +35,8 @@ export function FilterProvider({ children }: FilterProviderProps) {
       // noop
     }
   }, [option])
+
+  const inputRefs = useRef<Record<string, HTMLInputElement | null>>({})
 
   return (
     <FilterContext.Provider value={{ option, setOption, inputRefs }}>

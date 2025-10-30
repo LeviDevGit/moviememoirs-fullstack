@@ -28,7 +28,7 @@ interface SearchProps {
   request: requestType
 }
 
-function Search({ request }: SearchProps) {
+function SearchInput({ request }: SearchProps) {
   const inputRef = useRef<HTMLInputElement>(null) // useRef para acessar o valor do input
 
   const handleFocus = () => {
@@ -53,4 +53,4 @@ function Search({ request }: SearchProps) {
   )
 }
 
-export default Search
+export default SearchInput

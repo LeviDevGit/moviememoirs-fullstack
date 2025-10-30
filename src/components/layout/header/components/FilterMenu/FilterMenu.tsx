@@ -7,12 +7,12 @@ import {
   UserRoundIcon,
 } from 'lucide-react'
 import { queryFilterAdd, queryFilterClear } from '@/utils/queryFilter'
-import Filter from './Filter'
 import { toggleModal } from '@/utils/toggleModal'
 import { GlobalContext } from '@/providers/global'
 import { FilterContext } from '@/providers/filter'
+import FilterItem from './FilterItem'
 
-interface DropdownProps {
+interface FilterMenuProps {
   filterContent: FilterContent
 }
 
@@ -22,7 +22,7 @@ export const Filters = {
   Nota: { value: 'value', icon: <SparklesIcon /> },
 }
 
-function Dropdown({ filterContent }: DropdownProps) {
+function FilterMenu({ filterContent }: FilterMenuProps) {
   const global = useContext(GlobalContext)
 
   if (!global) {
@@ -41,7 +41,7 @@ function Dropdown({ filterContent }: DropdownProps) {
 
   function handleApplyAll() {
     Object.entries(inputRefs.current).forEach(([key, input]) => {
-      if (input) {
+      if (input && input.value) {
         queryFilterAdd({
           inputRef: { current: input },
           request: setFilterContent,
@@ -82,7 +82,7 @@ function Dropdown({ filterContent }: DropdownProps) {
       {Object.values(option).some((value) => value !== undefined) && (
         <div className="flex flex-col gap-4 p-5 pb-0">
           {Object.keys(option).map((value) => (
-            <Filter
+            <FilterItem
               key={value}
               option={option}
               selectLimitState={selectLimitState}
@@ -130,7 +130,6 @@ function Dropdown({ filterContent }: DropdownProps) {
           <button
             className="rounded-md bg-[#8B5CF6e5] px-4 py-2 text-sm font-medium text-white"
             onClick={(e) => {
-              console.log(option)
               e.preventDefault()
               handleApplyAll()
               toggleModal({ index: 1, set: setToggleModalList, toggler: false })
@@ -144,4 +143,4 @@ function Dropdown({ filterContent }: DropdownProps) {
   )
 }
 
-export default Dropdown
+export default FilterMenu

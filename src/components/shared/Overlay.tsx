@@ -1,10 +1,10 @@
 'use client'
 
-import { FilterDropdown } from '../layout/Header/filter-dropdown'
 import { FormMedia } from '../../app/_components/modals/form-media'
 import { Modal } from '../ui/Modal'
 import { useContext } from 'react'
 import { GlobalContext } from '@/providers/global'
+import FilterMenu from '../layout/header/components/FilterMenu/FilterMenu'
 
 function Overlay() {
   const context = useContext(GlobalContext)
@@ -38,7 +38,7 @@ function Overlay() {
         toggleModalList[1] && (
           <Modal.Root set={setToggleModalList} index={1}>
             <Modal.Main>
-              <FilterDropdown filterContent={filterContent} />
+              <FilterMenu filterContent={filterContent} />
             </Modal.Main>
           </Modal.Root>
         )

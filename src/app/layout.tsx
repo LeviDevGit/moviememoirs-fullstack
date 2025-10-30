@@ -3,8 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from '@/providers'
 import { Toaster } from 'react-hot-toast'
-import Header from '@/components/layout/Header'
 import Overlay from '@/components/shared/Overlay'
+import Header from '@/components/layout/header/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,7 +26,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Toaster
-            position="top-center"
+            position="bottom-center"
             reverseOrder={false}
             gutter={8}
             containerClassName=""
