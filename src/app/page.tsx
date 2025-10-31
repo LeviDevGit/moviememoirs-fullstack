@@ -42,6 +42,7 @@ export default function Home() {
     setDataFetch,
     updater,
     setLoading,
+    setDirection,
   })
 
   const directionData = {

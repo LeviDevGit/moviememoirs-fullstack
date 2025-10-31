@@ -13,7 +13,7 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     return Array.isArray(value) ? value[0] : value
   }
 
-  const counter = await prisma.movie.count({
+  const counter = await prisma.media.count({
     where: {
       name: {
         contains: getFirstOrValue(filter),

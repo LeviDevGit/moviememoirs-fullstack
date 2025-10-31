@@ -17,7 +17,7 @@ export function useRestoreFilters() {
   }
 
   useEffect(() => {
-    const { option, setOption, inputRefs } = filter
+    const { setOption, inputRefs } = filter
 
     const savedRaw = localStorage.getItem('option')
     if (!savedRaw) return
@@ -27,7 +27,7 @@ export function useRestoreFilters() {
 
     const { setFilterContent } = global
 
-    Object.entries(option).forEach(([key, value]) => {
+    Object.entries(savedObj).forEach(([key, value]) => {
       setFilterContent((prevState) => ({
         ...prevState,
         [`${key}String`]: value,
@@ -41,6 +41,7 @@ export function useRestoreFilters() {
     })
 
     Object.entries(inputRefs.current).forEach(([key, input]) => {
+      console.log(key, input, input?.value)
       if (input) {
         queryFilterAdd({
           inputRef: { current: input },

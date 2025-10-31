@@ -1,7 +1,10 @@
 'use client'
 
 import { use, useEffect, useState } from 'react'
-import dispatchDetail, { dataProps, MediaView } from '@/utils/dispatchDetail'
+import dispatchDetail, {
+  DetailResponse,
+  MediaView,
+} from '@/utils/dispatchDetail'
 import retrieveExtraSectionById from '@/lib/api/ExtraSection/retrieve'
 import Spinner from '@/components/ui/Spinner'
 import { TrashIcon } from 'lucide-react'
@@ -13,13 +16,14 @@ import EditCreatorModal from './_components/modals/EditCreatorModal'
 import EditViewModal from './_components/modals/EditViewModal'
 import DeleteConfirmModal from './_components/modals/DeleteConfirmModal'
 import MediaPoster from './_components/Aside/MediaPoster'
+import { notFound } from 'next/navigation'
 
 interface PageProps {
   params: Promise<{ id: string }>
 }
 
 function Page({ params }: PageProps) {
-  const [data, setData] = useState<dataProps>()
+  const [data, setData] = useState<DetailResponse>()
 
   const { id } = use(params)
 
@@ -30,13 +34,21 @@ function Page({ params }: PageProps) {
   const [, setExtraSectionData] = useState([])
 
   useEffect(() => {
+    if (!data || 'error' in data) return
+
     async function fetchData(id: number) {
       const result = await retrieveExtraSectionById(id)
-      setExtraSectionData(result)
+      if ('error' in result) {
+        setExtraSectionData([])
+      } else {
+        setExtraSectionData(result)
+      }
     }
 
-    if (data?.categoryId) fetchData(data.categoryId)
-  }, [data?.categoryId])
+    if (data) {
+      fetchData(data.categoryId)
+    }
+  }, [data])
 
   const [editMode, setEditMode] = useState(false)
 
@@ -51,6 +63,10 @@ function Page({ params }: PageProps) {
   const [modalView, setModalView] = useState<MediaView | undefined>(undefined)
 
   if (!data) return <Spinner />
+
+  if ('error' in data) {
+    return notFound()
+  }
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">

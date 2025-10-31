@@ -15,7 +15,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     },
   })
 
-  if (result.length === 0) {
+  if (result.length === 0 || !result) {
     return res.status(404).json({ error: 'Sem extras seções' })
   }
 

@@ -1,3 +1,5 @@
+type ExtraSectionResponse = [] | { error: string }
+
 async function retrieveExtraSectionById(id: number) {
   try {
     const response = await fetch(
@@ -8,18 +10,21 @@ async function retrieveExtraSectionById(id: number) {
       },
     )
 
-    const data = await response.json()
-
-    if (data.error) {
-      // toast.error(data.error)
-      return []
-    } else {
-      return data
+    if (!response.ok) {
+      return { error: 'Failed to fetch extra section data' }
     }
-  } catch (error) {
-    console.log(error)
 
-    return error
+    const data: ExtraSectionResponse = await response.json()
+
+    if ('error' in data) {
+      return []
+    }
+
+    return data
+  } catch (error) {
+    console.error(error)
+
+    return { error: 'Não foi possível carregar a seção extra neste momento.' }
   }
 }
 

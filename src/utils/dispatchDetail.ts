@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast'
+
 export interface MediaView {
   id: number
   date: string // formato ISO: "2025-06-13T03:00:00.000Z"
@@ -18,9 +20,11 @@ export interface dataProps {
   views: MediaView[]
 }
 
+export type DetailResponse = dataProps | { error: string }
+
 async function dispatchDetail(
   id: string,
-  setData: React.Dispatch<React.SetStateAction<dataProps | undefined>>,
+  setData: React.Dispatch<React.SetStateAction<DetailResponse | undefined>>,
 ) {
   try {
     const response = await fetch(`/api/retrieve?mediaId=${Number(id)}`, {
@@ -28,11 +32,14 @@ async function dispatchDetail(
       headers: { 'Content-Type': 'application/json' },
     })
 
-    const data = await response.json()
+    const data: DetailResponse = await response.json()
     console.log(data)
 
+    if ('error' in data) {
+      toast.error('Página não encontrada')
+    }
+
     setData(data)
-    console.log(data)
   } catch (error) {
     console.error(error)
   }

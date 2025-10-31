@@ -2,13 +2,6 @@ import { dataFetchProps } from '@/types/interfaces'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 
-// function shallowEqual<T extends Record<string, unknown>>(a: T, b: T) {
-//   const keysA = Object.keys(a)
-//   const keysB = Object.keys(b)
-//   if (keysA.length !== keysB.length) return false
-//   return keysA.every((key) => a[key] === b[key])
-// }
-
 interface useSubmitDataProps {
   direction: number
   filterContent: {
@@ -20,6 +13,7 @@ interface useSubmitDataProps {
   setDataFetch: (value: React.SetStateAction<dataFetchProps>) => void
   updater: boolean
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setDirection: React.Dispatch<React.SetStateAction<number>>
 }
 
 function useSubmitData({
@@ -28,6 +22,7 @@ function useSubmitData({
   setDataFetch,
   updater,
   setLoading,
+  setDirection,
 }: useSubmitDataProps) {
   useEffect(() => {
     const submitData = async () => {
@@ -50,7 +45,9 @@ function useSubmitData({
           filters.value = filterContent.valueString.toString()
         }
 
-        console.log(filterContent)
+        if (Object.values(filters).length > 0) {
+          setDirection(0)
+        }
 
         const searchParams = new URLSearchParams(filters)
 
@@ -61,8 +58,6 @@ function useSubmitData({
             headers: { 'Content-Type': 'application/json' },
           },
         )
-
-        // console.log(response)
 
         const data = await response.json()
         console.log(data)

@@ -7,6 +7,9 @@ import { useContext } from 'react'
 import { GlobalContext } from '@/providers/global'
 import { FilterContext } from '@/providers/filter'
 import SearchInput from './components/Search'
+import { Modal } from '@/components/ui/Modal'
+import { FormMedia } from '@/app/_components/modals/form-media'
+import FilterMenu from './components/FilterMenu/FilterMenu'
 
 function Header() {
   const context = useContext(GlobalContext)
@@ -15,7 +18,16 @@ function Header() {
     throw new Error('GlobalContext is undefined')
   }
 
-  const { toggleModalList, setToggleModalList, setFilterContent } = context
+  const {
+    toggleModalList,
+    setToggleModalList,
+    setFilterContent,
+    filterContent,
+    setUpdater,
+    updater,
+  } = context
+
+  const updaterState = { updater, setUpdater }
 
   const filter = useContext(FilterContext)
 
@@ -70,6 +82,24 @@ function Header() {
         </div>
       </nav>
       <hr className="w-full border-text-50 opacity-25" />
+      {toggleModalList[0] ? (
+        <Modal.Root set={setToggleModalList} index={0}>
+          <Modal.Main>
+            <FormMedia
+              updaterState={updaterState}
+              setToggleModal={setToggleModalList}
+            />
+          </Modal.Main>
+        </Modal.Root>
+      ) : (
+        toggleModalList[1] && (
+          <Modal.Root set={setToggleModalList} index={1}>
+            <Modal.Main>
+              <FilterMenu filterContent={filterContent} />
+            </Modal.Main>
+          </Modal.Root>
+        )
+      )}
     </header>
   )
 }
