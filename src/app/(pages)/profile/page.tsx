@@ -1,30 +1,33 @@
 'use client'
 
 import { Modal } from '@/components/ui/Modal'
-import { toggleModal } from '@/utils/toggleModal'
 import { useState } from 'react'
-import { FormCategory } from './_components/form-category'
+import CategoryPanel from './_components/CategoryPanel'
+import ModalFormCategory from './_components/modal-form-category/ModalFormCategory'
+import StatsSummary from './_components/Main/StatsSummary'
+import RecentActivityItem from './_components/Main/RecentActivityItem'
 
 export default function Page() {
   const [toggleModalProfile, setToggleModalProfile] = useState([false])
 
   return (
-    <div>
-      <h1>Página profile</h1>
-      <div>
-        <button
-          className="rounded-full bg-[#1F2937] p-2"
-          onClick={() => {
-            toggleModal({ index: 0, set: setToggleModalProfile, toggler: true })
-          }}
-        >
-          Adicionar categoria
-        </button>
+    <div className="mx-4 flex h-full justify-center">
+      <div className="flex w-[1300px] justify-between gap-8">
+        <div className="flex w-full flex-col gap-8">
+          <StatsSummary />
+          <div className="flex w-full flex-col gap-4">
+            <h1 className="text-2xl font-medium">Atividade Recente</h1>
+            <div className="flex w-full flex-col gap-4">
+              <RecentActivityItem />
+            </div>
+          </div>
+        </div>
+        <CategoryPanel setToggleModalProfile={setToggleModalProfile} />
       </div>
       {toggleModalProfile[0] && (
         <Modal.Root set={setToggleModalProfile} index={0}>
           <Modal.Main>
-            <FormCategory />
+            <ModalFormCategory />
           </Modal.Main>
         </Modal.Root>
       )}

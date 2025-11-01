@@ -5,15 +5,15 @@ import {
   handleAddSelect,
   handleChangeSelect,
   handleRemoveSelect,
-} from './FormCategory.utils'
+} from './ModalFormCategory.utils'
 import Divider from '@/components/ui/Divider'
 import Select from '@/components/ui/Select'
 import RadioGroup from '@/components/ui/RadioGroup'
-import { ProportionType } from '../../../../prisma/seed'
 import createCategory from '@/lib/api/Category/create'
 import Datalist from '@/components/ui/Datalist'
 import readCategory from '@/lib/api/Category/read'
-import { MediaType } from '../../../app/_components/modals/form-media/FormMedia'
+import { ProportionType } from '../../../../../../prisma/seed'
+import { MediaType } from '@/app/_components/modals/form-media/FormMedia'
 
 const OPTIONS = ['Sinopse', 'Tags', 'Elenco']
 
@@ -23,7 +23,7 @@ export interface CategoryBody {
   sectionName: string[]
 }
 
-function FormCategory() {
+function ModalFormCategory() {
   const [sectionOptions, setSectionOptions] = useState<string[]>([])
   const [resultCategory, setResultCategory] = useState()
 
@@ -194,4 +194,4 @@ function FormCategory() {
   )
 }
 
-export default FormCategory
+export default ModalFormCategory
