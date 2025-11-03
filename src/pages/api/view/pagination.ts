@@ -7,7 +7,7 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     return res.status(405).json({ error: 'Método não permitido' })
   }
 
-  const { page, filter } = req.query
+  const { page, filter, size, order } = req.query
 
   const pageNumber = Array.isArray(page) ? Number(page[0]) : Number(page)
 
@@ -17,17 +17,21 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
 
   const result = await prisma.view.findMany({
     orderBy: {
-      date: 'desc',
+      date: getFirstOrValue(order) === 'asc' ? 'asc' : 'desc',
     },
-    skip: (pageNumber - 1) * 6,
-    take: 6,
+    skip: (pageNumber && (pageNumber - 1) * 6) || 0,
+    take: Number(getFirstOrValue(size)) || 6,
     include: {
-      media: true,
+      media: {
+        include: {
+          category: true,
+        },
+      },
     },
     where: {
       media: {
         name: {
-          contains: getFirstOrValue(filter),
+          contains: filter ? getFirstOrValue(filter) : '',
         },
       },
     },

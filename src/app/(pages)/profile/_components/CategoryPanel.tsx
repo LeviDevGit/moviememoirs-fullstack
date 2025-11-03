@@ -30,7 +30,7 @@ function CategoryPanel({ setToggleModalProfile }: CategoryPanelProps) {
   return (
     <div className="flex h-fit w-[450px] flex-col gap-4 rounded-lg bg-card p-4">
       <h1 className="text-xl font-medium">Minhas categorias</h1>
-      <div>
+      <div className="flex flex-col gap-2">
         {categories.map((category) => (
           <div key={category.id} className="flex justify-between">
             <span>{category.name}</span>

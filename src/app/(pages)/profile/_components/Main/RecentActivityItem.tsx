@@ -1,30 +1,85 @@
+import PaginationView from '@/lib/api/View/pagination'
 import { StarIcon } from 'lucide-react'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+
+export interface Category {
+  id: number
+  name: string
+  proportion: string
+}
+
+export interface Media {
+  id: number
+  name: string
+  year: string
+  categoryId: number
+  creator: string
+  img: string
+  time: string
+  value: number
+  category: Category
+}
+
+export interface ActivityItem {
+  id: number
+  date: string
+  commentary: string
+  mediaId: number
+  rating: number
+  media: Media
+}
 
 function RecentActivityItem() {
+  const [paginationData, setPaginationData] = useState<ActivityItem[] | null>(
+    null,
+  )
+
+  useEffect(() => {
+    function fetchData() {
+      PaginationView({ size: 3, order: 'desc' }).then((data) => {
+        setPaginationData(data)
+      })
+    }
+    fetchData()
+  }, [])
+
   return (
-    <div className="flex items-center gap-4 rounded-lg bg-card p-4">
-      <img
-        src="https://image.tmdb.org/t/p/original/8LJJjLjAzAwXS40S5mx79PJ2jSs.jpg"
-        className="h-[200px] rounded-lg bg-contain bg-center"
-      />
-      <div className="flex flex-col gap-3">
-        <h2 className="text-xl font-medium">Duna: Parte 2</h2>
-        <span className="text-[#9CA3AF]">Filme</span>
-        <div className="flex gap-2">
-          <StarIcon color="#facc15" />
-          <span className="text-yellow-400">4.5/5</span>
-        </div>
-        <span className="text-[#9CA3AF]">25 de Maio, 2024</span>
-        <p className="line-clamp-2 max-w-[800px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
+    <div className="flex flex-col gap-4">
+      {paginationData ? (
+        paginationData.map((item) => (
+          <div
+            className="flex items-center gap-4 rounded-lg bg-card p-4"
+            key={item.id}
+          >
+            <Image
+              src={item.media.img}
+              alt={item.media.name}
+              width={140}
+              height={200}
+              className="rounded-lg bg-contain bg-center"
+            />
+            <div className="flex flex-col gap-3">
+              <h2 className="text-xl font-medium">{item.media.name}</h2>
+              <span className="text-[#9CA3AF]">{item.media.category.name}</span>
+              <div className="flex gap-2">
+                <StarIcon color="#facc15" />
+                <span className="text-yellow-400">{item.rating}/5</span>
+              </div>
+              <span className="text-[#9CA3AF]">
+                {new Date(item.date).toLocaleDateString('pt-BR', {
+                  day: 'numeric',
+                  month: 'short',
+                  year: 'numeric',
+                })}
+              </span>
+              <p className="line-clamp-2 max-w-[800px]">{item.commentary}</p>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   )
 }
