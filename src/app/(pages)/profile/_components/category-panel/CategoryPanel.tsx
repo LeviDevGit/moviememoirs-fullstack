@@ -1,41 +1,35 @@
-import readCategory from '@/lib/api/Category/read'
-import counterPerCategoryId from '@/lib/api/View/counterPerCategoryId'
 import { toggleModal } from '@/utils/toggleModal'
 import { PlusIcon } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import CategoryListItem from './CategoryListItem'
+import { CategoryAndCountType, useCategoryPanel } from './CategoryPanel.hook'
 
 interface CategoryPanelProps {
   setToggleModalProfile: React.Dispatch<React.SetStateAction<boolean[]>>
+  setSelectedCategory: React.Dispatch<
+    React.SetStateAction<CategoryAndCountType | null>
+  >
 }
 
-interface MediaType {
-  id: number
-  name: string
-  proportion: 'RECTANGLE' | 'SQUARE'
-  count?: number
-}
+function CategoryPanel({
+  setToggleModalProfile,
+  setSelectedCategory,
+}: CategoryPanelProps) {
+  const [categories, setCategories] = useState<CategoryAndCountType[]>([])
 
-function CategoryPanel({ setToggleModalProfile }: CategoryPanelProps) {
-  const [categories, setCategories] = useState<MediaType[]>([])
-
-  useEffect(() => {
-    async function handleReadCategory() {
-      const fetched = await readCategory()
-      setCategories(fetched)
-      await counterPerCategoryId(fetched, setCategories)
-    }
-    handleReadCategory()
-  }, [])
+  useCategoryPanel({ setCategories })
 
   return (
     <div className="flex h-fit w-[450px] flex-col gap-4 rounded-lg bg-card p-4">
       <h1 className="text-xl font-medium">Minhas categorias</h1>
       <div className="flex flex-col gap-2">
         {categories.map((category) => (
-          <div key={category.id} className="flex justify-between">
-            <span>{category.name}</span>
-            <span className="rounded-xl bg-black px-2">{category.count}</span>
-          </div>
+          <CategoryListItem
+            key={category.id}
+            category={category}
+            setToggleModalProfile={setToggleModalProfile}
+            setSelectedCategory={setSelectedCategory}
+          />
         ))}
       </div>
       <button

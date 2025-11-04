@@ -1,7 +1,7 @@
 import Card from './Card'
 import Directional from './Directional'
 import { dataFetchProps } from '@/types/interfaces'
-import { handleDirectionChange } from './carousel.utils'
+import { handleDirectionChange } from './carousel.util'
 import Spinner from '@/components/ui/Spinner'
 
 interface CarouselProps {

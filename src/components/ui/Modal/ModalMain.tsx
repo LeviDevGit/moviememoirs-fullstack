@@ -5,7 +5,7 @@ interface ModalMainProps {
 }
 
 function ModalMain({ children }: ModalMainProps) {
-  return <div>{children}</div>
+  return <div className="w-full">{children}</div>
 }
 
 export default ModalMain
