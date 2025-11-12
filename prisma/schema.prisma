@@ -43,8 +43,8 @@ model Media {
   value      Float?    // Avaliação (ex.: 8.5)
   img        String    // URL ou caminho da imagem
   views      View[]    // Relacionamento com as visualizações
-  category   Category  @relation(fields: [categoryId], references: [id])
-  categoryId Int
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  categoryId Int?
 }
 
 model View {

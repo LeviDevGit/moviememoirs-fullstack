@@ -28,7 +28,7 @@ function FormCategoryCreate() {
   const [resultCategory, setResultCategory] = useState()
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    console.log('teste')
+    console.log('8999')
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
 
@@ -42,12 +42,16 @@ function FormCategoryCreate() {
       return value
     })
 
+    console.log('8992', name, proportion)
+
     if (name && proportion) {
       const categoryBody: CategoryBody = {
         name,
         proportion,
         sectionName: sectionNameList,
       }
+
+      console.log(categoryBody)
       const result = await createCategory(categoryBody)
       setResultCategory(result)
       console.log(result)
@@ -88,7 +92,7 @@ function FormCategoryCreate() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Datalist
           placeholder="Inserir nome"
-          name="categoryType"
+          name="categoryName"
           text="Nome categoria"
           options={categories}
           onChange={(e) => setInputValue(e.target.value)}

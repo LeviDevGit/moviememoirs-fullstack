@@ -1,7 +1,7 @@
 import { CardProps } from '@/types/interfaces'
 import Image from 'next/image'
 import Link from 'next/link'
-import renderStars from './render-star'
+import renderStars from './RenderStar'
 
 function Card({ source }: CardProps) {
   return (

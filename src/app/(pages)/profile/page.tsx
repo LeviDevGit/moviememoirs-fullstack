@@ -46,7 +46,10 @@ export default function Page() {
             className="w-full max-w-lg"
           >
             <Modal.Main>
-              <FormCategoryEdit category={selectedCategory} />
+              <FormCategoryEdit
+                category={selectedCategory}
+                setToggleModalProfile={setToggleModalProfile}
+              />
             </Modal.Main>
           </Modal.Root>
         )

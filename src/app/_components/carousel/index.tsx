@@ -1,19 +1,44 @@
+'use client'
+
 import Card from './Card'
 import Directional from './Directional'
 import { dataFetchProps } from '@/types/interfaces'
 import { handleDirectionChange } from './carousel.util'
 import Spinner from '@/components/ui/Spinner'
+import { useContext, useState } from 'react'
+import useSubmitData from '@/hooks/useSubmitData'
+import { GlobalContext } from '@/providers/global'
+import { useRestoreFilters } from '@/hooks/useRestoreFIlters'
 
-interface CarouselProps {
-  directionData: {
-    direction: number
-    dataFetch: dataFetchProps
-    setDirection: React.Dispatch<React.SetStateAction<number>>
+function Carousel() {
+  const [dataFetch, setDataFetch] = useState<dataFetchProps>({
+    items: [],
+    totalItems: 0,
+  })
+
+  useRestoreFilters()
+
+  const [direction, setDirection] = useState(0)
+
+  const context = useContext(GlobalContext)
+
+  if (!context) {
+    throw new Error('GlobalContext is undefined')
   }
-  loading: boolean
-}
 
-function Carousel({ directionData, loading }: CarouselProps) {
+  const { updater, filterContent } = context
+
+  const [loading, setLoading] = useState(false)
+
+  useSubmitData({
+    direction,
+    filterContent,
+    setDataFetch,
+    updater,
+    setLoading,
+    setDirection,
+  })
+
   return (
     <div className="relative flex w-full flex-col overflow-x-hidden">
       <div className="relative h-full w-full">
@@ -21,7 +46,7 @@ function Carousel({ directionData, loading }: CarouselProps) {
         <div className="flex h-[550px] w-full items-center justify-center from-background to-transparent">
           {!loading ? (
             <div className="-ml-48 flex items-start justify-start gap-x-6 overflow-x-hidden">
-              {directionData.dataFetch.items.map((element, index) => (
+              {dataFetch.items.map((element, index) => (
                 <Card source={element} key={`${index}`} />
               ))}
             </div>
@@ -36,24 +61,24 @@ function Carousel({ directionData, loading }: CarouselProps) {
           onClick={() =>
             handleDirectionChange(
               -1,
-              directionData.direction,
-              directionData.dataFetch.totalItems,
-              directionData.setDirection,
+              direction,
+              dataFetch.totalItems,
+              setDirection,
             )
           }
-          dataLength={directionData.dataFetch.totalItems}
+          dataLength={dataFetch.totalItems}
         />
         <Directional
           left={false}
           onClick={() =>
             handleDirectionChange(
               1,
-              directionData.direction,
-              directionData.dataFetch.totalItems,
-              directionData.setDirection,
+              direction,
+              dataFetch.totalItems,
+              setDirection,
             )
           }
-          dataLength={directionData.dataFetch.totalItems}
+          dataLength={dataFetch.totalItems}
         />
       </div>
     </div>

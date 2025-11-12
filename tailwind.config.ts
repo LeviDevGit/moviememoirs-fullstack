@@ -40,6 +40,35 @@ export default {
           'rgba(0, 0, 0, 0.35) 0px 1px 5px, rgba(0, 0, 0, 0.8) 0px 3px 10px',
         imageShadow: '0 0 0 1px rgba(221, 238, 255, 0.35);',
       },
+      keyframes: {
+        blowUpModal: {
+          '0%': { transform: 'scale(0)' },
+          '100%': { transform: 'scale(1)' },
+        },
+        blowUpModalOut: {
+          '0%': { transform: 'scale(1)', opacity: '1' },
+          '100%': { transform: 'scale(0)', opacity: '0' },
+        },
+        blowUpContent: {
+          '0%': { transform: 'scale(1)', opacity: '1' },
+          '99.9%': { transform: 'scale(2)', opacity: '0' },
+          '100%': { transform: 'scale(0)' },
+        },
+        blowUpContentOut: {
+          '0%': { transform: 'scale(2)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+      },
+      animation: {
+        blowUpModal:
+          'blowUpModal 0.5s cubic-bezier(0.165,0.84,0.44,1) forwards',
+        blowUpModalOut:
+          'blowUpModalOut 0.5s cubic-bezier(0.165,0.84,0.44,1) forwards',
+        blowUpContent:
+          'blowUpContent 0.5s cubic-bezier(0.165,0.84,0.44,1) forwards',
+        blowUpContentOut:
+          'blowUpContentOut 0.5s cubic-bezier(0.165,0.84,0.44,1) forwards',
+      },
     },
   },
   plugins: [forms],
