@@ -52,7 +52,7 @@ function useSubmitData({
         const searchParams = new URLSearchParams(filters)
 
         const response = await fetch(
-          `api/read?start=${direction}${searchParams.size > 0 ? `&${searchParams}` : ''}`,
+          `api/view/read?start=${direction}${searchParams.size > 0 ? `&${searchParams}` : ''}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },

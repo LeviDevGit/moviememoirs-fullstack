@@ -1,18 +1,17 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { withPrismaError } from '@/lib/errorHandler'
 import prisma from '@/lib/prisma'
-import { NextApiRequest, NextApiResponse } from 'next'
 import fs from 'fs/promises'
 import path from 'path'
-import { withPrismaError } from '@/lib/errorHandler'
 
-async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { id } = req.query
+export const runtime = 'nodejs'
 
-  if (req.method !== 'DELETE') {
-    return res.status(405).json({ error: 'Method not allowed' })
-  }
+export const DELETE = withPrismaError(async (req: NextRequest) => {
+  const { searchParams } = new URL(req.url)
+  const id = searchParams.get('id')
 
-  if (!id || Array.isArray(id)) {
-    return res.status(400).json({ error: 'Invalid id' })
+  if (!id) {
+    return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
   }
 
   const media = await prisma.media.findUnique({
@@ -23,7 +22,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   })
 
   if (!media) {
-    return res.status(404).json({ error: 'Media not found' })
+    return NextResponse.json({ error: 'Media not found' }, { status: 404 })
   }
 
   const absolutePath = path.join(process.cwd(), 'public', media.img)
@@ -43,7 +42,5 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     },
   })
 
-  res.status(200).json({ message: 'Mídia deletada com sucesso' })
-}
-
-export default withPrismaError(handler)
+  return NextResponse.json({ message: 'Mídia deletada com sucesso' })
+})

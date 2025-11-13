@@ -1,6 +1,6 @@
 async function getAverageRating() {
   try {
-    const response = await fetch('/api/average', {
+    const response = await fetch('/api/view/average', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })

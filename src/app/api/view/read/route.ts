@@ -1,30 +1,28 @@
 import { withPrismaError } from '@/lib/errorHandler'
 import prisma from '@/lib/prisma'
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from 'next/server'
 
-// GET /api/read
-async function handle(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Método não permitido' })
-  }
-
-  const { start } = req.query
+export const GET = withPrismaError(async (req: NextRequest) => {
+  const { searchParams } = new URL(req.url)
+  const start = Number(searchParams.get('start')) || 0
 
   const TAKE_LIMIT = 10
 
   const whereCondition = {
     media: {
       name: {
-        contains: req.query.name ? req.query.name.toString() : '',
+        contains: searchParams.get('name') || '',
       },
-      creator: req.query.director
-        ? { contains: req.query.director as string }
+      creator: searchParams.get('director')
+        ? { contains: searchParams.get('director') as string }
         : undefined,
       year:
-        req.query.year && req.query.year !== ''
-          ? req.query.year.toString()
+        searchParams.get('year') && searchParams.get('year') !== ''
+          ? (searchParams.get('year') as string)
           : undefined,
-      value: req.query.value ? Number(req.query.value) : undefined,
+      value: searchParams.get('value')
+        ? Number(searchParams.get('value'))
+        : undefined,
     },
   }
 
@@ -72,7 +70,5 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     items = [...items, ...extraItems]
   }
 
-  return res.json({ items, totalItems })
-}
-
-export default withPrismaError(handle)
+  return NextResponse.json({ items, totalItems })
+})

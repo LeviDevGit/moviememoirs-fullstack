@@ -7,7 +7,7 @@ async function deleteMediaById(mediaId: string): Promise<DeleteResponse> {
   try {
     console.log(mediaId)
 
-    const response = await fetch(`/api/delete?id=${mediaId}`, {
+    const response = await fetch(`/api/media/delete?id=${mediaId}`, {
       method: 'DELETE',
     })
 

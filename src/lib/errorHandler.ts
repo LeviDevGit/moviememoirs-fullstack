@@ -1,35 +1,48 @@
 import { Prisma } from '@prisma/client'
-import type { NextApiHandler } from 'next'
+import { NextRequest, NextResponse } from 'next/server'
 
-export function withPrismaError(handler: NextApiHandler): NextApiHandler {
-  return async (req, res) => {
+type RouteHandler = (req: NextRequest) => Promise<NextResponse>
+
+export function withPrismaError(handler: RouteHandler): RouteHandler {
+  return async (req: NextRequest): Promise<NextResponse> => {
     try {
-      return await handler(req, res)
+      return await handler(req)
     } catch (error) {
       console.error('Erro capturado:', error)
 
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
-        return res.status(400).json({ error: handlePrismaKnownError(error) })
+        return NextResponse.json(
+          { error: handlePrismaKnownError(error) },
+          { status: 400 },
+        )
       }
 
       if (error instanceof Prisma.PrismaClientValidationError) {
-        return res.status(422).json({ error: 'Dados inválidos enviados.' })
+        return NextResponse.json(
+          { error: 'Dados inválidos enviados.' },
+          { status: 422 },
+        )
       }
 
       if (error instanceof Prisma.PrismaClientInitializationError) {
-        return res
-          .status(503)
-          .json({ error: 'Erro ao inicializar o banco de dados.' })
+        return NextResponse.json(
+          { error: 'Erro ao inicializar o banco de dados.' },
+          { status: 503 },
+        )
       }
 
       if (error instanceof Prisma.PrismaClientRustPanicError) {
-        return res.status(500).json({ error: 'Falha interna do Prisma.' })
+        return NextResponse.json(
+          { error: 'Falha interna do Prisma.' },
+          { status: 500 },
+        )
       }
-
-      return res
-        .status(500)
-        .json({ error: 'Ocorreu um erro interno no servidor.' })
     }
+
+    return NextResponse.json(
+      { error: 'Ocorreu um erro interno no servidor.' },
+      { status: 500 },
+    )
   }
 }
 

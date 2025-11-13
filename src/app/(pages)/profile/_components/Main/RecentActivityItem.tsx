@@ -45,19 +45,20 @@ function RecentActivityItem() {
   }, [])
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="mb-5 flex flex-col gap-4">
       {paginationData ? (
         paginationData.map((item) => (
           <div
-            className="flex items-center gap-4 rounded-lg bg-card p-4"
+            className="flex flex-shrink-0 items-center gap-4 rounded-lg bg-card p-4"
             key={item.id}
           >
             <Image
               src={item.media.img}
               alt={item.media.name}
-              width={140}
-              height={200}
-              className="rounded-lg bg-contain bg-center"
+              width={120}
+              height={210}
+              className="h-auto w-auto rounded-lg bg-contain bg-center"
+              priority
             />
             <div className="flex flex-col gap-3">
               <h2 className="text-xl font-medium">{item.media.name}</h2>

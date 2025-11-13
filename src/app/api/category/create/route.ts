@@ -1,17 +1,11 @@
 import { withPrismaError } from '@/lib/errorHandler'
-import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '@/lib/prisma'
-import { SectionType } from '../../../../prisma/seed'
+import { SectionType } from '../../../../../prisma/seed'
 import { CategoryBody } from '@/app/(pages)/profile/_components/modals/form-category-create/FormCategoryCreate'
+import { NextRequest, NextResponse } from 'next/server'
 
-async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const body = req.body as CategoryBody
-
-  res.setHeader('Allow', ['POST'])
-
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method não permitido' })
-  }
+export const POST = withPrismaError(async (req: NextRequest) => {
+  const body = (await req.json()) as CategoryBody
 
   const result = await prisma.category.create({
     data: {
@@ -47,9 +41,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         },
       })
     }
-
-    res.status(200).json(result)
   }
-}
-
-export default withPrismaError(handler)
+  return NextResponse.json(result)
+})

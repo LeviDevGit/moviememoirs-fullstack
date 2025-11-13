@@ -10,15 +10,15 @@ interface FavoriteCategory {
   totalViews: number
 }
 
-interface FavoriteCategoryResponse {
-  favoriteCategory: FavoriteCategory
-}
+// interface FavoriteCategoryResponse {
+//   favoriteCategory: FavoriteCategory
+// }
 
 function StatsSummary() {
   const [totalEntries, setTotalEntries] = useState(0)
   const [averageRating, setAverageRating] = useState(0)
   const [favoriteCategory, setFavoriteCategory] =
-    useState<FavoriteCategoryResponse | null>(null)
+    useState<FavoriteCategory | null>(null)
 
   useEffect(() => {
     function loadStats() {
@@ -29,7 +29,7 @@ function StatsSummary() {
         setAverageRating(average as number)
       })
       getFavoriteName().then((favorite) => {
-        setFavoriteCategory(favorite as FavoriteCategoryResponse)
+        setFavoriteCategory(favorite as FavoriteCategory)
       })
     }
 
@@ -54,7 +54,7 @@ function StatsSummary() {
         <div className="flex w-[250px] flex-col gap-2 rounded-lg bg-card p-4">
           <h2 className="text-lg text-[#9CA3AF]">Categoria Favorita</h2>
           <span className="text-2xl font-semibold">
-            {favoriteCategory?.favoriteCategory.name}
+            {favoriteCategory?.name || 'N/A'}
           </span>
         </div>
       </div>

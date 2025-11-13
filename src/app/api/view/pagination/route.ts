@@ -1,13 +1,11 @@
 import { withPrismaError } from '@/lib/errorHandler'
 import prisma from '@/lib/prisma'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextResponse } from 'next/server'
 
-async function handle(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Método não permitido' })
-  }
+export const GET = withPrismaError(async (req: Request) => {
+  const { searchParams } = new URL(req.url)
 
-  const { page, filter, size, order } = req.query
+  const page = searchParams.get('page')
 
   const pageNumber = Array.isArray(page) ? Number(page[0]) : Number(page)
 
@@ -17,10 +15,13 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
 
   const result = await prisma.view.findMany({
     orderBy: {
-      date: getFirstOrValue(order) === 'asc' ? 'asc' : 'desc',
+      date:
+        getFirstOrValue(searchParams.get('order') || '') === 'asc'
+          ? 'asc'
+          : 'desc',
     },
     skip: (pageNumber && (pageNumber - 1) * 6) || 0,
-    take: Number(getFirstOrValue(size)) || 6,
+    take: Number(getFirstOrValue(searchParams.get('size') || '')) || 6,
     include: {
       media: {
         include: {
@@ -31,14 +32,14 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     where: {
       media: {
         name: {
-          contains: filter ? getFirstOrValue(filter) : '',
+          contains: searchParams.get('filter')
+            ? getFirstOrValue(searchParams.get('filter') || '')
+            : '',
         },
       },
     },
     distinct: ['mediaId'],
   })
 
-  return res.json(result)
-}
-
-export default withPrismaError(handle)
+  return NextResponse.json(result)
+})

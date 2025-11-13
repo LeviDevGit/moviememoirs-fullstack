@@ -23,7 +23,7 @@ async function dispatchMediaCreate({
     const formData = new FormData(e.currentTarget)
     console.log(formData)
 
-    const response = await fetch('/api/create', {
+    const response = await fetch('/api/media/create', {
       method: 'POST',
       body: formData,
     })

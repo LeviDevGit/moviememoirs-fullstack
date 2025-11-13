@@ -1,6 +1,6 @@
 async function getFavoriteName() {
   try {
-    const response = await fetch('/api/favorite', {
+    const response = await fetch('/api/category/favorite', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })

@@ -1,12 +1,8 @@
 import { withPrismaError } from '@/lib/errorHandler'
 import prisma from '@/lib/prisma'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextResponse } from 'next/server'
 
-async function handle(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Método não permitido' })
-  }
-
+export const GET = withPrismaError(async () => {
   const rows = await prisma.$queryRaw<
     { id: number; name: string; total_views: bigint }[]
   >`
@@ -32,7 +28,5 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
       }
     : null
 
-  return res.status(200).json({ favoriteCategory })
-}
-
-export default withPrismaError(handle)
+  return NextResponse.json(favoriteCategory)
+})

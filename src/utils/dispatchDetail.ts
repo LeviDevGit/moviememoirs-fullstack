@@ -27,7 +27,7 @@ async function dispatchDetail(
   setData: React.Dispatch<React.SetStateAction<DetailResponse | undefined>>,
 ) {
   try {
-    const response = await fetch(`/api/retrieve?mediaId=${Number(id)}`, {
+    const response = await fetch(`/api/media/retrieve?mediaId=${Number(id)}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
