@@ -1,17 +1,13 @@
-import { withPrismaError } from '@/lib/errorHandler'
 import prisma from '@/lib/prisma'
 import updateRating from '@/lib/updateRating'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from 'next/server'
 
-async function handle(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'PATCH') {
-    return res.status(405).json({ error: 'Method not allowed' })
-  }
+export const PATCH = async (req: NextRequest) => {
+  const { searchParams } = new URL(req.url)
+  const viewId = searchParams.get('viewId')
 
-  const { viewId } = req.query
-
-  if (viewId === undefined || Array.isArray(viewId)) {
-    return res.status(400).json({ error: 'Invalid viewId' })
+  if (!viewId) {
+    return NextResponse.json({ error: 'Invalid viewId' }, { status: 400 })
   }
 
   const body = req.body as {
@@ -40,6 +36,5 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
 
   updateRating(updatedView.mediaId)
 
-  return res.json(updatedView)
+  return NextResponse.json(updatedView)
 }
-export default withPrismaError(handle)

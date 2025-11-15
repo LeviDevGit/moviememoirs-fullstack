@@ -15,9 +15,8 @@ A ideia é que o projeto seja uma forma prática e íntima de organizar e revisa
 - TailwindCSS
 
 ### 🔹 **Backend**
-- Prsima
+- Prisma
 - SQLite
-- Formidable
 
 ---
 

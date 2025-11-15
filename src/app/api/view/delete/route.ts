@@ -1,14 +1,15 @@
+import { NextRequest, NextResponse } from 'next/server'
 import { withPrismaError } from '@/lib/errorHandler'
-import prisma from '@/lib/prisma'
 import updateRating from '@/lib/updateRating'
-import { NextApiRequest, NextApiResponse } from 'next'
+import prisma from '@/lib/prisma'
 
-async function handle(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'DELETE') {
-    return res.status(405).json({ error: 'Método não permitido' })
+export const DELETE = withPrismaError(async (req: NextRequest) => {
+  const { searchParams } = new URL(req.url)
+  const viewId = searchParams.get('viewId')
+
+  if (!viewId) {
+    return NextResponse.json({ error: 'viewId é obrigatório' }, { status: 400 })
   }
-
-  const { viewId } = req.query
 
   const result = await prisma.view.delete({
     where: {
@@ -33,7 +34,5 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  return res.json(result)
-}
-
-export default withPrismaError(handle)
+  return NextResponse.json(result)
+})
