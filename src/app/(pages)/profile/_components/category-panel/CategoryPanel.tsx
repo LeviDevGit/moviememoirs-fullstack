@@ -1,20 +1,13 @@
-import { toggleModal } from '@/utils/toggleModal'
+'use client'
+
 import { PlusIcon } from 'lucide-react'
 import { useState } from 'react'
 import CategoryListItem from './CategoryListItem'
 import { CategoryAndCountType, useCategoryPanel } from './CategoryPanel.hook'
+import { Modal } from '@/components/ui/Modal'
+import { FormCategoryCreate } from '../modals/form-category-create'
 
-interface CategoryPanelProps {
-  setToggleModalProfile: React.Dispatch<React.SetStateAction<boolean[]>>
-  setSelectedCategory: React.Dispatch<
-    React.SetStateAction<CategoryAndCountType | null>
-  >
-}
-
-function CategoryPanel({
-  setToggleModalProfile,
-  setSelectedCategory,
-}: CategoryPanelProps) {
+function CategoryPanel() {
   const [categories, setCategories] = useState<CategoryAndCountType[]>([])
 
   useCategoryPanel({ setCategories })
@@ -24,27 +17,23 @@ function CategoryPanel({
       <h1 className="text-xl font-medium">Minhas categorias</h1>
       <div className="flex flex-col gap-2">
         {categories.map((category) => (
-          <CategoryListItem
-            key={category.id}
-            category={category}
-            setToggleModalProfile={setToggleModalProfile}
-            setSelectedCategory={setSelectedCategory}
-          />
+          <CategoryListItem key={category.id} category={category} />
         ))}
       </div>
-      <button
-        className="flex items-center justify-center gap-2 rounded-full bg-black p-2"
-        onClick={() => {
-          toggleModal({
-            index: 0,
-            set: setToggleModalProfile,
-            toggler: true,
-          })
-        }}
-      >
-        <PlusIcon />
-        <span>Adicionar categoria</span>
-      </button>
+      <Modal.Root>
+        <Modal.Trigger asChild>
+          <button className="flex items-center justify-center gap-2 rounded-full bg-black p-2">
+            <PlusIcon />
+            <span>Adicionar categoria</span>
+          </button>
+        </Modal.Trigger>
+        <Modal.Content>
+          <FormCategoryCreate />
+          <Modal.Close>
+            <span>Fechar</span>
+          </Modal.Close>
+        </Modal.Content>
+      </Modal.Root>
     </div>
   )
 }

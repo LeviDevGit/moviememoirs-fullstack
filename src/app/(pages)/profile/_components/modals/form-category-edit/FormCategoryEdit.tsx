@@ -2,16 +2,15 @@ import Input from '@/components/ui/Input'
 import { CategoryAndCountType } from '../../category-panel/CategoryPanel.hook'
 import updateCategory from '@/lib/api/Category/update'
 import deleteCategoryById from '@/lib/api/Category/delete'
+import { useModal } from '@/components/ui/Modal/ModalRoot'
 
 interface FormCategoryEditProps {
   category: CategoryAndCountType | null
-  setToggleModalProfile: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
-function FormCategoryEdit({
-  category,
-  setToggleModalProfile,
-}: FormCategoryEditProps) {
+function FormCategoryEdit({ category }: FormCategoryEditProps) {
+  const { setOpen } = useModal()
+
   return (
     <div className="flex flex-col gap-4 rounded-lg bg-background p-5">
       <div className="text-xl font-medium">Editar Categoria</div>
@@ -20,7 +19,7 @@ function FormCategoryEdit({
           id="form-category-edit"
           onSubmit={(e) => {
             if (category) updateCategory(e, category.id)
-            setToggleModalProfile([false, false])
+            setOpen(false)
           }}
           autoComplete="off"
         >
@@ -33,7 +32,7 @@ function FormCategoryEdit({
           className="rounded bg-red-500 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-red-500"
           onClick={() => {
             if (category) deleteCategoryById(category.id)
-            setToggleModalProfile([false, false])
+            setOpen(false)
           }}
         >
           Deletar

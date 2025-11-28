@@ -41,20 +41,11 @@ export default {
         imageShadow: '0 0 0 1px rgba(221, 238, 255, 0.35);',
       },
       keyframes: {
-        blowUpModal: {
+        blowUpContent: {
           '0%': { transform: 'scale(0)' },
           '100%': { transform: 'scale(1)' },
         },
-        blowUpModalOut: {
-          '0%': { transform: 'scale(1)', opacity: '1' },
-          '100%': { transform: 'scale(0)', opacity: '0' },
-        },
-        blowUpContent: {
-          '0%': { transform: 'scale(1)', opacity: '1' },
-          '99.9%': { transform: 'scale(2)', opacity: '0' },
-          '100%': { transform: 'scale(0)' },
-        },
-        blowUpContentOut: {
+        blowUpModal: {
           '0%': { transform: 'scale(2)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },

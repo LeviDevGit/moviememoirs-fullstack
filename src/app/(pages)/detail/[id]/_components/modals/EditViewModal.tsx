@@ -52,25 +52,25 @@ function EditViewModal({ setToggleModal, modalView }: EditViewModalProps) {
             <Rater defaultValue={modalView?.rating} />
           </form>
         </div>
+        <Modal.Footer>
+          <div className="ml-auto flex gap-2">
+            <button
+              type="button"
+              className="rounded bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+              onClick={() => setToggleModal([false])}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              form="edit-commentary-form"
+              className="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+            >
+              Salvar
+            </button>
+          </div>
+        </Modal.Footer>
       </Modal.Main>
-      <Modal.Footer>
-        <div className="ml-auto flex gap-2">
-          <button
-            type="button"
-            className="rounded bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
-            onClick={() => setToggleModal([false])}
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            form="edit-commentary-form"
-            className="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
-          >
-            Salvar
-          </button>
-        </div>
-      </Modal.Footer>
     </Modal.Root>
   )
 }

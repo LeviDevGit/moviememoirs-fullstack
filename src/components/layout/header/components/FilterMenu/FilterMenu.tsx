@@ -7,10 +7,10 @@ import {
   UserRoundIcon,
 } from 'lucide-react'
 import { queryFilterAdd, queryFilterClear } from '@/utils/queryFilter'
-import { toggleModal } from '@/utils/toggleModal'
 import { GlobalContext } from '@/providers/global'
 import { FilterContext } from '@/providers/filter'
 import FilterItem from './FilterItem'
+import { useModal } from '@/components/ui/Modal/ModalRoot'
 
 interface FilterMenuProps {
   filterContent: FilterContent
@@ -29,7 +29,9 @@ function FilterMenu({ filterContent }: FilterMenuProps) {
     throw new Error('GlobalContext is undefined')
   }
 
-  const { setToggleModalList, setFilterContent } = global
+  const { setFilterContent } = global
+
+  const { setOpen } = useModal()
 
   const filter = useContext(FilterContext)
 
@@ -132,7 +134,7 @@ function FilterMenu({ filterContent }: FilterMenuProps) {
             onClick={(e) => {
               e.preventDefault()
               handleApplyAll()
-              toggleModal({ index: 1, set: setToggleModalList, toggler: false })
+              setOpen(false)
             }}
           >
             Aplicar

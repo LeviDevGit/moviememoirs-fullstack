@@ -1,3 +1,5 @@
+'use client'
+
 import PaginationView from '@/lib/api/View/pagination'
 import { StarIcon } from 'lucide-react'
 import Image from 'next/image'

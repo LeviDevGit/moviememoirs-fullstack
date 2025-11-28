@@ -6,13 +6,13 @@ import dispatchMediaCreate from '@/utils/dispatchMediaCreate'
 import { useEffect, useState } from 'react'
 import readCategory from '@/lib/api/Category/read'
 import PosterDropzone from '@/components/shared/PosterDropzone'
+import { useModal } from '@/components/ui/Modal/ModalRoot'
 
 interface FormMediaProps {
   updaterState: {
     updater: boolean
     setUpdater: React.Dispatch<React.SetStateAction<boolean>>
   }
-  setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
 export interface MediaType {
@@ -21,7 +21,7 @@ export interface MediaType {
   proportion: 'RECTANGLE' | 'SQUARE'
 }
 
-function FormMedia({ updaterState, setToggleModal }: FormMediaProps) {
+function FormMedia({ updaterState }: FormMediaProps) {
   const [categories, setCategories] = useState<MediaType[]>()
 
   useEffect(() => {
@@ -30,6 +30,8 @@ function FormMedia({ updaterState, setToggleModal }: FormMediaProps) {
     }
     handleReadCategory()
   }, [])
+
+  const { setOpen } = useModal()
 
   return (
     <div className="page-specific w-[800px] rounded-lg bg-background p-5">
@@ -43,9 +45,7 @@ function FormMedia({ updaterState, setToggleModal }: FormMediaProps) {
       </div>
       <form
         className="flex w-full justify-between gap-10"
-        onSubmit={(e) =>
-          dispatchMediaCreate({ e, updaterState, setToggleModal })
-        }
+        onSubmit={(e) => dispatchMediaCreate({ e, updaterState, setOpen })}
         autoComplete="off"
       >
         <div className="flex flex-col items-center gap-4">

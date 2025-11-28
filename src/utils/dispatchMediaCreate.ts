@@ -1,5 +1,4 @@
 import toast from 'react-hot-toast'
-import { toggleModal } from './toggleModal'
 
 interface updaterStateProps {
   updater: boolean
@@ -9,13 +8,13 @@ interface updaterStateProps {
 interface dispatchMediaCreateProps {
   e: React.FormEvent<HTMLFormElement>
   updaterState: updaterStateProps
-  setToggleModal: React.Dispatch<React.SetStateAction<boolean[]>>
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 async function dispatchMediaCreate({
   e,
   updaterState,
-  setToggleModal,
+  setOpen,
 }: dispatchMediaCreateProps) {
   e.preventDefault()
 
@@ -34,7 +33,7 @@ async function dispatchMediaCreate({
 
     toast.success('Mídia criada com sucesso!')
 
-    toggleModal({ index: 0, set: setToggleModal, toggler: false })
+    setOpen(false)
     if (!data || data.error) {
       return toast.error('Erro dentro da requisição')
     }

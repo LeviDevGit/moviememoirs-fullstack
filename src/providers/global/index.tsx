@@ -2,8 +2,6 @@ import { FilterContent } from '@/app/page'
 import { createContext, ReactNode, useState } from 'react'
 
 interface GlobalContextProps {
-  toggleModalList: boolean[]
-  setToggleModalList: React.Dispatch<React.SetStateAction<boolean[]>>
   updater: boolean
   setUpdater: React.Dispatch<React.SetStateAction<boolean>>
   filterContent: FilterContent
@@ -26,9 +24,6 @@ const initialFilterContent: FilterContent = {
 }
 
 export function GlobalProvider({ children }: GlobalProviderProps) {
-  // 0: FormMedia, 1: Filter,
-  const [toggleModalList, setToggleModalList] = useState([false, false])
-
   // State updater
   const [updater, setUpdater] = useState<boolean>(false)
 
@@ -38,8 +33,6 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
   return (
     <GlobalContext.Provider
       value={{
-        toggleModalList,
-        setToggleModalList,
         updater,
         setUpdater,
         filterContent,

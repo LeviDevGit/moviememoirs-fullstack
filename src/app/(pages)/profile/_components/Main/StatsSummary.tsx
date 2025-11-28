@@ -1,3 +1,5 @@
+'use client'
+
 import getFavoriteName from '@/lib/api/Category/getFavoriteName'
 import counterView from '@/lib/api/View/counter'
 import getAverageRating from '@/lib/api/View/getAverageRating'

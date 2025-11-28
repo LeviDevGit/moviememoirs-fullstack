@@ -10,7 +10,7 @@ export const PATCH = async (req: NextRequest) => {
     return NextResponse.json({ error: 'Invalid viewId' }, { status: 400 })
   }
 
-  const body = req.body as {
+  const body = (await req.json()) as {
     Comentário?: string
     value?: string
     Data?: string

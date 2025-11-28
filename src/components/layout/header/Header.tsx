@@ -1,14 +1,13 @@
 'use client'
 
 import { FilterIcon, PlusIcon, UserRoundIcon } from 'lucide-react'
-import { toggleModal } from '@/utils/toggleModal'
 import Link from 'next/link'
 import { useContext } from 'react'
 import { GlobalContext } from '@/providers/global'
 import { FilterContext } from '@/providers/filter'
 import SearchInput from './components/Search'
 import { Modal } from '@/components/ui/Modal'
-import { FormMedia } from '@/app/_components/modals/form-media'
+import { FormMedia } from '@/components/layout/header/components/form-media'
 import FilterMenu from './components/FilterMenu/FilterMenu'
 
 function Header() {
@@ -18,14 +17,7 @@ function Header() {
     throw new Error('GlobalContext is undefined')
   }
 
-  const {
-    toggleModalList,
-    setToggleModalList,
-    setFilterContent,
-    filterContent,
-    setUpdater,
-    updater,
-  } = context
+  const { setFilterContent, filterContent, setUpdater, updater } = context
 
   const updaterState = { updater, setUpdater }
 
@@ -47,59 +39,46 @@ function Header() {
         </div>
         <div className="flex h-full items-center gap-4">
           <SearchInput request={setFilterContent} />
-          <div className="relative flex h-10 w-10 items-center justify-center rounded-lg border border-gray-700 bg-[#1F2937] text-sm hover:bg-gray-700 hover:text-text-50">
-            <button
-              onClick={(event) => {
-                event.stopPropagation()
-                toggleModal({
-                  index: 1,
-                  set: setToggleModalList,
-                  toggler: !toggleModalList[1],
-                })
-              }}
-              className="flex h-full w-full items-center justify-center text-[#9CA3AF]"
-            >
-              <FilterIcon size={16} />
-            </button>
-            <span className="absolute -bottom-2 -right-2 w-5 cursor-default rounded-full bg-red-500 text-center">
-              {Object.keys(option).length > 0 && Object.keys(option).length}
-            </span>
-          </div>
+          <Modal.Root>
+            <Modal.Trigger asChild>
+              <div className="relative flex h-10 w-10 items-center justify-center rounded-lg border border-gray-700 bg-[#1F2937] text-sm hover:bg-gray-700 hover:text-text-50">
+                <button className="flex h-full w-full items-center justify-center text-[#9CA3AF]">
+                  <FilterIcon size={16} />
+                </button>
+                <span className="absolute -bottom-2 -right-2 w-5 cursor-default rounded-full bg-red-500 text-center">
+                  {Object.keys(option).length > 0 && Object.keys(option).length}
+                </span>
+              </div>
+            </Modal.Trigger>
+            <Modal.Content>
+              <FilterMenu filterContent={filterContent} />
+              <Modal.Close>
+                <span>Fechar</span>
+              </Modal.Close>
+            </Modal.Content>
+          </Modal.Root>
         </div>
         <div className="flex h-full items-center gap-4">
-          <button
-            className="flex h-10 items-center justify-center gap-2 rounded-lg bg-[#8B5CF6] px-5 hover:bg-[#8B5CF6e0]"
-            onClick={() => {
-              toggleModal({ index: 0, set: setToggleModalList, toggler: true })
-            }}
-          >
-            <PlusIcon />
-            <span className="font-semibold">Registrar</span>
-          </button>
+          <Modal.Root>
+            <Modal.Trigger asChild>
+              <button className="flex h-10 items-center justify-center gap-2 rounded-lg bg-[#8B5CF6] px-5 hover:bg-[#8B5CF6e0]">
+                <PlusIcon />
+                <span className="font-semibold">Registrar</span>
+              </button>
+            </Modal.Trigger>
+            <Modal.Content>
+              <FormMedia updaterState={updaterState} />
+              <Modal.Close>
+                <span>Fechar</span>
+              </Modal.Close>
+            </Modal.Content>
+          </Modal.Root>
           <Link href={'/profile'} className="rounded-full bg-[#1F2937] p-2">
             <UserRoundIcon />
           </Link>
         </div>
       </nav>
       <hr className="w-full border-text-50 opacity-25" />
-      {toggleModalList[0] ? (
-        <Modal.Root set={setToggleModalList} index={0}>
-          <Modal.Main>
-            <FormMedia
-              updaterState={updaterState}
-              setToggleModal={setToggleModalList}
-            />
-          </Modal.Main>
-        </Modal.Root>
-      ) : (
-        toggleModalList[1] && (
-          <Modal.Root set={setToggleModalList} index={1}>
-            <Modal.Main>
-              <FilterMenu filterContent={filterContent} />
-            </Modal.Main>
-          </Modal.Root>
-        )
-      )}
     </header>
   )
 }
