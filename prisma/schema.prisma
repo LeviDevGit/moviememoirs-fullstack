@@ -10,30 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model Movie {
-//   id         Int       @id @default(autoincrement()) // Chave primária auto-incrementada
-//   name       String    // Nome do filme
-//   year       String    // Data do lançamento
-//   time       String    // Duração do filme no formato "HH:MM:SS"
-//   direction  String    // Diretor do filme
-//   value      Float?    // Avaliação (ex.: 8.5)
-//   img        String    // URL ou caminho da imagem
-//   type       String    // Tipo do conteúdo (enum)
-//   imdb       String    // Id IMDB para API do TMDB
-//   views      View[]    // Relacionamento com as visualizações
-// }
-
-// model View {
-//   id          Int       @id @default(autoincrement()) // Chave primária auto-incrementada
-//   date        DateTime  // Data da visualização
-//   commentary  String?   // Comentário opcional
-//   rating      Float     // Nota do filme naquele dia
-//   movieId     Int       // Chave estrangeira para Movie
-//   movie       Movie     @relation(fields: [movieId], references: [id], onDelete: Cascade) // Relacionamento
-// }
-
-// 
-
 model Media {
   id         Int       @id @default(autoincrement()) // Chave primária auto-incrementada
   name       String    // Nome da midia

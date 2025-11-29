@@ -1,5 +1,5 @@
-import Carousel from '@/app/_components/carousel'
-import Select from '@/components/ui/Select'
+import Select from '@/shared/ui/Select'
+import Carousel from '@/features/home/carousel/components/Carousel'
 
 export interface FilterContent {
   searchString: string

@@ -1,4 +1,4 @@
-import { CategoryBody } from '@/app/(pages)/profile/_components/modals/form-category-create/FormCategoryCreate'
+import { CategoryBody } from '@/features/profile/forms/components/FormCategoryCreate'
 import toast from 'react-hot-toast'
 
 async function createCategory(formData: CategoryBody) {
