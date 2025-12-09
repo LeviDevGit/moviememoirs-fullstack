@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from 'lucide-react'
-import { MediaType } from '../layout/header/components/FormMedia'
+import { MediaType } from '../layout/header/register/FormMedia'
 import React from 'react'
 
 interface DatalistProps extends React.InputHTMLAttributes<HTMLInputElement> {

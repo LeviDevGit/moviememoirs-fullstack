@@ -1,13 +1,14 @@
 import { ReactNode, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useModal } from './ModalRoot'
+import { XIcon } from 'lucide-react'
 
 interface ModalContentProps {
   children: ReactNode
 }
 
 function ModalContent({ children }: ModalContentProps) {
-  const { open } = useModal()
+  const { open, setOpen } = useModal()
 
   useEffect(() => {
     if (!open) return
@@ -22,8 +23,16 @@ function ModalContent({ children }: ModalContentProps) {
       className={`fixed inset-0 z-50 flex animate-blowUpModal items-center justify-center bg-modal-overlay/90`}
     >
       <div
-        className={`relative flex w-[500px] animate-blowUpContent items-center justify-center rounded-xl p-6`}
+        className={`relative flex w-fit animate-blowUpContent flex-col items-center justify-center rounded-xl bg-background p-6`}
       >
+        <button
+          type="button"
+          className="absolute right-6 top-6 -me-4 -mt-4 rounded-full p-2 text-gray-400 transition-colors hover:bg-gray-50 hover:text-gray-600 focus:outline-none dark:text-gray-500 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+          aria-label="Close"
+          onClick={() => setOpen(false)}
+        >
+          <XIcon size={20} color="white" />
+        </button>
         {children}
       </div>
     </div>,

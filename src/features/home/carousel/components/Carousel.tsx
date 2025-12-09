@@ -44,14 +44,20 @@ function Carousel() {
       <div className="relative h-full w-full">
         <div className="absolute left-0 z-10 h-full w-[100px] bg-gradient-to-r from-background to-transparent" />
         <div className="flex h-[550px] w-full items-center justify-center from-background to-transparent">
-          {!loading ? (
+          {dataFetch.items.length === 0 ? (
+            <Spinner />
+          ) : !loading ? (
             <div className="-ml-48 flex items-start justify-start gap-x-6 overflow-x-hidden">
-              {dataFetch.items.map((element, index) => (
-                <Card source={element} key={`${index}`} />
+              {dataFetch.items.map((element) => (
+                <Card source={element} key={element.id} />
               ))}
             </div>
           ) : (
-            <Spinner />
+            <div className="-ml-48 flex items-start justify-start gap-x-6 overflow-x-hidden">
+              {dataFetch.items.map((element) => (
+                <Card source={element} key={element.id} />
+              ))}
+            </div>
           )}
         </div>
         <div className="absolute right-0 top-0 z-10 h-full w-[100px] bg-gradient-to-l from-background to-transparent" />

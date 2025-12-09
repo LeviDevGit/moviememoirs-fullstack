@@ -2,8 +2,12 @@ import { CardProps } from '@/shared/types/interfaces'
 import Image from 'next/image'
 import Link from 'next/link'
 import renderStars from './RenderStar'
+import { useState } from 'react'
+import Spinner from '@/shared/ui/Spinner'
 
 function Card({ source }: CardProps) {
+  const [isLoading, setIsLoading] = useState(true)
+
   return (
     <div className="flex w-[252px] flex-col items-center rounded-2xl bg-card p-4 pb-0">
       <div className="group relative w-fit">
@@ -11,6 +15,11 @@ function Card({ source }: CardProps) {
           <div className="flex">{renderStars(source.rating)}</div>
         </div>
         <div className="relative shadow-cardShadow duration-[2500ms] hover:blur hover:grayscale">
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Spinner />
+            </div>
+          )}
           <Image
             alt="Poster"
             src={`${source.media.img}?timestamp=${Date.now()}`}
@@ -18,6 +27,7 @@ function Card({ source }: CardProps) {
             height={330}
             priority
             className="aspect-[345/518] rounded-md object-cover object-center shadow-imageShadow"
+            onLoad={() => setIsLoading(false)}
           />
         </div>
       </div>

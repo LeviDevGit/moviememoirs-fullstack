@@ -18,5 +18,14 @@ export default function ModalClose({
     })
   }
 
-  return <button onClick={() => setOpen(false)}>{children}</button>
+  return (
+    <button
+      type="button"
+      className="rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-800 hover:text-gray-300 focus:outline-none"
+      aria-label="Close"
+      onClick={() => setOpen(false)}
+    >
+      {children}
+    </button>
+  )
 }

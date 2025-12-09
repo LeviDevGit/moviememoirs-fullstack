@@ -65,11 +65,6 @@ function useSubmitData({
         if (data) {
           setDataFetch(data)
 
-          // setDataFetch((prev) => {
-          //   const next = { ...prev, ...data }
-          //   return shallowEqual(prev, next) ? prev : next
-          // })
-
           if (data.totalItems === 0) {
             toast.error('Sem retornos')
           }

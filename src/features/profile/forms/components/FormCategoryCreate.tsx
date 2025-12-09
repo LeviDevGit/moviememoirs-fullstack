@@ -13,7 +13,7 @@ import createCategory from '@/lib/api/Category/create'
 import Datalist from '@/shared/ui/Datalist'
 import readCategory from '@/lib/api/Category/read'
 import { ProportionType } from '../../../../../prisma/seed'
-import { MediaType } from '@/shared/layout/header/components/FormMedia'
+import { MediaType } from '@/shared/layout/header/register/FormMedia'
 
 const OPTIONS = ['Sinopse', 'Tags', 'Elenco']
 
