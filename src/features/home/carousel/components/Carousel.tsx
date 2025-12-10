@@ -18,15 +18,13 @@ function Carousel() {
 
   useRestoreFilters()
 
-  const [direction, setDirection] = useState(0)
-
   const context = useContext(GlobalContext)
 
   if (!context) {
     throw new Error('GlobalContext is undefined')
   }
 
-  const { updater, filterContent } = context
+  const { updater, filterContent, direction, setDirection } = context
 
   const [loading, setLoading] = useState(false)
 

@@ -1,17 +1,12 @@
 import { Modal } from '@/shared/ui/Modal'
 import { FilterIcon } from 'lucide-react'
 import FilterMenu from './FilterMenu'
-import { FilterContent } from '@/app/page'
 
 interface FilterButtonProps {
   option: Record<string, string>
-  filterContent: FilterContent
 }
 
-export default function FilterButton({
-  option,
-  filterContent,
-}: FilterButtonProps) {
+export default function FilterButton({ option }: FilterButtonProps) {
   return (
     <Modal.Root>
       <Modal.Trigger asChild>
@@ -25,10 +20,7 @@ export default function FilterButton({
         </div>
       </Modal.Trigger>
       <Modal.Content>
-        <FilterMenu filterContent={filterContent} />
-        <Modal.Close>
-          <span>Fechar</span>
-        </Modal.Close>
+        <FilterMenu />
       </Modal.Content>
     </Modal.Root>
   )

@@ -10,6 +10,7 @@ interface queryFilterAddProps {
       valueString: string | undefined
     }>,
   ) => void
+  setDirection: React.Dispatch<React.SetStateAction<number>>
 }
 
 function queryFilterAdd({
@@ -17,8 +18,11 @@ function queryFilterAdd({
   setOption,
   valueOption,
   request,
+  setDirection,
 }: queryFilterAddProps) {
   if (inputRef.current && valueOption) {
+    setDirection(0)
+
     setOption((prev) => ({
       ...prev,
       [valueOption]: inputRef.current!.value,
@@ -54,13 +58,17 @@ interface queryFilterClearProps {
     }>,
   ) => void
   setSelectLimit: React.Dispatch<React.SetStateAction<boolean>>
+  setDirection: React.Dispatch<React.SetStateAction<number>>
 }
 
 function queryFilterClear({
   setOption,
   request,
   setSelectLimit,
+  setDirection,
 }: queryFilterClearProps) {
+  setDirection(0)
+
   setOption({})
 
   setSelectLimit(false)

@@ -104,7 +104,6 @@ function FilterItem({
               valueOption,
               setOption,
             })
-            localStorage.setItem('option', JSON.stringify(option))
           }
         }}
       />

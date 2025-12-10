@@ -6,6 +6,8 @@ interface GlobalContextProps {
   setUpdater: React.Dispatch<React.SetStateAction<boolean>>
   filterContent: FilterContent
   setFilterContent: React.Dispatch<React.SetStateAction<FilterContent>>
+  direction: number
+  setDirection: React.Dispatch<React.SetStateAction<number>>
 }
 
 export const GlobalContext = createContext<GlobalContextProps | undefined>(
@@ -30,6 +32,8 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
   const [filterContent, setFilterContent] =
     useState<FilterContent>(initialFilterContent)
 
+  const [direction, setDirection] = useState(0)
+
   return (
     <GlobalContext.Provider
       value={{
@@ -37,6 +41,8 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
         setUpdater,
         filterContent,
         setFilterContent,
+        direction,
+        setDirection,
       }}
     >
       {children}

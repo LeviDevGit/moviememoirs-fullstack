@@ -22,12 +22,13 @@ function useSubmitData({
   setDataFetch,
   updater,
   setLoading,
-  setDirection,
 }: useSubmitDataProps) {
   useEffect(() => {
     const submitData = async () => {
       setLoading(true)
       try {
+        console.log('Submitting data with direction:', direction)
+
         const filters: Record<string, string> = {}
 
         if (filterContent.searchString) {
@@ -43,10 +44,6 @@ function useSubmitData({
 
         if (filterContent.valueString) {
           filters.value = filterContent.valueString.toString()
-        }
-
-        if (Object.values(filters).length > 0) {
-          setDirection(0)
         }
 
         const searchParams = new URLSearchParams(filters)

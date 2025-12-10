@@ -16,7 +16,7 @@ function Header() {
     throw new Error('GlobalContext is undefined')
   }
 
-  const { setFilterContent, filterContent, setUpdater, updater } = context
+  const { setFilterContent, setUpdater, updater } = context
 
   const updaterState = { updater, setUpdater }
 
@@ -38,7 +38,7 @@ function Header() {
         </div>
         <div className="flex h-full items-center gap-4">
           <SearchInput request={setFilterContent} />
-          <FilterButton filterContent={filterContent} option={option} />
+          <FilterButton option={option} />
         </div>
         <div className="flex h-full items-center gap-4">
           <RegisterButton updaterState={updaterState} />

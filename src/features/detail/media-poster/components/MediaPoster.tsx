@@ -1,5 +1,4 @@
 import PosterDropzone from '@/shared/components/PosterDropzone'
-import Rater from '@/shared/components/Rater'
 import { dataProps } from '@/shared/utils/dispatchDetail'
 import { PencilIcon, UndoIcon } from 'lucide-react'
 import Image from 'next/image'
@@ -29,15 +28,7 @@ function MediaPoster({ editMode, data, setEditMode }: MediaPosterProps) {
           </div>
         )
       )}
-      <div className="w-[150px]">
-        {data && (
-          <Rater
-            defaultValue={data.value}
-            width="w-[150px] mb-3"
-            readOnly={true}
-          />
-        )}
-      </div>
+
       <div className="flex w-[80px] flex-col items-center justify-center gap-4 font-semibold text-[#e0e0e0]">
         {!editMode ? (
           <button

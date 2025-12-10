@@ -25,7 +25,7 @@ function MediaInfo({
   return (
     <div className="h-full">
       <div className="flex w-[600px] flex-col justify-between gap-2">
-        <div className="flex h-full w-full flex-col gap-4 overflow-y-scroll">
+        <div className="flex h-full w-full flex-col gap-4">
           <div className="flex w-full flex-col gap-4">
             {editMode ? (
               <Modal.Root>
@@ -85,6 +85,20 @@ function MediaInfo({
                 </p>
               </div>
             )}
+          </div>
+          <h1 className="heading-trail mb-6 text-2xl font-semibold">
+            Média Geral
+          </h1>
+          <div className="flex items-center justify-center rounded-lg bg-card p-4">
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex h-40 w-40 items-center justify-center rounded-full border-2 border-green-500">
+                <h1 className="text-5xl font-semibold">{data.value}</h1>
+              </div>
+              <span>
+                Baseado em {data.views.length}{' '}
+                {data.views.length === 1 ? 'avaliação' : 'avaliações'}
+              </span>
+            </div>
           </div>
           <DetailSynopsis />
           <DetailGenre />

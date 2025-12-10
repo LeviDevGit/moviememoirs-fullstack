@@ -52,7 +52,13 @@ function Page({ params }: PageProps) {
 
   const [modalView, setModalView] = useState<MediaView | undefined>(undefined)
 
-  if (!data) return <Spinner />
+  if (!data)
+    return (
+      <div className="flex h-full flex-col items-center justify-center">
+        <div className="h-[50px]"></div>
+        <Spinner />
+      </div>
+    )
 
   if ('error' in data) {
     return notFound()
@@ -60,8 +66,8 @@ function Page({ params }: PageProps) {
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
-      <div className="h-[100px]"></div>
-      <div className="flex h-full w-full justify-center gap-2 overflow-y-scroll">
+      <div className="h-[50px]"></div>
+      <div className="flex h-full w-full justify-center gap-2">
         <form
           id="detail-form"
           className="relative flex h-[1000px] justify-center gap-40"

@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react'
-import { FilterContent } from '@/app/page'
 import {
   PlusIcon,
   CalendarRangeIcon,
@@ -12,24 +11,20 @@ import { FilterContext } from '@/providers/filter'
 import { useModal } from '@/shared/ui/Modal/ModalRoot'
 import FilterItem from './FilterItem'
 
-interface FilterMenuProps {
-  filterContent: FilterContent
-}
-
 export const Filters = {
   Diretor: { value: 'director', icon: <UserRoundIcon /> },
   Ano: { value: 'year', icon: <CalendarRangeIcon /> },
   Nota: { value: 'value', icon: <SparklesIcon /> },
 }
 
-function FilterMenu({ filterContent }: FilterMenuProps) {
+function FilterMenu() {
   const global = useContext(GlobalContext)
 
   if (!global) {
     throw new Error('GlobalContext is undefined')
   }
 
-  const { setFilterContent } = global
+  const { setFilterContent, filterContent, setDirection } = global
 
   const { setOpen } = useModal()
 
@@ -49,6 +44,7 @@ function FilterMenu({ filterContent }: FilterMenuProps) {
           request: setFilterContent,
           valueOption: key,
           setOption,
+          setDirection,
         })
       }
     })
@@ -118,6 +114,7 @@ function FilterMenu({ filterContent }: FilterMenuProps) {
                   request: setFilterContent,
                   setOption,
                   setSelectLimit,
+                  setDirection,
                 })
                 // if (inputRef.current) {
                 //   inputRef.current.value = ''

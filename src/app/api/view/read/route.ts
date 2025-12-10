@@ -6,7 +6,7 @@ export const GET = withPrismaError(async (req: NextRequest) => {
   const { searchParams } = new URL(req.url)
   const start = Number(searchParams.get('start')) || 0
 
-  const TAKE_LIMIT = 10
+  const TAKE_LIMIT = 8
 
   const whereCondition = {
     media: {
@@ -56,7 +56,11 @@ export const GET = withPrismaError(async (req: NextRequest) => {
     if (extraItems) items = [extraItems, ...items]
   }
 
-  if (Number(start) + TAKE_LIMIT > totalItems && totalItems > 1) {
+  if (
+    Number(start) + TAKE_LIMIT > totalItems &&
+    totalItems > 1 &&
+    totalItems >= TAKE_LIMIT
+  ) {
     const extraItems = await prisma.view.findMany({
       where: whereCondition,
       take: (Number(start) + TAKE_LIMIT) % totalItems,
