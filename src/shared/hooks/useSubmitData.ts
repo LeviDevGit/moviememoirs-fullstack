@@ -1,3 +1,4 @@
+import { FilterOrdering } from '@/features/home/filters/types'
 import { dataFetchProps } from '@/shared/types/interfaces'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
@@ -14,6 +15,7 @@ interface useSubmitDataProps {
   updater: boolean
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
   setDirection: React.Dispatch<React.SetStateAction<number>>
+  filterOrdering: FilterOrdering
 }
 
 function useSubmitData({
@@ -22,6 +24,7 @@ function useSubmitData({
   setDataFetch,
   updater,
   setLoading,
+  filterOrdering,
 }: useSubmitDataProps) {
   useEffect(() => {
     const submitData = async () => {
@@ -49,7 +52,7 @@ function useSubmitData({
         const searchParams = new URLSearchParams(filters)
 
         const response = await fetch(
-          `api/view/read?start=${direction}${searchParams.size > 0 ? `&${searchParams}` : ''}`,
+          `api/view/read?start=${direction}&order=${filterOrdering.orderBy}&type=${filterOrdering.typeBy}${searchParams.size > 0 ? `&${searchParams}` : ''}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -76,7 +79,14 @@ function useSubmitData({
     }
 
     submitData()
-  }, [direction, filterContent, setDataFetch, updater, setLoading])
+  }, [
+    direction,
+    filterContent,
+    setDataFetch,
+    updater,
+    setLoading,
+    filterOrdering,
+  ])
 }
 
 export default useSubmitData

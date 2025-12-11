@@ -1,4 +1,5 @@
 import { FilterContent } from '@/app/page'
+import { FilterOrdering } from '@/features/home/filters/types'
 import { createContext, ReactNode, useState } from 'react'
 
 interface GlobalContextProps {
@@ -8,6 +9,8 @@ interface GlobalContextProps {
   setFilterContent: React.Dispatch<React.SetStateAction<FilterContent>>
   direction: number
   setDirection: React.Dispatch<React.SetStateAction<number>>
+  filterOrdering: FilterOrdering
+  setFilterOrdering: React.Dispatch<React.SetStateAction<FilterOrdering>>
 }
 
 export const GlobalContext = createContext<GlobalContextProps | undefined>(
@@ -34,6 +37,11 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
 
   const [direction, setDirection] = useState(0)
 
+  const [filterOrdering, setFilterOrdering] = useState<FilterOrdering>({
+    typeBy: 'all',
+    orderBy: 'recent',
+  })
+
   return (
     <GlobalContext.Provider
       value={{
@@ -43,6 +51,8 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
         setFilterContent,
         direction,
         setDirection,
+        filterOrdering,
+        setFilterOrdering,
       }}
     >
       {children}

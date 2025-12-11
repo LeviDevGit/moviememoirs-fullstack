@@ -12,7 +12,7 @@ function Select({ children, className, text, ...rest }: SelectProps) {
         <select
           name={text}
           id={text}
-          className="mt-0.5 w-full rounded border-gray-600 bg-transparent text-white shadow-sm sm:text-sm"
+          className="w-full cursor-pointer appearance-none rounded-md border border-gray-700 bg-[#1F2937] py-2 pl-4 pr-10 font-semibold text-[#E5E7EB] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary"
           {...rest}
         >
           {children}

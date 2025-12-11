@@ -42,8 +42,11 @@ function Header() {
         </div>
         <div className="flex h-full items-center gap-4">
           <RegisterButton updaterState={updaterState} />
-          <Link href={'/profile'} className="rounded-full bg-[#1F2937] p-2">
-            <UserRoundIcon />
+          <Link
+            href={'/profile'}
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1F2937]"
+          >
+            <UserRoundIcon size={20} />
           </Link>
         </div>
       </nav>

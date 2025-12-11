@@ -4,7 +4,10 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export const GET = withPrismaError(async (req: NextRequest) => {
   const { searchParams } = new URL(req.url)
+
   const start = Number(searchParams.get('start')) || 0
+  const orderParam = searchParams.get('order') || 'recent'
+  const typeParam = searchParams.get('type') || 'movie'
 
   const TAKE_LIMIT = 8
 
@@ -23,6 +26,9 @@ export const GET = withPrismaError(async (req: NextRequest) => {
       value: searchParams.get('value')
         ? Number(searchParams.get('value'))
         : undefined,
+      category: {
+        name: typeParam === 'all' ? { not: '' } : typeParam,
+      },
     },
   }
 
@@ -30,14 +36,16 @@ export const GET = withPrismaError(async (req: NextRequest) => {
     where: whereCondition,
   })
 
+  // BASE QUERY
   let items = await prisma.view.findMany({
     where: whereCondition,
     include: {
       media: true,
     },
-    orderBy: {
-      date: 'desc',
-    },
+    orderBy:
+      orderParam === 'recent'
+        ? { date: 'desc' }
+        : [{ media: { year: 'desc' } }, { date: 'desc' }],
     take: Number(start) === 0 ? TAKE_LIMIT - 1 : TAKE_LIMIT,
     skip: Number(start),
   })

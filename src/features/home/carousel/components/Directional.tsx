@@ -34,7 +34,7 @@ function Directional({ left = true, dataLength, ...rest }: DirectionalProps) {
         <ChevronIcon
           size={20}
           absoluteStrokeWidth
-          className="group-transition-transform mr-2 text-text-200 group-hover:scale-110 group-hover:text-text-50"
+          className="group-transition-transform ml-2 text-text-200 group-hover:scale-110 group-hover:text-text-50"
         />
       )}
     </button>

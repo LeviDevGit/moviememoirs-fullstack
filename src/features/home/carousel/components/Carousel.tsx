@@ -24,7 +24,8 @@ function Carousel() {
     throw new Error('GlobalContext is undefined')
   }
 
-  const { updater, filterContent, direction, setDirection } = context
+  const { updater, filterContent, direction, setDirection, filterOrdering } =
+    context
 
   const [loading, setLoading] = useState(false)
 
@@ -35,6 +36,7 @@ function Carousel() {
     updater,
     setLoading,
     setDirection,
+    filterOrdering,
   })
 
   return (
