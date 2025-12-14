@@ -17,8 +17,13 @@ function DetailCommentary({
   modalView,
 }: DetailCommentaryProps) {
   return (
-    <div className="mb-20">
-      <h1 className="heading-trail mb-6 text-2xl font-semibold">Comentários</h1>
+    <div className="mb-20 flex flex-col gap-8">
+      <div className="flex items-center gap-4">
+        <h1 className="heading-trail text-2xl font-semibold">Comentários</h1>
+        <div className="rounded-md bg-gray-700 px-3">
+          <span>{views.length}</span>
+        </div>
+      </div>
       <div className="flex flex-col gap-4">
         {views.map((e) => (
           <div

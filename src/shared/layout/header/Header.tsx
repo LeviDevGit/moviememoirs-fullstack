@@ -29,7 +29,7 @@ function Header() {
   const { option } = filter
 
   return (
-    <header className="flex w-full flex-col items-center gap-6 py-4">
+    <header className="flex w-full flex-col items-center gap-4 pt-4">
       <nav className="flex w-full items-center justify-between px-4">
         <div className="flex items-center gap-4">
           <Link href={'/'} className="text-2xl font-bold">
