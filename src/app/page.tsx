@@ -1,8 +1,8 @@
-import Carousel from '@/features/home/carousel/components/Carousel'
-import FilterBar from '@/features/home/filters/FilterBar'
+import Carousel from '@/components/features/home/carousel/Carousel'
+import FilterBar from '@/components/features/home/filters/FilterBar'
 
 export interface FilterContent {
-  searchString: string
+  filter: string
   directorString: string | undefined
   yearString: string | undefined
   valueString: string | undefined

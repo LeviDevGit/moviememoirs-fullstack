@@ -1,6 +1,6 @@
-import CategoryPanel from '@/features/profile/category-panel/components/CategoryPanel'
-import RecentActivityItem from '@/features/profile/stats-overview/components/RecentActivityItem'
-import StatsSummary from '@/features/profile/stats-overview/components/StatsSummary'
+import CategoryPanel from '@/components/features/profile/category-panel/CategoryPanel'
+import RecentActivityItem from '@/components/features/profile/stats-overview/RecentActivityItem'
+import StatsSummary from '@/components/features/profile/stats-overview/StatsSummary'
 
 export default function Page() {
   return (

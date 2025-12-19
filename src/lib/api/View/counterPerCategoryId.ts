@@ -1,4 +1,4 @@
-import { MediaType } from '@/shared/layout/header/register/FormMedia'
+import { MediaType } from '@/types/interfaces'
 
 async function counterPerCategoryId(
   categories: MediaType[],

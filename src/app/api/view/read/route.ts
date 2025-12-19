@@ -14,7 +14,7 @@ export const GET = withPrismaError(async (req: NextRequest) => {
   const whereCondition = {
     media: {
       name: {
-        contains: searchParams.get('name') || '',
+        contains: searchParams.get('filter') || '',
       },
       creator: searchParams.get('director')
         ? { contains: searchParams.get('director') as string }

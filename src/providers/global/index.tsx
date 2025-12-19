@@ -22,7 +22,7 @@ interface GlobalProviderProps {
 }
 
 const initialFilterContent: FilterContent = {
-  searchString: '',
+  filter: '',
   directorString: undefined,
   yearString: undefined,
   valueString: undefined,
