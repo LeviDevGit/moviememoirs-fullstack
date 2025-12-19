@@ -1,7 +1,22 @@
-export default function ModalFooter({
-  children,
-}: {
+import { tv, VariantProps } from 'tailwind-variants'
+
+const modalfooter = tv({
+  base: 'mt-6 flex w-full gap-2',
+  variants: {
+    layout: {
+      default: 'justify-end',
+      spaced: 'justify-center',
+    },
+  },
+  defaultVariants: {
+    layout: 'default',
+  },
+})
+
+interface ModalFooterProps extends VariantProps<typeof modalfooter> {
   children: React.ReactNode
-}) {
-  return <div className="mt-6 flex w-full justify-end gap-2">{children}</div>
+}
+
+export default function ModalFooter({ children, layout }: ModalFooterProps) {
+  return <div className={modalfooter({ layout })}>{children}</div>
 }

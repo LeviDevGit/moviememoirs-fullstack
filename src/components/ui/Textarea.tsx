@@ -1,10 +1,31 @@
+import { tv, VariantProps } from 'tailwind-variants'
+
+const textarea = tv({
+  base: 'mt-0.5 w-full resize-none rounded border-gray-600 bg-transparent text-white shadow-sm sm:text-sm',
+  variants: {
+    background: {
+      default: 'bg-card',
+      modal: 'bg-background',
+    },
+  },
+  defaultVariants: {
+    background: 'default',
+  },
+})
+
 interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+    VariantProps<typeof textarea> {
   text: string
   withoutLabel?: boolean
 }
 
-function Textarea({ text, withoutLabel = false, ...rest }: TextareaProps) {
+function Textarea({
+  text,
+  withoutLabel = false,
+  background,
+  ...rest
+}: TextareaProps) {
   return (
     <label htmlFor={text}>
       {!withoutLabel && (
@@ -12,7 +33,7 @@ function Textarea({ text, withoutLabel = false, ...rest }: TextareaProps) {
       )}
       <textarea
         id={text}
-        className="mt-0.5 w-full resize-none rounded border-gray-600 bg-transparent text-white shadow-sm sm:text-sm"
+        className={textarea({ background })}
         rows={4}
         name={text}
         {...rest}

@@ -1,4 +1,21 @@
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+import { tv, VariantProps } from 'tailwind-variants'
+
+const input = tv({
+  base: 'w-full rounded-lg text-white',
+  variants: {
+    background: {
+      default: 'bg-card',
+      modal: 'bg-background',
+    },
+  },
+  defaultVariants: {
+    background: 'default',
+  },
+})
+
+interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement>,
+    VariantProps<typeof input> {
   text?: string
   type?: React.HTMLInputTypeAttribute
   ref?: React.Ref<HTMLInputElement>
@@ -8,6 +25,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 function Input({
+  background,
   text,
   type = 'text',
   ref,
@@ -25,16 +43,23 @@ function Input({
         <span className="text-sm font-medium text-gray-200">{text}</span>
       )}
       <div
-        className={`relative w-full rounded-lg border border-gray-600 bg-[#1F2937] text-white shadow-sm ${
-          icon && 'flex items-center gap-2 px-3'
-        }`}
+        className={input({
+          background,
+          className: `relative border border-gray-600 shadow-sm ${
+            icon && 'flex items-center gap-2 px-3'
+          }`,
+        })}
       >
         {icon && <span>{icon}</span>}
         <input
           type={type}
           id={text}
           name={text}
-          className="mt-0.5 w-full rounded-lg border-none bg-[#1F2937] text-white outline-none focus:ring-0 sm:text-sm"
+          className={input({
+            background,
+            className:
+              'mt-0.5 border-none outline-none focus:ring-0 sm:text-sm',
+          })}
           defaultValue={useTodayDate ? todayValue : undefined}
           ref={ref}
           {...rest}

@@ -1,8 +1,35 @@
-import { ImageUp } from 'lucide-react'
+import { ImageUp, UploadIcon } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
+import { tv, VariantProps } from 'tailwind-variants'
 
-function PosterDropzone() {
+const dropzone = tv({
+  base: 'relative box-border aspect-[2/3] w-[280px] cursor-pointer rounded-md',
+  variants: {
+    background: {
+      default: 'bg-card',
+      modal: 'bg-background',
+    },
+    padding: {
+      default: 'p-4',
+      none: 'p-0',
+    },
+  },
+  defaultVariants: {
+    background: 'default',
+    padding: 'default',
+  },
+})
+
+interface PosterDropzoneProps extends VariantProps<typeof dropzone> {
+  iconVariant?: 'default' | 'minimalist'
+}
+
+function PosterDropzone({
+  background,
+  padding,
+  iconVariant = 'default',
+}: PosterDropzoneProps) {
   const [file, setFile] = useState<File>()
 
   const handleFileChange: React.ChangeEventHandler<HTMLInputElement> = (
@@ -11,13 +38,12 @@ function PosterDropzone() {
     const files = event.target.files
 
     if (files && files.length > 0) {
-      console.log(files[0])
       setFile(files[0])
     }
   }
 
   return (
-    <label className="relative box-border aspect-[2/3] w-[280px] cursor-pointer rounded-md bg-[#1F2937] p-4">
+    <label className={dropzone({ background, padding })}>
       {file ? (
         <div className="shadow-cardShadow">
           <Image
@@ -29,12 +55,7 @@ function PosterDropzone() {
           />
         </div>
       ) : (
-        <div className="flex h-full flex-col items-center justify-center gap-2 border-2 border-dashed border-gray-500 text-xs">
-          <ImageUp strokeWidth={1} className="h-[2em] w-[2em]" />
-          <p className="text-center">
-            Solte um poster ou <br /> <strong>Explore arquivos .JPG</strong>
-          </p>
-        </div>
+        IconVariant({ variant: iconVariant })
       )}
       <input
         type="file"
@@ -45,6 +66,36 @@ function PosterDropzone() {
       />
     </label>
   )
+}
+
+const iconvariant = tv({
+  base: 'flex h-full flex-col items-center justify-center gap-2 border-2 border-dashed border-gray-500 text-xs rounded-md',
+  variants: {
+    variant: {
+      default: '',
+      minimalist: 'text-gray-400 transition-colors group-hover:text-purple-500',
+    },
+  },
+})
+
+function IconVariant({ variant }: VariantProps<typeof iconvariant>) {
+  if (variant === 'default') {
+    return (
+      <div className={iconvariant({ variant: 'default' })}>
+        <ImageUp strokeWidth={1} className="h-[2em] w-[2em]" />
+        <p className="text-center">
+          Solte um poster ou <strong>Explore arquivos .JPG</strong>
+        </p>
+      </div>
+    )
+  } else {
+    return (
+      <div className={iconvariant({ variant: 'minimalist' })}>
+        <UploadIcon size={32} />
+        <span className="text-sm font-medium">Carregar Poster</span>
+      </div>
+    )
+  }
 }
 
 export default PosterDropzone

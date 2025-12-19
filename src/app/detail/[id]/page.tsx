@@ -69,7 +69,9 @@ function Page({ params }: PageProps) {
         </form>
         <MediaInfo data={data} editMode={editMode} id={id} />
       </div>
-      {editMode && <EditBar id={id} setEditMode={setEditMode} />}
+      {editMode && (
+        <EditBar id={id} mediaName={data.name} setEditMode={setEditMode} />
+      )}
     </div>
   )
 }

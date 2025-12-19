@@ -28,7 +28,7 @@ function FormMedia({ updaterState }: FormMediaProps) {
   const { setOpen } = useModal()
 
   return (
-    <div className="page-specific w-[800px] rounded-lg bg-background p-5">
+    <div className="page-specific w-[800px] rounded-lg">
       <div className="mb-5 flex flex-col gap-2">
         <h1 className="text-xl font-medium">
           Registrar <span className="text-primary">Mídia</span>
@@ -41,49 +41,68 @@ function FormMedia({ updaterState }: FormMediaProps) {
         className="flex w-full justify-between gap-10"
         onSubmit={(e) => dispatchMediaCreate({ e, updaterState, setOpen })}
         autoComplete="off"
+        id="media-create-form"
       >
-        <div className="flex flex-col items-center gap-4">
-          <PosterDropzone />
-          <div>
-            <Rater width="w-[220px]" />
+        <div className="flex flex-col items-center gap-6">
+          <PosterDropzone
+            background="modal"
+            padding="none"
+            iconVariant="minimalist"
+          />
+          <div className="flex h-full w-full flex-col items-center gap-2">
+            <h2 className="text-center text-text-muted">Avaliação Pessoal</h2>
+            <div>
+              <Rater width="w-[180px]" />
+            </div>
           </div>
         </div>
+        <div className="min-h-full w-px border-x border-gray-700/50" />
         <div className="flex w-full flex-col justify-between gap-3">
-          <Input text="Nome" placeholder="Digite o nome do filme ou série" />
-          <div className="flex items-center justify-between gap-6">
-            {categories && (
-              <Select text="Tipo">
-                {categories.map((value, index) => (
+          <Input
+            text="Nome"
+            placeholder="Digite o nome do filme ou série"
+            background="modal"
+          />
+          <div className="flex w-full gap-4">
+            <div className="flex-1">
+              <Select text="Tipo" background="modal">
+                {categories?.map((value, index) => (
                   <option value={value.name} key={index}>
                     {value.name}
                   </option>
                 ))}
               </Select>
-            )}
-            <Input text="Ano de lançamento" placeholder="Ex: 2004" />
+            </div>
+            <div className="flex-1">
+              <Input
+                text="Ano de lançamento"
+                placeholder="Ex: 2004"
+                background="modal"
+              />
+            </div>
           </div>
-          <div className="flex items-center justify-between gap-6">
-            <Input text="Duração" placeholder="Ex: 2hr 2min" />
-            <Input
-              text="Criador(a)"
-              placeholder="Digite o nome do(a) criador(a)"
-            />
+          <div className="flex w-full gap-4">
+            <div className="flex-1">
+              <Input
+                text="Duração"
+                placeholder="Ex: 2hr 2min"
+                background="modal"
+              />
+            </div>
+            <div className="flex-1">
+              <Input
+                text="Criador(a)"
+                placeholder="Digite o nome do(a) criador(a)"
+                background="modal"
+              />
+            </div>
           </div>
-          <div className="flex items-center justify-between gap-6">
-            <Input text="Data" type="date" useTodayDate />
-          </div>
+          <Input text="Data" type="date" useTodayDate background="modal" />
           <Textarea
             text="Comentário"
             placeholder="Escreva um comentário (opcional)"
+            background="modal"
           />
-          <div className="flex w-full items-center justify-end">
-            <button
-              type="submit"
-              className="rounded-2xl bg-primary px-4 py-2 text-sm font-semibold text-text-950"
-            >
-              Registrar
-            </button>
-          </div>
         </div>
       </form>
     </div>

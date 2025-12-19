@@ -71,7 +71,7 @@ function FilterMenu() {
   }
 
   return (
-    <div className="flex w-[600px] flex-col justify-between gap-4 rounded border-gray-600 bg-gray-900 text-sm">
+    <div className="flex w-[600px] flex-col justify-between gap-4 rounded border-gray-600 text-sm">
       {Object.values(option).some((value) => value !== undefined) ? (
         <p className="p-5 pb-0">Nesta visualização mostre mídias</p>
       ) : (
