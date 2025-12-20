@@ -1,8 +1,8 @@
 'use client'
 
 import { use, useEffect, useState } from 'react'
-import retrieveExtraSectionById from '@/lib/api/ExtraSection/retrieve'
-import updateMediaByData from '@/lib/api/Media/update'
+import retrieveExtraSectionById from '@/api/ExtraSection/retrieve'
+import updateMediaByData from '@/api/Media/update'
 import { notFound } from 'next/navigation'
 import dispatchDetail, { DetailResponse } from '@/utils/dispatchDetail'
 import useExtraSection from '@/components/features/detail/extra-info/useExtraSection'

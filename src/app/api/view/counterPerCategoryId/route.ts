@@ -5,19 +5,24 @@ import { NextRequest, NextResponse } from 'next/server'
 export const GET = withPrismaError(async (req: NextRequest) => {
   const { searchParams } = new URL(req.url)
 
-  function getFirstOrValue(value: string | string[] | undefined) {
-    return Array.isArray(value) ? value[0] : value
-  }
+  const names = searchParams.get('categoryName')?.split(',') || []
 
-  const counter = await prisma.view.count({
-    where: {
-      media: {
-        category: {
-          name: getFirstOrValue(searchParams.get('categoryName') || ''),
+  if (names.length === 0) return NextResponse.json({})
+
+  const counts = await Promise.all(
+    names.map(async (name) => {
+      const totalViews = await prisma.view.count({
+        where: {
+          media: {
+            category: {
+              name,
+            },
+          },
         },
-      },
-    },
-  })
+      })
+      return { name, total: totalViews }
+    }),
+  )
 
-  return NextResponse.json(counter)
+  return NextResponse.json(counts)
 })

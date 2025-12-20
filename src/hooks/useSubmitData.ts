@@ -1,4 +1,4 @@
-import { FilterOrdering } from '@/features/home/filters/types'
+import { FilterOrdering } from '@/components/features/home/filters/types'
 import { dataFetchProps } from '@/types/interfaces'
 import { useCallback, useEffect } from 'react'
 import toast from 'react-hot-toast'
@@ -11,7 +11,9 @@ interface useSubmitDataProps {
     yearString: string | undefined
     valueString: string | undefined
   }
-  setDataFetch: (value: React.SetStateAction<dataFetchProps>) => void
+  setDataFetch: (
+    value: React.SetStateAction<dataFetchProps | undefined>,
+  ) => void
   updater: boolean
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
   setDirection: React.Dispatch<React.SetStateAction<number>>
@@ -28,25 +30,22 @@ function useSubmitData({
 }: useSubmitDataProps) {
   const submitData = useCallback(async () => {
     setLoading(true)
+
+    const cleanFilters = Object.fromEntries(
+      Object.entries(filterContent).filter(
+        ([, v]) => v !== undefined && v !== '',
+      ),
+    )
+
+    // 2. Constrói os params de forma limpa
+    const queryParams = new URLSearchParams({
+      start: direction.toString(),
+      order: filterOrdering.orderBy,
+      type: filterOrdering.typeBy,
+      ...cleanFilters,
+    })
+
     try {
-      const cleanFilters = Object.fromEntries(
-        Object.entries(filterContent).filter(
-          ([, v]) => v !== undefined && v !== '',
-        ),
-      )
-
-      // 2. Constrói os params de forma limpa
-      const queryParams = new URLSearchParams({
-        start: direction.toString(),
-        order: filterOrdering.orderBy,
-        type: filterOrdering.typeBy,
-        ...cleanFilters,
-      })
-
-      console.log(cleanFilters)
-
-      console.log(queryParams)
-
       const response = await fetch(`api/view/read?${queryParams}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -62,6 +61,7 @@ function useSubmitData({
         }
       }
     } catch (error) {
+      setDataFetch(undefined)
       console.error(error)
       console.log(error)
       toast.error('Here is your toast.')

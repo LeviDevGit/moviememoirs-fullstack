@@ -65,7 +65,7 @@ function FilterItem({
   }
 
   return (
-    <div className="flex w-[550px] items-center gap-4 px-5 text-sm">
+    <div className="flex w-[550px] items-center gap-4 text-sm">
       <label>Onde</label>
       {
         <div>
@@ -74,7 +74,7 @@ function FilterItem({
               console.log(e.currentTarget.value)
               handleSelectChange(e)
             }}
-            className="w-[100px]"
+            background="modal"
           >
             <option value={valueOption}>{getOptionText(valueOption)}</option>
             {Object.entries(Filters)
@@ -109,6 +109,7 @@ function FilterItem({
             })
           }
         }}
+        background="modal"
       />
       <div className="relative">
         <button

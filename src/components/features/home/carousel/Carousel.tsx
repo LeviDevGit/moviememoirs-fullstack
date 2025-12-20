@@ -11,10 +11,9 @@ import useSubmitData from '@/hooks/useSubmitData'
 import Spinner from '@/components/ui/Spinner'
 
 function Carousel() {
-  const [dataFetch, setDataFetch] = useState<dataFetchProps>({
-    items: [],
-    totalItems: 0,
-  })
+  const [dataFetch, setDataFetch] = useState<dataFetchProps | undefined>(
+    undefined,
+  )
 
   useRestoreFilters()
 
@@ -39,14 +38,32 @@ function Carousel() {
     filterOrdering,
   })
 
+  if (!dataFetch) {
+    return (
+      <div className="w-full">
+        <div className="flex h-[550px] w-full items-center justify-center">
+          <Spinner />
+        </div>
+      </div>
+    )
+  }
+
+  if (dataFetch.items.length === 0) {
+    return (
+      <div className="flex h-[550px] w-full items-center justify-center">
+        <p className="text-xl font-medium">
+          No items found with the selected filters.
+        </p>
+      </div>
+    )
+  }
+
   return (
     <div className="relative flex w-full flex-col overflow-x-hidden">
       <div className="relative h-full w-full">
         <div className="absolute left-0 z-10 h-full w-[100px] bg-gradient-to-r from-background to-transparent" />
         <div className="flex h-[550px] w-full items-center justify-center from-background to-transparent">
-          {dataFetch.items.length === 0 ? (
-            <Spinner />
-          ) : !loading ? (
+          {!loading ? (
             <div className="-ml-48 flex items-start justify-start gap-x-6 overflow-x-hidden">
               {dataFetch.items.map((element) => (
                 <Card source={element} key={element.id} />

@@ -1,5 +1,5 @@
 import { FilterContent } from '@/app/page'
-import { FilterOrdering } from '@/features/home/filters/types'
+import { FilterOrdering } from '@/components/features/home/filters/types'
 import { createContext, ReactNode, useState } from 'react'
 
 interface GlobalContextProps {

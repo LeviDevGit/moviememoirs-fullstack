@@ -17,7 +17,7 @@ function CategoryListItem({ category }: CategoryListItemProps) {
       <span>{category.name}</span>
       <div className="flex items-center">
         <span className="cursor-default rounded-xl bg-black px-2">
-          {category.count}
+          {category.total}
         </span>
         <Modal.Root>
           <Modal.Trigger asChild>

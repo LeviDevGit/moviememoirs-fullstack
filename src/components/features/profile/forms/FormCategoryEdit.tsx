@@ -1,5 +1,5 @@
-import updateCategory from '@/lib/api/Category/update'
-import deleteCategoryById from '@/lib/api/Category/delete'
+import updateCategory from '@/api/Category/update'
+import deleteCategoryById from '@/api/Category/delete'
 import { useModal } from '@/components/ui/Modal/ModalRoot'
 import Input from '@/components/ui/Input'
 import { CategoryAndCountType } from '../category-panel/useCategoryPanel'

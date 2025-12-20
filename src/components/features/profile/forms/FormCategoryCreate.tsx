@@ -6,8 +6,8 @@ import {
   handleChangeSelect,
   handleRemoveSelect,
 } from './category-section'
-import createCategory from '@/lib/api/Category/create'
-import readCategory from '@/lib/api/Category/read'
+import createCategory from '@/api/Category/create'
+import readCategory from '@/api/Category/read'
 import { MediaType } from '@/types/interfaces'
 import { ProportionType } from '../../../../../prisma/seed'
 import Datalist from '@/components/ui/Datalist'

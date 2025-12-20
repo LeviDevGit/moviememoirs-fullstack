@@ -1,5 +1,5 @@
 import { Modal } from '@/components/ui/Modal'
-import deleteMediaById from '@/lib/api/Media/delete'
+import deleteMediaById from '@/api/Media/delete'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import { TrashIcon, TriangleAlertIcon } from 'lucide-react'

@@ -16,15 +16,15 @@ export const GET = withPrismaError(async (req: NextRequest) => {
       name: {
         contains: searchParams.get('filter') || '',
       },
-      creator: searchParams.get('director')
-        ? { contains: searchParams.get('director') as string }
+      creator: searchParams.get('directorString')
+        ? { contains: searchParams.get('directorString') as string }
         : undefined,
       year:
         searchParams.get('year') && searchParams.get('year') !== ''
           ? (searchParams.get('year') as string)
           : undefined,
-      value: searchParams.get('value')
-        ? Number(searchParams.get('value'))
+      value: searchParams.get('valueString')
+        ? Number(searchParams.get('valueString'))
         : undefined,
       category: {
         name: typeParam === 'all' ? { not: '' } : typeParam,

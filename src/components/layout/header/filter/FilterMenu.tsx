@@ -4,6 +4,7 @@ import {
   CalendarRangeIcon,
   SparklesIcon,
   UserRoundIcon,
+  FilterIcon,
 } from 'lucide-react'
 import { GlobalContext } from '@/providers/global'
 import { FilterContext } from '@/providers/filter'
@@ -71,29 +72,37 @@ function FilterMenu() {
   }
 
   return (
-    <div className="flex w-[600px] flex-col justify-between gap-4 rounded border-gray-600 text-sm">
-      {Object.values(option).some((value) => value !== undefined) ? (
-        <p className="p-5 pb-0">Nesta visualização mostre mídias</p>
-      ) : (
-        <h1 className="p-5 pb-0">Ainda não há filtros nesta visualização.</h1>
-      )}
-      {Object.values(option).some((value) => value !== undefined) && (
-        <div className="flex flex-col gap-4 p-5 pb-0">
-          {Object.keys(option).map((value) => (
-            <FilterItem
-              key={value}
-              option={option}
-              selectLimitState={selectLimitState}
-              request={setFilterContent}
-              setOption={setOption}
-              valueOption={value}
-              filterContent={filterContent}
-              inputRefs={inputRefs}
-              setDirection={setDirection}
-            />
-          ))}
+    <div className="flex w-[600px] flex-col justify-between gap-4 divide-y divide-gray-700/50 rounded border-gray-600 text-sm">
+      <div className="flex items-center gap-2">
+        <div className="rounded-lg bg-[#8B5CF6]/10 p-2 text-[#8B5CF6]">
+          <FilterIcon size={20} />
         </div>
-      )}
+        <h1 className="text-xl font-medium">Filtros Avançados</h1>
+      </div>
+      <div className="py-2">
+        {Object.values(option).some((value) => value !== undefined) ? (
+          <p className="pt-5">Nesta visualização mostre mídias</p>
+        ) : (
+          <h1 className="pt-5">Ainda não há filtros nesta visualização.</h1>
+        )}
+        {Object.values(option).some((value) => value !== undefined) && (
+          <div className="flex flex-col gap-4 pt-5">
+            {Object.keys(option).map((value) => (
+              <FilterItem
+                key={value}
+                option={option}
+                selectLimitState={selectLimitState}
+                request={setFilterContent}
+                setOption={setOption}
+                valueOption={value}
+                filterContent={filterContent}
+                inputRefs={inputRefs}
+                setDirection={setDirection}
+              />
+            ))}
+          </div>
+        )}
+      </div>
       <footer className="relative flex items-center justify-between p-5 text-sm">
         <div>
           {Object.keys(option).length < Object.keys(Filters).length && (

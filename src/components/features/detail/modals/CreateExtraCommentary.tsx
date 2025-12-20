@@ -1,4 +1,4 @@
-import createView from '@/lib/api/View/create'
+import createView from '@/api/View/create'
 import Input from '@/components/ui/Input'
 import Textarea from '@/components/ui/Textarea'
 import Rater from '@/components/shared/Rater'

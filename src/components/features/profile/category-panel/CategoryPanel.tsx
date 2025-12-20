@@ -16,8 +16,8 @@ function CategoryPanel() {
     <div className="flex h-fit w-[450px] flex-col gap-4 rounded-lg bg-card p-4">
       <h1 className="text-xl font-medium">Minhas categorias</h1>
       <div className="flex flex-col gap-2">
-        {categories.map((category) => (
-          <CategoryListItem key={category.id} category={category} />
+        {categories.map((category, index) => (
+          <CategoryListItem key={index} category={category} />
         ))}
       </div>
       <Modal.Root>

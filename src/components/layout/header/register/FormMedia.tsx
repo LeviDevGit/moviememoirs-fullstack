@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import readCategory from '@/lib/api/Category/read'
+import readCategory from '@/api/Category/read'
 import dispatchMediaCreate from '@/utils/dispatchMediaCreate'
 import { MediaType } from '@/types/interfaces'
 import { useModal } from '@/components/ui/Modal/ModalRoot'

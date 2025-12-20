@@ -1,3 +1,5 @@
+import { FilterContent } from '@/app/page'
+
 interface queryFilterAddProps {
   inputRef: React.RefObject<HTMLInputElement>
   setOption: React.Dispatch<React.SetStateAction<Record<string, string>>>
@@ -49,14 +51,7 @@ function queryFilterAdd({
 
 interface queryFilterClearProps {
   setOption: React.Dispatch<React.SetStateAction<Record<string, string>>>
-  request: (
-    value: React.SetStateAction<{
-      searchString: string
-      directorString: string | undefined
-      yearString: string | undefined
-      valueString: string | undefined
-    }>,
-  ) => void
+  request: React.Dispatch<React.SetStateAction<FilterContent>>
   setSelectLimit: React.Dispatch<React.SetStateAction<boolean>>
   setDirection: React.Dispatch<React.SetStateAction<number>>
 }

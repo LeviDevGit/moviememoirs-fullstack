@@ -4,7 +4,8 @@ import StatsSummary from '@/components/features/profile/stats-overview/StatsSumm
 
 export default function Page() {
   return (
-    <div className="mx-4 flex h-full justify-center">
+    <div className="mx-4 flex h-full flex-col items-center justify-center">
+      <div className="h-[50px]" />
       <div className="flex w-[1300px] justify-between gap-8">
         <div className="flex w-full flex-col gap-8">
           <StatsSummary />

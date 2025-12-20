@@ -30,7 +30,9 @@ async function dispatchMediaCreate({
     return
   }
 
-  try {
+  setOpen(false)
+
+  const createPromise = async () => {
     const response = await fetch('/api/media/create', {
       method: 'POST',
       body: formData,
@@ -38,12 +40,19 @@ async function dispatchMediaCreate({
 
     const responseData = await response.json()
 
-    toast.success('Mídia criada com sucesso!')
-
-    setOpen(false)
     if (!responseData || responseData.error) {
-      return toast.error('Erro dentro da requisição')
+      throw new Error('Erro dentro da requisição')
     }
+
+    return responseData
+  }
+
+  try {
+    await toast.promise(createPromise, {
+      loading: 'Criando mídia...',
+      success: 'Mídia criada com sucesso!',
+      error: (err) => err.message || 'Erro ao criar mídia.',
+    })
 
     updaterState.setUpdater(!updaterState.updater)
   } catch (error) {

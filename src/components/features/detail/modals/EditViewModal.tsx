@@ -2,7 +2,7 @@ import Rater from '@/components/shared/Rater'
 import Input from '@/components/ui/Input'
 import { useModal } from '@/components/ui/Modal/ModalRoot'
 import Textarea from '@/components/ui/Textarea'
-import updateViewByData from '@/lib/api/View/update'
+import updateViewByData from '@/api/View/update'
 import { MediaView } from '@/utils/dispatchDetail'
 
 interface EditViewModalProps {

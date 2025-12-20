@@ -1,8 +1,8 @@
 'use client'
 
-import getFavoriteName from '@/lib/api/Category/getFavoriteName'
-import counterView from '@/lib/api/View/counter'
-import getAverageRating from '@/lib/api/View/getAverageRating'
+import getFavoriteName from '@/api/Category/getFavoriteName'
+import counterView from '@/api/View/counter'
+import getAverageRating from '@/api/View/getAverageRating'
 import { StarIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
