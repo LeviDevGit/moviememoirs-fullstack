@@ -36,7 +36,10 @@ export default function ModalClose({
 
   if (asChild) {
     return cloneElement(children, {
-      onClick: () => setOpen(false),
+      onClick: (e: React.MouseEvent) => {
+        children.props.onClick?.(e)
+        setOpen(false)
+      },
     })
   }
 

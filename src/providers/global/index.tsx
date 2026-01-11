@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from 'react'
 
-type MediaFilters = {
+export type MediaFilters = {
   category: string
   order: 'recent' | 'release' | 'rating_desc' | 'rating_asc'
   creator: string
@@ -27,7 +27,7 @@ interface GlobalProviderProps {
   children: ReactNode
 }
 
-const initialFilterContent: MediaFilters = {
+export const initialFilterContent: MediaFilters = {
   category: 'Todas',
   order: 'recent',
   creator: '',

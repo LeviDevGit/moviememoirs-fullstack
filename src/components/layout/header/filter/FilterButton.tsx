@@ -1,8 +1,55 @@
 import { FilterIcon } from 'lucide-react'
 import FilterMenu from './FilterMenu'
 import { Modal } from '@/components/ui/Modal'
+import {
+  GlobalContext,
+  initialFilterContent,
+  MediaFilters,
+} from '@/providers/global'
+import { useContext } from 'react'
+
+function useResetFilters() {
+  const global = useContext(GlobalContext)
+
+  if (!global) {
+    throw new Error('GlobalContext is undefined')
+  }
+
+  const { setFilterContent } = global
+
+  return () => {
+    setFilterContent(initialFilterContent)
+  }
+}
+
+function isSameValue(a: unknown, b: unknown) {
+  if ((a === undefined || a === '') && (b === undefined || b === '')) {
+    return true
+  }
+  return a === b
+}
+
+function countActiveFilters(current: MediaFilters, initial: MediaFilters) {
+  return Object.entries(initial).filter(([key, initialValue]) => {
+    const currentValue = current[key as keyof MediaFilters]
+    return !isSameValue(currentValue, initialValue)
+  }).length
+}
 
 export default function FilterButton() {
+  const resetFilters = useResetFilters()
+
+  const global = useContext(GlobalContext)
+
+  if (!global) {
+    throw new Error('GlobalContext is undefined')
+  }
+
+  const activeFilters = countActiveFilters(
+    global.filterContent,
+    initialFilterContent,
+  )
+
   return (
     <Modal.Root>
       <Modal.Trigger asChild>
@@ -12,13 +59,21 @@ export default function FilterButton() {
           </button>
           <span className="absolute -bottom-2 -right-2 w-5 cursor-default rounded-full bg-red-500 text-center">
             {/* {Object.keys(option).length > 0 && Object.keys(option).length} */}
+            {activeFilters > 0 && activeFilters}
           </span>
         </div>
       </Modal.Trigger>
       <Modal.Content>
         <FilterMenu />
         <Modal.Footer layout="between">
-          <button className="text-sm text-text-muted">Limpar Filtros</button>
+          <Modal.Close asChild>
+            <button
+              className="text-sm text-gray-400 hover:underline"
+              onClick={resetFilters}
+            >
+              Resetar Filtros
+            </button>
+          </Modal.Close>
           <div className="flex items-center">
             <Modal.Close>
               <span>Cancelar</span>
