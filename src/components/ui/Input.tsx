@@ -57,8 +57,7 @@ function Input({
           name={text}
           className={input({
             background,
-            className:
-              'mt-0.5 border-none outline-none focus:ring-0 sm:text-sm',
+            className: 'border-none outline-none focus:ring-0 sm:text-sm',
           })}
           defaultValue={useTodayDate ? todayValue : undefined}
           ref={ref}

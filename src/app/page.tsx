@@ -1,5 +1,4 @@
 import Carousel from '@/components/features/home/carousel/Carousel'
-import FilterBar from '@/components/features/home/filters/FilterBar'
 
 export interface FilterContent {
   filter: string
@@ -11,8 +10,8 @@ export interface FilterContent {
 export default function Home() {
   return (
     <div className="flex h-full w-full flex-col items-center">
+      <div className="h-[100px]" />
       <div className="flex h-full w-full flex-col items-center justify-start gap-6">
-        <FilterBar />
         <div className="flex h-fit w-full items-center">
           <Carousel />
         </div>

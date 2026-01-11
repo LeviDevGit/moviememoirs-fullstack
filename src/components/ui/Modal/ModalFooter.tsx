@@ -6,6 +6,7 @@ const modalfooter = tv({
     layout: {
       default: 'justify-end',
       spaced: 'justify-center',
+      between: 'justify-between',
     },
   },
   defaultVariants: {

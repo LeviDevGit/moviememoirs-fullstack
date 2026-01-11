@@ -6,7 +6,6 @@ import { useContext, useState } from 'react'
 import { GlobalContext } from '@/providers/global'
 import { handleDirectionChange } from './carousel.util'
 import { dataFetchProps } from '@/types/interfaces'
-import { useRestoreFilters } from '@/hooks/useRestoreFIlters'
 import useSubmitData from '@/hooks/useSubmitData'
 import Spinner from '@/components/ui/Spinner'
 
@@ -15,16 +14,13 @@ function Carousel() {
     undefined,
   )
 
-  useRestoreFilters()
-
   const context = useContext(GlobalContext)
 
   if (!context) {
     throw new Error('GlobalContext is undefined')
   }
 
-  const { updater, filterContent, direction, setDirection, filterOrdering } =
-    context
+  const { updater, filterContent, direction, setDirection } = context
 
   const [loading, setLoading] = useState(false)
 
@@ -35,7 +31,6 @@ function Carousel() {
     updater,
     setLoading,
     setDirection,
-    filterOrdering,
   })
 
   if (!dataFetch) {

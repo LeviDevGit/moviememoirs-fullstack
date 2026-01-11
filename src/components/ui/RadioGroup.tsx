@@ -1,6 +1,22 @@
 import React, { useRef, useEffect } from 'react'
+import { tv, VariantProps } from 'tailwind-variants'
 
-interface RadioGroupsProps extends React.HTMLAttributes<HTMLInputElement> {
+const radiogroup = tv({
+  base: 'flex items-center gap-4 rounded border border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-gray-50 peer-checked:border-blue-600 peer-checked:ring-1 peer-checked:ring-blue-600 dark:border-gray-600 dark:bg-gray-900 dark:hover:bg-gray-800',
+  variants: {
+    spacing: {
+      between: 'justify-between',
+      gap: 'gap-4',
+    },
+  },
+  defaultVariants: {
+    spacing: 'between',
+  },
+})
+
+interface RadioGroupsProps
+  extends React.HTMLAttributes<HTMLInputElement>,
+    VariantProps<typeof radiogroup> {
   value: string
   name?: string
   children?: React.ReactNode
@@ -12,6 +28,7 @@ function RadioGroup({
   name,
   children,
   checked,
+  spacing,
   ...rest
 }: RadioGroupsProps) {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -23,7 +40,7 @@ function RadioGroup({
   }, [checked])
 
   return (
-    <div className="w-1/2">
+    <div>
       <input
         ref={inputRef}
         type="radio"
@@ -33,10 +50,7 @@ function RadioGroup({
         className="peer sr-only"
         {...rest}
       />
-      <label
-        htmlFor={value}
-        className="flex items-center justify-between gap-4 rounded border border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-gray-50 peer-checked:border-blue-600 peer-checked:ring-1 peer-checked:ring-blue-600 dark:border-gray-600 dark:bg-gray-900 dark:hover:bg-gray-800"
-      >
+      <label htmlFor={value} className={radiogroup({ spacing })}>
         {children}
       </label>
     </div>

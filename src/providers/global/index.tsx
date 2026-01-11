@@ -1,16 +1,22 @@
-import { FilterContent } from '@/app/page'
-import { FilterOrdering } from '@/components/features/home/filters/types'
 import { createContext, ReactNode, useState } from 'react'
+
+type MediaFilters = {
+  category: string
+  order: 'recent' | 'release' | 'rating_desc' | 'rating_asc'
+  creator: string
+  fromYear?: string
+  toYear?: string
+  minRating: number
+  filter: string
+}
 
 interface GlobalContextProps {
   updater: boolean
   setUpdater: React.Dispatch<React.SetStateAction<boolean>>
-  filterContent: FilterContent
-  setFilterContent: React.Dispatch<React.SetStateAction<FilterContent>>
+  filterContent: MediaFilters
+  setFilterContent: React.Dispatch<React.SetStateAction<MediaFilters>>
   direction: number
   setDirection: React.Dispatch<React.SetStateAction<number>>
-  filterOrdering: FilterOrdering
-  setFilterOrdering: React.Dispatch<React.SetStateAction<FilterOrdering>>
 }
 
 export const GlobalContext = createContext<GlobalContextProps | undefined>(
@@ -21,11 +27,14 @@ interface GlobalProviderProps {
   children: ReactNode
 }
 
-const initialFilterContent: FilterContent = {
+const initialFilterContent: MediaFilters = {
+  category: 'Todas',
+  order: 'recent',
+  creator: '',
+  fromYear: undefined,
+  toYear: undefined,
+  minRating: 0,
   filter: '',
-  directorString: undefined,
-  yearString: undefined,
-  valueString: undefined,
 }
 
 export function GlobalProvider({ children }: GlobalProviderProps) {
@@ -33,14 +42,9 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
   const [updater, setUpdater] = useState<boolean>(false)
 
   const [filterContent, setFilterContent] =
-    useState<FilterContent>(initialFilterContent)
+    useState<MediaFilters>(initialFilterContent)
 
   const [direction, setDirection] = useState(0)
-
-  const [filterOrdering, setFilterOrdering] = useState<FilterOrdering>({
-    typeBy: 'all',
-    orderBy: 'recent',
-  })
 
   return (
     <GlobalContext.Provider
@@ -51,8 +55,6 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
         setFilterContent,
         direction,
         setDirection,
-        filterOrdering,
-        setFilterOrdering,
       }}
     >
       {children}

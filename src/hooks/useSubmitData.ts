@@ -1,4 +1,3 @@
-import { FilterOrdering } from '@/components/features/home/filters/types'
 import { dataFetchProps } from '@/types/interfaces'
 import { useCallback, useEffect } from 'react'
 import toast from 'react-hot-toast'
@@ -7,9 +6,6 @@ interface useSubmitDataProps {
   direction: number
   filterContent: {
     filter: string
-    directorString: string | undefined
-    yearString: string | undefined
-    valueString: string | undefined
   }
   setDataFetch: (
     value: React.SetStateAction<dataFetchProps | undefined>,
@@ -17,7 +13,6 @@ interface useSubmitDataProps {
   updater: boolean
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
   setDirection: React.Dispatch<React.SetStateAction<number>>
-  filterOrdering: FilterOrdering
 }
 
 function useSubmitData({
@@ -26,10 +21,11 @@ function useSubmitData({
   setDataFetch,
   updater,
   setLoading,
-  filterOrdering,
 }: useSubmitDataProps) {
   const submitData = useCallback(async () => {
     setLoading(true)
+
+    console.log(filterContent)
 
     const cleanFilters = Object.fromEntries(
       Object.entries(filterContent).filter(
@@ -40,8 +36,6 @@ function useSubmitData({
     // 2. Constrói os params de forma limpa
     const queryParams = new URLSearchParams({
       start: direction.toString(),
-      order: filterOrdering.orderBy,
-      type: filterOrdering.typeBy,
       ...cleanFilters,
     })
 
@@ -68,7 +62,7 @@ function useSubmitData({
     } finally {
       setLoading(false)
     }
-  }, [direction, filterContent, setDataFetch, setLoading, filterOrdering])
+  }, [direction, filterContent, setDataFetch, setLoading])
 
   useEffect(() => {
     submitData()

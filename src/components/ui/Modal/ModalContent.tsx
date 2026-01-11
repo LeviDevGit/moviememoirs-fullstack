@@ -19,7 +19,7 @@ function ModalContent({ children }: ModalContentProps) {
   if (!open) return null
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex animate-blowUpModal items-center justify-center bg-modal-overlay/90">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity">
       <div className="relative flex w-fit animate-blowUpContent flex-col items-center justify-center rounded-xl bg-card p-6 shadow-2xl ring-1 ring-white/15">
         <button
           type="button"
