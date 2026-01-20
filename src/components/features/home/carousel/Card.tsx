@@ -42,8 +42,9 @@ function Card({ source }: CardProps) {
           <div className="my-6 flex flex-col gap-2 font-['Inter'] text-xs font-medium text-text-50">
             <span className="truncate text-start">{source.media.creator}</span>
             <br />
-            <span className="self-end">
-              {source.media.time} | {source.media.year}
+            <span className="self-end truncate">
+              Visto em {new Date(source.date).toLocaleDateString('pt-BR')} |{' '}
+              {source.media.year}
             </span>
           </div>
         </Link>

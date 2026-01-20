@@ -14,7 +14,10 @@ export default function ModalTrigger({
 
   if (asChild) {
     return cloneElement(children, {
-      onClick: () => setOpen(true),
+      onClick: (e: React.MouseEvent) => {
+        children.props.onClick?.(e)
+        setOpen(true)
+      },
     })
   }
 

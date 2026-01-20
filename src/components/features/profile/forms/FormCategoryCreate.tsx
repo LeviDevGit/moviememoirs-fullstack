@@ -80,7 +80,7 @@ function FormCategoryCreate() {
   }, [])
 
   return (
-    <div className="rounded-lg bg-background p-5">
+    <div className="rounded-lg p-5">
       <div className="mb-5 flex flex-col gap-2">
         <h1 className="text-xl font-medium">
           Adicionar <span className="text-primary">Categoria</span>
