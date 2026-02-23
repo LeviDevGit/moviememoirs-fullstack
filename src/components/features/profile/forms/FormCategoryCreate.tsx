@@ -28,7 +28,6 @@ function FormCategoryCreate() {
   const [resultCategory, setResultCategory] = useState()
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    console.log('8999')
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
 
@@ -41,8 +40,6 @@ function FormCategoryCreate() {
       }
       return value
     })
-
-    console.log('8992', name, proportion)
 
     if (name && proportion) {
       const categoryBody: CategoryBody = {
@@ -89,7 +86,11 @@ function FormCategoryCreate() {
           Defina os formatos que farão parte do seu acervo.
         </p>
       </div>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form
+        id="create-category-form"
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4"
+      >
         <Datalist
           placeholder="Inserir nome"
           name="categoryName"
@@ -172,27 +173,6 @@ function FormCategoryCreate() {
             <p className="text-gray-900 dark:text-white">1:1</p>
           </RadioGroup>
         </fieldset>
-        <footer className="mt-6 flex justify-between">
-          {preExistedInput !== '' && (
-            <button className="rounded bg-red-500 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-red-500">
-              Deletar
-            </button>
-          )}
-          <div className="ml-auto flex gap-2">
-            <button
-              type="button"
-              className="rounded bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
-            >
-              Done
-            </button>
-          </div>
-        </footer>
       </form>
     </div>
   )

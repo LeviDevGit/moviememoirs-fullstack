@@ -1,8 +1,8 @@
 import { withPrismaError } from '@/lib/errorHandler'
 import prisma from '@/lib/prisma'
 import { SectionType } from '../../../../../prisma/seed'
-import { CategoryBody } from '@/app/(pages)/profile/_components/modals/form-category-create/FormCategoryCreate'
 import { NextRequest, NextResponse } from 'next/server'
+import { CategoryBody } from '@/components/features/profile/forms/FormCategoryCreate'
 
 export const POST = withPrismaError(async (req: NextRequest) => {
   const body = (await req.json()) as CategoryBody

@@ -29,9 +29,18 @@ function CategoryPanel() {
         </Modal.Trigger>
         <Modal.Content>
           <FormCategoryCreate />
-          <Modal.Close>
-            <span>Fechar</span>
-          </Modal.Close>
+          <Modal.Footer>
+            <Modal.Close>
+              <span>Fechar</span>
+            </Modal.Close>
+            <button
+              type="submit"
+              form="create-category-form"
+              className="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+            >
+              Salvar
+            </button>
+          </Modal.Footer>
         </Modal.Content>
       </Modal.Root>
     </div>
